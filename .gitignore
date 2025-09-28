@@ -1,0 +1,37 @@
+# Runtime files
+Runtime/Logs/
+Runtime/Cache/
+Runtime/Temp/
+
+# Backup and duplicate files
+*副本*
+*bak
+*backup
+*Copy*
+*copy*
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*~
+*.swp
+
+# Large database files
+*.sql
+*.db
+
+# IDE files
+.buildpath
+.project
+.settings/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Uploads and user content
+Uploads/*/
+
+# Config files that might contain sensitive info
+Application/Common/Conf/db.php

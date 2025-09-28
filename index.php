@@ -10,7 +10,7 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 define('DS','/');
-define('MING_SITE_PA', 'http://'.$_SERVER['HTTP_HOST'].DS );
+define('MING_SITE_PA', 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'localhost').DS );
 define('MING_BASE_PA', __DIR__ );
 define('MING_BASE_PATH', __DIR__ . '/');
 define("UPLOAD_PATH", MING_BASE_PA . "/Uploads/");
