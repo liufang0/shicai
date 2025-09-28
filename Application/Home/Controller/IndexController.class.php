@@ -27,7 +27,7 @@ class IndexController extends BaseController
         if (C('is_baidu')) {
             $this->display("baidu");
         } else {
-            
+
             $this->display('Shou/index');
         }
     }
@@ -47,7 +47,7 @@ class IndexController extends BaseController
             $result_index = $this->weixin($redirect_uri, $appid, $appsecret);
             $this->display('Shou/index');
         } else {
-            
+
             $this->display('Shou/index');
         }
 
@@ -151,7 +151,7 @@ class IndexController extends BaseController
                 $result_index = $oauth->getOauthRedirect($redirect_uri, $state, 'snsapi_userinfo');
                 $this->display('Shou/index');
             } else {
-                
+
                 $this->display('Shou/index');
             }
         }
