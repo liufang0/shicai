@@ -51,7 +51,7 @@ class CLIOptionsHandler {
   private function _handleRequire($boris, $paths) {
     $require = array_reduce(
       (array) $paths,
-      function($acc, $v) { return array_merge($acc, explode(',', $v)); },
+      function($acc, $v) [ return array_merge($acc, explode(',', $v)); ],
       array()
     );
 

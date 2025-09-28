@@ -822,7 +822,7 @@
                     
                     ?>
                 <style>
-                    .m { background-color: white; }
+                    .m [ background-color: white; ]
                 </style>
                 <?php
                     echo '<pre><tt><br/ ><br/ ><br/ >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
@@ -849,12 +849,12 @@
                 
                 ?>
                 <style>
-                    .p { background-color: yellow; }
-                    .m { background-color: #00FF00; }
-                    .s { background-color: #FF0000; }
-                    .c { background-color: aqua; }
-                    .x { background-color: pink; }
-                    .f { background-color: gold; }
+                    .p [ background-color: yellow; ]
+                    .m [ background-color: #00FF00; ]
+                    .s [ background-color: #FF0000; ]
+                    .c [ background-color: aqua; ]
+                    .x [ background-color: pink; ]
+                    .f [ background-color: gold; ]
                 </style>
                 <?php
                 echo "<pre><tt>";
@@ -905,15 +905,15 @@
         }
 
         //----------------------------------------------------------------------
-        public static function rsBlockNum($spec)     { return $spec[0] + $spec[3]; }
-        public static function rsBlockNum1($spec)    { return $spec[0]; }
-        public static function rsDataCodes1($spec)   { return $spec[1]; }
-        public static function rsEccCodes1($spec)    { return $spec[2]; }
-        public static function rsBlockNum2($spec)    { return $spec[3]; }
-        public static function rsDataCodes2($spec)   { return $spec[4]; }
-        public static function rsEccCodes2($spec)    { return $spec[2]; }
-        public static function rsDataLength($spec)   { return ($spec[0] * $spec[1]) + ($spec[3] * $spec[4]);    }
-        public static function rsEccLength($spec)    { return ($spec[0] + $spec[3]) * $spec[2]; }
+        public static function rsBlockNum($spec)     [ return $spec[0] + $spec[3]; ]
+        public static function rsBlockNum1($spec)    [ return $spec[0]; ]
+        public static function rsDataCodes1($spec)   [ return $spec[1]; ]
+        public static function rsEccCodes1($spec)    [ return $spec[2]; ]
+        public static function rsBlockNum2($spec)    [ return $spec[3]; ]
+        public static function rsDataCodes2($spec)   [ return $spec[4]; ]
+        public static function rsEccCodes2($spec)    [ return $spec[2]; ]
+        public static function rsDataLength($spec)   [ return ($spec[0] * $spec[1]) + ($spec[3] * $spec[4]);    ]
+        public static function rsEccLength($spec)    [ return ($spec[0] + $spec[3]) * $spec[2]; ]
         
     }
 
@@ -2583,14 +2583,14 @@
         }
 
         //----------------------------------------------------------------------
-        public function mask0($x, $y) { return ($x+$y)&1;                       }
-        public function mask1($x, $y) { return ($y&1);                          }
-        public function mask2($x, $y) { return ($x%3);                          }
-        public function mask3($x, $y) { return ($x+$y)%3;                       }
-        public function mask4($x, $y) { return (((int)($y/2))+((int)($x/3)))&1; }
-        public function mask5($x, $y) { return (($x*$y)&1)+($x*$y)%3;           }
-        public function mask6($x, $y) { return ((($x*$y)&1)+($x*$y)%3)&1;       }
-        public function mask7($x, $y) { return ((($x*$y)%3)+(($x+$y)&1))&1;     }
+        public function mask0($x, $y) [ return ($x+$y)&1;                       ]
+        public function mask1($x, $y) [ return ($y&1);                          ]
+        public function mask2($x, $y) [ return ($x%3);                          ]
+        public function mask3($x, $y) [ return ($x+$y)%3;                       ]
+        public function mask4($x, $y) [ return (((int)($y/2))+((int)($x/3)))&1; ]
+        public function mask5($x, $y) [ return (($x*$y)&1)+($x*$y)%3;           ]
+        public function mask6($x, $y) [ return ((($x*$y)&1)+($x*$y)%3)&1;       ]
+        public function mask7($x, $y) [ return ((($x*$y)%3)+(($x+$y)&1))&1;     ]
 
         //----------------------------------------------------------------------
         private function generateMaskNo($maskNo, $width, $frame)
@@ -3519,7 +3519,7 @@
             
             
             // redefine the 'rectfill' operator to shorten the syntax
-            $output .= '/F { rectfill } def'."\n";
+            $output .= '/F [ rectfill ] def'."\n";
             
             // set the symbol color
             $output .= $back_color_string;

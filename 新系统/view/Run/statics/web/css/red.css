@@ -1,0 +1,52 @@
+/*header{ background: #dc5d55; }*/
+/*.wallet{background: #dc5d55;}*/
+/*.loginWarp li button { background: #dc5d55;}*/
+/*.loginWarp li.butC button.bgCol { background: #d9435e;}*/
+/*button{ background: #ff6179;}*/
+.bgCol2 { background: #61b7ff;}
+.bgCol { background: #ff6179;}
+/*.jianpanTitle { background: #545454;}*/
+/*.play1 li p,.play2 li p { background: #e09a5f;}*/
+.cenMoney h1{color: #dc5d55;}
+.text-ul li {background: #dc5d55;}
+/*.userBetting dd div{background: #dc5d55;}*/
+.userBetting dd{background: #f2f2f2;}
+/*.teamSearchW{ background: #dc5d55;}*/
+
+
+.horn{ background: url(../images/imgRed/home_notice_icon@2x.png) no-repeat 20px center #f9f9f9;}
+.indexContent { background: url(../images/imgRed/indexBg.png) no-repeat;}
+.indexTab li { background: url(../images/imgRed/button.png) no-repeat;}
+.indexTab li.active{ background: url(../images/imgRed/button1.png) no-repeat;}
+
+nav li:nth-child(1){ background-image: url(../images/imgRed/navHome.png¿v=1.png1");}
+nav li:nth-child(1).active{ background-image: url("../images/imgRed/navHome1.png");}
+nav li:nth-child(2){ background-image: url("../images/imgRed/navWallet.png");}
+/*nav li:nth-child(2).active{ background-image: url(../images/imgRed/navWallet1.png¿v=1.png1");}*/
+nav li:nth-child(2).active{ background-image: url("../images/imgRed/navWallet1.png");}
+nav li:nth-child(3){ background-image: url("../images/imgRed/navArt.png");}
+nav li:nth-child(3).active{ background-image: url(../images/imgRed/navArt1.png¿v=1.png1");}
+nav li:nth-child(4){ background-image: url("../images/imgRed/navMy.png");}
+nav li:nth-child(4).active{ background-image: url(../images/imgRed/navMy1.png¿v=1.png1");}
+nav li.active{ color:#dc5d55;}
+
+/*.newsTitle{background-color: #dc5d55; }*/
+
+/*.configClose,.configClose2 {background: url(../images/imgRed/configClose.png) no-repeat; background-size: 100%;}*/
+
+.guanbing{ background: url("../images/imgRed/login_close_icon@2x.png") no-repeat; background-size: 100%;}
+
+/*.icoTime{ background-image: url("../images/imgRed/ico-time.png")}*/
+
+.iocKf{ background: url("../images/imgRed/ico-kf.png") no-repeat;}
+
+.customer{ background: url("../images/imgRed/kefu@2x.png") no-repeat center #fff; background-size: 100%;}
+
+/***********************æ”¯ä»˜å®‰å…¨ wallet/paymentSecurity.html**********************************/
+.icoNavArt2{ background-image: url("../images/imgRed/navArt2.png");}
+
+
+
+.userBetting h3 em,pre em{background: #ffa7a7;}
+
+/*.config h3{    background: #dc7973;}*/

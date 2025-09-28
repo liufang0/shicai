@@ -37,7 +37,7 @@ if(!function_exists('smarty_mb_wordwrap')) {
                 $length = 0;
 
                 if ($cut) {
-                    $_tokens = preg_split('!(.{' . $width . '})!uS', $_token, -1, PREG_SPLIT_NO_EMPTY + PREG_SPLIT_DELIM_CAPTURE);
+                    $_tokens = preg_split('!(.[' . $width . '])!uS', $_token, -1, PREG_SPLIT_NO_EMPTY + PREG_SPLIT_DELIM_CAPTURE);
                     // broken words go on a new line
                     $t .= $break;
                 }

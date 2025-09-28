@@ -220,7 +220,7 @@ class HproseSimpleWriter {
         $this->stream->write(HproseTags::TagOpenbrace);
         for ($i = 0; $i < $count; ++$i) {
             $field = $fields[$i];
-            if ($field{0} === "\0") {
+            if ($field[0] === "\0") {
                 $field = substr($field, strpos($field, "\0", 1) + 1);
             }
             $this->writeString($field);

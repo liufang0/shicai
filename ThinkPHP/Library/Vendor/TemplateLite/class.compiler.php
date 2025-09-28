@@ -98,13 +98,13 @@ class Template_Lite_Compiler extends Template_Lite {
 		// $foo[0]
 		// $foo[$bar]
 		// $foo[5][blah]
-//		$this->_dvar_regexp = '\$[a-zA-Z0-9_]{1,}(?:' . $this->_var_bracket_regexp . ')*(?:' . $this->_var_bracket_regexp . ')*';
-		$this->_dvar_regexp = '\$[a-zA-Z0-9_]{1,}(?:' . $this->_var_bracket_regexp . ')*(?:\.\$?\w+(?:' . $this->_var_bracket_regexp . ')*)*';
+//		$this->_dvar_regexp = '\$[a-zA-Z0-9_][1,](?:' . $this->_var_bracket_regexp . ')*(?:' . $this->_var_bracket_regexp . ')*';
+		$this->_dvar_regexp = '\$[a-zA-Z0-9_][1,](?:' . $this->_var_bracket_regexp . ')*(?:\.\$?\w+(?:' . $this->_var_bracket_regexp . ')*)*';
 
 		// matches config vars:
 		// #foo#
 		// #foobar123_foo#
-		$this->_cvar_regexp = '\#[a-zA-Z0-9_]{1,}(?:' . $this->_var_bracket_regexp . ')*(?:' . $this->_var_bracket_regexp . ')*\#';
+		$this->_cvar_regexp = '\#[a-zA-Z0-9_][1,](?:' . $this->_var_bracket_regexp . ')*(?:' . $this->_var_bracket_regexp . ')*\#';
 
 		// matches valid variable syntax:
 		// $foo
@@ -156,27 +156,27 @@ class Template_Lite_Compiler extends Template_Lite {
 		}
 
 		// remove all comments
-		$file_contents = preg_replace("!{$ldq}\*.*?\*{$rdq}!se","",$file_contents);
+		$file_contents = preg_replace("![$ldq]\*.*?\*[$rdq]!se","",$file_contents);
 
 		// replace all php start and end tags
 		$file_contents = preg_replace('%(<\?(?!php|=|$))%i', '<?php echo \'\\1\'?>'."\n", $file_contents);
 
 		// remove literal blocks
-		preg_match_all("!{$ldq}\s*literal\s*{$rdq}(.*?){$ldq}\s*/literal\s*{$rdq}!s", $file_contents, $_match);
+		preg_match_all("![$ldq]\s*literal\s*[$rdq](.*?)[$ldq]\s*/literal\s*[$rdq]!s", $file_contents, $_match);
 		$this->_literal = $_match[1];
-		$file_contents = preg_replace("!{$ldq}\s*literal\s*{$rdq}(.*?){$ldq}\s*/literal\s*{$rdq}!s", stripslashes($ldq . "literal" . $rdq), $file_contents);
+		$file_contents = preg_replace("![$ldq]\s*literal\s*[$rdq](.*?)[$ldq]\s*/literal\s*[$rdq]!s", stripslashes($ldq . "literal" . $rdq), $file_contents);
 
 		// remove php blocks
-		preg_match_all("!{$ldq}\s*php\s*{$rdq}(.*?){$ldq}\s*/php\s*{$rdq}!s", $file_contents, $_match);
+		preg_match_all("![$ldq]\s*php\s*[$rdq](.*?)[$ldq]\s*/php\s*[$rdq]!s", $file_contents, $_match);
 		$this->_php_blocks = $_match[1];
-		$file_contents = preg_replace("!{$ldq}\s*php\s*{$rdq}(.*?){$ldq}\s*/php\s*{$rdq}!s", stripslashes($ldq . "php" . $rdq), $file_contents);
+		$file_contents = preg_replace("![$ldq]\s*php\s*[$rdq](.*?)[$ldq]\s*/php\s*[$rdq]!s", stripslashes($ldq . "php" . $rdq), $file_contents);
 
 		// gather all template tags
-		preg_match_all("!{$ldq}\s*(.*?)\s*{$rdq}!s", $file_contents, $_match);
+		preg_match_all("![$ldq]\s*(.*?)\s*[$rdq]!s", $file_contents, $_match);
 		$tags = $_match[1];
 
 		// put all of the non-template tag text blocks into an array, using the template tags as delimiters
-		$text = preg_split("!{$ldq}.*?{$rdq}!s", $file_contents);
+		$text = preg_split("![$ldq].*?[$rdq]!s", $file_contents);
 
 		// compile template tags
 		$count_tags = count($tags);
@@ -230,7 +230,7 @@ class Template_Lite_Compiler extends Template_Lite {
 		// extract the tag command, modifier and arguments
 		preg_match_all('/(?:(' . $this->_var_regexp . '|' . $this->_svar_regexp . '|\/?' . $this->_func_regexp . ')(' . $this->_mod_regexp . '*)(?:\s*[,\.]\s*)?)(?:\s+(.*))?/xs', $tag, $_match);
 
-		if ($_match[1][0]{0} == '$' || ($_match[1][0]{0} == '#' && $_match[1][0]{strlen($_match[1][0]) - 1} == '#') || $_match[1][0]{0} == "'" || $_match[1][0]{0} == '"' || $_match[1][0]{0} == '%')
+		if ($_match[1][0][0] == '$' || ($_match[1][0][0] == '#' && $_match[1][0][strlen($_match[1][0]) - 1] == '#') || $_match[1][0][0] == "'" || $_match[1][0][0] == '"' || $_match[1][0][0] == '%')
 		{
 			$_result = $this->_parse_variables($_match[1], $_match[2]);
 			return "<?php echo $_result; ?>\n";
@@ -549,7 +549,7 @@ class Template_Lite_Compiler extends Template_Lite {
 
 	function _dequote($string)
 	{
-		if (($string{0} == "'" || $string{0} == '"') && $string{strlen($string)-1} == $string{0})
+		if (($string[0] == "'" || $string[0] == '"') && $string[strlen($string)-1] == $string[0])
 		{
 			return substr($string, 1, -1);
 		}
@@ -671,17 +671,17 @@ class Template_Lite_Compiler extends Template_Lite {
 	function _parse_variable($variable)
 	{
 		// replace variable with value
-		if ($variable{0} == "\$")
+		if ($variable[0] == "\$")
 		{
 			// replace the variable
 			return $this->_compile_variable($variable);
 		}
-		elseif ($variable{0} == '#')
+		elseif ($variable[0] == '#')
 		{
 			// replace the config variable
 			return $this->_compile_config($variable);
 		}
-		elseif ($variable{0} == '"')
+		elseif ($variable[0] == '"')
 		{
 			// expand the quotes to pull any variables out of it
 			// fortunately variables inside of a quote aren't fancy, no modifiers, no quotes
@@ -708,12 +708,12 @@ class Template_Lite_Compiler extends Template_Lite {
 			$_result = str_replace("`", "", $_result);
 			return $_result;
 		}
-		elseif ($variable{0} == "'")
+		elseif ($variable[0] == "'")
 		{
 			// return the value just as it is
 			return $variable;
 		}
-		elseif ($variable{0} == "%")
+		elseif ($variable[0] == "%")
 		{
 			return $this->_parse_section_prop($variable);
 		}
@@ -757,7 +757,7 @@ class Template_Lite_Compiler extends Template_Lite {
 
 		if ($var_name == $this->reserved_template_varname)
 		{
-			if ($variable[0]{0} == '[' || $variable[0]{0} == '.')
+			if ($variable[0][0] == '[' || $variable[0][0] == '.')
 			{
 				$find = array("[", "]", ".");
 				switch(strtoupper(str_replace($find, "", $variable[0])))
@@ -825,18 +825,18 @@ class Template_Lite_Compiler extends Template_Lite {
 
 		foreach ($variable as $var)
 		{
-			if ($var{0} == '[')
+			if ($var[0] == '[')
 			{
 				$var = substr($var, 1, -1);
 				if (is_numeric($var))
 				{
 					$_result .= "[$var]";
 				}
-				elseif ($var{0} == '$')
+				elseif ($var[0] == '$')
 				{
 					$_result .= "[" . $this->_compile_variable($var) . "]";
 				}
-				elseif ($var{0} == '#')
+				elseif ($var[0] == '#')
 				{
 					$_result .= "[" . $this->_compile_config($var) . "]";
 				}
@@ -849,9 +849,9 @@ class Template_Lite_Compiler extends Template_Lite {
 					$_result .= "[\$this->_sections['$section']['$section_prop']]";
 				}
 			}
-			else if ($var{0} == '.')
+			else if ($var[0] == '.')
 			{
-   				if ($var{1} == '$')
+   				if ($var[1] == '$')
 				{
 	   				$_result .= "[\$this->_TPL['" . substr($var, 2) . "']]";
 				}
@@ -868,7 +868,7 @@ class Template_Lite_Compiler extends Template_Lite {
 				}
 				else if (substr($var, 2, 1) == '$')
 				{
-					$_output .= '->{(($var=$this->_TPL[\''.substr($var,3).'\']) && substr($var,0,2)!=\'__\') ? $_var : $this->trigger_error("cannot access property \\"$var\\"")}';
+					$_output .= '->[(($var=$this->_TPL[\''.substr($var,3).'\']) && substr($var,0,2)!=\'__\') ? $_var : $this->trigger_error("cannot access property \\"$var\\"")]';
 				}
 			}
 			else
@@ -894,7 +894,7 @@ class Template_Lite_Compiler extends Template_Lite {
 			preg_match_all('!:(' . $this->_qstr_regexp . '|[^:]+)!', $_args[$i], $_match);
 			$_arg = $_match[1];
 
-			if ($_mods[$i]{0} == '@')
+			if ($_mods[$i][0] == '@')
 			{
 				$_mods[$i] = substr($_mods[$i], 1);
 				$_map_array = 0;

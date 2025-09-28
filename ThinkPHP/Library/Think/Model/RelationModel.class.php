@@ -145,7 +145,7 @@ class RelationModel extends Model {
                         switch($mappingType) {
                             case self::HAS_ONE:
                                 $pk   =  $result[$mappingKey];
-                                $mappingCondition .= " AND {$mappingFk}='{$pk}'";
+                                $mappingCondition .= " AND [$mappingFk]='[$pk]'";
                                 $relationData   =  $model->where($mappingCondition)->field($mappingFields)->find();
                                 if (!empty($val['relation_deep'])){
                                     $model->getRelation($relationData,$val['relation_deep']);
@@ -159,7 +159,7 @@ class RelationModel extends Model {
                                     $mappingFk   =   !empty($val['foreign_key'])?$val['foreign_key']:strtolower($model->getModelName()).'_id';     //  关联外键
                                 }
                                 $fk   =  $result[$mappingFk];
-                                $mappingCondition .= " AND {$model->getPk()}='{$fk}'";
+                                $mappingCondition .= " AND [$model->getPk()]='[$fk]'";
                                 $relationData   =  $model->where($mappingCondition)->field($mappingFields)->find();
                                 if (!empty($val['relation_deep'])){
                                     $model->getRelation($relationData,$val['relation_deep']);
@@ -167,7 +167,7 @@ class RelationModel extends Model {
                                 break;
                             case self::HAS_MANY:
                                 $pk   =  $result[$mappingKey];
-                                $mappingCondition .= " AND {$mappingFk}='{$pk}'";
+                                $mappingCondition .= " AND [$mappingFk]='[$pk]'";
                                 $mappingOrder =  !empty($val['mapping_order'])?$val['mapping_order']:'';
                                 $mappingLimit =  !empty($val['mapping_limit'])?$val['mapping_limit']:'';
                                 // 延时获取关联记录
@@ -182,7 +182,7 @@ class RelationModel extends Model {
                             case self::MANY_TO_MANY:
                                 $pk     =   $result[$mappingKey];
                                 $prefix =   $this->tablePrefix;
-                                $mappingCondition = " {$mappingFk}='{$pk}'";
+                                $mappingCondition = " [$mappingFk]='[$pk]'";
                                 $mappingOrder =  $val['mapping_order'];
                                 $mappingLimit =  $val['mapping_limit'];
                                 $mappingRelationFk = $val['relation_foreign_key']?$val['relation_foreign_key']:$model->getModelName().'_id';
@@ -191,7 +191,7 @@ class RelationModel extends Model {
                                 }else{
                                     $mappingRelationTable   =   $this->getRelationTableName($model);
                                 }
-                                $sql = "SELECT b.{$mappingFields} FROM {$mappingRelationTable} AS a, ".$model->getTableName()." AS b WHERE a.{$mappingRelationFk} = b.{$model->getPk()} AND a.{$mappingCondition}";
+                                $sql = "SELECT b.[$mappingFields] FROM [$mappingRelationTable] AS a, ".$model->getTableName()." AS b WHERE a.[$mappingRelationFk] = b.[$model->getPk()] AND a.[$mappingCondition]";
                                 if(!empty($val['condition'])) {
                                     $sql   .= ' AND '.$val['condition'];
                                 }
@@ -312,7 +312,7 @@ class RelationModel extends Model {
                                         $pk   =  $model->getPk();
                                         foreach ($mappingData as $vo){
                                             if(isset($vo[$pk])) {// 更新数据
-                                                $mappingCondition   =  "$pk ={$vo[$pk]}";
+                                                $mappingCondition   =  "$pk =[$vo[$pk]]";
                                                 $result   =  $model->where($mappingCondition)->save($vo);
                                             }else{ // 新增数据
                                                 $vo[$mappingFk] =  $data[$mappingKey];

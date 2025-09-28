@@ -40,7 +40,7 @@ class WechatPoi extends Common {
         if (!$this->access_token && !$this->getAccessToken()) {
             return false;
         }
-        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::POI_ADD . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::POI_ADD . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -64,7 +64,7 @@ class WechatPoi extends Common {
             return false;
         }
         $data = array('poi_id' => $poi_id);
-        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::POI_DELETE . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::POI_DELETE . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -87,7 +87,7 @@ class WechatPoi extends Common {
         if (!$this->access_token && !$this->getAccessToken()) {
             return false;
         }
-        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::POI_UPDATE . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::POI_UPDATE . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -111,7 +111,7 @@ class WechatPoi extends Common {
             return false;
         }
         $data = array('poi_id' => $poi_id);
-        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::POI_GET . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::POI_GET . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -137,7 +137,7 @@ class WechatPoi extends Common {
         }
         $limit > 50 && $limit = 50;
         $data = array('begin' => $begin, 'limit' => $limit);
-        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::POI_GET_LIST . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::POI_GET_LIST . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -158,7 +158,7 @@ class WechatPoi extends Common {
         if (!$this->access_token && !$this->getAccessToken()) {
             return false;
         }
-        $result = Tools::httpGet(self::API_URL_PREFIX . self::POI_CATEGORY . "access_token={$this->access_token}");
+        $result = Tools::httpGet(self::API_URL_PREFIX . self::POI_CATEGORY . "access_token=[$this->access_token]");
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {

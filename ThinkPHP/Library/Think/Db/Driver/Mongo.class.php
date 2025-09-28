@@ -48,7 +48,7 @@ class Mongo extends Driver {
     public function connect($config='',$linkNum=0) {
         if ( !isset($this->linkID[$linkNum]) ) {
             if(empty($config))  $config =   $this->config;
-            $host = 'mongodb://'.($config['username']?"{$config['username']}":'').($config['password']?":{$config['password']}@":'').$config['hostname'].($config['hostport']?":{$config['hostport']}":'').'/'.($config['database']?"{$config['database']}":'');
+            $host = 'mongodb://'.($config['username']?"[$config['username']]":'').($config['password']?":[$config['password']]@":'').$config['hostname'].($config['hostport']?":[$config['hostport']]":'').'/'.($config['database']?"[$config['database']]":'');
             try{
                 $this->linkID[$linkNum] = new \mongoClient( $host,$this->config['params']);
             }catch (\MongoConnectionException $e){
@@ -199,7 +199,7 @@ class Mongo extends Driver {
         N('db_write',1); // 兼容代码        
         if($this->config['debug']) {
             $this->queryStr   =  $this->_dbName.'.'.$this->_collectionName.'.insert(';
-            $this->queryStr   .= $data?json_encode($data):'{}';
+            $this->queryStr   .= $data?json_encode($data):'[]';
             $this->queryStr   .= ')';
         }
         try{
@@ -251,7 +251,7 @@ class Mongo extends Driver {
      */
     public function getMongoNextId($pk) {
         if($this->config['debug']) {
-            $this->queryStr   =  $this->_dbName.'.'.$this->_collectionName.'.find({},{'.$pk.':1}).sort({'.$pk.':-1}).limit(1)';
+            $this->queryStr   =  $this->_dbName.'.'.$this->_collectionName.'.find([],['.$pk.':1]).sort(['.$pk.':-1]).limit(1)';
         }
         try{
             $this->debug(true);
@@ -282,7 +282,7 @@ class Mongo extends Driver {
         $set  =  $this->parseSet($data);
         if($this->config['debug']) {
             $this->queryStr   =  $this->_dbName.'.'.$this->_collectionName.'.update(';
-            $this->queryStr   .= $query?json_encode($query):'{}';
+            $this->queryStr   .= $query?json_encode($query):'[]';
             $this->queryStr   .=  ','.json_encode($set).')';
         }
         try{
@@ -341,7 +341,7 @@ class Mongo extends Driver {
         $this->executeTimes++;
         N('db_write',1); // 兼容代码        
         if($this->config['debug']) {
-            $this->queryStr   =  $this->_dbName.'.'.$this->_collectionName.'.remove({})';
+            $this->queryStr   =  $this->_dbName.'.'.$this->_collectionName.'.remove([])';
         }
         try{
             $this->debug(true);
@@ -371,12 +371,12 @@ class Mongo extends Driver {
         try{
             if($this->config['debug']) {
                 $this->queryStr   =  $this->_dbName.'.'.$this->_collectionName.'.find(';
-                $this->queryStr  .=  $query? json_encode($query):'{}';
+                $this->queryStr  .=  $query? json_encode($query):'[]';
                 if(is_array($field) && count($field)) {
                     foreach ($field as $f=>$v)
                         $_field_array[$f] = $v ? 1 : 0;
 
-                    $this->queryStr  .=  $field? ', '.json_encode($_field_array):', {}';
+                    $this->queryStr  .=  $field? ', '.json_encode($_field_array):', []';
                 }
                 $this->queryStr  .=  ')';
             }

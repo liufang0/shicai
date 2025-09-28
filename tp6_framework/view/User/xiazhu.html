@@ -1,0 +1,261 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>{:C('sitename')}-下注记录</title>
+		<meta name="format-detection" content="telephone=no,email=no"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+		<link href="__PUBLIC__/Admin/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/animate.min.css" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+		<link href="__PUBLIC__/Home/css/page.css" rel="stylesheet">
+	</head>
+	<style type="text/css">
+		body {
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+			-khtml-user-select: none;
+			-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+			overflow-y: scroll;
+		}
+		.facesj{
+			display: inline-block;
+			background-color: #1fa1dc;
+			width: 60px;
+		    height: 32px;
+		    line-height: 32px;
+		    border-radius: 3px;
+		    text-align: center;
+		    font-size: 14px;
+		    margin-top:6px;
+		    border: 1px solid #1fa1dc;
+		    color: #FFF;
+		    margin-left:10px;
+		}
+		.alipay_choose,.bank_choose{display: none}
+		/*.loginscreen{padding:40px 20px;}*/
+		.header .ptitle{height:45px;line-height: 45px;}
+				/*分页样式*/
+		.pages a,.pages span {
+		    display:inline-block;
+		    padding:4px 7px;
+		    margin:0 2px;
+		    border:1px solid #D5D4D4;
+		    -webkit-border-radius:1px;
+		    -moz-border-radius:1px;
+		    border-radius:1px;
+		}
+		.pages a,.pages li {
+		    display:inline-block;
+		    list-style: none;
+		    text-decoration:none; color:#3399ff;
+		}
+		
+		.pages a:hover{
+		    border-color:#3399ff;
+		}
+		.pages span.current{
+		    background:#3399ff;
+		    color:#FFF;
+		    font-weight:700;
+		    border-color:#3399ff;
+		}
+		.pages{
+			text-align: center;
+		}
+		/*分页样式*/
+		
+		.layui-layer{
+			top:48px !important;
+		}
+		.record-content .record-no *{color:#000;}
+		.back{
+			display: block;width:100%;height:40px;line-height: 40px;font-size:16px;text-align: center;color:#d4a448;
+			position: fixed;bottom:0;background:#393a3e;
+		}
+	</style>
+	<body>
+		<div class="header">
+		  <div class="all_w ">
+		    <div class="gofh"> <a href="javascript:history.back()"><img src="/Public/Home/img/jt_03.jpg"></a> </div>
+		    <div class="ptitle">
+		      下注记录
+		        <a href="/" class="backgame">返回游戏</a>
+		    </div>
+		 
+		  </div>
+		</div>
+		<div class=" text-center loginscreen  animated fadeInDown">
+				<div class="record">
+			<div class="record-top">
+				<p class="lable">
+					<a href="{:U('Home/User/xiazhu')}?t=1"><span>{$today|date="m-d",###}</span></a>
+					<a href="{:U('Home/User/xiazhu')}?t=2"><span>{$today-86400|date="m-d",###}</span></a>
+					<a href="{:U('Home/User/xiazhu')}?t=3"><span>{$today-86400*2|date="m-d",###}</span></a>
+					<a href="{:U('Home/User/xiazhu')}?t=4"><span>账务</span></a>
+				</p>
+			</div>
+			<div class="record-content">
+				<empty name="list">
+					<p class="record-no"><span>
+						<if condition="$t eq 1">{$today|date="m-d",###}</if>
+						<if condition="$t eq 2">{$today-86400|date="m-d",###}</if>
+						<if condition="$t eq 3">{$today-86400*2|date="m-d",###}</if>
+						 无资料
+					</span></p>
+					<else/>
+					<if condition="$t eq 4">
+						<table class="table table-striped table-hover table-bordered">
+							<thead>
+								<tr>
+									<th>期号</th>
+									<th>内容</th>
+									<th>金额</th>
+									<th>盈亏</th>
+									<th>时间</th>
+								</tr>	
+							</thead>
+							<tbody>
+								<volist name="list" id="vo">
+									<tr>
+										
+										<!--<td>{$vo.time|mb_substr=3,8,utf8}</td>-->
+										<td>{$vo.number}</td>
+										<td>{$vo.jincai}</td>
+										<td>{$vo.del_points}</td>
+										<td>{$vo['add_points']-$vo['del_points']}</td>
+										<td>{$vo.time|date="Y-m-d H:i:s",###}</td>
+										
+									</tr>
+								</volist>
+							</tbody>
+						</table>
+						<else/>
+						<table class="table table-striped table-hover table-bordered">
+							<volist name="list1" id="vo" key="i">
+								<thead>
+									<tr>
+										<th colspan="6">
+											<?php
+												$periodnumber = $vo['number'];
+												$awardnumbers = M('number')->where("periodnumber = $periodnumber")->order('id desc')->find();
+												$data = explode(',',$awardnumbers['awardnumbers']);
+												for($i=0;$i<count($data);$i++){
+													if($data[$i]<10){
+														$data[$i] = substr($data[$i],1);
+													}
+												}
+												
+												?>
+											<span>期号：{$vo.number}<if condition="$number eq $vo['number']">
+												(未开奖)
+												<else/>
+												(
+												<volist name="data" id="y" key="i">
+													<if condition="$i eq 10">
+														{$y}
+														<else/>
+														{$y},
+													</if>
+												</volist>
+												)	
+											</if></span>
+											<!-- <if condition="$number eq $vo['number']">
+												<a class="bt bt-red" onclick="del_all('{$vo.number}')">全部取消</a>
+											</if> -->
+										</th>
+									</tr>
+								</thead>
+								<thead>
+									<tr>
+										<th>竞猜时间</th>
+										<th>竞猜单号</th>
+										<th>内容</th>
+										<th>点数</th>
+										<th>输赢</th>
+									</tr>	
+								</thead>
+								<tbody>
+									<volist name="vo.order" id="r">
+										<tr>
+											<td>{$r.time|date="H:i:s",###}</td>
+											<td>{$r.id}</td>
+											<td>{$r.jincai}</td>
+											<td>{$r.del_points}</td>
+											<td>
+												<if condition="$number eq $vo['number']">
+												<!-- 	<a class="bt bt-red" onclick="del('{$r.id}')">取消</a> -->
+													<else/>
+													{$r['add_points']-$r['del_points']}
+												</if>
+											</td>
+										</tr>
+									</volist>
+								</tbody>
+							</volist>
+						</table>
+					</if>
+				</empty>
+			</div>
+			<div>
+				<span>进项流水：<font color="red">{$points_tj['sum_add']|default='0'}</font></span>&nbsp;
+				<span>出项流水：<font color="red">{$points_tj['sum_del']|default='0'}</font></span>&nbsp;
+				<span>输赢：<font color="red">{$points_tj['ying']|default='0'}</font></span>&nbsp;
+			</div>
+		</div>
+		
+		</div>
+		<div class="pages">
+				{$show}
+			</div>
+		
+		<a class="back" href="{:U('Home/Run/index')}">返回游戏</a>
+		<script src='//cdn.bootcss.com/jquery/1.11.3/jquery.js'></script>
+		<script src="__PUBLIC__/layer/layer.js"></script>
+		<script>
+			function del(id){
+				layer.open({
+				    content: '您确定要取消吗？'
+				    ,btn: ['确认', '取消']
+				    ,yes: function(index){
+				      	layer.close(index);
+				      	$.ajax({
+	                       	url: "{:U('Home/Run/del')}",
+	                       	type: "post",
+	                       	data:{'id':id},
+	                       	dataType:'json',
+	                       	error:function(){
+	                       		parent.layer.open({content: '服务器开小差了~',skin: 'msg',time: 2});
+		                    },
+	                       	success:function(res){
+	                       		location.href=location.href;
+	                       	}
+	                   	});
+				    }
+				});
+			}
+			function del_all(number){
+				layer.open({
+				    content: '您确定要取消吗？'
+				    ,btn: ['确认', '取消']
+				    ,yes: function(index){
+				      	layer.close(index);
+				      	$.ajax({
+	                       	url: "{:U('Home/Run/del_all')}",
+	                       	type: "post",
+	                       	data:{'number':number},
+	                       	dataType:'json',
+	                       	error:function(){
+	                       		parent.layer.open({content: '服务器开小差了~',skin: 'msg',time: 2});
+		                    },
+	                       	success:function(res){
+	                       		location.href=location.href;
+	                       	}
+	                   	});
+				    }
+				});
+			}
+		</script>
+	</body>
+</html>

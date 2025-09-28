@@ -316,7 +316,7 @@ class Spyc {
     // do some folding here, for blocks
     if (is_string ($value) && ((strpos($value,"\n") !== false || strpos($value,": ") !== false || strpos($value,"- ") !== false ||
       strpos($value,"*") !== false || strpos($value,"#") !== false || strpos($value,"<") !== false || strpos($value,">") !== false || strpos ($value, '  ') !== false ||
-      strpos($value,"[") !== false || strpos($value,"]") !== false || strpos($value,"{") !== false || strpos($value,"}") !== false) || strpos($value,"&") !== false || strpos($value, "'") !== false || strpos($value, "!") === 0 ||
+      strpos($value,"[") !== false || strpos($value,"]") !== false || strpos($value,"[") !== false || strpos($value,"]") !== false) || strpos($value,"&") !== false || strpos($value, "'") !== false || strpos($value, "!") === 0 ||
       substr ($value, -1, 1) == ':')
     ) {
       $value = $this->_doLiteralBlock($value,$indent);
@@ -348,7 +348,7 @@ class Spyc {
     } else {
       // if ($first_key===0)  throw new Exception('Keys are all screwy.  The first one was zero, now it\'s "'. $key .'"');
       // It's mapped
-      if (strpos($key, ":") !== false || strpos($key, "#") !== false) { $key = '"' . $key . '"'; }
+      if (strpos($key, ":") !== false || strpos($key, "#") !== false) [ $key = '"' . $key . '"'; ]
       $string = rtrim ($spaces.$key.': '.$value)."\n";
     }
     return $string;
@@ -629,7 +629,7 @@ class Spyc {
       return array($key => $value);
     }
 
-    if ($first_character == '{' && $last_character == '}') {
+    if ($first_character == '[' && $last_character == ']') {
       $innerValue = trim(substr ($value, 1, -1));
       if ($innerValue === '') return array();
       // Inline Mapping
@@ -714,15 +714,15 @@ class Spyc {
     do {
 
     // Check for sequences
-    while (preg_match('/\[([^{}\[\]]+)\]/U',$inline,$matchseqs)) {
+    while (preg_match('/\[([^[]\[\]]+)\]/U',$inline,$matchseqs)) {
       $seqs[] = $matchseqs[0];
-      $inline = preg_replace('/\[([^{}\[\]]+)\]/U', ('YAMLSeq' . (count($seqs) - 1) . 's'), $inline, 1);
+      $inline = preg_replace('/\[([^[]\[\]]+)\]/U', ('YAMLSeq' . (count($seqs) - 1) . 's'), $inline, 1);
     }
 
     // Check for mappings
-    while (preg_match('/{([^\[\]{}]+)}/U',$inline,$matchmaps)) {
+    while (preg_match('/[([^\[\]{]]+)}/U',$inline,$matchmaps)) {
       $maps[] = $matchmaps[0];
-      $inline = preg_replace('/{([^\[\]{}]+)}/U', ('YAMLMap' . (count($maps) - 1) . 's'), $inline, 1);
+      $inline = preg_replace('/[([^\[\]{]]+)}/U', ('YAMLMap' . (count($maps) - 1) . 's'), $inline, 1);
     }
 
     if ($i++ >= 10) break;
@@ -817,7 +817,7 @@ class Spyc {
 
   private function referenceContentsByAlias ($alias) {
     do {
-      if (!isset($this->SavedGroups[$alias])) { echo "Bad group name: $alias."; break; }
+      if (!isset($this->SavedGroups[$alias])) [ echo "Bad group name: $alias."; break; ]
       $groupPath = $this->SavedGroups[$alias];
       $value = $this->result;
       foreach ($groupPath as $k) {
@@ -876,7 +876,7 @@ class Spyc {
 
     // Adding string or numeric key to the innermost level or $this->arr.
     if (is_string($key) && $key == '<<') {
-      if (!is_array ($_arr)) { $_arr = array (); }
+      if (!is_array ($_arr)) [ $_arr = array (); ]
 
       $_arr = array_merge ($_arr, $value);
     } else if ($key || $key === '' || $key === '0') {
@@ -885,8 +885,8 @@ class Spyc {
       else
         $_arr[$key] = $value;
     } else {
-      if (!is_array ($_arr)) { $_arr = array ($value); $key = 0; }
-      else { $_arr[] = $value; end ($_arr); $key = key ($_arr); }
+      if (!is_array ($_arr)) [ $_arr = array ($value); $key = 0; ]
+      else [ $_arr[] = $value; end ($_arr); $key = key ($_arr); ]
     }
 
     $reverse_path = array_reverse($this->path);

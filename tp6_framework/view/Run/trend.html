@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <title>{:C('sitename')}</title>
+
+    <!-- 引入样式 -->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/new/css/index.css"/>
+    <link rel="stylesheet" href="/images/css/common.css"/>
+    <script src="/images/js/jquery-1.11.2.min.js"></script>
+    <script src="/images/js/sizeChange.js"></script>
+
+    <style>
+        .lottery_list2 {
+            margin-top: 0.8rem;
+            padding: .1rem 0;
+        }
+        .lottery_list2 .item {
+            border-bottom: 1px #e6e1df solid;
+            border-top: 1px #e6e1df solid;
+            height: 1.35rem;
+            padding: .05rem 0 .15rem 0.1rem;
+            position: relative;
+            background: #fdfcfa;
+            margin-bottom: .1rem;
+        }
+        .lottery_list2 .item a {
+            display: block;
+            text-decoration: none;
+            color: #4c4743;
+        }
+        .lottery_list2 .item .m {
+            height: .66rem;
+            line-height: .66rem;
+            font-size: .23rem;
+        }
+        .lottery_list2 .item .m b {
+            font-size: .25rem;
+            color: #665754;
+            margin-right: .2rem;
+            font-weight: bold;
+        }
+        .red {
+            color: red;
+        }
+        .lottery_list2 .item .f {
+            height: .52rem;
+            overflow: hidden;
+        }
+        .lottery_list2 .item .f b {
+            display: block;
+            float: left;
+            font-size: .22rem;
+            color: #fff;
+            margin-right: .05rem;
+            width: .40rem;
+            overflow: hidden;
+            height: .40rem;
+            line-height: .40rem;
+            text-align: center;
+            border-radius: 50%;
+        }
+        .lottery_list2 .item .f .blue {
+            background: #0a83c6;
+            background-image: none;
+            background-image: -webkit-gradient(linear,0% 0,0% 100%,from(#0a83c6),to(#0a83c6));
+            box-shadow: 0 .01rem .1rem rgba(0,0,0,0.2);
+        }
+        .lottery_list2 .item .f .jh {
+            display: block;
+            float: left;
+            font-size: .24rem;
+            color: #000000;
+            margin-right: .05rem;
+            width: .40rem;
+            overflow: hidden;
+            height: .40rem;
+            line-height: .40rem;
+            text-align: center;
+            border-radius: 50%;
+        }
+        .lottery_list2 .item .trend_btn {
+            position: absolute;
+            right: .26rem;
+            top: .2rem;
+            width: .96rem;
+            height: .35rem;
+            line-height: .35rem;
+            font-size: .2rem;
+            border-radius: .05rem;
+            border: 1px #d3beb6 solid;
+            background: #e8e0dd;
+            background-image: none;
+            background-image: -webkit-gradient(linear,0% 0,0% 100%,from(#eee2dd),to(#e2d3cd));
+            color: #4c4743;
+        }
+        .lottery_list2 .item .trend_btn::before {
+            content: "";
+            display: block;
+            background: url(/images/trend2.png) left top no-repeat;
+            background-size: auto;
+            width: .40rem;
+            height: .30rem;
+            float: left;
+            background-size: .40rem .66rem;
+        }
+        .lottery_list2 .item .trend_btn:hover {
+            border: 1px #c93131 solid;
+            background: #d53434;
+            background-image: -webkit-gradient(linear,0% 0,0% 100%,from(#e54d4d),to(#cf2c2c));
+            color: #fff
+        }
+
+        .lottery_list2 .item .trend_btn:hover:before {
+            background-position: left bottom
+        }
+    </style>
+
+
+</head>
+
+<body style="background: #efeae8;">
+    <div class="nav">
+        <h3>历史走势</h3>
+    </div>
+
+    <div class="lottery_list2">
+        <volist name="kjlist" id="vo">
+            <div class="item" style="">
+                <a href="{:U('Home/Run/trend1', array('game' => $vo['game']))}">
+                    <div class="m ng-binding"><b class="ng-binding">{$vo['game'] == 'bj28' ? '螞蟻收益' : '螞蟻收益'}</b>第<span class="red ng-binding">{$vo.periodnumber}</span>期
+                    </div>
+                    <div class="f ng-binding" ng-bind-html="showData">
+                        <b class="blue">{$vo.numberOne}</b><b class="jh">+</b><b class="blue">{$vo.numberTwo}</b><b class="jh">+</b><b class="blue">{$vo.numberThree}</b><b class="jh">=</b><b class="blue">{$vo.tema}</b>
+                    </div>
+                </a>
+                <a href="{:U('Home/Run/trend2', array('game' => $vo['game']))}" class="trend_btn ng-binding">走势</a>
+            </div>
+        </volist>
+
+    </div>
+
+
+<?php $a=2;?>
+<include  file="./Template/Home/Run/footer.html" />
+
+
+
+</body>
+
+</html>

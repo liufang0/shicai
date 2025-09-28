@@ -50,7 +50,7 @@ class Log {
      */
     static function record($message,$level=self::ERR,$record=false) {
         if($record || false !== strpos(C('LOG_LEVEL'),$level)) {
-            self::$log[] =   "{$level}: {$message}\r\n";
+            self::$log[] =   "[$level]: [$message]\r\n";
         }
     }
 
@@ -99,6 +99,6 @@ class Log {
         if(empty($destination)){
             $destination = C('LOG_PATH').date('y_m_d').'.log';        
         }
-        self::$storage->write("{$level}: {$message}", $destination);
+        self::$storage->write("[$level]: [$message]", $destination);
     }
 }

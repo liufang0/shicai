@@ -45,7 +45,7 @@ class HproseClassManager {
                 self::register($class, $alias);
                 return $class;
             }
-            eval("class " . $alias . " { }");
+            eval("class " . $alias . " [ ]");
         }
         return $alias;
     }

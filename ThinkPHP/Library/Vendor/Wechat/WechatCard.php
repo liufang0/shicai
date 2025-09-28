@@ -64,7 +64,7 @@ class WechatCard extends Common {
         if (($jsapi_ticket = Tools::getCache($authname))) {
             return $jsapi_ticket;
         }
-        $result = Tools::httpGet(self::API_URL_PREFIX . self::GET_TICKET_URL . "access_token={$this->access_token}" . '&type=wx_card');
+        $result = Tools::httpGet(self::API_URL_PREFIX . self::GET_TICKET_URL . "access_token=[$this->access_token]" . '&type=wx_card');
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -158,7 +158,7 @@ class WechatCard extends Common {
         if (!$this->access_token && !$this->getAccessToken()) {
             return false;
         }
-        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_CREATE . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_CREATE . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -181,7 +181,7 @@ class WechatCard extends Common {
         if (!$this->access_token && !$this->getAccessToken()) {
             return false;
         }
-        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_UPDATE . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_UPDATE . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -206,7 +206,7 @@ class WechatCard extends Common {
             return false;
         }
         $data = array('card_id' => $card_id);
-        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_DELETE . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_DELETE . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -231,7 +231,7 @@ class WechatCard extends Common {
         }
         $data = array('openid' => $openid);
         !empty($card_id) && $data['card_id'] = $card_id;
-        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_USER_GET_LIST . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_USER_GET_LIST . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode']) || empty($json['card_list'])) {
@@ -255,7 +255,7 @@ class WechatCard extends Common {
         }
         $data = array('card_id' => $card_id);
         !empty($card_id) && $data['card_id'] = $card_id;
-        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_SEND_HTML . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_SEND_HTML . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode']) || empty($json['card_list'])) {
@@ -279,7 +279,7 @@ class WechatCard extends Common {
             return false;
         }
         $data = array('card_id' => $card_id, 'code' => $code_list);
-        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_CHECKCODE . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_CHECKCODE . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode']) || empty($json['card_list'])) {
@@ -302,7 +302,7 @@ class WechatCard extends Common {
             return false;
         }
         $data = array('card_id' => $card_id);
-        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_GET . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_GET . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -324,7 +324,7 @@ class WechatCard extends Common {
         if (!$this->access_token && !$this->getAccessToken()) {
             return false;
         }
-        $result = Tools::httpGet(self::API_BASE_URL_PREFIX . self::CARD_GETCOLORS . "access_token={$this->access_token}");
+        $result = Tools::httpGet(self::API_BASE_URL_PREFIX . self::CARD_GETCOLORS . "access_token=[$this->access_token]");
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -360,7 +360,7 @@ class WechatCard extends Common {
         $data = array('action_name' => "QR_CARD");
         !empty($expire_seconds) && $data['expire_seconds'] = $expire_seconds;
         $data['action_info'] = array('card' => $card);
-        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_QRCODE_CREATE . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_QRCODE_CREATE . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -382,7 +382,7 @@ class WechatCard extends Common {
      * {
      *  "errcode":0,
      *  "errmsg":"ok",
-     *  "card":{"card_id":"pFS7Fjg8kV1IdDz01r4SQwMkuCKc"},
+     *  "card":["card_id":"pFS7Fjg8kV1IdDz01r4SQwMkuCKc"],
      *  "openid":"oFS7Fjl0WsZ9AMZqrI80nbIq8xrA"
      * }
      */
@@ -392,7 +392,7 @@ class WechatCard extends Common {
         }
         $data = array('code' => $code);
         !empty($card_id) && $data['card_id'] = $card_id;
-        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_CODE_CONSUME . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_CODE_CONSUME . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -420,7 +420,7 @@ class WechatCard extends Common {
             return false;
         }
         $data = array('encrypt_code' => $encrypt_code,);
-        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_CODE_DECRYPT . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_CODE_DECRYPT . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -453,7 +453,7 @@ class WechatCard extends Common {
             return false;
         }
         $data = array('code' => $code);
-        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_CODE_GET . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_CODE_GET . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -484,7 +484,7 @@ class WechatCard extends Common {
         }
         $count > 50 && $count = 50;
         $data = array('offset' => $offset, 'count' => $count);
-        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_BATCHGET . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_BATCHGET . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -511,7 +511,7 @@ class WechatCard extends Common {
             return false;
         }
         $data = array('code' => $code, 'card_id' => $card_id, 'new_code' => $new_code);
-        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_CODE_UPDATE . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_CODE_UPDATE . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -537,7 +537,7 @@ class WechatCard extends Common {
         }
         $data = array('code' => $code);
         !empty($card_id) && $data['card_id'] = $card_id;
-        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_CODE_UNAVAILABLE . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_CODE_UNAVAILABLE . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -559,7 +559,7 @@ class WechatCard extends Common {
         if (!$this->access_token && !$this->getAccessToken()) {
             return false;
         }
-        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_MODIFY_STOCK . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_MODIFY_STOCK . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -581,7 +581,7 @@ class WechatCard extends Common {
         if (!$this->access_token && !$this->getAccessToken()) {
             return false;
         }
-        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_MEETINGCARD_UPDATEUSER . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_MEETINGCARD_UPDATEUSER . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -603,7 +603,7 @@ class WechatCard extends Common {
         if (!$this->access_token && !$this->getAccessToken()) {
             return false;
         }
-        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_MEMBERCARD_ACTIVATE . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_MEMBERCARD_ACTIVATE . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -626,7 +626,7 @@ class WechatCard extends Common {
         if (!$this->access_token && !$this->getAccessToken()) {
             return false;
         }
-        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_MEMBERCARD_UPDATEUSER . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_MEMBERCARD_UPDATEUSER . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -652,7 +652,7 @@ class WechatCard extends Common {
         $data = array();
         count($openid) > 0 && $data['openid'] = $openid;
         count($user) > 0 && $data['username'] = $user;
-        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_TESTWHILELIST_SET . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_TESTWHILELIST_SET . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -678,7 +678,7 @@ class WechatCard extends Common {
         }
         $data = array('code' => $code, 'balance' => $balance);
         !empty($card_id) && $data['card_id'] = $card_id;
-        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_LUCKYMONEY_UPDATE . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_LUCKYMONEY_UPDATE . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -710,7 +710,7 @@ class WechatCard extends Common {
             'need_verify_cod'    => $need_verify_cod,
             'need_remark_amount' => $need_remark_amount,
         );
-        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_SET_SELFCONSUMECELL . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_SET_SELFCONSUMECELL . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -736,7 +736,7 @@ class WechatCard extends Common {
             'card_id'            => $card_id,
             'is_open'            => $is_openid,
         );
-        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_PAYCELL_SET . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_PAYCELL_SET . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -758,7 +758,7 @@ class WechatCard extends Common {
         if (!$this->access_token && !$this->getAccessToken()) {
             return false;
         }
-        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_MEMBERCARD_ACTIVATEUSERFORM_SET . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CARD_MEMBERCARD_ACTIVATEUSERFORM_SET . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {

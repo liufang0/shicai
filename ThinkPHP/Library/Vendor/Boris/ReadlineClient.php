@@ -7,7 +7,7 @@ namespace Boris;
 /**
  * The Readline client is what the user spends their time entering text into.
  *
- * Input is collected and sent to {@link \Boris\EvalWorker} for processing.
+ * Input is collected and sent to [@link \Boris\EvalWorker] for processing.
  */
 class ReadlineClient {
   private $_socket;

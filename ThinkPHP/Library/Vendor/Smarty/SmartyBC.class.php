@@ -55,7 +55,7 @@ class SmartyBC extends Smarty {
     public function __construct(array $options=array())
     {
         parent::__construct($options);
-        // register {php} tag
+        // register [php] tag
         $this->registerPlugin('block', 'php', 'smarty_php_tag');
     }
 
@@ -356,7 +356,7 @@ class SmartyBC extends Smarty {
      * @param string $tpl_file
      * @param string $compile_id
      * @param string $exp_time
-     * @return boolean results of {@link smarty_core_rm_auto()}
+     * @return boolean results of [@link smarty_core_rm_auto()]
      */
     public function clear_compiled_tpl($tpl_file = null, $compile_id = null, $exp_time = null)
     {
@@ -443,7 +443,7 @@ class SmartyBC extends Smarty {
 }
 
 /**
- * Smarty {php}{/php} block function
+ * Smarty [php][/php] block function
  *
  * @param array   $params   parameter list
  * @param string  $content  contents of the block

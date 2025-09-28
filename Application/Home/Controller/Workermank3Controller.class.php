@@ -2,10 +2,7 @@
  
 namespace Home\Controller;
 use Think\Server;
-
-header('content-type:text/html;charset=utf-8');
 class Workermank3Controller extends Server {
-
 	protected $socket = 'websocket://0.0.0.0:7878';
 	
 	/*添加定时器
@@ -16,7 +13,6 @@ class Workermank3Controller extends Server {
 		if (!$auth) {
 			echo "未授权或授权已过期";exit;
 		}
-
 		$caiji = M('caiji')->where("game='k3'")->limit(0,1)->order("id desc")->find();
 		$data =  k3_format($caiji);
 		
@@ -41,7 +37,6 @@ class Workermank3Controller extends Server {
 			$beginToday=strtotime('09:00:00');
 			$endToday=strtotime("23:54:59");
 			F('game','k3');
-
 			$k3data = F('k3data');
 			$next_time = $k3data['next']['delayTimeInterval']+strtotime($k3data['next']['awardTime']);
 			$awardtime = $k3data['current']['awardTime'];
@@ -64,7 +59,6 @@ class Workermank3Controller extends Server {
 					$conn -> send(json_encode($new_message));
 				}
 			}
-
 			if($next_time-time()==C('k3_stop_time')){
 				F('k3_state',0);
 				$new_message = array(
@@ -97,7 +91,6 @@ class Workermank3Controller extends Server {
 						$current_number['zuhe'] = '大单';
 					}
 				}
-
 				if ($tema_number >=0 && $tema_number <=5) {
 					$current_number['jdx'] = '极小';
 				} else if($tema_number >= 22 && $tema_number <=27) {
@@ -105,7 +98,6 @@ class Workermank3Controller extends Server {
 				}  else {
 					$current_number['jdx'] = '';
 				}
-
 				//当前局所有竞猜
 				$today_time = strtotime(date('Y-m-d',time()));
 				$list = M('order')->where("number = {$current_number['periodnumber']} && time > '{$today_time}' && state = 1 && is_add = 0 && game='k3'")->order("time ASC")->select();
@@ -127,7 +119,6 @@ class Workermank3Controller extends Server {
 							);
 							M('push_money')->add($fx_data);
 						}
-
 						$set_add = M('order')->where("id={$id}")->setField(array('is_add'=>1));
 						//分类
 						switch($list[$i]['type']){
@@ -137,7 +128,6 @@ class Workermank3Controller extends Server {
 								$start1 = substr($list[$i]['jincai'], 0,3);
 								$starts1 = substr($list[$i]['jincai'],3);
 								$num1 = 0;
-
 								if ($start1 == '大' || $start1 == '小') {
 									if ($start1 == $current_number['tema_dx']) {
 										$num1 = 1;
@@ -147,7 +137,6 @@ class Workermank3Controller extends Server {
 										$num1 = 1;
 									}
 								}
-
 								if($num1>0){
 									if ($current_number['tema'] == '13' || $current_number['tema'] == '14') {
 										$points1 = $num1*$starts1*C('k3_dxds_md');
@@ -161,17 +150,14 @@ class Workermank3Controller extends Server {
 									}
 								}
 								break;
-
 							//组合  大单100  小100  
 							case 2:
 								$start2 = substr($list[$i]['jincai'], 0,6);
 								$starts2 = substr($list[$i]['jincai'],6);
 								$num2 = 0;
-
 								if ($start2 == $current_number['zuhe']) {
 									$num2 = 1;
 								}
-
 								if($num2>0){
 									if ($current_number['tema'] == '13' || $current_number['tema'] == '14') {
 										$points2 = $num2*$starts2*C('k3_zuhe_md');
@@ -189,8 +175,6 @@ class Workermank3Controller extends Server {
 									}
 								}
 								break;
-
-
 							//极大小  极大100  
 							case 3:
 								$start3 = substr($list[$i]['jincai'], 0,6);
@@ -199,7 +183,6 @@ class Workermank3Controller extends Server {
 								if ($start3 == $current_number['jdx']) {
 									$num3 = 1;
 								}
-
 								if($num3>0){
 									$points3 = $num3*$starts3*C('k3_jdx');
 									$res3 = $this->add_points($id,$userid,$points3);
@@ -208,19 +191,14 @@ class Workermank3Controller extends Server {
 									}
 								}
 								break;
-
-
 							//庄闲和    庄100  和100
 							case 4:
 								$start4 = substr($list[$i]['jincai'], 0,3);
 								$starts4 = substr($list[$i]['jincai'],3);
-
 								$num4 = 0;
-
 								if ($start4 == $current_number['zx']) {
 									$num4 = 1;
 								}
-
 								if($num4 > 0 ){
 									if ($start4 == '庄' || $start4 == '闲') {
 										if ($current_number['zx'] == '和') {
@@ -231,15 +209,12 @@ class Workermank3Controller extends Server {
 									} else {
 										$points4 = $num4*$starts4*C('k3_zx_2');
 									}
-
 									$res4 = $this->add_points($id,$userid,$points4);
 									if($res4){
 										$this->send_msg('pointsadd',$points4,$userid);
 									}
 								}
 								break;
-
-
 							//豹子对子顺子 100  白字100  
 							case 5:
 								$start5 = substr($list[$i]['jincai'], 0,6);
@@ -248,7 +223,6 @@ class Workermank3Controller extends Server {
 								if ($start5 == $current_number['q3']) {
 									$num5 = 1;
 								}
-
 								if($num5>0){
 									if ($start5 == '豹子') {
 										$points5 = $num5*$starts5*C('bj28_bds_1');
@@ -268,17 +242,13 @@ class Workermank3Controller extends Server {
 									}
 								}
 								break;
-
-
 							//特码数字 3点100  
 							case 6:
 								$start6 = explode('点', $list[$i]['jincai']);
-
 								$num6 = 0;
 								if ($start6[0] == $current_number['tema']) {
 									$num6 = 1;
 								}
-
 								if($num6>0){
 									if ($start6[0] == '0' || $start6[0] == '27') {
 										$points6 = $num6*$start6[1]*C('k3_tema_0');
@@ -309,7 +279,6 @@ class Workermank3Controller extends Server {
 									} else if($start6[0] == '13' || $start6[0] == '14') {
 										$points6 = $num6*$start6[1]*C('k3_tema_13');
 									}	
-
 									$res6 = $this->add_points($id,$userid,$points6);
 									if($res6){
 										$this->send_msg('pointsadd',$points6,$userid);
@@ -322,7 +291,6 @@ class Workermank3Controller extends Server {
 				
 				F('is_send',1);
 				F('k3_state',0);
-
 				$content = $current_number['periodnumber']."期结算已完毕！<br/>
 							号码：".$current_number['awardnumbers'];
 				$new_message = array(
@@ -352,7 +320,6 @@ class Workermank3Controller extends Server {
 			$this->add_message($new_message);/*添加信息*/
     	});
 		
-
 		
 		//ping 统计人数
 		\Workerman\Lib\Timer::add($time_interval, function(){
@@ -391,7 +358,6 @@ class Workermank3Controller extends Server {
 		\Workerman\Lib\Timer::add(5, function(){
 			$caiji = M('caiji')->where("game='k3'")->limit(0,1)->order("id desc")->find();
 			$data = json_decode(k3_format($caiji),true);
-
 			if(F('periodNumber')!=$data['current']['periodNumber']){
 				$today_time = date('Y-m-d',time()) . " 00:00:00";
 				$res = M('number')->where("periodnumber = {$data['current']['periodNumber']} and awardtime > '{$today_time}'")->find();
@@ -406,7 +372,6 @@ class Workermank3Controller extends Server {
 					$map['number'] = serialize($info);
 					
 					$map['tema'] = $info[0]+$info[1]+$info[2] ;
-
 					if($map['tema'] % 2 == 0){
 						$map['tema_ds'] = '双';
 					}
@@ -427,9 +392,7 @@ class Workermank3Controller extends Server {
 					}else{
 						$map['zx'] = '闲';
 					}
-
 					$map['q3'] = bj28_qzh(array($info[0],$info[1],$info[2]));
-
 					$map['game'] = $data['game'];
 					$res1 = M('number')->add($map);
 					if($res1){
@@ -440,7 +403,6 @@ class Workermank3Controller extends Server {
 				}
 			}
     	});
-
 	}
 	
 	/*
@@ -564,7 +526,6 @@ class Workermank3Controller extends Server {
 						} else {
 							$content_msg =  '「'.$message_data['content'].'」'.'单笔点数最高'.$res['xz_max'].',竞猜失败';
 						}
-
 						$new_message = array(
 							'uid'  => $connection->uid,
 							'type' => 'admin',
@@ -608,38 +569,30 @@ class Workermank3Controller extends Server {
 							$user = M('user')->where("id = $userid")->find();
 							//当前玩法是否超过设置金额
 							$wf_points = M('order')->field("sum(del_points) as sum_del")->where("userid = {$userid} and type={$res['type']} and state=1  and number = {$k3data['next']['periodNumber']}")->find();
-
 							$wf_max_points = 0;
 							switch ($res['type']) {
 								case '1':
 									$wf_max_points = C('k3_xz_max')['dxds'];
 									break;
-
 								case '2':
 									$wf_max_points = C('k3_xz_max')['zuhe'];
 									break;
-
 								case '3':
 									$wf_max_points = C('k3_xz_max')['jdx'];
 									break;
-
 								case '4':
 									$wf_max_points = C('k3_xz_max')['zx'];
 									break;
-
 								case '5':
 									$wf_max_points = C('k3_xz_max')['bds'];
 									break;
-
 								case '6':
 									$wf_max_points = C('k3_xz_max')['tema'];
 									break;
-
 								default:
 									$wf_max_points = 0;
 									break;
 							}
-
 							if (($wf_points['sum_del'] + $res['points']) > $wf_max_points) {
 								$points_tips = array(
 									'uid'  => $connection->uid,
@@ -655,10 +608,8 @@ class Workermank3Controller extends Server {
 								$this->add_message($points_tips);/*添加信息*/
 								break;
 							}
-
 							//查看已投注金额
 							$user_points = M('order')->field("sum(del_points) as sum_del")->where("userid = {$userid} and state=1  and number = {$k3data['next']['periodNumber']}")->find();
-
 							if ((intval($user_points['sum_del'])+$res['points']) > C('k3qi_max_point')) {
 								$points_tips = array(
 									'uid'  => $connection->uid,
@@ -673,7 +624,6 @@ class Workermank3Controller extends Server {
 								$this->add_message($points_tips);/*添加信息*/
 								break;
 							}
-
 							$map['userid'] = $userid;
 							$map['type'] = $res['type'];
 							$map['state'] = 1;
@@ -764,7 +714,6 @@ class Workermank3Controller extends Server {
 								}
 							}
 						}
-
 						if (C('is_say')) {
 							$new_message2 = array(
 								'uid'=>$connection->uid,
@@ -881,7 +830,6 @@ class Workermank3Controller extends Server {
 		return $res;
 	}
 	protected function add_message($new_message){
-
 		if (!empty($new_message)) {
 			$new_message['game'] = 'k3';
 			$res = M('message')->add($new_message);

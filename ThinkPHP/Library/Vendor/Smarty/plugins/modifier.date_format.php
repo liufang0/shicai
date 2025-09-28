@@ -29,7 +29,7 @@
 function smarty_modifier_date_format($string, $format = SMARTY_RESOURCE_DATE_FORMAT, $default_date = '',$formatter='auto')
 {
     /**
-    * Include the {@link shared.make_timestamp.php} plugin
+    * Include the [@link shared.make_timestamp.php] plugin
     */
     require_once(SMARTY_PLUGINS_DIR . 'shared.make_timestamp.php');
     if ($string != '') {

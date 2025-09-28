@@ -1,0 +1,74 @@
+<section>
+    <div class="my">
+        <!--<ul>-->
+            <!--<li class="girl" data-href="http://hmyl28.com/?m=web&c=user&a=userInfo"><label class="icoGirl">头像</label><i><img src="/up_files/avatar/default/head7.png" /></i></li>-->
+            <!--<li style="background:#FFFFFF"><label class="icoUsername1">账号</label><span style="color: red">pcylc596949</span></li>-->
+            <!--<li style="background:#FFFFFF">-->
+                <!--<label class="icoNickname">昵称</label>-->
+                <!--<span style="float: right">pcylc596949</span>-->
+                <!--<span> </span> -->
+            <!--</li>-->
+        <!--</ul>-->
+
+        <div class="head">
+            <div class="head_left" data-href="#">
+                <div class="icon">
+                <if condition="$user.headimgurl eq ''">
+                    <img src="/up_files/avatar/default/head7.png" />
+                <else />
+                <img src="{$user.headimgurl}" />
+                </if>
+                </div>
+                            <!--     <i class="honor_icon"><img src="/up_files/honor/level01.png"></i> -->
+                            </div>
+
+            <div class="user_info">
+                <span class="user_name">{$user.nickname}</span>
+               <!--  <span class="user_edit" data-href="http://hmyl28.com/?m=web&c=user&a=userInfo"><i class="user_ico_edit"></i> 编辑个人资料</span> -->
+            </div>
+
+			            <!--<div class="head_right play" data-href="http://hmyl28.com/?m=web&c=user&a=getHonor">-->
+                <!--&lt;!&ndash;<img src="/up_files/honor/badge01_01.png" alt=""/>&ndash;&gt;-->
+            <!--</div>-->
+            <div class="head_right play" data-href="?m=web&c=user&a=honorDetails"></div>
+                    </div>
+                <div class="integral">
+        	 
+<!--             <div class="nowstate">
+                <img src="__PUBLIC__/Home//up_files/honor/sbadge01.png" alt=""/>
+                <span>0</span>
+            </div> -->
+                        <div class="infostate">
+                <p class="clearfix">
+                    <span class="left" style="font-size:30px;padding:25px 45px">余额 :<em class="myIntegral">{$user.points}</em></span>
+                </p>
+<!--                 <div class="line_bg">
+                    <p class="line"></p>
+                </div> -->
+<!--                 <p class="clearfix">
+                   <span class="right">离升级还差:<em class="short">4999</em></span>                </p> -->
+            </div>
+             
+<!--             <div class="nextstate">
+                <img src="__PUBLIC__/Home//up_files/honor/sbadge02.png" alt=""/>
+                <span>4999</span>
+            </div> -->
+                    </div>
+        
+        <ul>
+            <li data-href="{:U('/Home/Fen/addpage')}"><div><label class="icoWallet">快速上分</label></div></li>
+        </ul>
+        <ul>
+            <li data-href="{:U('Home/Fen/xiapage')}"><div><label class="icoAgent">快速下分</label></div></li>
+            <li data-href="{:U('Home/Run/tui')}?uid={$userinfo.id}"><div><label class="icoShare">代理分享</label><span><img src="__PUBLIC__/Home//statics/web/images/person_ercode_icon@2x.png" /></span></div></li>
+        </ul>
+        <!--ul>
+            <li data-href="/Home/Run/record"><div><label class="icoRecord">投注记录</label></div></li>
+                    </ul-->
+        <ul>
+            <li data-href="/Home/User/fenxia"><div><label class="icoActivity">下分记录</label></div></li>
+        </ul>
+        <!--  -->
+        <!--<ul><li data-href="http://hmyl28.com/?m=web&c=user&a=setup"><label class="icoSetUp">设置</label></li></ul>-->
+    </div>
+</section>

@@ -99,7 +99,7 @@ class Smarty_Internal_SmartyTemplateCompiler extends Smarty_Internal_TemplateCom
         // get tokens from lexer and parse them
         while ($this->lex->yylex() && !$this->abort_and_recompile) {
             if ($this->smarty->_parserdebug) {
-                echo "<pre>Line {$this->lex->line} Parsing  {$this->parser->yyTokenName[$this->lex->token]} Token " .
+                echo "<pre>Line [$this->lex->line] Parsing  [$this->parser->yyTokenName[$this->lex->token]] Token " .
                     htmlentities($this->lex->value) . "</pre>";
             }
             $this->parser->doParse($this->lex->token, $this->lex->value);
@@ -115,7 +115,7 @@ class Smarty_Internal_SmartyTemplateCompiler extends Smarty_Internal_TemplateCom
         if (count($this->_tag_stack) > 0) {
             // get stacked info
             list($openTag, $_data) = array_pop($this->_tag_stack);
-            $this->trigger_template_error("unclosed {" . $openTag . "} tag");
+            $this->trigger_template_error("unclosed [" . $openTag . "] tag");
         }
         // return compiled code
         // return str_replace(array("? >\n<?php","? ><?php"), array('',''), $this->parser->retvalue);

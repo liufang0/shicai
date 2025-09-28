@@ -1,10 +1,7 @@
 <?php
 namespace Home\Controller;
 use Think\Server;
-
-header('content-type:text/html;charset=utf-8');
 class WorkermanftController extends Server {
-
 	protected $socket = 'websocket://0.0.0.0:15532';
 	
 	/*添加定时器
@@ -15,7 +12,6 @@ class WorkermanftController extends Server {
 		if (!$auth) {
 			echo "未授权或授权已过期";exit;
 		}
-
 		$beginToday=strtotime('09:00:00');
 		$endToday=strtotime("23:59:59");
 		$caiji = M('caiji')->where("game='xyft'")->limit(0,1)->order("id desc")->find();
@@ -44,11 +40,9 @@ class WorkermanftController extends Server {
 			$beginToday=strtotime('09:00:00');
 			$endToday=strtotime("23:59:59");
 			F('game','xyft');
-
 			$xyftdata = F('xyftdata');
 			$next_time = $xyftdata['next']['delayTimeInterval']+strtotime($xyftdata['next']['awardTime']);
 			$awardtime = $xyftdata['current']['awardTime'];
-
 			if($next_time-time()>C('ft_stop_time')-6 && $next_time-time()<280){
 				F('xyft_state',1);
 				setconfig('xyft_state',1);
@@ -69,7 +63,6 @@ class WorkermanftController extends Server {
 					$conn -> send(json_encode($new_message));
 				}
 			}
-
 			if($next_time-time()==C('ft_stop_time')-6){
 				F('xyft_state',0);
 				setconfig('xyft_state',0);
@@ -85,7 +78,6 @@ class WorkermanftController extends Server {
 				}
 				$this->add_message($new_message);/*添加信息*/
 			}
-
 			if((($next_time-time()<285 && $next_time-time()>90) || (time() > strtotime("04:02:00") && time() < strtotime("04:06:00"))) && F('is_send')==0){
 				//结算
 				//开奖结果
@@ -136,7 +128,6 @@ class WorkermanftController extends Server {
 							);
 							M('push_money')->add($fx_data);
 						}
-
 						$set_add = M('order')->where("id={$id}")->setField(array('is_add'=>1));
 							
 						//分类
@@ -163,7 +154,6 @@ class WorkermanftController extends Server {
 									$start1 = $ex_info;
 									$info_dxds = '双';
 								}
-
 								// $start1 = explode('/', $list[$i]['jincai']);
 								$num1 = 0;
 								if ($start1[0] == '') {
@@ -217,8 +207,6 @@ class WorkermanftController extends Server {
 									$starts2 = str_split('1');
 									$ya = $start2[1];
 								}
-
-
 								$num2 = 0;
 								for($s=0;$s<count($chehao2);$s++){
 									for($a=0;$a<count($starts2);$a++){
@@ -397,7 +385,6 @@ class WorkermanftController extends Server {
 								$starts8 = substr($start8[0], 3);
 								$num8 = 0;
 								$points8 = 0;
-
 								$num_str8 = fv_split($starts8);
 								$info_str8 = array();
 								for($a=0;$a<count($num_str8);$a++){
@@ -415,7 +402,6 @@ class WorkermanftController extends Server {
 										$info_str8[] = $num_str8[$a];
 									}
 								}
-
 								for($a=0;$a<count($info_str8);$a++){
 									if($current_number['tema']==$info_str8[$a]){
 										if(in_array($info_str8[$a], $tema1)){
@@ -436,7 +422,6 @@ class WorkermanftController extends Server {
 										$num8++;
 									}
 								}
-
 								if($num8>0){
 									$res8 = $this->add_points($id,$userid,$points8);
 									if($res8){
@@ -484,7 +469,6 @@ class WorkermanftController extends Server {
 				
 				F('is_send',1);
 				F('xyft_state',0);
-
 				$content = $current_number['periodnumber']."期结算已完毕！<br/>
 							号码：".$current_number['awardnumbers'];
 				$new_message = array(
@@ -499,7 +483,6 @@ class WorkermanftController extends Server {
 					$conn -> send(json_encode($new_message));
 				}
 				$this->add_message($new_message);/*添加信息*/
-
 				$new_message = array(
 					'delay'=>'0',
 					'type' => 'admin',
@@ -517,7 +500,6 @@ class WorkermanftController extends Server {
 			
     	});
 		
-
 		
 		//ping 统计人数
 		\Workerman\Lib\Timer::add($time_interval, function(){
@@ -599,7 +581,6 @@ class WorkermanftController extends Server {
 					}
 					$map['lh'] = serialize($lh);
 					$map['tema'] = $info[0]+$info[1];
-
 					if (C('ft_gy_set') == 1) {
 						if($map['tema'] % 2 == 0){
 							$map['tema_ds'] = '双';
@@ -618,7 +599,6 @@ class WorkermanftController extends Server {
 						}
 					}
 					
-
 					if (C('ft_gy_set') == 1) {
 						if($map['tema']>=12){
 							$map['tema_dx'] = '大';
@@ -634,7 +614,6 @@ class WorkermanftController extends Server {
 							$map['tema_dx'] = '小';
 						}
 					}
-
 					if($map['tema']>=3 && $map['tema']<=7){
 						$map['tema_dw'] = 'A';
 					}
@@ -650,13 +629,11 @@ class WorkermanftController extends Server {
 						$map['zx'] = '闲';
 					}
 					$map['game'] = $data['game'];
-
 					$res1 = M('number')->add($map);
 					if($res1){
 						F('xyftPeriodNumber',$data['current']['periodNumber']);
 						F('xyftdata',$data);
 						F('is_send',0);
-
 						//采集到开奖数据，客服发布通知
 						// $content = "开奖采集数据,请等待系统开奖结算<br/>
 						// 			期号：".$map['periodnumber']." <br/>
@@ -676,7 +653,6 @@ class WorkermanftController extends Server {
 				}
 			}
     	});
-
 	}
 	
 	/*
@@ -800,7 +776,6 @@ class WorkermanftController extends Server {
 						} else {
 							$content_msg =  '「'.$message_data['content'].'」'.'单笔点数最高'.$res['xz_max'].',竞猜失败';
 						}
-
 						$new_message = array(
 							'uid'  => $connection->uid,
 							'type' => 'admin',
@@ -844,41 +819,32 @@ class WorkermanftController extends Server {
 							$user = M('user')->where("id = $userid")->find();
 							//当前玩法是否超过设置金额
 							$wf_points = M('order')->field("sum(del_points) as sum_del")->where("userid = {$userid} and type={$res['type']} and state=1  and number = {$xyftdata['next']['periodNumber']}")->find();
-
 							$wf_max_points = 1000000000000;
 							// switch ($res['type']) {
 								// case '1':
 									// $wf_max_points = C('ft_xz_max')['dxds'];
 									// break;
-
 								// case '2':
 									// $wf_max_points = C('ft_xz_max')['chehao'];
 									// break;
-
 								// case '3':
 									// $wf_max_points = C('ft_xz_max')['zuhe'];
 									// break;
-
 								// case '4':
 									// $wf_max_points = C('ft_xz_max')['lh'];
 									// break;
-
 								// case '5':
 									// $wf_max_points = C('ft_xz_max')['zx'];
 									// break;
-
 								// case '6':
 									// $wf_max_points = C('ft_xz_max')['gy'];
 									// break;
-
 								// case '7':
 									// $wf_max_points = C('ft_xz_max')['tema'];
 									// break;
-
 								// case '8':
 									// $wf_max_points = C('ft_xz_max')['tema_sz'];
 									// break;
-
 								// case '9':
 									// $wf_max_points = C('ft_xz_max')['tema_qd'];
 									// break;
@@ -887,7 +853,6 @@ class WorkermanftController extends Server {
 									// $wf_max_points = 0;
 									// break;
 							// }
-
 							//车号限制  123/23/100
 							if ($res['type'] == '2') {
 								$type_list = M('order')->where("userid = {$userid} and state=1  and number = {$xyftdata['next']['periodNumber']} and type = 2")->select();
@@ -939,10 +904,8 @@ class WorkermanftController extends Server {
 									break;
 								}
 							}
-
 							//查看已投注金额
 							$user_points = M('order')->field("sum(del_points) as sum_del")->where("userid = {$userid} and state=1  and number = {$xyftdata['next']['periodNumber']}")->find();
-
 							if ((intval($user_points['sum_del'])+$res['points']) > C('ftqi_max_point')) {
 								$points_tips = array(
 									'uid'  => $connection->uid,
@@ -957,7 +920,6 @@ class WorkermanftController extends Server {
 								$this->add_message($points_tips);/*添加信息*/
 								break;
 							}
-
 							$map['userid'] = $userid;
 							$map['type'] = $res['type'];
 							$map['state'] = 1;
@@ -1048,7 +1010,6 @@ class WorkermanftController extends Server {
 								}
 							}
 						}
-
 						if (C('is_say')) {
 							$new_message2 = array(
 								'uid'=>$connection->uid,

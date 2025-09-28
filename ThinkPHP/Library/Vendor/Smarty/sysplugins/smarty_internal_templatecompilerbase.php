@@ -60,7 +60,7 @@ abstract class Smarty_Internal_TemplateCompilerBase {
      */
     public $merged_templates = array();
     /**
-     * flag when compiling {block}
+     * flag when compiling [block]
      *
      * @var bool
      */
@@ -222,7 +222,7 @@ abstract class Smarty_Internal_TemplateCompilerBase {
         // compile the smarty tag (required compile classes to compile the tag are autoloaded)
         if (($_output = $this->callTagCompiler($tag, $args, $parameter)) === false) {
             if (isset($this->smarty->template_functions[$tag])) {
-                // template defined by {template} tag
+                // template defined by [template] tag
                 $args['_attr']['name'] = "'" . $tag . "'";
                 $_output = $this->callTagCompiler('call', $args, $parameter);
             }
@@ -318,7 +318,7 @@ abstract class Smarty_Internal_TemplateCompilerBase {
                                 return $plugin_object->compile($args, $this);
                             }
                         }
-                        throw new SmartyException("Plugin \"{$tag}\" not callable");
+                        throw new SmartyException("Plugin \"[$tag]\" not callable");
                     } else {
                         if ($function = $this->getPlugin($tag, $plugin_type)) {
                             if(!isset($this->smarty->security_policy) || $this->smarty->security_policy->isTrustedTag($tag, $this)) {
@@ -396,7 +396,7 @@ abstract class Smarty_Internal_TemplateCompilerBase {
                             return $plugin_object->compile($args, $this);
                         }
                     }
-                    throw new SmartyException("Plugin \"{$tag}\" not callable");
+                    throw new SmartyException("Plugin \"[$tag]\" not callable");
                 }
             }
             $this->trigger_template_error ("unknown tag \"" . $tag . "\"", $this->lex->taglineno);
@@ -521,17 +521,17 @@ abstract class Smarty_Internal_TemplateCompilerBase {
                     }
                     include_once $script;
                 }  else {
-                    $this->trigger_template_error("Default plugin handler: Returned script file \"{$script}\" for \"{$tag}\" not found");
+                    $this->trigger_template_error("Default plugin handler: Returned script file \"[$script]\" for \"[$tag]\" not found");
                 }
             }
             if (!is_string($callback) && !(is_array($callback) && is_string($callback[0]) && is_string($callback[1]))) {
-                $this->trigger_template_error("Default plugin handler: Returned callback for \"{$tag}\" must be a static function name or array of class and function name");
+                $this->trigger_template_error("Default plugin handler: Returned callback for \"[$tag]\" must be a static function name or array of class and function name");
             }
             if (is_callable($callback)) {
                 $this->default_handler_plugins[$plugin_type][$tag] = array($callback, true, array());
                 return true;
             } else {
-                $this->trigger_template_error("Default plugin handler: Returned callback for \"{$tag}\" not callable");
+                $this->trigger_template_error("Default plugin handler: Returned callback for \"[$tag]\" not callable");
             }
         }
         return false;
@@ -559,7 +559,7 @@ abstract class Smarty_Internal_TemplateCompilerBase {
                 $_output = str_replace("'", "\'", $content);
                 $_output = str_replace('\\\\', '\\\\\\\\', $_output);
                 $_output = str_replace("^#^", "'", $_output);
-                $_output = "<?php echo '/*%%SmartyNocache:{$this->nocache_hash}%%*/" . $_output . "/*/%%SmartyNocache:{$this->nocache_hash}%%*/';?>\n";
+                $_output = "<?php echo '/*%%SmartyNocache:[$this->nocache_hash]%%*/" . $_output . "/*/%%SmartyNocache:[$this->nocache_hash]%%*/';?>\n";
                 // make sure we include modifer plugins for nocache code
                 foreach ($this->modifier_plugins as $plugin_name => $dummy) {
                     if (isset($this->template->required_plugins['compiled'][$plugin_name]['modifier'])) {

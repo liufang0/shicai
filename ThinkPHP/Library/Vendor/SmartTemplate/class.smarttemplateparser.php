@@ -169,7 +169,7 @@
 			}
 
 			//	Replace Scalars
-			if (preg_match_all('/{([a-zA-Z0-9_. >]+)}/', $page, $var))
+			if (preg_match_all('/[([a-zA-Z0-9_. >]+)]/', $page, $var))
 			{
 				foreach ($var[1] as $fulltag)
 				{
@@ -178,7 +178,7 @@
 
 					list($block, $skalar)  =  $this->var_name($tag);
 					$code  =  "<?php\n$cmd \$$block"."['$skalar'];\n?>\n";
-					$page  =  str_replace('{'.$fulltag.'}',  $code,  $page);
+					$page  =  str_replace('['.$fulltag.']',  $code,  $page);
 				}
 			}
 
@@ -197,7 +197,7 @@
 
 			//	Include Extensions
 			$header = '';
-			if (preg_match_all('/{([a-zA-Z0-9_]+):([^}]*)}/', $page, $var))
+			if (preg_match_all('/[([a-zA-Z0-9_]+):([^]]*)}/', $page, $var))
 			{
 				foreach ($var[2] as $cnt => $tag)
 				{
@@ -273,12 +273,12 @@
 
 		/**
 		* Splits Template-Style Variable Names into an Array-Name/Key-Name Components
-		* {example}               :  array( "_obj",                   "example" )  ->  $_obj['example']
-		* {example.value}         :  array( "_obj['example']",        "value" )    ->  $_obj['example']['value']
-		* {example.0.value}       :  array( "_obj['example'][0]",     "value" )    ->  $_obj['example'][0]['value']
-		* {top.example}           :  array( "_stack[0]",              "example" )  ->  $_stack[0]['example']
-		* {parent.example}        :  array( "_stack[$_stack_cnt-1]",  "example" )  ->  $_stack[$_stack_cnt-1]['example']
-		* {parent.parent.example} :  array( "_stack[$_stack_cnt-2]",  "example" )  ->  $_stack[$_stack_cnt-2]['example']
+		* [example]               :  array( "_obj",                   "example" )  ->  $_obj['example']
+		* [example.value]         :  array( "_obj['example']",        "value" )    ->  $_obj['example']['value']
+		* [example.0.value]       :  array( "_obj['example'][0]",     "value" )    ->  $_obj['example'][0]['value']
+		* [top.example]           :  array( "_stack[0]",              "example" )  ->  $_stack[0]['example']
+		* [parent.example]        :  array( "_stack[$_stack_cnt-1]",  "example" )  ->  $_stack[$_stack_cnt-1]['example']
+		* [parent.parent.example] :  array( "_stack[$_stack_cnt-2]",  "example" )  ->  $_stack[$_stack_cnt-2]['example']
 		*
 		* @param string $tag Variale Name used in Template
 		* @return array  Array Name, Key Name
@@ -325,8 +325,8 @@
 
 		/**
 		* Determine Template Command from Variable Name
-		* {variable}             :  array( "echo",              "variable" )  ->  echo $_obj['variable']
-		* {variable > new_name}  :  array( "_obj['new_name']=", "variable" )  ->  $_obj['new_name']= $_obj['variable']
+		* [variable]             :  array( "echo",              "variable" )  ->  echo $_obj['variable']
+		* [variable > new_name]  :  array( "_obj['new_name']=", "variable" )  ->  $_obj['new_name']= $_obj['variable']
 		*
 		* @param string $tag Variale Name used in Template
 		* @return array  Array Command, Variable

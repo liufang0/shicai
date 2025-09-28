@@ -21,18 +21,18 @@ function compile_compile_config($variable, &$object)
 	$_result = "\$this->_confs['$var_name']";
 	foreach ($variable as $var)
 	{
-		if ($var{0} == '[')
+		if ($var[0] == '[')
 		{
 			$var = substr($var, 1, -1);
 			if (is_numeric($var))
 			{
 				$_result .= "[$var]";
 			}
-			elseif ($var{0} == '$')
+			elseif ($var[0] == '$')
 			{
 				$_result .= "[" . $object->_compile_variable($var) . "]";
 			}
-			elseif ($var{0} == '#')
+			elseif ($var[0] == '#')
 			{
 				$_result .= "[" . $object->_compile_config($var) . "]";
 			}
@@ -41,9 +41,9 @@ function compile_compile_config($variable, &$object)
 				$_result .= "['$var']";
 			}
 	   }
-	   else if ($var{0} == '.')
+	   else if ($var[0] == '.')
 	   {
-  				if ($var{1} == '$')
+  				if ($var[1] == '$')
 			{
    				$_result .= "[\$this->_TPL['" . substr($var, 2) . "']]";
 			}
@@ -60,7 +60,7 @@ function compile_compile_config($variable, &$object)
 			}
 			else if (substr($var, 2, 1) == '$')
 			{
-				$_output .= '->{(($var=$this->_TPL[\''.substr($var,3).'\']) && substr($var,0,2)!=\'__\') ? $_var : $this->trigger_error("cannot access property \\"$var\\"")}';
+				$_output .= '->[(($var=$this->_TPL[\''.substr($var,3).'\']) && substr($var,0,2)!=\'__\') ? $_var : $this->trigger_error("cannot access property \\"$var\\"")]';
 			}
 		}
 		else

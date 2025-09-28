@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html id="iframe">
+	<head>
+		<meta charset="UTF-8">
+		
+		<title>{:C('sitename')}</title>
+		
+		<meta name="renderer" content="webkit">
+		<meta name="format-detection" content="telephone=no,email=no"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+		<meta name="telephone=no"  content="format-detection">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no" />
+		
+		<META HTTP-EQUIV="Pragma" CONTENT="no-cache"> 
+		<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache"> 
+		<META HTTP-EQUIV="Expires" CONTENT="0">
+		
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/lib.css"/>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/page.css"/>
+	</head>
+	<body>
+		<div class="regulation">
+			<h3 class="cl-red txt-al-c">【{:C('sitename')}】</h3>
+
+			<div class="">
+				<h4 class="cl-orange">【游戏介绍】</h4>
+				<p>【{:C('sitename')}】重庆时时彩是经中国国家财政部批准由中国重庆福利彩票发行中心统一发行的『时时彩』具玩法简单、中奖率高、开奖快。重庆时时彩是国内首个快开彩票，也是国内第一个开设夜场的快开彩票。<br/>
+			</div>
+			<div class="">
+				<h4 class="cl-orange">【相关资料】</h4>
+				<p>
+				【开奖官网】www.cqcp.net 或 www.uc3039.com<br>
+				【开奖时间】白天10:00至晚上21:55,10分钟开奖一次，晚上22:00至凌晨02:00，5分钟开奖一次，全天共120期
+				</p>
+			</div>
+			<div class="">
+				<h4 class="cl-orange">【玩法】</h4>
+				位数即为第几球<br>
+				【万=1球】【千=2球】【百=3球】【十=4球】【个=5球】<r=br>
+					<h5 class="cl-blue">
+					【定位球】
+						<p>共5个球，定位顺序为12345，每个球的开奖号码为0~9</p>
+					</h5>
+					<p>
+						■赔率：含本{:C('ssc_dwq')}倍<br />
+						■限额：最低：{:C('sscqi_min_point')} <br />
+								最高：每个号码最高{:C('ssc_xz_max')['dwq']} <br>
+						/号码/金额<br />
+						■格式：定位/号码/金额  <br>
+						例：1/36/200<br />
+					</p>
+				
+					<h5 class="cl-blue">
+						【龙虎合】
+						<p>万位数为龙、个位数为虎，以万、个两位数比大小，号码0为最小、9为最大。开奖第一球万大于第五球个为龙，反之为虎。万、个两位数号码相同，则为合</p>
+					</h5>
+					<p>
+						■赔率：「龙」含本{:C('ssc_lhh_1')}倍<br>
+							   「虎」含本{:C('ssc_lhh_1')}倍<br>
+							   「合」含本{:C('ssc_lhh_2')}倍<br>
+						■限额：{:C('sscqi_min_point')}-{:C('ssc_xz_max')['lhh']} <br />
+						■格式：龙金额  合金额<br />
+						例：龙200<br>
+						例：合100<br>
+					</p>
+			
+					<h5 class="cl-blue">
+						【定位大小单双】
+						<p>每个球0~4为小，5~9为大，偶数为双，奇数为单。</p>
+					</h5>
+					<p>
+						■赔率：含本{:C('ssc_dxds')}倍<br />
+						■限额：{:C('sscqi_min_point')}-{:C('ssc_xz_max')['dxds']}  <br />
+						■格式：定位/大小单双/金额<br />
+						例：2/单/100 = 买千位的单100<br>
+						例：5/大/200 = 买个位的大200<br>
+						例：123/大/100 = 买万位、千位、百位的大各100 = 总300 <br>
+					</p>
+
+					<h5 class="cl-blue">
+						【总数大小单双】
+						<p>5个球的号码加起来为总数，总是等于大于23为大，总数小于23为小，偶数为双，奇数为单。</p>
+					</h5>
+					<p>
+						■赔率：含本{:C('ssc_zdxds')}倍<br />
+						■限额：{:C('sscqi_min_point')}-{:C('ssc_xz_max')['zdxds']}  <br />
+						■格式：大小单双/金额  <br />
+						例：大200 <br>
+						例：单100<br>
+					</p>
+				
+					<h5 class="cl-blue">
+						【前中后豹子顺子对子半顺杂六】
+						<p>前为前面3个球，中为中间3个球，后为后面3个球，列：3个球里面开出的号码有222为豹子，234顺子，558对子，895半顺，136杂六。如果3个球中有对子也有半顺，那么以对子为准</p>
+					</h5>
+					<p>
+						■赔率：「豹子」含本{:C('ssc_qzh_1')}倍<br />
+								「顺子」含本{:C('ssc_qzh_2')}倍<br />
+								「对子」含本{:C('ssc_qzh_3')}倍<br />
+								「半顺」含本{:C('ssc_qzh_4')}倍<br />
+								「杂六」含本{:C('ssc_qzh_5')}倍<br />
+						■限额：{:C('sscqi_min_point')}-{:C('ssc_xz_max')['qzh']} <br />
+						■格式：前豹子金额，中顺子金额，后半顺金额 前对子金额 前杂六金额 <br />
+						例：前豹子200 <br>
+						例：前顺子100<br>
+						例：中对子100<br>
+					</p>
+
+					<h5 class="cl-blue">
+						【二字定位】
+						<p>二星组选玩法是投注者可在从0—9十个数字中任选两个不同的数字5位进行投注。所选的号码与当期开奖号码相同且顺序一致时，即为中奖，其余不中,支持复选</p>
+					</h5>
+					<p>
+						■赔率：含本{:C('ssc_he')}倍<br />
+						■限额：{:C('sscqi_min_point')}-{:C('ssc_xz_max')['he']}  <br />
+						■格式：位数/定位.定位/金额  <br />
+						【万=1】【千=2】【百=3】【十=4】【个=5】 <br />
+						例：12/12.90/200  说明对万位和千位分别投12和90<br>
+						例：25/92.62/100  说明对千位位和个位分别投92和62<br>
+					</p>
+			
+					<h5 class="cl-blue">
+						【和值(特码)区段】
+						<p>五球总和(特码)开出的号码0-15为A段，16-29为B段，30-45为C段</p>
+					</h5>
+					<p>
+						■赔率：A、C段含本{:C('ssc_tema_qd_1')}倍<br />
+								B段含本{:C('ssc_tema_qd_2')}倍 <br />
+						■限额：{:C('sscqi_min_point')}-{:C('ssc_xz_max')['tema_qd']} <br />
+						■格式：A、B、C/金额 <br />
+						例：A/200<br>
+						例：B/100<br>
+					</p>
+					<h5 class="cl-blue">
+		</div>
+	</body>
+</html>

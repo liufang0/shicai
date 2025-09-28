@@ -1,0 +1,182 @@
+body{
+	height: 100%;
+	width: 100%;
+
+}
+.container{
+	width: 100%;
+	margin: 0;
+}
+/*通栏样式 start*/
+.banner {
+	width: 100%;
+	margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+	background: #fff;
+}
+
+.banner ul {
+    display: flex;
+    display: -webkit-flex;
+}
+
+.banner ul li img {
+    display: block;
+	width: 100%;
+	border-radius: .2rem;
+}
+
+.swiper-pagination {
+    bottom: 0.1rem!important;
+    width: auto;
+}
+
+/*公告 start*/
+.tips{
+	display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+	width: 6.1rem;
+	margin: 0.1rem auto 0;
+	background: #fff;
+	padding: 0 0.15rem;
+}
+
+.tips .left{
+	width: 66%;
+}
+
+.tips p{
+	display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+	-webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+	height: 0.64rem;
+	line-height: 0.64rem;
+	border-bottom: 1px solid #e4e4e4;
+}
+.tips p:last-child{
+	border-bottom: 0;
+}
+
+.tips i{
+	color: #5a96f0;
+	font-size: 0.4rem;
+	margin-right: 0.1rem;
+}
+.tips .item{
+	color: #898989;
+	margin-right: 0.1rem;
+}
+.tips .num{
+	color: #2f2f2f;
+}
+.tips .right{
+	-webkit-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+	text-align: center;
+}
+.tips .right .percentage{
+	font-size: 0.66rem;
+	color: #5a96f0;
+	font-weight: bold;
+}
+.tips .right dt{
+	line-height: 1;
+	-webkit-box-align: flex-end;
+    -webkit-align-items: flex-end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    margin-bottom: 0.06rem;
+}
+
+/*玩法种类*/
+.sort{
+	width: 96%;
+	margin: 0 auto;
+	margin-top: 0.1rem;
+}
+.sort ul{
+	width: 100%;
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap : wrap;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	-webkit-justify-content: space-between;
+}
+.sort ul li{
+	position: relative;
+	width: 49%;
+	margin-bottom: 0.1rem;
+}
+.sort ul li:nth-child(3),
+.sort ul li:nth-child(4){
+	margin-bottom: 0;
+}
+.playTip{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 50%;
+	height: 15.8%;
+	background: transparent;
+}
+.tuichu{
+	text-align: center;
+	color: #ffeaf9;
+	display: block;
+	width: 34px;
+	height: 34px;
+	border: 1px solid rgba(0, 0, 0, .1);
+	border-radius: 31px;
+	box-shadow: 0 0 14px 0 rgba(0, 0, 0, .16);
+	cursor: pointer;
+	text-decoration: none;
+	background-color: #ff2e50;
+	/*background: url(../images/tuichu.png) ;*/
+}
+.tuichuup{
+	z-index: 2147483647;
+	width: 0.6rem;
+	height: 0.6rem;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	font-family: 'Helvetica Neue', Helvetica, Arial, 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+	background-color: transparent;
+	top: 0.1px;
+	display: block;
+	right: 0.1px;
+	left: auto;
+	bottom: auto;
+	position: fixed;
+}
+.tuichuT{
+	display: block;
+}
+
+.scroll_text {
+	background: #fff;
+	font-size: .32rem;
+	height: .65rem;
+	overflow: hidden;
+	margin-bottom: 0.2rem;
+}
+.scroll_text .swiper-slide>span {width: 33%; text-align: center; font-size: .23rem; line-height: .65rem; height: .65rem;float:left;color: #929292;}
+.scroll_text .swiper-slide>span:last-child {color: #FF0000;}

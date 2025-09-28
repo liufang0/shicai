@@ -7,13 +7,13 @@
  */
 
 /**
- * Smarty {html_image} function plugin
+ * Smarty [html_image] function plugin
  * 
  * Type:     function<br>
  * Name:     html_image<br>
  * Date:     Feb 24, 2003<br>
  * Purpose:  format HTML tags for the image<br>
- * Examples: {html_image file="/images/masthead.gif"}<br>
+ * Examples: [html_image file="/images/masthead.gif"]<br>
  * Output:   <img src="/images/masthead.gif" width=400 height=23><br>
  * Params:
  * <pre>
@@ -24,7 +24,7 @@
  * - path_prefix - prefix for path output (optional, default empty)
  * </pre>
  * 
- * @link http://www.smarty.net/manual/en/language.function.html.image.php {html_image}
+ * @link http://www.smarty.net/manual/en/language.function.html.image.php [html_image]
  *      (Smarty online manual)
  * @author Monte Ohrt <monte at ohrt dot com> 
  * @author credits to Duda <duda@big.hu> 

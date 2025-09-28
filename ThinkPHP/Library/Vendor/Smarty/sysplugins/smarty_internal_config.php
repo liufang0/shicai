@@ -285,7 +285,7 @@ class Smarty_Internal_Config {
         switch ($property_name) {
             case 'source':
                 if (empty($this->config_resource)) {
-                    throw new SmartyException("Unable to parse resource name \"{$this->config_resource}\"");
+                    throw new SmartyException("Unable to parse resource name \"[$this->config_resource]\"");
                 }
                 $this->source = Smarty_Resource::config($this);
                 return $this->source;

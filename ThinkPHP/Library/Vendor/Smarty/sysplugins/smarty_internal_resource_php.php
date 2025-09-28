@@ -74,7 +74,7 @@ class Smarty_Internal_Resource_PHP extends Smarty_Resource_Uncompiled {
         if ($source->timestamp) {
             return '';
         }
-        throw new SmartyException("Unable to read template {$source->type} '{$source->name}'");
+        throw new SmartyException("Unable to read template [$source->type] '[$source->name]'");
     }
 
     /**
@@ -94,11 +94,11 @@ class Smarty_Internal_Resource_PHP extends Smarty_Resource_Uncompiled {
         }
         if (!$source->exists) {
             if ($_template->parent instanceof Smarty_Internal_Template) {
-                $parent_resource = " in '{$_template->parent->template_resource}'";
+                $parent_resource = " in '[$_template->parent->template_resource]'";
             } else {
                 $parent_resource = '';
             }
-            throw new SmartyException("Unable to load template {$source->type} '{$source->name}'{$parent_resource}");
+            throw new SmartyException("Unable to load template [$source->type] '[$source->name]'[$parent_resource]");
         }
 
         // prepare variables

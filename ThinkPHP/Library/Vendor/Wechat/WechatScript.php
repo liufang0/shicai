@@ -61,7 +61,7 @@ class WechatScript extends Common {
             return $this->jsapi_ticket = call_user_func_array(Loader::$callback[__FUNCTION__], array(&$this, &$cache));
         }
         # 调接口获取
-        $result = Tools::httpGet(self::API_URL_PREFIX . self::GET_TICKET_URL . "access_token={$this->access_token}" . '&type=jsapi');
+        $result = Tools::httpGet(self::API_URL_PREFIX . self::GET_TICKET_URL . "access_token=[$this->access_token]" . '&type=jsapi');
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {

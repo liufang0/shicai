@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{:C('sitename')}　</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/new/pay/pay.css">
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"> </script>
+<script>
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+    WeixinJSBridge.call('hideOptionMenu');
+});
+</script>
+  <header>
+	 <i class="ico02 back fl" onclick="history.go(-1)"></i>
+	 <h1>佣金转到余额</h1>	
+	 <i class="ico null"></i>
+  </header>
+<div class="wenx_xx">
+<div class="mz"></div>
+<div class="wxzf_price">
+<form id="LoginForm" action="{:U('Home/User/yzq')}">
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td style="height:60px; font-size:18px;border:1px solid #eeeeee; border-collapse:collapse;" width="30%"><div align="right">佣金余额：</div></td>
+<td style="height:60px; font-size:18px;border:1px solid #eeeeee; border-collapse:collapse;" width="70%"><div align="left">&nbsp;&nbsp;&nbsp;&nbsp;{$userinfo.yong}&nbsp;元宝</div></td>
+</tr>
+
+<tr>
+<td style="height:60px; font-size:18px;border:1px solid #eeeeee; border-collapse:collapse;" width="30%"><div align="right">转出金额：</div></td>
+<td style="height:10px; font-size:18px;border:1px solid #eeeeee; border-collapse:collapse;" width="70%"><input name="money" max="0.00" min="0.01" type="tel"  style="border: solid #e6e6e6 0px;    padding-left: 4%; color: #3d3d3d;width:80%; height:33px; font-size:18px; "></td>
+</tr>
+</table>
+<input type="submit" class="btn"  value="转到余额"/>
+</form>
+</div>
+</div>
+</body>
+</html>
+<script src="__PUBLIC__/Common/js/ajaxForm.js"></script>
+<script type="text/javascript">
+		
+	$(function(){
+		$('#LoginForm').ajaxForm({
+			beforeSubmit: checkForm,
+			success: complete, 
+			dataType: 'json'
+		});
+		function checkForm(){
+			if ($("#money").val() > parseInt({$userinfo.yong})) {
+				alert('可转出佣金不足！');
+				return false;
+			}
+		}
+		function complete(data){
+			if(data.status==1){
+				alert('转入成功');
+				location.reload();
+			}else{
+				alert(data.info);
+				return false;	
+			}
+		}
+	});
+</script>
+</div>
+<div>
+<style>
+table {
+width:99.9%;border-collapse: collapse;border-top-left-radius: 1em;border-top-right-radius: 1em;
+}
+</style>
+  <div class="main2 table">
+<div style="text-align: center; border-top:1px solid #000; border-left:1px solid #000; border-right:1px solid #000;font-size:18px; background-color:#808080; color:#fff;" width="99.9%">我的下线会员</div>
+<table>
+<thead>
+<tr align="center">
+<th style="height:30px;border:1px solid #000; text-align: center;border-collapse:collapse; font-size:13px; background-color:#808080; color:#fff;" width="30%">昵称</th>
+<th style="border:1px solid #000; text-align: center;border-collapse:collapse; font-size:12px; background-color:#808080; color:#fff;" width="15%" align="left">头像</th>
+<th style="border:1px solid #000; text-align: center;border-collapse:collapse; font-size:12px;  background-color:#808080; color:#fff;" width="20%">余额</th>
+<th style="border:1px solid #000; text-align: center;border-collapse:collapse; font-size:12px;  background-color:#808080; color:#fff;" width="20%">产生佣金</th>
+</tr>
+</thead>
+
+<tbody>
+<volist name="list" id="vo">
+	<tr>
+		<th style="height:30px;border:1px solid #000; text-align: center;border-collapse:collapse; font-size:13px; background-color:#808080; color:#fff;" width="30%">{$vo.nickname}</th>
+		<th style="border:1px solid #000; text-align: center;border-collapse:collapse; font-size:12px; background-color:#808080; color:#fff;" width="15%" align="left"><img src="{$vo.headimgurl}" width="30px" height="30px"/></th>
+		<th style="border:1px solid #000; text-align: center;border-collapse:collapse; font-size:12px;  background-color:#808080; color:#fff;" width="20%">{$vo.points}</th>
+		<th style="border:1px solid #000; text-align: center;border-collapse:collapse; font-size:12px;  background-color:#808080; color:#fff;" width="20%">{$vo.yong2}</th>
+	</tr>
+</volist>
+</tbody>
+</table>

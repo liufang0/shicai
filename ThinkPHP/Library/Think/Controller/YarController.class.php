@@ -38,5 +38,5 @@ class YarController {
      * @param array $args 参数
      * @return mixed
      */
-    public function __call($method,$args){}
+    public function __call($method,$args)(){}
 }

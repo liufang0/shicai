@@ -55,7 +55,7 @@ class HproseStringStream extends HproseAbstractStream {
         return $this->length;
     }
     public function getc() {
-        return $this->buffer{$this->pos++};
+        return $this->buffer[$this->pos++];
     }
     public function read($length) {
         $s = substr($this->buffer, $this->pos, $length);
@@ -142,7 +142,7 @@ class HproseFileStream extends HproseAbstractStream {
             return fgetc($this->fp);
         }
         elseif ($this->pos < $this->length) {
-            return $this->buf{$this->pos++};
+            return $this->buf[$this->pos++];
         }
         elseif ($this->unmark) {
             $this->buf = "";        
@@ -257,7 +257,7 @@ class HproseProcStream extends HproseAbstractStream {
             return fgetc($this->pipes[1]);
         }
         elseif ($this->pos < $this->length) {
-            return $this->buf{$this->pos++};
+            return $this->buf[$this->pos++];
         }
         elseif ($this->unmark) {
             $this->buf = "";        

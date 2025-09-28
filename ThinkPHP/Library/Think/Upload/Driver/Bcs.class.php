@@ -90,7 +90,7 @@ class Bcs {
             CURLOPT_CONNECTTIMEOUT => 10,
             CURLOPT_TIMEOUT => 1800
         );
-        $object = "/{$file['savepath']}{$file['savename']}";
+        $object = "/[$file['savepath']][$file['savename']]";
         $response = $this->bcs->create_object ( $this->config['bucket'], $object, $file['tmp_name'], $opt );
         $url = $this->download($object);
         $file['url'] = $url;
@@ -127,7 +127,7 @@ class Bcs {
         $_headers = array('Expect:');
         if (!is_null($headers) && is_array($headers)){
             foreach($headers as $k => $v) {
-                array_push($_headers, "{$k}: {$v}");
+                array_push($_headers, "[$k]: [$v]");
             }
         }
 
@@ -140,20 +140,20 @@ class Bcs {
                 $length = ftell($body);
                 fseek($body, 0);
 
-                array_push($_headers, "Content-Length: {$length}");
+                array_push($_headers, "Content-Length: [$length]");
                 curl_setopt($ch, CURLOPT_INFILE, $body);
                 curl_setopt($ch, CURLOPT_INFILESIZE, $length);
             } else {
                 $length = @strlen($body);
-                array_push($_headers, "Content-Length: {$length}");
+                array_push($_headers, "Content-Length: [$length]");
                 curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
             }
         } else {
-            array_push($_headers, "Content-Length: {$length}");
+            array_push($_headers, "Content-Length: [$length]");
         }
 
         // array_push($_headers, 'Authorization: ' . $this->sign($method, $uri, $date, $length));
-        array_push($_headers, "Date: {$date}");
+        array_push($_headers, "Date: [$date]");
 
         curl_setopt($ch, CURLOPT_HTTPHEADER, $_headers);
         curl_setopt($ch, CURLOPT_TIMEOUT, $this->config['timeout']);
@@ -231,7 +231,7 @@ class Bcs {
     private function error($header) {
         list($status, $stash) = explode("\r\n", $header, 2);
         list($v, $code, $message) = explode(" ", $status, 3);
-        $message = is_null($message) ? 'File Not Found' : "[{$status}]:{$message}";
+        $message = is_null($message) ? 'File Not Found' : "[[$status]]:[$message]";
         $this->error = $message;
     }
 

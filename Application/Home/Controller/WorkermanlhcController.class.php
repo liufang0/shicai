@@ -1,11 +1,7 @@
 <?php
-
 namespace Home\Controller;
 use Think\Server;
-
-header('content-type:text/html;charset=utf-8');
 class WorkermanlhcController extends Server {
-
 	protected $socket = 'websocket://0.0.0.0:15561';
 	
 	/*添加定时器
@@ -16,7 +12,6 @@ class WorkermanlhcController extends Server {
 		if (!$auth) {
 			echo "未授权或授权已过期";exit;
 		}
-
 		$beginToday=strtotime('16:00:00');
 		$endToday=strtotime("21:35:00");
 		$caiji = M('caiji')->where("game='lhc'")->limit(0,1)->order("id desc")->find();
@@ -47,11 +42,9 @@ class WorkermanlhcController extends Server {
 			$beginToday=strtotime('16:00:00');
 			$endToday=strtotime("21:35:00");
 			F('game','lhc');
-
 			$lhcdata = F('lhcdata');
 			$next_time = $lhcdata['next']['delayTimeInterval']+strtotime($lhcdata['next']['awardTime']);
 			$awardtime = $lhcdata['current']['awardTime'];
-
 			//if($next_time-time()>C('lhc_stop_time')*60-6 && $next_time-time()<18000 && time()>$beginToday && time()<$endToday ){
 			if($next_time-time()>C('lhc_stop_time')*60-6 && time()<strtotime($lhcdata['next']['awardTime']) ){
 				F('lhc_state',1);
@@ -73,7 +66,6 @@ class WorkermanlhcController extends Server {
 					$conn -> send(json_encode($new_message));
 				}
 			}
-
 			if($next_time-time()==C('lhc_stop_time')*60-6){
 				F('lhc_state',0);
 				setconfig('lhc_state',0);
@@ -88,7 +80,6 @@ class WorkermanlhcController extends Server {
 					$conn -> send(json_encode($new_message));
 				}
 			}
-
 			echo($next_time-time()."\n");
 			//if((($next_time-time()>18000) || (time() > strtotime("23:54:00") && time() < strtotime("23:59:00"))) && F('is_send')==0){
 			if(($next_time-time()>86000) && F('is_send')==0){
@@ -155,7 +146,6 @@ class WorkermanlhcController extends Server {
 							);
 							M('push_money')->add($fx_data);
 						}
-
 						$set_add = M('order')->where("id={$id}")->setField(array('is_add'=>1));
 						
 						//分类
@@ -390,7 +380,6 @@ class WorkermanlhcController extends Server {
 	            foreach ($this->worker->connections as $conn) {
 					$conn -> send(json_encode($new_message));
 				}
-
 				$content = $current_number['periodnumber']."期结算已完毕！<br/>
 							号码：".$current_number['awardnumbers'];
 				$new_message = array(
@@ -409,7 +398,6 @@ class WorkermanlhcController extends Server {
 			$this->add_message($new_message);/*添加信息*/
     	});
 		
-
 		
 		//ping 统计人数
 		\Workerman\Lib\Timer::add($time_interval, function(){
@@ -461,15 +449,12 @@ class WorkermanlhcController extends Server {
 					$map['number'] = serialize($info);
 					$map['lh'] = '';
 					$map['tema'] = $info[6];
-
 					$map['tema_ds'] = $info[6] % 2==0 ? '双' : '单';
 					$map['tema_dx'] = $info[6]<=24 ? '小' : '大';
-
 					
 					$map['tema_dw'] = '';
 					$map['zx'] = '';
 					$map['game'] = $data['game'];
-
 					$res1 = M('number')->add($map);
 					var_dump($res1);
 					if($res1){
@@ -480,7 +465,6 @@ class WorkermanlhcController extends Server {
 				}
 			}
     	});
-
 	}
 	
 	/*
@@ -607,7 +591,6 @@ class WorkermanlhcController extends Server {
 						} else {
 							$content_msg =  '「'.$message_data['content'].'」'.'单笔点数最高'.$res['xz_max'].',竞猜失败';
 						}
-
 						$new_message = array(
 							'uid'  => $connection->uid,
 							'type' => 'admin',
@@ -651,7 +634,6 @@ class WorkermanlhcController extends Server {
 							$user = M('user')->where("id = $userid")->find();
 							//当前玩法是否超过设置金额
 							$wf_points = M('order')->field("sum(del_points) as sum_del")->where("userid = {$userid} and type={$res['type']} and state=1  and number = {$lhcdata['next']['periodNumber']}")->find();
-
 							$wf_max_points = 0;
 							switch ($res['type']) {
 								case '1':
@@ -660,25 +642,20 @@ class WorkermanlhcController extends Server {
 								case '2':
 									$wf_max_points = C('lhc_xz_max')['tdxds'];
 									break;
-
 								case '3':
 									$wf_max_points = C('lhc_xz_max')['zhll'];
 									break;
-
 								case '4':
 									$wf_max_points = C('lhc_xz_max')['thll'];
 									break;
-
 								case '5':
 									//$wf_max_points = C('lhc_xz_max')['tsx'];
 									$wf_max_points = $res['xz_max'];
 									break;
-
 								case '6':
 								case '7':
 									$wf_max_points = C('lhc_xz_max')['zhm'];
 									break;
-
 								case '8':
 									$wf_max_points = C('lhc_xz_max')['thm'];
 									break;
@@ -688,7 +665,6 @@ class WorkermanlhcController extends Server {
 									break;
 							}
 							echo $wf_max_points;
-
 							//正码限制  123/23/100
 							if ($res['type'] == '1'||$res['type'] == '3'||$res['type'] == '6') {
 								$type_list = M('order')->where("userid = {$userid} and state=1  and number = {$lhcdata['next']['periodNumber']} and type = {$res['type']}")->select();
@@ -740,7 +716,6 @@ class WorkermanlhcController extends Server {
 									break;
 								}
 							}
-
 							//查看已投注金额
 							$user_points = M('order')->field("sum(del_points) as sum_del")->where("userid = {$userid} and state=1  and number = {$lhcdata['next']['periodNumber']}")->find();
 	
@@ -849,7 +824,6 @@ class WorkermanlhcController extends Server {
 								}
 							}
 						}
-
 						if (C('is_say')) {
 							$new_message2 = array(
 								'uid'=>$connection->uid,
@@ -966,7 +940,6 @@ class WorkermanlhcController extends Server {
 		return $res;
 	}
 	protected function add_message($new_message){
-
 		if (!empty($new_message)) {
 			$new_message['game'] = 'lhc';
 			$res = M('message')->add($new_message);

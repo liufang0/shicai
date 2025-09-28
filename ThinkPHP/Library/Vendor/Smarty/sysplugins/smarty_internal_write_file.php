@@ -41,7 +41,7 @@ class Smarty_Internal_Write_File {
         $_tmp_file = $_dirpath . DS . uniqid('wrt');
         if (!file_put_contents($_tmp_file, $_contents)) {
             error_reporting($_error_reporting);
-            throw new SmartyException("unable to write file {$_tmp_file}");
+            throw new SmartyException("unable to write file [$_tmp_file]");
             return false;
         }
 
@@ -52,7 +52,7 @@ class Smarty_Internal_Write_File {
         $success = rename($_tmp_file, $_filepath);
         if (!$success) {
             error_reporting($_error_reporting);
-            throw new SmartyException("unable to write file {$_filepath}");
+            throw new SmartyException("unable to write file [$_filepath]");
             return false;
         }
 

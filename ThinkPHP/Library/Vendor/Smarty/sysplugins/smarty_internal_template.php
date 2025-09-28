@@ -147,7 +147,7 @@ class Smarty_Internal_Template extends Smarty_Internal_TemplateBase {
             } else {
                 $parent_resource = '';
             }
-            throw new SmartyException("Unable to load template {$this->source->type} '{$this->source->name}'{$parent_resource}");
+            throw new SmartyException("Unable to load template [$this->source->type] '[$this->source->name]'[$parent_resource]");
         }
         if ($this->mustCompile === null) {
             $this->mustCompile = (!$this->source->uncompiled && ($this->smarty->force_compile || $this->source->recompiled || $this->compiled->timestamp === false ||
@@ -239,7 +239,7 @@ class Smarty_Internal_Template extends Smarty_Internal_TemplateBase {
      * @param integer $caching        cache mode
      * @param integer $cache_lifetime life time of cache data
      * @param array   $vars optional  variables to assign
-     * @param int     $parent_scope   scope in which {include} should execute
+     * @param int     $parent_scope   scope in which [include] should execute
      * @returns string template content
      */
     public function getSubTemplate($template, $cache_id, $compile_id, $caching, $cache_lifetime, $data, $parent_scope)
@@ -294,7 +294,7 @@ class Smarty_Internal_Template extends Smarty_Internal_TemplateBase {
      * @param integer $caching        cache mode
      * @param integer $cache_lifetime life time of cache data
      * @param array   $vars optional  variables to assign
-     * @param int     $parent_scope   scope in which {include} should execute
+     * @param int     $parent_scope   scope in which [include] should execute
      * @param string  $hash           nocache hash code
      * @returns string template content
      */
@@ -342,37 +342,37 @@ class Smarty_Internal_Template extends Smarty_Internal_TemplateBase {
                 foreach ($this->required_plugins['compiled'] as $tmp) {
                     foreach ($tmp as $data) {
                         $file = addslashes($data['file']);
-                        $plugins_string .= "if (!is_callable('{$data['function']}')) include '{$file}';\n";
+                        $plugins_string .= "if (!is_callable('[$data['function']]')) include '[$file]';\n";
                     }
                 }
                 $plugins_string .= '?>';
             }
             if (!empty($this->required_plugins['nocache'])) {
                 $this->has_nocache_code = true;
-                $plugins_string .= "<?php echo '/*%%SmartyNocache:{$this->properties['nocache_hash']}%%*/<?php \$_smarty = \$_smarty_tpl->smarty; ";
+                $plugins_string .= "<?php echo '/*%%SmartyNocache:[$this->properties['nocache_hash']]%%*/<?php \$_smarty = \$_smarty_tpl->smarty; ";
                 foreach ($this->required_plugins['nocache'] as $tmp) {
                     foreach ($tmp as $data) {
                         $file = addslashes($data['file']);
-                        $plugins_string .= addslashes("if (!is_callable('{$data['function']}')) include '{$file}';\n");
+                        $plugins_string .= addslashes("if (!is_callable('[$data['function']]')) include '[$file]';\n");
                     }
                 }
-                $plugins_string .= "?>/*/%%SmartyNocache:{$this->properties['nocache_hash']}%%*/';?>\n";
+                $plugins_string .= "?>/*/%%SmartyNocache:[$this->properties['nocache_hash']]%%*/';?>\n";
             }
         }
         // build property code
         $this->properties['has_nocache_code'] = $this->has_nocache_code;
         $output = '';
         if (!$this->source->recompiled) {
-            $output = "<?php /*%%SmartyHeaderCode:{$this->properties['nocache_hash']}%%*/";
+            $output = "<?php /*%%SmartyHeaderCode:[$this->properties['nocache_hash']]%%*/";
             if ($this->smarty->direct_access_security) {
                 $output .= "if(!defined('SMARTY_DIR')) exit('no direct access allowed');\n";
             }
         }
         if ($cache) {
-            // remove compiled code of{function} definition
+            // remove compiled code of[function] definition
             unset($this->properties['function']);
             if (!empty($this->smarty->template_functions)) {
-                // copy code of {function} tags called in nocache mode
+                // copy code of [function] tags called in nocache mode
                 foreach ($this->smarty->template_functions as $name => $function_data) {
                     if (isset($function_data['called_nocache'])) {
                         foreach ($function_data['called_functions'] as $func_name) {
@@ -571,7 +571,7 @@ class Smarty_Internal_Template extends Smarty_Internal_TemplateBase {
      */
     public function capture_error()
     {
-        throw new SmartyException("Not matching {capture} open/close in \"{$this->template_resource}\"");
+        throw new SmartyException("Not matching [capture] open/close in \"[$this->template_resource]\"");
     }
 
     /**
@@ -623,7 +623,7 @@ class Smarty_Internal_Template extends Smarty_Internal_TemplateBase {
         switch ($property_name) {
             case 'source':
                 if (empty($this->template_resource)) {
-                    throw new SmartyException("Unable to parse resource name \"{$this->template_resource}\"");
+                    throw new SmartyException("Unable to parse resource name \"[$this->template_resource]\"");
                 }
                 $this->source = Smarty_Resource::source($this);
                 // cache template object under a unique ID

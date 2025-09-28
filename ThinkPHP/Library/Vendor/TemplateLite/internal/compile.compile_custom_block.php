@@ -8,7 +8,7 @@
 
 function compile_compile_custom_block($function, $modifiers, $arguments, &$_result, &$object)
 {
-	if ($function{0} == '/')
+	if ($function[0] == '/')
 	{
 		$start_tag = false;
 		$function = substr($function, 1);

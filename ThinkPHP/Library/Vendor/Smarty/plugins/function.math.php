@@ -8,13 +8,13 @@
  */
 
 /**
- * Smarty {math} function plugin
+ * Smarty [math] function plugin
  *
  * Type:     function<br>
  * Name:     math<br>
  * Purpose:  handle math computations in template
  *
- * @link http://www.smarty.net/manual/en/language.function.math.php {math}
+ * @link http://www.smarty.net/manual/en/language.function.math.php [math]
  *          (Smarty online manual)
  * @author   Monte Ohrt <monte at ohrt dot com>
  * @param array                    $params   parameters

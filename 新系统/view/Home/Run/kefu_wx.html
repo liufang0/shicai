@@ -1,0 +1,62 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>{:C('sitename')}-微信客服</title>
+		<meta name="format-detection" content="telephone=no,email=no"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+		<link href="__PUBLIC__/Admin/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/animate.min.css" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+		<link href="__PUBLIC__/Home/css/page.css" rel="stylesheet">
+	</head>
+	<style type="text/css">
+		body{
+			overflow-y: scroll;
+		}
+		.facesj{
+			display: inline-block;
+			background-color: #1fa1dc;
+			width: 60px;
+		    height: 32px;
+		    line-height: 32px;
+		    border-radius: 3px;
+		    text-align: center;
+		    font-size: 14px;
+		    margin-top:6px;
+		    border: 1px solid #1fa1dc;
+		    color: #FFF;
+		    margin-left:10px;
+		}
+		img{max-width: 100%}
+		.sk{width:85%;}
+		.middle-box{padding-top:6px;}
+		.zfbimg{display: none;}
+		.ptitle{
+			height: 45px;
+			line-height: 45px;
+		}
+	</style>
+	<body>
+		<div class="header">
+		  <div class="all_w ">
+		    <div class="gofh"> <a href="javascript:history.back()"><img src="/Public/Home/img/jt_03.jpg"></a> </div>
+		     <div class="ptitle">
+		      微信客服
+		    </div>
+		  </div>
+		</div>
+		<div class="middle-box text-center loginscreen  animated fadeInDown">
+			<div>
+				
+				<div class="wximg">
+					<img class="sk" src="<if condition="$info[kefu] neq ''">__ROOT__/Uploads/{$info.kefu}<else/>__PUBLIC__/Admin/img/no_img.jpg</if>" >
+				</div>
+				<p>请长按二维码添加客服微信</p>
+			</form>
+			</div>
+		</div>
+
+	</body>
+
+</html>

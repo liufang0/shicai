@@ -3,7 +3,7 @@
 /**
 * Smarty Internal Plugin Compile extend
 *
-* Compiles the {extends} tag
+* Compiles the [extends] tag
 *
 * @package Smarty
 * @subpackage Compiler
@@ -34,7 +34,7 @@ class Smarty_Internal_Compile_Extends extends Smarty_Internal_CompileBase {
     public $shorttag_order = array('file');
 
     /**
-    * Compiles code for the {extends} tag
+    * Compiles code for the [extends] tag
     *
     * @param array  $args     array with attributes from parser
     * @param object $compiler compiler object
@@ -67,15 +67,15 @@ class Smarty_Internal_Compile_Extends extends Smarty_Internal_CompileBase {
             $template_sha1 = sha1($_template->source->filepath);
         }
         if (isset($compiler->template->properties['file_dependency'][$template_sha1])) {
-            $compiler->trigger_template_error("illegal recursive call of \"{$include_file}\"", $compiler->lex->line - 1);
+            $compiler->trigger_template_error("illegal recursive call of \"[$include_file]\"", $compiler->lex->line - 1);
         }
         $compiler->template->properties['file_dependency'][$template_sha1] = array($_template->source->filepath, $_template->source->timestamp, $_template->source->type);
         $_content = substr($compiler->template->source->content, $compiler->lex->counter - 1);
-        if (preg_match_all("!({$this->_ldl}block\s(.+?){$this->_rdl})!", $_content, $s) !=
-        preg_match_all("!({$this->_ldl}/block{$this->_rdl})!", $_content, $c)) {
-            $compiler->trigger_template_error('unmatched {block} {/block} pairs');
+        if (preg_match_all("!([$this->_ldl]block\s(.+?)[$this->_rdl])!", $_content, $s) !=
+        preg_match_all("!([$this->_ldl]/block[$this->_rdl])!", $_content, $c)) {
+            $compiler->trigger_template_error('unmatched [block] [/block] pairs');
         }
-        preg_match_all("!{$this->_ldl}block\s(.+?){$this->_rdl}|{$this->_ldl}/block{$this->_rdl}|{$this->_ldl}\*([\S\s]*?)\*{$this->_rdl}!", $_content, $_result, PREG_OFFSET_CAPTURE);
+        preg_match_all("![$this->_ldl]block\s(.+?)[$this->_rdl]|[$this->_ldl]/block[$this->_rdl]|[$this->_ldl]\*([\S\s]*?)\*[$this->_rdl]!", $_content, $_result, PREG_OFFSET_CAPTURE);
         $_result_count = count($_result[0]);
         $_start = 0;
         while ($_start+1 < $_result_count) {

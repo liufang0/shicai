@@ -902,7 +902,7 @@ class simple_html_dom_node
 		{
 			// Thanks to user gnarf from stackoverflow for this regular expression.
 			$attributes = array();
-			preg_match_all("/([\w-]+)\s*:\s*([^;]+)\s*;?/", $this->attr['style'], $matches, PREG_SET_ORDER);
+			preg_match_all("/([\w-]+)\s*:\s*([^;}]+)\s*;?/", $this->attr['style'], $matches, PREG_SET_ORDER);
 			foreach ($matches as $match) {
 			  $attributes[$match[1]] = $match[2];
 			}

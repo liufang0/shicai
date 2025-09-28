@@ -74,7 +74,7 @@ class Cache {
             return call_user_func_array(Loader::$callback['CachePut'], func_get_args());
         }
         empty($filename) && $filename = date('Ymd') . '.log';
-        return self::check() && file_put_contents(self::$cachepath . $filename, '[' . date('Y/m/d H:i:s') . "] {$line}\n", FILE_APPEND);
+        return self::check() && file_put_contents(self::$cachepath . $filename, '[' . date('Y/m/d H:i:s') . "] [$line]\n", FILE_APPEND);
     }
 
     /**

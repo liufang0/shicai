@@ -65,7 +65,7 @@ abstract class Smarty_Resource {
     /**
      * Load template's source into current template object
      *
-     * {@internal The loaded source is assigned to $_template->source->content directly.}}
+     * [@internal The loaded source is assigned to $_template->source->content directly.]}
      *
      * @param Smarty_Template_Source $source source object
      * @return string template source
@@ -168,7 +168,7 @@ abstract class Smarty_Resource {
         $_file_is_dotted = $file[0] == '.' && ($file[1] == '.' || $file[1] == '/' || $file[1] == "\\");
         if ($_template && $_template->parent instanceof Smarty_Internal_Template && $_file_is_dotted) {
             if ($_template->parent->source->type != 'file' && $_template->parent->source->type != 'extends' && !$_template->parent->allow_relative_path) {
-                throw new SmartyException("Template '{$file}' cannot be relative to template of resource type '{$_template->parent->source->type}'");
+                throw new SmartyException("Template '[$file]' cannot be relative to template of resource type '[$_template->parent->source->type]'");
             }
             $file = dirname($_template->parent->source->filepath) . DS . $file;
             $_file_exact_match = true;
@@ -190,7 +190,7 @@ abstract class Smarty_Resource {
         // don't we all just love windows?
         $_path = str_replace('\\', '/', $_path);
         // resolve simples
-        $_path = preg_replace('#(/\./(\./)*)|/{2,}#', '/', $_path);
+        $_path = preg_replace('#(/\./(\./)*)|/[2,]#', '/', $_path);
         // resolve parents
         while (true) {
             $_parent = strpos($_path, '/../');
@@ -381,10 +381,10 @@ abstract class Smarty_Resource {
                 return $smarty->_resource_handlers[$type] = self::$resources[$type];
             } else {
                 $smarty->registerResource($type, array(
-                    "smarty_resource_{$type}_source",
-                    "smarty_resource_{$type}_timestamp",
-                    "smarty_resource_{$type}_secure",
-                    "smarty_resource_{$type}_trusted"
+                    "smarty_resource_[$type]_source",
+                    "smarty_resource_[$type]_timestamp",
+                    "smarty_resource_[$type]_secure",
+                    "smarty_resource_[$type]_trusted"
                 ));
 
                 // give it another try, now that the resource is registered properly
@@ -408,7 +408,7 @@ abstract class Smarty_Resource {
         // TODO: try default_(template|config)_handler
 
         // give up
-        throw new SmartyException("Unkown resource type '{$type}'");
+        throw new SmartyException("Unkown resource type '[$type]'");
     }
     
     /**
@@ -513,7 +513,7 @@ abstract class Smarty_Resource {
         
         // make sure configs are not loaded via anything smarty can't handle
         if (isset($_incompatible_resources[$type])) {
-            throw new SmartyException ("Unable to use resource '{$type}' for config");
+            throw new SmartyException ("Unable to use resource '[$type]' for config");
         }
 
         // load resource handler, identify unique resource name

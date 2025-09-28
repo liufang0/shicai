@@ -159,7 +159,7 @@ class TagLib {
                     $name = '$'.$var;
                     foreach ($vars as $key=>$val){
                         if(0===strpos($val,'$')) {
-                            $name .= '["{'.$val.'}"]';
+                            $name .= '["['.$val.']"]';
                         }else{
                             $name .= '["'.$val.'"]';
                         }

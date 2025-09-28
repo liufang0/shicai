@@ -248,7 +248,7 @@ elseif (function_exists('curl_init')) {
                 list($response_headers, $response) = explode("\r\n\r\n", $response, 2); 
                 $http_response_header = explode("\r\n", $response_headers);
                 $http_response_firstline = array_shift($http_response_header); 
-                if (preg_match('@^HTTP/[0-9]\.[0-9]\s([0-9]{3})\s(.*)@',
+                if (preg_match('@^HTTP/[0-9]\.[0-9]\s([0-9][3])\s(.*)@',
                                $http_response_firstline, $matches)) { 
                     $response_code = $matches[1];
                     $response_status = trim($matches[2]);

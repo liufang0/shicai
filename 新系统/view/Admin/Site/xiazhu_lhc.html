@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>后台 - 六合彩下注配置</title>
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+
+		
+		<link href="__PUBLIC__/Admin/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/plugins/iCheck/custom.css" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/animate.min.css" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+
+	</head>
+
+	<body class="gray-bg">
+		<div class="wrapper wrapper-content animated fadeInRight">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">
+							<h5>六合彩下注配置 </h5><span>（修改后需要重启服务生效）</span>
+							<div class="ibox-tools">
+								<a class="collapse-link">
+									<i class="fa fa-chevron-up"></i>
+								</a>
+							</div>
+						</div>
+						<div class="ibox-content">
+							<form id="signform" action="{:U('Admin/Site/xiazhu_lhc')}" method="post" class="form-horizontal">
+								<div class="form-group">
+									<label class="col-sm-2 control-label">单笔最低点数</label>
+									<div class="col-sm-6">
+										<input type="text" name="lhcqi_min_point" value="{:C('lhcqi_min_point')}" placeholder="用户每期最低点数" class="form-control">
+									</div>
+								</div>
+									<div class="form-group">
+									<label class="col-sm-2 control-label">用户每期最高点数</label>
+									<div class="col-sm-6">
+										<input type="text" name="lhcqi_max_point" value="{:C('lhcqi_max_point')}" placeholder="用户每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="hr-line-dashed"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">特码生肖</label>
+								    <div class="col-sm-4">
+										<input type="text" name="lhc_tsx" value="{:C('lhc_tsx')}" placeholder="输入赔率" class="form-control">
+									</div>
+									 <div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('lhc_xz_open')['tsx'] eq 1">checked</if> class="i-checks" name="lhc_xz_open[tsx]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('lhc_xz_open')['tsx'] eq 0">checked</if> class="i-checks" name="lhc_xz_open[tsx]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="lhc_xz_max[tsx]" value="{:C('lhc_xz_max')['tsx']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">鼠</label>
+								    <div class="col-sm-4">
+										<input type="text" name="lhc_tshu" value="{:C('lhc_tshu')}" placeholder="输入赔率" class="form-control">
+									</div>
+									 <div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('lhc_xz_open')['tshu'] eq 1">checked</if> class="i-checks" name="lhc_xz_open[tshu]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('lhc_xz_open')['tshu'] eq 0">checked</if> class="i-checks" name="lhc_xz_open[tshu]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="lhc_xz_max[tshu]" value="{:C('lhc_xz_max')['tshu']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">牛</label>
+								    <div class="col-sm-4">
+										<input type="text" name="lhc_tniu" value="{:C('lhc_tniu')}" placeholder="输入赔率" class="form-control">
+									</div>
+									 <div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('lhc_xz_open')['tniu'] eq 1">checked</if> class="i-checks" name="lhc_xz_open[tniu]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('lhc_xz_open')['tniu'] eq 0">checked</if> class="i-checks" name="lhc_xz_open[tniu]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="lhc_xz_max[tniu]" value="{:C('lhc_xz_max')['tniu']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">虎</label>
+								    <div class="col-sm-4">
+										<input type="text" name="lhc_thu" value="{:C('lhc_thu')}" placeholder="输入赔率" class="form-control">
+									</div>
+									 <div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('lhc_xz_open')['thu'] eq 1">checked</if> class="i-checks" name="lhc_xz_open[thu]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('lhc_xz_open')['thu'] eq 0">checked</if> class="i-checks" name="lhc_xz_open[thu]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="lhc_xz_max[thu]" value="{:C('lhc_xz_max')['thu']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">兔</label>
+								    <div class="col-sm-4">
+										<input type="text" name="lhc_ttu" value="{:C('lhc_ttu')}" placeholder="输入赔率" class="form-control">
+									</div>
+									 <div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('lhc_xz_open')['ttu'] eq 1">checked</if> class="i-checks" name="lhc_xz_open[ttu]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('lhc_xz_open')['ttu'] eq 0">checked</if> class="i-checks" name="lhc_xz_open[ttu]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="lhc_xz_max[ttu]" value="{:C('lhc_xz_max')['ttu']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">龙</label>
+								    <div class="col-sm-4">
+										<input type="text" name="lhc_tlong" value="{:C('lhc_tlong')}" placeholder="输入赔率" class="form-control">
+									</div>
+									 <div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('lhc_xz_open')['tlong'] eq 1">checked</if> class="i-checks" name="lhc_xz_open[tlong]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('lhc_xz_open')['tlong'] eq 0">checked</if> class="i-checks" name="lhc_xz_open[tlong]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="lhc_xz_max[tlong]" value="{:C('lhc_xz_max')['tlong']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">蛇</label>
+								    <div class="col-sm-4">
+										<input type="text" name="lhc_tshe" value="{:C('lhc_tshe')}" placeholder="输入赔率" class="form-control">
+									</div>
+									 <div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('lhc_xz_open')['tshe'] eq 1">checked</if> class="i-checks" name="lhc_xz_open[tshe]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('lhc_xz_open')['tshe'] eq 0">checked</if> class="i-checks" name="lhc_xz_open[tshe]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="lhc_xz_max[tshe]" value="{:C('lhc_xz_max')['tshe']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">马</label>
+								    <div class="col-sm-4">
+										<input type="text" name="lhc_tma" value="{:C('lhc_tma')}" placeholder="输入赔率" class="form-control">
+									</div>
+									 <div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('lhc_xz_open')['tma'] eq 1">checked</if> class="i-checks" name="lhc_xz_open[tma]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('lhc_xz_open')['tma'] eq 0">checked</if> class="i-checks" name="lhc_xz_open[tma]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="lhc_xz_max[tma]" value="{:C('lhc_xz_max')['tma']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">羊</label>
+								    <div class="col-sm-4">
+										<input type="text" name="lhc_tyang" value="{:C('lhc_tyang')}" placeholder="输入赔率" class="form-control">
+									</div>
+									 <div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('lhc_xz_open')['tyang'] eq 1">checked</if> class="i-checks" name="lhc_xz_open[tyang]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('lhc_xz_open')['tyang'] eq 0">checked</if> class="i-checks" name="lhc_xz_open[tyang]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="lhc_xz_max[tyang]" value="{:C('lhc_xz_max')['tyang']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">猴</label>
+								    <div class="col-sm-4">
+										<input type="text" name="lhc_thou" value="{:C('lhc_thou')}" placeholder="输入赔率" class="form-control">
+									</div>
+									 <div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('lhc_xz_open')['thou'] eq 1">checked</if> class="i-checks" name="lhc_xz_open[thou]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('lhc_xz_open')['thou'] eq 0">checked</if> class="i-checks" name="lhc_xz_open[thou]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="lhc_xz_max[thou]" value="{:C('lhc_xz_max')['thou']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">鸡</label>
+								    <div class="col-sm-4">
+										<input type="text" name="lhc_tji" value="{:C('lhc_tji')}" placeholder="输入赔率" class="form-control">
+									</div>
+									 <div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('lhc_xz_open')['tji'] eq 1">checked</if> class="i-checks" name="lhc_xz_open[tji]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('lhc_xz_open')['tji'] eq 0">checked</if> class="i-checks" name="lhc_xz_open[tji]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="lhc_xz_max[tji]" value="{:C('lhc_xz_max')['tji']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">狗</label>
+								    <div class="col-sm-4">
+										<input type="text" name="lhc_tgou" value="{:C('lhc_tgou')}" placeholder="输入赔率" class="form-control">
+									</div>
+									 <div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('lhc_xz_open')['tgou'] eq 1">checked</if> class="i-checks" name="lhc_xz_open[tgou]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('lhc_xz_open')['tgou'] eq 0">checked</if> class="i-checks" name="lhc_xz_open[tgou]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="lhc_xz_max[tgou]" value="{:C('lhc_xz_max')['tgou']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">猪</label>
+								    <div class="col-sm-4">
+										<input type="text" name="lhc_tzhu" value="{:C('lhc_tzhu')}" placeholder="输入赔率" class="form-control">
+									</div>
+									 <div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('lhc_xz_open')['tzhu'] eq 1">checked</if> class="i-checks" name="lhc_xz_open[tzhu]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('lhc_xz_open')['tzhu'] eq 0">checked</if> class="i-checks" name="lhc_xz_open[tzhu]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="lhc_xz_max[tzhu]" value="{:C('lhc_xz_max')['tzhu']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="hr-line-dashed"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">正码大小单双</label>
+								    <div class="col-sm-4">
+										<input type="text" name="lhc_dxds" value="{:C('lhc_dxds')}" placeholder="输入赔率" class="form-control">
+									</div>
+									 <div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('lhc_xz_open')['dxds'] eq 1">checked</if> class="i-checks" name="lhc_xz_open[dxds]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('lhc_xz_open')['dxds'] eq 0">checked</if> class="i-checks" name="lhc_xz_open[dxds]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="lhc_xz_max[dxds]" value="{:C('lhc_xz_max')['dxds']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">特码大小单双</label>
+								    <div class="col-sm-4">
+										<input type="text" name="lhc_tdxds" value="{:C('lhc_tdxds')}" placeholder="输入赔率" class="form-control">
+									</div>
+									 <div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('lhc_xz_open')['tdxds'] eq 1">checked</if> class="i-checks" name="lhc_xz_open[tdxds]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('lhc_xz_open')['tdxds'] eq 0">checked</if> class="i-checks" name="lhc_xz_open[tdxds]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="lhc_xz_max[tdxds]" value="{:C('lhc_xz_max')['tdxds']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="form-group" style="display:none;">
+									<label class="col-sm-2 control-label">正码红绿蓝波</label>
+								    <div class="col-sm-4">
+										<input type="text" name="lhc_zhll" value="{:C('lhc_zhll')}" placeholder="输入赔率" class="form-control">
+									</div>
+									 <div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('lhc_xz_open')['zhll'] eq 1">checked</if> class="i-checks" name="lhc_xz_open[zhll]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('lhc_xz_open')['zhll'] eq 0">checked</if> class="i-checks" name="lhc_xz_open[zhll]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="lhc_xz_max[zhll]" value="{:C('lhc_xz_max')['zhll']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">特码红绿蓝波</label>
+								    <div class="col-sm-4">
+										<input type="text" name="lhc_thll" value="{:C('lhc_thll')}" placeholder="输入赔率" class="form-control">
+									</div>
+									 <div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('lhc_xz_open')['thll'] eq 1">checked</if> class="i-checks" name="lhc_xz_open[thll]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('lhc_xz_open')['thll'] eq 0">checked</if> class="i-checks" name="lhc_xz_open[thll]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="lhc_xz_max[thll]" value="{:C('lhc_xz_max')['thll']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="hr-line-dashed"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">正码定位号码</label>
+								    <div class="col-sm-4">
+										<input type="text" name="lhc_zhm" value="{:C('lhc_zhm')}" placeholder="输入赔率" class="form-control">
+									</div>
+									 <div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('lhc_xz_open')['zhm'] eq 1">checked</if> class="i-checks" name="lhc_xz_open[zhm]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('lhc_xz_open')['zhm'] eq 0">checked</if> class="i-checks" name="lhc_xz_open[zhm]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="lhc_xz_max[zhm]" value="{:C('lhc_xz_max')['zhm']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">特码定位号码</label>
+								    <div class="col-sm-4">
+										<input type="text" name="lhc_thm" value="{:C('lhc_thm')}" placeholder="输入赔率" class="form-control">
+									</div>
+									 <div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('lhc_xz_open')['thm'] eq 1">checked</if> class="i-checks" name="lhc_xz_open[thm]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('lhc_xz_open')['thm'] eq 0">checked</if> class="i-checks" name="lhc_xz_open[thm]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="lhc_xz_max[thm]" value="{:C('lhc_xz_max')['thm']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="hr-line-dashed"></div>
+								
+								
+								<span style="color: red;">*赔率为含本赔率</span>
+								<div class="hr-line-dashed"></div>
+								<div class="form-group">
+									<div class="col-sm-4 col-sm-offset-2">
+										<button class="btn btn-primary" type="submit">保存信息</button>&nbsp;&nbsp;&nbsp;
+										<a class="btn btn-danger" href="{:U('Index/index')}">取消</a>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script src="__PUBLIC__/Admin/js/jquery.min.js?v=2.1.4"></script>
+		<script src="__PUBLIC__/Admin/js/bootstrap.min.js?v=3.3.6"></script>
+		<script src="__PUBLIC__/Admin/js/content.min.js?v=1.0.0"></script>
+		<script src="__PUBLIC__/Common/js/ajaxForm.js"></script>
+		<script src="__PUBLIC__/Common/layer/layer.js"></script>
+		<script src="__PUBLIC__/Admin/js/plugins/iCheck/icheck.min.js"></script>
+		<script>
+			$('.gy_select').change(function(){
+				if ($(this).val() == 1) {
+					$('.gy_he').hide();
+					$('.gy_xiao').show();
+				}else {
+					$('.gy_xiao').hide();
+					$('.gy_he').show();
+				}
+			})
+
+			$(document).ready(function() {
+				$(".i-checks").iCheck({
+					checkboxClass: "icheckbox_square-green",
+					radioClass: "iradio_square-green",
+				})
+			});
+		</script>
+		<script>
+			$(function(){
+				$('#signform').ajaxForm({
+					success: complete, 
+					dataType: 'json'
+				});
+				function complete(data){
+					if(data.status==1){
+						$('.btn-primary').attr('disabled','disabled');
+						layer.msg(data.info, function(index){
+			 				layer.close(index);
+							window.location.href=data.url;
+						});
+					}else{
+						layer.msg(data.info);
+						return false;	
+					}
+				}
+			});
+		</script>
+	</body>
+
+</html>

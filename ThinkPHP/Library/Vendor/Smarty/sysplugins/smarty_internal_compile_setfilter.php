@@ -45,7 +45,7 @@ class Smarty_Internal_Compile_Setfilter extends Smarty_Internal_CompileBase {
 class Smarty_Internal_Compile_Setfilterclose extends Smarty_Internal_CompileBase {
 
     /**
-     * Compiles code for the {/setfilter} tag
+     * Compiles code for the [/setfilter] tag
      *
      * This tag does not generate compiled output. It resets variable filter.
      *

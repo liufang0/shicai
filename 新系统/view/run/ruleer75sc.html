@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html id="iframe">
+	<head>
+		<meta charset="UTF-8">
+		
+		<title>{:C('sitename')}</title>
+		
+		<meta name="renderer" content="webkit">
+		<meta name="format-detection" content="telephone=no,email=no"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+		<meta name="telephone=no"  content="format-detection">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no" />
+		
+		<META HTTP-EQUIV="Pragma" CONTENT="no-cache"> 
+		<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache"> 
+		<META HTTP-EQUIV="Expires" CONTENT="0">
+		
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/lib.css"/>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/page.css"/>
+	</head>
+	<body>
+		<div class="regulation">
+			<h3 class="cl-red txt-al-c">【{:C('sitename')}】</h3>
+			<div class="">
+				<h4 class="cl-orange">【极速赛车游戏介绍】</h4>
+				极速赛车：是经国家财政部批准，由北京福利彩票发行承销的中国福利彩其中一种；每期开奖车号共十个,每个车号除了整合玩法，第1~10名、冠亚和值、冠亚组合分别为一个投注组，大小/单双/龙虎、车道数字、冠亚大小、冠亚特码、十球全接、特码区段。<br/>极速赛车同以「1~10」十个号码作为开奖依据，完全公平公正公开，开奖透明，无法作弊！</p>
+			</div>
+			<div class="">
+				<h4 class="cl-orange">【相关资料】</h4>
+				<p>
+				【开奖时间】<br/>极速赛车为每天上午9:07~晚上23:57止；<br/>每1分钟开奖一期，每次投注时间约60秒，等待开奖时间约为1分钟，与官网完全同步。
+				</p>
+			</div>
+			<div class="">
+				<h4 class="cl-orange">【玩法】</h4>
+				
+				<if condition="C('er75sc_xz_open')['dxds'] eq 1">
+					<h5 class="cl-blue">
+						【1~10名猜大小单双】
+						<p>第一名～第十名车号：开出之号码大于或等于6为大，小于或等于5为小。开出的号码偶数为双，号码奇数为单。</p>
+					</h5>
+					<p>
+						■赔率：含本{:C('er75sc_dxds')}倍 <br />
+						■限额：{:C('er75sc_min_point')}-{:C('er75sc_xz_max')['dxds']}<br />
+						■格式：名次大小单双金额<br />
+						■格式：大小单双金额<br />
+						<small>例：12345双100 = 1~5车道买双各$100 = 总$500</small>
+						<small>不填写名次，如大100，则默认为1大100</small>
+					</p>
+				</if>
+				
+				
+				<if condition="C('er75sc_xz_open')['chehao'] eq 1">
+					<h5 class="cl-blue">
+					【1~10名猜车号】
+						<p>每一个车号为一投注组合，开奖结果「投注车号」对应所投「车道」视为中奖，其余情形视为不中奖。</p>
+					</h5>
+					<p>
+						■赔率：含本{:C('er75sc_chehao')}倍<br />
+						■限额：最低：{:C('er75sc_min_point')} <br />
+								最高：每个号码最高{:C('er75sc_xz_max')['dxds']} <br>
+						■格式：名次/号码/金额<br />
+						<small>例：12345/89/20 = 1~5车道的8号、9号各买$20 = 总$200</small>
+						<small>例：1357/890/20 = 1.3.5.7车道的8号、9号、10号各买$20 = 总$240</small>
+					</p>
+				</if>
+				
+				
+				<if condition="C('er75sc_xz_open')['zuhe_1'] eq 1">
+					<h5 class="cl-blue">
+						【1~10名猜组合】
+						<p>竞猜内容为「大单」「小双」「小单」「大双」，共4种。</p>
+					</h5>
+					<p>
+						■赔率：<br />
+						<small>「大单」、「小双」含本{:C('er75sc_zuhe_1')}倍，</small>
+						<small>「小单」、「大双」含本{:C('er75sc_zuhe_2')}倍。</small>
+						■限额：{:C('er75sc_min_point')}-{:C('er75sc_xz_max')['zuhe']} <br />
+						■格式：名次/组合/金额<br />
+						<small>例：890/大单/50 = 8.9.10车道大单各买$50 = 总$150</small>
+					</p>
+				</if>
+			
+				<if condition="C('er75sc_xz_open')['lh'] eq 1">
+					<h5 class="cl-blue">
+						【1~5名猜龙虎】
+						<p>(1)第一名vs第十名，(2)第二名vs第九名，(3)第三名vs第八名，(4)第四名vs第七名，(5)第五名vs第六名，前比后大为龙，反之为虎。</p>
+					</h5>
+					<p>
+						■赔率：含本{:C('er75sc_lh')}倍<br />
+						■限额：{:C('er75sc_min_point')}-{:C('er75sc_xz_max')['lh']}<br />
+						■格式：名次/号码/金额<br />
+						<small>例：123/龙/100 = 1~3车道买龙各$100=总$300</small>
+					</p>
+				</if>
+				
+				<if condition="C('er75sc_xz_open')['zx'] eq 1">
+					<h5 class="cl-blue">
+						【冠亚猜庄闲】
+						<p>冠军车号「大于」亚军车号为庄，反之为闲。</p>
+					</h5>
+					<p>
+						■赔率：含本{:C('er75sc_zx')}倍<br />
+						■限额：{:C('er75sc_min_point')}-{:C('er75sc_xz_max')['zx']}<br />
+						■格式：庄闲/金额<br />
+						<small>例：庄/200 = 冠军大于亚军即中奖</small>
+					</p>
+				</if>
+				
+				<if condition="C('er75sc_xz_open')['gy'] eq 1">
+					<h5 class="cl-blue">
+						【猜冠亚号码】
+						<p>猜冠军及亚军车号，每次竞猜2个号码，顺序不限。</p>
+					</h5>
+					<p>
+						■赔率：含本{:C('er75sc_gy')}倍<br />
+						■限额：{:C('er75sc_min_point')}-{:C('er75sc_xz_max')['gy']}<br />
+						■格式：组/号码/金额<br />
+						<small>例：组/5-6/50 = 5号.6号车在冠亚军(顺序不限) = 总$50</small>
+						<small>例：组/1-9.3-7/100 = 1.9号车或3.7号车在冠亚军(顺序不限) = 总$200</small>
+					</p>
+				</if>
+			
+				<if condition="C('er75sc_xz_open')['tema'] eq 1">
+					<h5 class="cl-blue">
+						【冠亚和值(特码)猜大小单双】
+						<p>冠军车号+亚军车号 = 冠亚和值 = 特码 = 数字3~19	</p>
+						<p>冠亚和值大于或等于12为大，小于或等于11为小。开出的号码偶数为双，号码奇数为单。</p>
+					</h5>
+					<p>
+						■赔率：<br />
+						<if condition="C('er75sc_gy_set') eq 2">
+						<small>「大」、「双」、「小」、「单」含本{:C('er75sc_tema')}倍。</small>
+						<else/>
+						<small>「大」、「双」的赔率为{:C('er75sc_tema_1')}倍。</small>
+						<small>「小」、「单」的赔率为{:C('er75sc_tema_2')}倍。</small>
+						</if>
+						■限额：{:C('er75sc_min_point')}-{:C('er75sc_xz_max')['tema']}<br />
+						■格式：和(特)/大小单双/金额<br />
+						<small>例：和双100 = 「冠亚和」的双$100</small>
+						<small>例：和大100 = 「冠亚和」的大$100</small>
+					</p>
+				</if>
+				
+				<if condition="C('er75sc_xz_open')['tema_sz_1'] eq 1">
+					<h5 class="cl-blue">
+						【冠亚和值(特码)猜数字】
+						<p>「冠亚和值」为「特码」可能出现的结果为3~19，竞猜中对应「冠亚和值」数字的视为中奖，其余视为不中奖。	</p>
+					</h5>
+					<p>
+						■赔率：<br />
+						<small>
+							3.4.18.19，含本{:C('er75sc_tema_sz_1')}倍，限额20-1,000<br />
+							5.6.16.17，含本{:C('er75sc_tema_sz_2')}倍，限额20-2,000<br />
+							7.8.14.15，含本{:C('er75sc_tema_sz_3')}倍，限额20-3,000<br />
+							9.10.12.13，含本{:C('er75sc_tema_sz_4')}倍，限额20-4,000<br />
+							11，含本8倍，限额20-5,000
+						</small>
+						■限额：{:C('er75sc_min_point')}-{:C('er75sc_xz_max')['tema_sz']}<br />
+						■格式：和(特)/数字/金额<br />
+						<small>例：和567/100 = 竞猜「冠亚和」的值为5或6或7各$100 = 总$300</small>
+					</p>
+						
+				</if>
+			
+				<if condition="C('er75sc_xz_open')['tema_qd_1'] eq 1">
+					<h5 class="cl-blue">
+						【冠亚和值(特码)猜区段】
+						<p>特码3~7为A段，8~14为B段，15~19为C段。</p>
+					</h5>
+					<p>
+						■赔率：<br />
+						<small>
+							「A」、「C」含本{:C('er75sc_tema_qd_1')}倍。<br />
+							「B」含本{:C('er75sc_tema_qd_2')}倍。
+						</small>
+						■竞猜限额：{:C('er75sc_min_point')}-{:C('er75sc_xz_max')['tema_qd']}<br />
+						■格式：ABC/金额<br />
+						<small>例：BC/100 = 投注BC段位各100＝总$200</small>
+					</p>
+				</if>
+				
+				<h4 class="cl-orange">每期下注：总额10万封顶</h4>
+			</div>	
+			<div>
+				<h4 class="cl-orange">【说明】</h4>
+				<p>
+					<!-- ■没带名次默认投第一名，如「双/100」第一名双$100、「123/100」第一名123号各$100<br /> -->
+					■下注时因各地网路品质不定，可能有1-2秒延迟，以系统判定是否下注成功为准。<br />
+					■0号即为10号，投注时输入0即为10，输入10即为1、10号。<br />
+					<small>例：0/0/100 = 视为竞猜10号车道10号车冠军<br />例：0/100 = 视为竞猜1号车道10号车冠军</small>
+				</p>
+			</div>
+		</div>
+	</body>
+</html>

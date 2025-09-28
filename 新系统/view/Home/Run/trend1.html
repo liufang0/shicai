@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <title>{:C('sitename')}</title>
+
+    <!-- 引入样式 -->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/new/css/index.css"/>
+    <link rel="stylesheet" href="/images/css/common.css"/>
+    <script src="/images/js/jquery-1.11.2.min.js"></script>
+    <script src="/images/js/sizeChange.js"></script>
+
+    <style>
+        .lottery_top {
+            height: .1rem;
+            overflow: hidden;
+            position: fixed;
+            left: 0;
+            top: 0.8rem;
+            width: 100%;
+            background: #efeae8;
+            z-index: 999;
+        }
+        .lottery_main {
+            position: relative;
+            padding-top: .8rem;
+            padding-bottom: 2rem;
+        }
+        .lottery_right {
+            position: relative;
+        }
+        .lottery_rt {
+            background: url(/images/rt.png) .2rem center no-repeat #fdfbfa;
+            background-size: auto;
+            background-size: .30rem .30rem;
+            height: .7rem;
+            line-height: .7rem;
+            padding-left: .67rem;
+            color: #513c36;
+            font-size: .24rem;
+            position: fixed;
+            right: 0;
+            top: 0.9rem;
+            left: 1.72rem;
+            left: 0rem;
+        }
+        .lottery_rt a {
+            float: right;
+            height: .7rem;
+            font-size: .24rem;
+            color: #917c73;
+            padding: 0 .25rem 0 .42rem;
+            background: url(/images/trend.png) left center no-repeat;
+            background-size: auto;
+            background-size: .3rem .20rem;
+        }
+        .lottery_list {
+            overflow: auto;
+            width: 100%;
+            margin-top: .8rem;
+        }
+        .lottery_list .item {
+            margin-bottom: .1rem;
+            background: #fdfbfa;
+        }
+        .lottery_list .item .t {
+            padding-left: .2rem;
+            border: 1px #e6e1df solid;
+            border-right-color: rgb(230, 225, 223);
+            border-right-style: solid;
+            border-right-width: 1px;
+            border-right: 0;
+            line-height: .78rem;
+            font-size: .24rem;
+            color: #333;
+        }
+        .lottery_list .item .t b {
+            color: #e54d4d;
+        }
+        b {
+            font-weight: normal;
+        }
+        .lottery_list .item .t span {
+            color: #917c73;
+            margin-left: .4rem;
+            font-size: .24rem;
+        }
+        .lottery_list .item .m3 {
+            padding-left: .3rem;
+        }
+        .lottery_list .item .m {
+            padding-left: .07rem;
+            padding-top: .1rem;
+            padding-bottom: .1rem;
+            border-left: 1px #e6e1df solid;
+        }
+
+        .lottery_list .item .m b {
+            display: block;
+            float: left;
+            font-size: .24rem;
+            color: #fff;
+            margin-right: .01rem;
+            width: .40rem;
+            overflow: hidden;
+            height: .40rem;
+            line-height: .40rem;
+            text-align: center;
+            border-radius: 50%;
+        }
+        .lottery_list .item .m .blue {
+            background: #0a83c6;
+            background-image: none;
+            background-image: -webkit-gradient(linear,0% 0,0% 100%,from(#0a83c6),to(#0a83c6));
+            box-shadow: 0 .01rem .1rem rgba(0,0,0,0.2);
+        }
+        .lottery_list .item .m span {
+            display: block;
+            float: left;
+            font-size: .32rem;
+            color: #d6cecc;
+            margin-right: .05rem;
+            font-weight: bold;
+            width: .40rem;
+            overflow: hidden;
+            height: .40rem;
+            line-height: .40rem;
+            text-align: center;
+            border: 0;
+        }
+        .lottery_list .item .m .red {
+            background: #d53434;
+            background-image: none;
+            background-image: -webkit-gradient(linear,0% 0,0% 100%,from(#e54d4d),to(#cf2c2c));
+            box-shadow: 0 .01rem .1rem rgba(0,0,0,0.2);
+        }
+        .lottery_list .item .m::after {
+            clear: both;
+            content: "";
+            display: block;
+        }
+        .lottery_list .item .f {
+            background: #f7f4f2;
+        }
+        .lottery_list .item .f table {
+            border-collapse: collapse;
+        }
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+        .lottery_list .item .f table tr td:last-child {
+            border-right: 1px #f7f4f2 solid;
+        }
+        .lottery_list .item .f table td {
+            border: 1px #e6e1df solid;
+            border-right-color: rgb(230, 225, 223);
+            border-right-style: solid;
+            border-right-width: 1px;
+            text-align: center;
+            font-size: .24rem;
+            color: #252322;
+            line-height: .3rem;
+            padding: .14rem 0;
+        }
+        .lottery_list .item .f table td span {
+            color: #917c73;
+        }
+        .lottery_list .item .f table td {
+            border: 1px #e6e1df solid;
+            text-align: center;
+            font-size: .24rem;
+            color: #252322;
+            line-height: .3rem;
+            padding: .14rem 0;
+        }
+        .lottery_btn {
+            position: fixed;
+            left: 1.72rem;
+            left: 0rem;
+            right: 0;
+            bottom: .86rem;
+            background: #fdfbfa;
+        }
+        .lottery_btn .btnbox .btn {
+            height: .60rem;
+            line-height: .60rem;
+            font-size: .3rem;
+        }
+        .lottery_btn .btnbox {
+            padding: .15rem .3rem;
+        }
+        .btnbox .btn {
+            margin-bottom: .2rem;
+            display: block;
+            height: .88rem;
+            line-height: .88rem;
+            font-size: .36rem;
+            color: #fff;
+            text-align: center;
+            background: #d53434;
+            background-image: none;
+            background-image: -webkit-gradient(linear,0% 0,0% 100%,from(#e54d4d),to(#cf2c2c));
+            border-radius: .06rem;
+            border: 0;
+            cursor: pointer;
+            border: 0;
+            width: 100%;
+            box-shadow: 0 .05rem .1rem rgba(0,0,0,0.1);
+        }
+    </style>
+
+
+</head>
+
+<body style="background: #efeae8; padding-bottom: .86rem;">
+    <div class="nav">
+        <h3>走势结果</h3>
+        <i class="iconfont icon-40" onclick="back()"></i>
+    </div>
+
+    <div class="lottery_wrap">
+        <div class="lottery_top"></div>
+        <div class="lottery_main">
+            <div class="lottery_right">
+                <div class="lottery_rt ng-binding">{$game == 'bj28' ? '螞蟻收益' : '螞蟻收益'}-走势结果<a href="{:U('Home/Run/trend2', array('game' => $game))}" class="ng-binding">走势分析</a></div>
+                <div class="lottery_list">
+
+                    <volist name="kjlist" id="vo">
+                    <div class="item" style="">
+                        <div class="t ng-binding">第<b class="ng-binding">{$vo.periodnumber}</b>期<span class="ng-binding">{$vo.awardtime}</span></div>
+                        <div class="m m3 ng-binding">
+                            <b class="blue">{$vo.numberOne}</b><span>+</span><b class="blue">{$vo.numberTwo}</b><span>+</span><b class="blue">{$vo.numberThree}</b><span>=</span><b class="red">{$vo.tema}</b>
+                        </div>
+
+                        <div class="f">
+                            <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                <tbody>
+                                <tr>
+                                    <td colspan="3"><span class="ng-binding">总和</span></td>
+                                </tr>
+                                <tr class="ng-binding">
+                                    <td width="33.33%">{$vo.tema}</td>
+                                    <td width="33.33%">{$vo.tema_dx}</td>
+                                    <td width="33.33%">{$vo.tema_ds}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    </volist>
+
+
+                </div>
+            </div>
+
+        </div>
+        <div class="lottery_btn">
+            <div class="btnbox">
+                <if condition="$game == 'bj28'">
+                    <a href="{:U('home/run/bj28')}" class="btn ng-binding">去下注</a>
+                <else />
+                    <a href="{:U('home/run/jnd28')}" class="btn ng-binding">去下注</a>
+                </if>
+            </div>
+        </div>
+    </div>
+
+
+
+<?php $a=2;?>
+<include  file="./Template/Home/Run/footer.html" />
+
+
+
+</body>
+
+</html>

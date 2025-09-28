@@ -771,7 +771,7 @@ static public $yy_action = array(
         if (array_key_exists($yyruleno, self::$yyReduceMap)) {
             // call the action
             $this->_retvalue = null;
-            $this->{'yy_r' . self::$yyReduceMap[$yyruleno]}();
+            $this->['yy_r' . self::$yyReduceMap[$yyruleno]]();
             $yy_lefthand_side = $this->_retvalue;
         }
         $yygoto = self::$yyRuleInfo[$yyruleno]['lhs'];

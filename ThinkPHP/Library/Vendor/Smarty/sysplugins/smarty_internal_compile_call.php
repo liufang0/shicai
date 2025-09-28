@@ -2,7 +2,7 @@
 /**
  * Smarty Internal Plugin Compile Function_Call
  *
- * Compiles the calls of user defined tags defined by {function}
+ * Compiles the calls of user defined tags defined by [function]
  *
  * @package Smarty
  * @subpackage Compiler
@@ -40,7 +40,7 @@ class Smarty_Internal_Compile_Call extends Smarty_Internal_CompileBase {
     public $optional_attributes = array('_any');
 
     /**
-     * Compiles the calls of user defined tags defined by {function}
+     * Compiles the calls of user defined tags defined by [function]
      *
      * @param array  $args      array with attributes from parser
      * @param object $compiler  compiler object
@@ -61,7 +61,7 @@ class Smarty_Internal_Compile_Call extends Smarty_Internal_CompileBase {
             $compiler->called_functions[] = trim($_name, "'\"");
         }
         unset($_attr['name'], $_attr['assign'], $_attr['nocache']);
-        // set flag (compiled code of {function} must be included in cache file
+        // set flag (compiled code of [function] must be included in cache file
         if ($compiler->nocache || $compiler->tag_nocache) {
             $_nocache = 'true';
         } else {
@@ -102,7 +102,7 @@ class Smarty_Internal_Compile_Call extends Smarty_Internal_CompileBase {
             $call_function = '$tmp = "smarty_template_function_".' . $_name . '; $tmp';
         } else {
             $_name = trim($_name, "'\"");
-            $call_cache = "'{$_name}'";
+            $call_cache = "'[$_name]'";
             $call_function = 'smarty_template_function_' . $_name;
         }
 
@@ -111,15 +111,15 @@ class Smarty_Internal_Compile_Call extends Smarty_Internal_CompileBase {
         // was there an assign attribute
         if (isset($_assign)) {
             if ($compiler->template->caching) {
-                $_output = "<?php ob_start(); Smarty_Internal_Function_Call_Handler::call ({$call_cache},\$_smarty_tpl,{$_params},'{$_hash}',{$_nocache}); \$_smarty_tpl->assign({$_assign}, ob_get_clean());?>\n";
+                $_output = "<?php ob_start(); Smarty_Internal_Function_Call_Handler::call ([$call_cache],\$_smarty_tpl,[$_params],'[$_hash]',[$_nocache]); \$_smarty_tpl->assign([$_assign], ob_get_clean());?>\n";
             } else {
-                $_output = "<?php ob_start(); {$call_function}(\$_smarty_tpl,{$_params}); \$_smarty_tpl->assign({$_assign}, ob_get_clean());?>\n";
+                $_output = "<?php ob_start(); [$call_function](\$_smarty_tpl,[$_params]); \$_smarty_tpl->assign([$_assign], ob_get_clean());?>\n";
             }
         } else {
             if ($compiler->template->caching) {
-                $_output = "<?php Smarty_Internal_Function_Call_Handler::call ({$call_cache},\$_smarty_tpl,{$_params},'{$_hash}',{$_nocache});?>\n";
+                $_output = "<?php Smarty_Internal_Function_Call_Handler::call ([$call_cache],\$_smarty_tpl,[$_params],'[$_hash]',[$_nocache]);?>\n";
             } else {
-                $_output = "<?php {$call_function}(\$_smarty_tpl,{$_params});?>\n";
+                $_output = "<?php [$call_function](\$_smarty_tpl,[$_params]);?>\n";
             }
         }
         return $_output;

@@ -7,7 +7,7 @@
  */
 
 /**
- * Smarty {html_options} function plugin
+ * Smarty [html_options] function plugin
  * 
  * Type:     function<br>
  * Name:     html_options<br>
@@ -24,7 +24,7 @@
  * - class      (optional) - string default not set
  * </pre>
  * 
- * @link http://www.smarty.net/manual/en/language.function.html.options.php {html_image}
+ * @link http://www.smarty.net/manual/en/language.function.html.options.php [html_image]
  *      (Smarty online manual)
  * @author Monte Ohrt <monte at ohrt dot com> 
  * @author Ralf Strehle (minor optimization) <ralf dot strehle at yahoo dot de>

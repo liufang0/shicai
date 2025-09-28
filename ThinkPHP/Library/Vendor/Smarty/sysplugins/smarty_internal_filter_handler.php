@@ -36,7 +36,7 @@ class Smarty_Internal_Filter_Handler {
         // loop over autoload filters of specified type
         if (!empty($template->smarty->autoload_filters[$type])) {
             foreach ((array)$template->smarty->autoload_filters[$type] as $name) {
-                $plugin_name = "Smarty_{$type}filter_{$name}";
+                $plugin_name = "Smarty_[$type]filter_[$name]";
                 if ($template->smarty->loadPlugin($plugin_name)) {
                     if (function_exists($plugin_name)) {
                         // use loaded Smarty2 style plugin
@@ -47,7 +47,7 @@ class Smarty_Internal_Filter_Handler {
                     }
                 } else {
                     // nothing found, throw exception
-                    throw new SmartyException("Unable to load filter {$plugin_name}");
+                    throw new SmartyException("Unable to load filter [$plugin_name]");
                 }
             }
         }

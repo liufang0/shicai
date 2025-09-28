@@ -65,9 +65,9 @@ class Smarty_Internal_Resource_File extends Smarty_Resource {
             return file_get_contents($source->filepath);
         }
         if ($source instanceof Smarty_Config_Source) {
-            throw new SmartyException("Unable to read config {$source->type} '{$source->name}'");
+            throw new SmartyException("Unable to read config [$source->type] '[$source->name]'");
         }
-        throw new SmartyException("Unable to read template {$source->type} '{$source->name}'");
+        throw new SmartyException("Unable to read template [$source->type] '[$source->name]'");
     }
 
     /**

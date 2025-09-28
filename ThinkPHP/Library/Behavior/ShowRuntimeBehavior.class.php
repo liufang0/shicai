@@ -17,17 +17,17 @@ class ShowRuntimeBehavior {
     // 行为扩展的执行入口必须是run
     public function run(&$content){
         if(C('SHOW_RUN_TIME')){
-            if(false !== strpos($content,'{__NORUNTIME__}')) {
-                $content   =  str_replace('{__NORUNTIME__}','',$content);
+            if(false !== strpos($content,'[__NORUNTIME__]')) {
+                $content   =  str_replace('[__NORUNTIME__]','',$content);
             }else{
                 $runtime = $this->showTime();
-                 if(strpos($content,'{__RUNTIME__}'))
-                     $content   =  str_replace('{__RUNTIME__}',$runtime,$content);
+                 if(strpos($content,'[__RUNTIME__]'))
+                     $content   =  str_replace('[__RUNTIME__]',$runtime,$content);
                  else
                      $content   .=  $runtime;
             }
         }else{
-            $content   =  str_replace(array('{__NORUNTIME__}','{__RUNTIME__}'),'',$content);
+            $content   =  str_replace(array('[__NORUNTIME__]','[__RUNTIME__]'),'',$content);
         }
     }
 

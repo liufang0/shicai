@@ -638,7 +638,7 @@ class Smarty extends Smarty_Internal_TemplateBase {
         );
 
         if (isset($allowed[$name])) {
-            return $this->{$allowed[$name]}();
+            return $this->[$allowed[$name]]();
         } else {
             trigger_error('Undefined property: '. get_class($this) .'::$'. $name, E_USER_NOTICE);
         }
@@ -664,7 +664,7 @@ class Smarty extends Smarty_Internal_TemplateBase {
         );
 
         if (isset($allowed[$name])) {
-            $this->{$allowed[$name]}($value);
+            $this->[$allowed[$name]]($value);
         } else {
             trigger_error('Undefined property: ' . get_class($this) . '::$' . $name, E_USER_NOTICE);
         }
@@ -1144,7 +1144,7 @@ class Smarty extends Smarty_Internal_TemplateBase {
     public function setDebugTemplate($tpl_name)
     {
         if (!is_readable($tpl_name)) {
-            throw new SmartyException("Unknown file '{$tpl_name}'");
+            throw new SmartyException("Unknown file '[$tpl_name]'");
         }
         $this->debug_tpl = $tpl_name;
 
@@ -1238,7 +1238,7 @@ class Smarty extends Smarty_Internal_TemplateBase {
         // class name must have three parts to be valid plugin
         // count($_name_parts) < 3 === !isset($_name_parts[2])
         if (!isset($_name_parts[2]) || strtolower($_name_parts[0]) !== 'smarty') {
-            throw new SmartyException("plugin {$plugin_name} is not a valid name format");
+            throw new SmartyException("plugin [$plugin_name] is not a valid name format");
             return false;
         }
         // if type is "internal", get plugin from sysplugins
@@ -1252,7 +1252,7 @@ class Smarty extends Smarty_Internal_TemplateBase {
             }
         }
         // plugin filename is expected to be: [type].[name].php
-        $_plugin_filename = "{$_name_parts[1]}.{$_name_parts[2]}.php";
+        $_plugin_filename = "[$_name_parts[1]].[$_name_parts[2]].php";
 
         // loop through plugin dirs and find the plugin
         foreach($this->getPluginsDir() as $_plugin_dir) {

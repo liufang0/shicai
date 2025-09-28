@@ -2384,7 +2384,7 @@ if (!class_exists('QRcode', false)) {
 		 * Return an array of ECC specification.
 		 * @param int $version version
 		 * @param int $level error correction level
-		 * @param array $spec an array of ECC specification contains as following: {# of type1 blocks, # of data code, # of ecc code, # of type2 blocks, # of data code}
+		 * @param array $spec an array of ECC specification contains as following: [# of type1 blocks, # of data code, # of ecc code, # of type2 blocks, # of data code]
 		 * @return array spec
 		 */
 		protected function getEccSpec($version, $level, $spec) {

@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <meta content="no" name="apple-touch-fullscreen" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>个人中心</title>
+    <script src="__PUBLIC__/Home//statics/web/js/jquery.1.8.2.min.js"></script>
+    <script src="/images/js/sizeChange.js"></script>
+    <style>
+        :root { --brand: linear-gradient(135deg, #667eea, #764ba2); }
+        * { box-sizing: border-box; }
+        body { margin: 0; background: #f6f7fb; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI','PingFang SC','Microsoft YaHei', sans-serif; color:#222; }
+        .page { max-width: 1200px; margin: 0 auto; padding: 16px 12px 24px; }
+        .card { background:#fff; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,.08); overflow: hidden; }
+        .profile-header { display:flex; gap:12px; align-items:center; padding: 16px; background: var(--brand); color:#fff; }
+        .avatar { width: 56px; height:56px; border-radius: 50%; overflow:hidden; background:#fff; }
+        .avatar img{ width:100%; height:100%; object-fit: cover; }
+        .uinfo h2{ margin:0; font-size:16px; font-weight:800; }
+        .uinfo p{ margin:2px 0 0; font-size:12px; opacity:.9; }
+        .stats { display:grid; grid-template-columns: repeat(3, 1fr); gap:6px; padding: 10px 12px 14px; background: rgba(255,255,255,.1); }
+        .stat { text-align:center; color:#fff; font-size:12px; }
+        .stat strong{ display:block; font-size:14px; margin-top:4px; }
+        .actions { display:flex; gap:10px; padding: 12px; }
+        .btn { flex:1; display:flex; align-items:center; justify-content:center; gap:6px; padding:10px 12px; border-radius:10px; text-decoration:none; color:#fff; font-weight:700; box-shadow: 0 6px 16px rgba(0,0,0,.12); }
+        .btn-primary{ background: #ff655d; }
+        .btn-warning{ background: #feaf2e; }
+        .btn img{ width:18px; height:18px; pointer-events:none; }
+        .grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:10px; }
+        .grid a{ text-decoration:none; color:#222; }
+        .menu-item { background:#fff; border:1px solid #f0f2f5; border-radius:10px; padding:16px 10px; text-align:center; box-shadow: 0 4px 14px rgba(0,0,0,.06); transition: all .2s ease; }
+        .menu-item:hover{ transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.1); }
+        .menu-item img{ width:28px; height:28px; display:block; margin:0 auto 6px; }
+        .menu-item p{ margin:0; font-size:12px; }
+        @media (max-width:768px){ .page{ padding:12px 12px 24px; } .grid{ grid-template-columns: repeat(3, 1fr);} }
+    </style>
+</head>
+<body>
+    <main class="page">
+        <!-- 资料与资产 -->
+        <section class="card">
+            <div class="profile-header">
+                <div class="avatar">
+                    <if condition="$user['headimgurl']">
+                        <img src="{$user.headimgurl}">
+                    <else />
+                        <img src="/images/default.png">
+                    </if>
+                </div>
+                <div class="uinfo">
+                    <h2>用户名：{$user.nickname}</h2>
+                    <p>ID：{$user.id}</p>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="stat">现金金额<strong>{$user.points} 元</strong></div>
+                <div class="stat">今日中奖<strong>{$user['sum_add']} 元</strong></div>
+                <div class="stat">今日盈亏<strong>{$user['ying']} 元</strong></div>
+            </div>
+            <div class="actions">
+                <a class="btn btn-primary" href="{:U('/Home/Fen/addpage')}"><img src="/images/chongzhi.png" alt="">充值</a>
+                <a class="btn btn-warning" href="{:U('Home/Fen/postal')}"><img src="/images/tixian.png" alt="">提现</a>
+            </div>
+        </section>
+
+        <!-- 功能菜单 -->
+        <section style="margin-top:12px;">
+            <div class="grid">
+                <a href="{:U('/Home/User/setting')}" class="menu-item"><img src="/images/zhanghuxinxi.png" alt=""><p>账户信息</p></a>
+                <a href="{:U('/Home/User/gonggao')}" class="menu-item"><img src="/images/xiaoxigonggao.png" alt=""><p>消息公告</p></a>
+                <a href="{:U('Home/Run/history')}" class="menu-item"><img src="/images/touzhujilu.png" alt=""><p>购买记录</p></a>
+                <a href="{:U('/Home/User/fenxia')}" class="menu-item"><img src="/images/zijinmingxi.png" alt=""><p>资金明细</p></a>
+                <a href="{:C('zxkf')}" class="menu-item"><img src="/images/kefuzhongxin.png" alt=""><p>客服中心</p></a>
+                <a href="{:U('Home/User/gonggao')}" class="menu-item"><img src="/images/bangzhuzhongxin.png" alt=""><p>平台公告</p></a>
+            </div>
+        </section>
+    </main>
+
+    <?php $a=5; // 底部导航高亮“我的” ?>
+    <include  file="./Template/Home/Run/footer.html" />
+</body>
+</html>

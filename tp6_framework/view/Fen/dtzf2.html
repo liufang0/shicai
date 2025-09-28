@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta content="target-densitydpi=320,width=750,user-scalable=no" name="viewport" />
+    <meta content="no" name="apple-touch-fullscreen" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <title>钱包</title>
+    <!--<link href="/statics/web/css/css.css" rel="stylesheet" type="text/css">-->
+    <!--<script src="/statics/web/js/jquery.1.8.2.min.js"></script>-->
+    <!--<script src="/statics/web/js/style.js"></script>-->
+    <link href="/statics/web/css/css.css" rel="stylesheet" type="text/css">
+<link href="/statics/web/css/red.css" rel="stylesheet" type="text/css"><script src="/statics/web/js/jquery.1.8.2.min.js"></script><script src="/statics/web/js/style.js"></script>    <script src="/statics/web/extend/layer/mobile/layer.js"></script>
+</head>
+<body>
+<header>
+    <em onclick="history.go(-1)">返回</em>
+    <h1>银行转账(大额转账,单笔5001以上送2%)线下充值</h1>
+</header>
+<section class="pb-0" style="padding: 0;margin-top: 86px;">
+    <div class="modify ">
+
+        <div class="wallet">
+            <div class="onLineGirl"><i><img src="/up_files/avatar/default/88082588f9b4b0b255e3637f1ce1395f.png" /></i> </div>
+            <div class="onLineGirl4"><em>会员账号：ka480748</em></div>
+        </div>
+        <div>
+	        <ul class="lineRecharge-input">
+	            <li style="border-bottom:none">
+	
+	                <label class="icoMoney" for="money">充值金额：<input type="number" id="money">
+	
+	                </label>
+	                <p style="position: absolute;top: 35px;right: 53px; color: #ccc">(人民币)</p>
+	<!--                <p class="remarks"><span class="red">*</span>范围：100-500000<br>
+	                    建议通过银行卡转账入款</p>-->
+	
+	            </li>
+	        </ul>
+        </div>
+		<div class="amount-tab" id="amount-tab">
+		    		    <div><span>100</span></div>
+		    		    <div><span>300</span></div>
+		    		    <div><span>500</span></div>
+		    		    <div><span>1000</span></div>
+		    		    <div><span>2000</span></div>
+		    		    <div><span>10000</span></div>
+		        </div>
+	    <div style="width: 100%;padding: 20px 30px;"><span style="color: red;">*</span>充值限额： 10 ~ 9999479789.7 ，建议通过银行卡转账入款</div>
+
+        <div class="weixintishi">
+        	<p>【温馨提示】</p>
+           	               	  <p>1.填入或选择正确的金额，然后点击“立即充值”按钮</p>
+                  <p>2.系统会返回转账信息或支付二维码等充值信息</p>
+                  <p>3.充值完成之后，请联系在线客服。</p>
+                    </div>
+        <div class="button" style="margin-top: 50px"><button class="red-btn bgCol" id="xsBtn">立即支付</button></div>
+    </div>
+<div id="jumpHtml">
+</div>
+</section>
+    <script type="text/javascript">
+        var url = "http://hmyl28.com/?m=web&c=recharge&a=recharge";
+        var lower_limit = "10";
+        var upper_limit = "9999479789.7";
+        var payment_id = "137";
+
+        //判断客户端
+        if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+            url = url + "&method=mobile";
+        } else if (/(Android)/i.test(navigator.userAgent)) {
+            url = url + "&method=mobile";
+        } else {
+            url = url + "&method=pc";
+        };
+
+        $(function() {
+        	$('#amount-tab').children("div").click(function(){
+        		var money = $(this).children('span').text();
+        		
+        		$('#money').attr('value', money);
+        		$(this).attr('class', 'active');
+        		$(this).siblings().removeClass('active');
+        	});
+            $("#xsBtn").click(function() {
+                var money = $("#money").val();
+                
+                //金额判断
+                if (money == '') {
+                    layer.open({
+                        content: "<p class='alert_msg'>请输入充值金额</p>",
+                        btn: '我知道了'
+                    });
+                    return;
+                }
+
+                //判断金额是否正确
+                if (parseInt(money) < parseInt(lower_limit)) {
+                    layer.open({
+                        content: "<p class='alert_msg'>输入的金额不能小于"+lower_limit+"元</p>",
+                        btn: '我知道了'
+                    })
+                    return;
+                }
+                
+              //判断金额是否正确
+                if (parseInt(money) > parseInt(upper_limit)) {
+                    layer.open({
+                        content: "<p class='alert_msg'>输入的金额不能大于"+ upper_limit+"元</p>",
+                        btn: '我知道了'
+                    })
+                    return;
+                }
+              
+                $.ajax({
+                    url: "http://hmyl28.com/?m=web&c=recharge&a=recharge",
+                    type: "post",
+                    data: {payment_id: payment_id, money: money},
+                    dataType: "json",
+                    beforeSend:function(){
+                        $("#xsBtn").text("加载中...");
+                        $("#xsBtn").attr("disabled",true);
+                    },
+                    success: function(result) {
+                        if (result.status == 0) { //成功
+                            window.location.href = "http://hmyl28.com/?m=web&c=recharge&a=rechargeOffline&order_sn=" + result.order_sn;
+                        } else {
+                            $(".bgCol").removeAttr("disabled");
+                            layer.open({
+                                content: "<p class='alert_msg'>" + result.ret_msg + "</p>",
+                                btn: '我知道了'
+                            });
+                        }
+
+                    },
+                    error: function(error) {
+                        $(".bgCol").removeAttr("disabled");
+                        layer.open({
+                            content: "<p class='alert_msg'>当前网络异常,请尝试刷新!</p>",
+                            btn: '刷新'
+                            ,yes: function(){
+                                location.reload();
+                            }
+                        });
+                    },
+                    complete:function(){
+                        $("#xsBtn").text("立即支付");
+                        $("#xsBtn").attr("disabled",false);
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

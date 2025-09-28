@@ -197,7 +197,7 @@
 				}
 
 				//	Replace Scalars
-				if (preg_match_all('/{([a-zA-Z0-9_. &;]+)}/', $rows[$i], $var))
+				if (preg_match_all('/[([a-zA-Z0-9_. &;}]+)]/', $rows[$i], $var))
 				{
 					foreach ($var[1] as $tag)
 					{
@@ -218,13 +218,13 @@
 						{
 							$title  =  '[BLOCK?]';
 						}
-						$code  =  '<b title="' . $title . '">{' . $fulltag . '}</b>';
-						$rows[$i]  =  str_replace('{'.$fulltag.'}',  $code,  $rows[$i]);
+						$code  =  '<b title="' . $title . '">[' . $fulltag . ']</b>';
+						$rows[$i]  =  str_replace('['.$fulltag.']',  $code,  $rows[$i]);
 					}
 				}
 
 				//	Replace Extensions
-				if (preg_match_all('/{([a-zA-Z0-9_]+):([^}]*)}/', $rows[$i], $var))
+				if (preg_match_all('/[([a-zA-Z0-9_]+):([^]]*)}/', $rows[$i], $var))
 				{
 					foreach ($var[2] as $tmpcnt => $tag)
 					{
@@ -251,8 +251,8 @@
 						{
 							$title  =  '[BLOCK?]';
 						}
-						$code  =  '<b title="' . $title . '">{' . $extension . ':' . $fulltag . '}</b>';
-						$rows[$i]  =  str_replace('{'.$extension . ':' . $fulltag .'}',  $code,  $rows[$i]);
+						$code  =  '<b title="' . $title . '">[' . $extension . ':' . $fulltag . ']</b>';
+						$rows[$i]  =  str_replace('['.$extension . ':' . $fulltag .']',  $code,  $rows[$i]);
 					}
 				}
 
@@ -446,7 +446,7 @@
 		{
 			$code  =  htmlentities($code);
 			$code  =  preg_replace('/([a-zA-Z_]+)=/',  '<font color="#FF0000">$1=</font>',  $code);
-			$code  =  preg_replace('/(&lt;[\/a-zA-Z0-9&;]+)/',  '<font color="#0000FF">$1</font>',  $code);
+			$code  =  preg_replace('/(&lt;[\/a-zA-Z0-9&;}]+)/',  '<font color="#0000FF">$1</font>',  $code);
 			$code  =  str_replace('&lt;!--',  '<font color="#008080">&lt;!--',  $code);
 			$code  =  str_replace('--&gt;',  '--&gt;</font>',  $code);
 			$code  =  preg_replace('/[\r\n]+/',  "\n",  $code);

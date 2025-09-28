@@ -2,7 +2,7 @@
 /**
  * Smarty Internal Plugin Compile Assign
  *
- * Compiles the {assign} tag
+ * Compiles the [assign] tag
  *
  * @package Smarty
  * @subpackage Compiler
@@ -18,7 +18,7 @@
 class Smarty_Internal_Compile_Assign extends Smarty_Internal_CompileBase {
 
     /**
-     * Compiles code for the {assign} tag
+     * Compiles code for the [assign] tag
      *
      * @param array  $args      array with attributes from parser
      * @param object $compiler  compiler object
@@ -63,7 +63,7 @@ class Smarty_Internal_Compile_Assign extends Smarty_Internal_CompileBase {
         if ($_scope == Smarty::SCOPE_PARENT) {
             $output .= "\nif (\$_smarty_tpl->parent != null) \$_smarty_tpl->parent->tpl_vars[$_attr[var]] = clone \$_smarty_tpl->tpl_vars[$_attr[var]];";
         } elseif ($_scope == Smarty::SCOPE_ROOT || $_scope == Smarty::SCOPE_GLOBAL) {
-            $output .= "\n\$_ptr = \$_smarty_tpl->parent; while (\$_ptr != null) {\$_ptr->tpl_vars[$_attr[var]] = clone \$_smarty_tpl->tpl_vars[$_attr[var]]; \$_ptr = \$_ptr->parent; }";
+            $output .= "\n\$_ptr = \$_smarty_tpl->parent; while (\$_ptr != null) [\$_ptr->tpl_vars[$_attr[var]] = clone \$_smarty_tpl->tpl_vars[$_attr[var]]; \$_ptr = \$_ptr->parent; ]";
         }
         if ( $_scope == Smarty::SCOPE_GLOBAL) {
             $output .= "\nSmarty::\$global_tpl_vars[$_attr[var]] = clone \$_smarty_tpl->tpl_vars[$_attr[var]];";

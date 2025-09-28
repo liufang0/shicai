@@ -1,0 +1,200 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>{:C('sitename')}-个人中心</title>
+		<meta name="format-detection" content="telephone=no,email=no"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+		<link href="__PUBLIC__/Admin/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/animate.min.css" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+		<link href="__PUBLIC__/Home/css/page.css" rel="stylesheet">
+	</head>
+	<style type="text/css">
+		body{background: rgba(199, 197, 197, 0.42)}
+		p{margin:0; padding:0;}
+		.headimg{padding:15px 20px;border-bottom:1px solid rgba(255, 255, 255, 0.15);}
+		.headimg img{width:40px;dislpay:block;float:left;border:1px solid rgba(255, 255, 255, 0.31);border-radius:20px;}
+		.headimg .right{margin-left:50px;}
+		.headimg p{margin:0;}
+		.mdata{padding:10px 20px 0 20px;}
+		.mdata li{list-style: none;float:left;width:33.33%;text-align:center;}
+		.mdata li .p1{color:#d4a448;}
+		.clear{clear:both;}
+		.ulist{margin-bottom:10px;display: block;background: #fff;padding:0;}
+		.ulist li{list-style: none;padding:8px 20px;color:#211e1e;border-bottom:1px solid rgba(189, 175, 175, 0.15); }
+		.ulist li p{display: inline-block;}
+		.ulist li .p2{float: right}
+		.back{
+			display: block;width:100%;height:40px;line-height: 40px;font-size:16px;text-align: center;color:#d4a448;
+			position: fixed;bottom:0;background:#393a3e;
+		}
+	</style>
+	<body>
+		<div class="header">
+		  	<div class="headimg">
+		 		<img src="{$user.headimgurl}">
+		 		<div class="right">
+		 			<p><font color="#d4a448">{$user.nickname}</font> 您好!</p>
+		 			<p>欢迎来到【{:C('sitename')}】</p>
+		 		</div>
+		 		
+		 	</div>
+			<ul class="mdata">
+				<div class="clear"></div>
+				<li>
+					<p class="p1">{$user.points}</p>
+					<p>我的钱包</p>
+				</li>
+				<li>
+					<p class="p1">{$user.ying}</p>
+					<p>今日盈亏</p>
+				</li>
+				<li>
+					<p class="p1">{$user.yong_today}</p>
+					<p>今日推广佣金</p>
+				</li>
+				<div class="clear"></div>
+			</ul>
+		</div>
+
+		<ul class="ulist">
+			<a href="/Home/User/yzqpage">
+				<li>
+					<p>佣金转入钱包</p>
+					<p class="p2">共<font color="#d4a448">{$user.yong|default="0"}</font>元</p>
+				</li>
+			</a>
+		</ul>
+
+		<ul class="ulist">
+			<a href="/Home/User/fzqpage">
+				<li>
+					<p>返水金额转入钱包</p>
+					<p class="p2">共<font color="#d4a448">{$user.fanshui|default="0"}</font>元</p>
+				</li>
+			</a>
+		</ul>
+		
+		<!-- <ul class="ulist">
+			<a href="/Home/User/edzhpage">
+				<li>
+					<p>额度转换</p>
+					<p class="p2">查看 ></p>
+				</li>
+			</a>
+		</ul> -->
+		
+		<ul  class="ulist">
+			<a href="/Home/User/offline?id={$user.id}">
+				<li>
+					<p>我的下线</p>
+					<p class="p2">共<font color="#d4a448">{$user.t_account}</font>人 ></p>
+				</li>
+			</a>
+			<a href="/Home/User/fenadd">
+				<li>
+					<p>充值记录</p>
+					<p class="p2">查看 ></p>
+				</li>
+			</a>
+			<a href="/Home/User/fenxia">
+				<li>
+					<p>提现记录</p>
+					<p class="p2">查看 ></p>
+				</li>
+			</a>
+		</ul>
+
+		<ul class="ulist">
+			<a href="/Home/User/xiazhu?t=1">
+				<li>
+					<p>下注明细</p>
+					<p class="p2">查看 ></p>
+				</li>
+			</a>
+			<if condition="C('is_qrcode') eq 1">
+				<a href="{:U('Home/Run/tui')}?uid={$userinfo.id}">
+					<li>
+						<p>我的推广</p>
+						<p class="p2">查看 ></p>
+					</li>
+				</a>
+			</if>
+			
+		
+			
+		</ul>
+
+		<ul class="ulist">
+
+			<if condition="C('is_weixin') eq 1 && $is_weixin eq false">
+				<a href="/Home/User/uppwd">
+					<li>
+						<p>修改密码</p>
+						<p class="p2">查看 ></p>
+					</li>
+				</a>
+			</if>
+			<a href="__ROOT__/Uploads{$kefu.kefu}">
+				<li>
+					<p>联系客服</p>
+					<p class="p2">查看 ></p>
+				</li>
+			</a>
+
+			<if condition="C('is_weixin') eq 1 && $is_weixin eq true">
+			<else />
+				<a href="/Home/Index/logout">
+					<li>
+						<p>退出</p>
+						<p class="p2"></p>
+					</li>
+				</a>
+			</if>
+			
+			
+		</ul>
+
+		<a class="back" href="{:U('Home/Run/index')}">返回游戏</a>
+		
+
+		<script src="__PUBLIC__/Admin/js/jquery.min.js?v=2.1.4"></script>
+		<script src="__PUBLIC__/Admin/js/bootstrap.min.js?v=3.3.6"></script>
+		
+		<script src="__PUBLIC__/Common/js/ajaxForm.js"></script>
+		<script src="__PUBLIC__/layer/layer.js"></script>
+		<script type="text/javascript">
+			
+
+			$(function(){
+				$('#LoginForm').ajaxForm({
+					beforeSubmit: checkForm,
+					success: complete, 
+					dataType: 'json'
+				});
+				function checkForm(){
+					
+				}
+				function complete(data){
+					if(data.status==1){
+						$('.btn').attr('disabled','disabled');
+						layer.msg(data.info, function(index){
+			 				layer.close(index);
+							window.location.href=data.url;
+						});
+					}else{
+						layer.msg(data.info);
+						$('#password').val('').focus();
+						return false;	
+					}
+				}
+			});
+		</script>
+		</script>
+		
+		<?php $a=5;?>
+		<include  file="./Template/Home/Run/footer.html" />
+	</body>
+
+</html>

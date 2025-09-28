@@ -7,7 +7,7 @@
  */
 
 /**
- * Smarty {cycle} function plugin
+ * Smarty [cycle] function plugin
  *
  * Type:     function<br>
  * Name:     cycle<br>
@@ -26,12 +26,12 @@
  * </pre>
  * Examples:<br>
  * <pre>
- * {cycle values="#eeeeee,#d0d0d0d"}
- * {cycle name=row values="one,two,three" reset=true}
- * {cycle name=row}
+ * [cycle values="#eeeeee,#d0d0d0d"]
+ * [cycle name=row values="one,two,three" reset=true]
+ * [cycle name=row]
  * </pre>
  *
- * @link http://www.smarty.net/manual/en/language.function.cycle.php {cycle}
+ * @link http://www.smarty.net/manual/en/language.function.cycle.php [cycle]
  *       (Smarty online manual)
  * @author Monte Ohrt <monte at ohrt dot com>
  * @author credit to Mark Priatel <mpriatel@rogers.com>

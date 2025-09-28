@@ -1,0 +1,27 @@
+/****************************
+	----- 重置 -----
+*****************************/
+*{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+html,body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, p, blockquote, th, td { margin:0; padding:0;  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);}
+html {overflow-y: scroll;}
+body {position: relative;font-family:"microsoft yahei";font-size: 12px;}
+input,button{ margin:0; padding:0; list-style-type:none;border:none;}
+button{font-family:"microsoft yahei";}
+fieldset, img { border:0; }
+ol, ul { list-style:none; }
+h1, h2, h3, h4, h5, h6{}
+em { font-style:normal; }
+input, button, select, textarea ,a{ outline:none; }
+textarea { resize:none; } /*禁用了文本的拖拉，尤其在谷歌下*/
+p{ text-align:justify; text-justify:distribute;} /*为了使文本段落左右两边对齐*/
+a {cursor: pointer;}
+a {-webkit-tap-highlight-color: transparent;-webkit-touch-callout: none;-webkit-user-select: none;}
+a,a:hover{text-decoration:none;}
+.line,a.line,a.line:hover,a.hover-line:hover{text-decoration: underline;}
+
+
+

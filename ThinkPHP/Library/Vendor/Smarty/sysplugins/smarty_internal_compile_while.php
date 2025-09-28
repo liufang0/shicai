@@ -2,7 +2,7 @@
 /**
  * Smarty Internal Plugin Compile While
  *
- * Compiles the {while} tag
+ * Compiles the [while] tag
  *
  * @package Smarty
  * @subpackage Compiler
@@ -18,7 +18,7 @@
 class Smarty_Internal_Compile_While extends Smarty_Internal_CompileBase {
 
     /**
-     * Compiles code for the {while} tag
+     * Compiles code for the [while] tag
      *
      * @param array  $args      array with attributes from parser
      * @param object $compiler  compiler object
@@ -53,12 +53,12 @@ class Smarty_Internal_Compile_While extends Smarty_Internal_CompileBase {
                 $_output = "<?php if (!isset(\$_smarty_tpl->tpl_vars[" . $parameter['if condition']['var']['var'] . "]) || !is_array(\$_smarty_tpl->tpl_vars[" . $parameter['if condition']['var']['var'] . "]->value)) \$_smarty_tpl->createLocalArrayVariable(" . $parameter['if condition']['var']['var'] . "$_nocache);\n";
                 $_output .= "while (\$_smarty_tpl->tpl_vars[" . $parameter['if condition']['var']['var'] . "]->value" . $parameter['if condition']['var']['smarty_internal_index'] . " = " . $parameter['if condition']['value'] . "){?>";
             } else {
-                $_output = "<?php if (!isset(\$_smarty_tpl->tpl_vars[" . $parameter['if condition']['var'] . "])) \$_smarty_tpl->tpl_vars[" . $parameter['if condition']['var'] . "] = new Smarty_Variable(null{$_nocache});";
+                $_output = "<?php if (!isset(\$_smarty_tpl->tpl_vars[" . $parameter['if condition']['var'] . "])) \$_smarty_tpl->tpl_vars[" . $parameter['if condition']['var'] . "] = new Smarty_Variable(null[$_nocache]);";
                 $_output .= "while (\$_smarty_tpl->tpl_vars[" . $parameter['if condition']['var'] . "]->value = " . $parameter['if condition']['value'] . "){?>";
             }
             return $_output;
         } else {
-            return "<?php while ({$parameter['if condition']}){?>";
+            return "<?php while ([$parameter['if condition']]){?>";
         }
     }
 
@@ -73,7 +73,7 @@ class Smarty_Internal_Compile_While extends Smarty_Internal_CompileBase {
 class Smarty_Internal_Compile_Whileclose extends Smarty_Internal_CompileBase {
 
     /**
-     * Compiles code for the {/while} tag
+     * Compiles code for the [/while] tag
      *
      * @param array  $args     array with attributes from parser
      * @param object $compiler compiler object

@@ -49,7 +49,7 @@ class Smarty_Internal_Configfilelexer
 
     function yylex()
     {
-        return $this->{'yylex' . $this->_yy_state}();
+        return $this->['yylex' . $this->_yy_state]();
     }
 
     function yypushstate($state)
@@ -106,7 +106,7 @@ class Smarty_Internal_Configfilelexer
                     $yysubmatches = array();
                 }
                 $this->value = current($yymatches); // token value
-                $r = $this->{'yy_r1_' . $this->token}($yysubmatches);
+                $r = $this->['yy_r1_' . $this->token]($yysubmatches);
                 if ($r === null) {
                     $this->counter += strlen($this->value);
                     $this->line += substr_count($this->value, "\n");
@@ -192,7 +192,7 @@ class Smarty_Internal_Configfilelexer
         if ($this->counter >= strlen($this->data)) {
             return false; // end of input
         }
-        $yy_global_pattern = "/\G([ \t\r]+)|\G(\\d+\\.\\d+(?=[ \t\r]*[\n#;]))|\G(\\d+(?=[ \t\r]*[\n#;]))|\G(\"\"\")|\G('[^'\\\\]*(?:\\\\.[^'\\\\]*)*'(?=[ \t\r]*[\n#;]))|\G(\"[^\"\\\\]*(?:\\\\.[^\"\\\\]*)*\"(?=[ \t\r]*[\n#;]))|\G([a-zA-Z]+(?=[ \t\r]*[\n#;]))|\G([^\n]+?(?=[ \t\r]*\n))|\G(\n)/iS";
+        $yy_global_pattern = "/\G([ \t\r]+)|\G(\\d+\\.\\d+(?=[ \t\r]*[\n#;}]))|\G(\\d+(?=[ \t\r]*[\n#;}]))|\G(\"\"\")|\G('[^'\\\\]*(?:\\\\.[^'\\\\]*)*'(?=[ \t\r]*[\n#;}]))|\G(\"[^\"\\\\]*(?:\\\\.[^\"\\\\]*)*\"(?=[ \t\r]*[\n#;}]))|\G([a-zA-Z]+(?=[ \t\r]*[\n#;}]))|\G([^\n]+?(?=[ \t\r]*\n))|\G(\n)/iS";
 
         do {
             if ($this->mbstring_overload ? preg_match($yy_global_pattern, substr($this->data, $this->counter), $yymatches) : preg_match($yy_global_pattern,$this->data, $yymatches, null, $this->counter)) {
@@ -213,7 +213,7 @@ class Smarty_Internal_Configfilelexer
                     $yysubmatches = array();
                 }
                 $this->value = current($yymatches); // token value
-                $r = $this->{'yy_r2_' . $this->token}($yysubmatches);
+                $r = $this->['yy_r2_' . $this->token]($yysubmatches);
                 if ($r === null) {
                     $this->counter += strlen($this->value);
                     $this->line += substr_count($this->value, "\n");
@@ -334,7 +334,7 @@ class Smarty_Internal_Configfilelexer
                     $yysubmatches = array();
                 }
                 $this->value = current($yymatches); // token value
-                $r = $this->{'yy_r3_' . $this->token}($yysubmatches);
+                $r = $this->['yy_r3_' . $this->token]($yysubmatches);
                 if ($r === null) {
                     $this->counter += strlen($this->value);
                     $this->line += substr_count($this->value, "\n");
@@ -403,7 +403,7 @@ class Smarty_Internal_Configfilelexer
                     $yysubmatches = array();
                 }
                 $this->value = current($yymatches); // token value
-                $r = $this->{'yy_r4_' . $this->token}($yysubmatches);
+                $r = $this->['yy_r4_' . $this->token]($yysubmatches);
                 if ($r === null) {
                     $this->counter += strlen($this->value);
                     $this->line += substr_count($this->value, "\n");
@@ -481,7 +481,7 @@ class Smarty_Internal_Configfilelexer
                     $yysubmatches = array();
                 }
                 $this->value = current($yymatches); // token value
-                $r = $this->{'yy_r5_' . $this->token}($yysubmatches);
+                $r = $this->['yy_r5_' . $this->token]($yysubmatches);
                 if ($r === null) {
                     $this->counter += strlen($this->value);
                     $this->line += substr_count($this->value, "\n");
@@ -533,7 +533,7 @@ class Smarty_Internal_Configfilelexer
         if ($this->counter >= strlen($this->data)) {
             return false; // end of input
         }
-        $yy_global_pattern = "/\G(\"\"\"(?=[ \t\r]*[\n#;]))|\G([ \t\r]*\n)|\G(([\S\s]*?)(?=([ \t\r]*\n|\"\"\")))/iS";
+        $yy_global_pattern = "/\G(\"\"\"(?=[ \t\r]*[\n#;}]))|\G([ \t\r]*\n)|\G(([\S\s]*?)(?=([ \t\r]*\n|\"\"\")))/iS";
 
         do {
             if ($this->mbstring_overload ? preg_match($yy_global_pattern, substr($this->data, $this->counter), $yymatches) : preg_match($yy_global_pattern,$this->data, $yymatches, null, $this->counter)) {
@@ -554,7 +554,7 @@ class Smarty_Internal_Configfilelexer
                     $yysubmatches = array();
                 }
                 $this->value = current($yymatches); // token value
-                $r = $this->{'yy_r6_' . $this->token}($yysubmatches);
+                $r = $this->['yy_r6_' . $this->token]($yysubmatches);
                 if ($r === null) {
                     $this->counter += strlen($this->value);
                     $this->line += substr_count($this->value, "\n");

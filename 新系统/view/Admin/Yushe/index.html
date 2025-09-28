@@ -1,0 +1,72 @@
+<html>
+	<head>
+		<link rel='stylesheet' href='/Public/Admin/layui/css/layui.css' />
+		<script src='/Public/Admin/layui/layui.js'></script>
+		<style>
+			body{background:#fff;}
+			.tapboxs{padding:15px;}
+		</style>
+	</head>
+	<?php 
+		if($_GET['type'] == 'bj28'||$_GET['type'] == 'jnd28'){
+			$i = 3;
+		}
+		if($_GET['type'] == 'pk10'){
+			$i = 10;
+		}
+	?>
+	<!--  <select name="periodnumber" lay-verify="required">
+		<?php  /*for($qi = 1; $qi <=3; $qi++){ ?>
+		<option value="<?=$list[0]['periodnumber']+$qi?>"><?=$list[0]['periodnumber']+$qi?></option>
+		<?php  }*/ ?>
+	  </select> -->
+	<body>
+		<div class='tapboxs'>
+			<form class="layui-form" method='post' action="add">
+				<div class="layui-inline">
+					<input type="text" name="periodnumber" required  lay-verify="required|number" placeholder="期号" autocomplete="off" class="layui-input">
+				</div>
+				<?php for($j = 0; $j<$i; $j++){ ?>
+				<div class="layui-inline">
+				  <input type="text" style='width:80px;' maxlength='2' name="code[]" required  lay-verify="required|number" placeholder="号码" autocomplete="off" class="layui-input">
+				</div>
+				<?php } ?>
+				<input type='hidden' name='type' value='<?=$_GET['type']?>' />
+				<div class='layui-inline'>
+					<button id='add' lay-submit class="layui-btn">添加</button>
+				</div>
+			</form>
+			<table id="table" lay-filter="table"></table>
+		</div>
+		<script type='text/html' id='time'>
+			{{# if(d.awardtime){ }}
+				{{d.awardtime}}
+			{{# }else{ }}
+			未到开奖时间
+			{{# } }}
+		</script>
+		<script>
+		layui.use(['table','layer'], function(){
+		  var table = layui.table,
+				layer = layui.layer
+				$ = layui.jquery;
+		  
+		  //第一个实例
+		  table.render({
+			elem: '#table'
+			,method: 'post'
+			,height: 500
+			,url: '?type=<?=$_GET['type']?>' //数据接口
+			,page: true //开启分页
+			,cols: [[ //表头
+			   
+			  {field: 'periodnumber', title: '开奖期数', width:150, sort: true},
+			  {field: 'awardnumbers', title: '开奖号码', width:150, sort: true, templet:function(d){ return '<form class="layui-form" method=\'post\' action="update"><input type="hidden" name="type" value="<?=$_GET[type]?>"><input type="hidden" name="periodnumber" value="'+d.periodnumber+'"><input type="text" style="width:70px; float:left" name="code" class="layui-input" value="'+d.awardnumbers + '"><input type="submit" value="修改" class="layui-btn"></form>'; }},
+			  {field: 'awardtime', title: '开奖时间', width:180, sort: true , templet:'#time'},
+			]]
+		  });
+		  
+		});
+		</script>
+	</body>
+</html>

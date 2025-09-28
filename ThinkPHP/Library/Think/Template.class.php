@@ -46,8 +46,8 @@ class  Template {
 
     private function stripPreg($str) {
         return str_replace(
-            array('{','}','(',')','|','[',']','-','+','*','.','^','?'),
-            array('\{','\}','\(','\)','\|','\[','\]','\-','\+','\*','\.','\^','\?'),
+            array('[',']','(',')','|','[',']','-','+','*','.','^','?'),
+            array('\[','\]','\(','\)','\|','\[','\]','\-','\+','\*','\.','\^','\?'),
             $str);        
     }
 
@@ -98,8 +98,8 @@ class  Template {
 
         // 判断是否启用布局
         if(C('LAYOUT_ON')) {
-            if(false !== strpos($tmplContent,'{__NOLAYOUT__}')) { // 可以单独定义不使用布局
-                $tmplContent = str_replace('{__NOLAYOUT__}','',$tmplContent);
+            if(false !== strpos($tmplContent,'[__NOLAYOUT__]')) { // 可以单独定义不使用布局
+                $tmplContent = str_replace('[__NOLAYOUT__]','',$tmplContent);
             }else{ // 替换布局的主体内容
                 $layoutFile  =  THEME_PATH.C('LAYOUT_NAME').$this->config['template_suffix'];
                 // 检查布局文件
@@ -180,7 +180,7 @@ class  Template {
         foreach ($tagLibs as $tag){
             $this->parseTagLib($tag,$content,true);
         }
-        //解析普通模板标签 {$tagName}
+        //解析普通模板标签 [$tagName]
         $content = preg_replace_callback('/('.$this->config['tmpl_begin'].')([^\d\w\s'.$this->config['tmpl_begin'].$this->config['tmpl_end'].'].+?)('.$this->config['tmpl_end'].')/is', array($this, 'parseTag'),$content);
         return $content;
     }
@@ -215,7 +215,7 @@ class  Template {
                 $content    =   str_replace($replace,$content,file_get_contents($layoutFile));
             }
         }else{
-            $content = str_replace('{__NOLAYOUT__}','',$content);
+            $content = str_replace('[__NOLAYOUT__]','',$content);
         }
         return $content;
     }
@@ -291,7 +291,7 @@ class  Template {
         if(trim($content)=='')  return '';
         //$content            =   stripslashes($content);
         $i                  =   count($this->literal);
-        $parseStr           =   "<!--###literal{$i}###-->";
+        $parseStr           =   "<!--###literal[$i]###-->";
         $this->literal[$i]  =   $content;
         return $parseStr;
     }
@@ -346,7 +346,7 @@ class  Template {
         } elseif(is_array($content)){
             if(preg_match('/'.$begin.'block\sname=[\'"](.+?)[\'"]\s*?'.$end.'/is', $content[3])){ //存在嵌套，进一步解析
                 $parse = 1;
-                $content[3] = preg_replace_callback($reg, array($this, 'replaceBlock'), "{$content[3]}{$begin}/block{$end}");
+                $content[3] = preg_replace_callback($reg, array($this, 'replaceBlock'), "[$content[3]][$begin]/block[$end]");
                 return $content[1] . $content[3];
             } else {
                 $name    = $content[2];
@@ -452,7 +452,7 @@ class  Template {
 
     /**
      * 模板标签解析
-     * 格式： {TagName:args [|content] }
+     * 格式： [TagName:args [|content] ]
      * @access public
      * @param string $tagStr 标签内容
      * @return string
@@ -483,7 +483,7 @@ class  Template {
 
     /**
      * 模板变量解析,支持使用函数
-     * 格式： {$varname|function1|function2=arg1,arg2}
+     * 格式： [$varname|function1|function2=arg1,arg2]
      * @access public
      * @param string $varStr 变量数据
      * @return string
@@ -503,7 +503,7 @@ class  Template {
                 // 所有以Think.打头的以特殊变量对待 无需模板赋值就可以输出
                 $name = $this->parseThinkVar($var);
             }elseif( false !== strpos($var,'.')) {
-                //支持 {$var.property}
+                //支持 [$var.property]
                 $vars = explode('.',$var);
                 $var  =  array_shift($vars);
                 switch(strtolower(C('TMPL_VAR_IDENTIFY'))) {
@@ -521,12 +521,12 @@ class  Template {
                         $name = 'is_array($'.$var.')?$'.$var.'["'.$vars[0].'"]:$'.$var.'->'.$vars[0];
                 }
             }elseif(false !== strpos($var,'[')) {
-                //支持 {$var['key']} 方式输出数组
+                //支持 [$var['key']] 方式输出数组
                 $name = "$".$var;
                 preg_match('/(.+?)\[(.+?)\]/is',$var,$match);
                 $var = $match[1];
             }elseif(false !==strpos($var,':') && false ===strpos($var,'(') && false ===strpos($var,'::') && false ===strpos($var,'?')){
-                //支持 {$var:property} 方式输出对象的属性
+                //支持 [$var:property] 方式输出对象的属性
                 $vars = explode(':',$var);
                 $var  =  str_replace(':','->',$var);
                 $name = "$".$var;
@@ -545,7 +545,7 @@ class  Template {
 
     /**
      * 对模板变量使用函数
-     * 格式 {$varname|function1|function2=arg1,arg2}
+     * 格式 [$varname|function1|function2=arg1,arg2]
      * @access public
      * @param string $name 变量名
      * @param array $varArray  函数列表

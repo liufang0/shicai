@@ -1,11 +1,7 @@
 <?php
-
 namespace Home\Controller;
 use Think\Server;
-
-header('content-type:text/html;charset=utf-8');
 class Workermanpk10Controller extends Server {
-
 	protected $socket = 'websocket://0.0.0.0:15531';
 	
 	/*添加定时器
@@ -16,7 +12,6 @@ class Workermanpk10Controller extends Server {
 		// if (!$auth) {
 			// echo "未授权或授权已过期";exit;
 		// }
-
 		$beginToday=strtotime('00:00:00');
 		$endToday=strtotime("23:59:59");
 		$caiji = M('caiji')->where("game='pk10'")->limit(0,1)->order("id desc")->find();
@@ -47,11 +42,9 @@ class Workermanpk10Controller extends Server {
 			$beginToday=strtotime('00:00:00');
 			$endToday=strtotime("23:59:59");
 			F('game','pk10');
-
 			$pk10data = F('pk10data');
 			$next_time = 75+strtotime($pk10data['next']['awardTime']);
 			$awardtime = $pk10data['current']['awardTime'];
-
 		//	if($next_time-time()>C('pk10_stop_time') && $next_time-time()<288 && time()>$beginToday && time()<$endToday ){
 			if(true){
 				F('pk10_state',1);
@@ -73,7 +66,6 @@ class Workermanpk10Controller extends Server {
 					$conn -> send(json_encode($new_message));
 				}
 			}
-
 			if($next_time-time()==C('pk10_stop_time')-6){
 				F('pk10_state',0);
 				setconfig('pk10_state',0);
@@ -89,9 +81,6 @@ class Workermanpk10Controller extends Server {
 				}
 				$this->add_message($new_message);/*添加信息*/
 			}
-
-
-
 			 
 			//echo($next_time-time()."\n");
 			if((($next_time-time()>288) || (time() > strtotime("00:00:00") && time() < strtotime("23:59:00"))) && F('is_send')==0){
@@ -145,9 +134,7 @@ class Workermanpk10Controller extends Server {
 							);
 							M('push_money')->add($fx_data);
 						}
-
 						$set_add = M('order')->where("id={$id}")->setField(array('is_add'=>1));
-						header('content-type:text/html;charset=utf-8');
 						//分类
 						switch($list[$i]['type']){
 							//车号大小单双(12345双100)
@@ -173,7 +160,6 @@ class Workermanpk10Controller extends Server {
 									$start1 = $ex_info;
 									$info_dxds = '双';
 								}
-
 								// $start1 = explode('/', $list[$i]['jincai']);
 								// $num1 = 0;
 								if ($start1[0] == '') {
@@ -220,7 +206,6 @@ class Workermanpk10Controller extends Server {
 							//车号(12345/89/20)
 							case 2:
 								$start2 = explode('/', $list[$i]['jincai']);
-
 								if (count($start2) == 3) {
 									$chehao2 = str_split($start2[1]);
 									$starts2 = str_split($start2[0]);
@@ -230,9 +215,6 @@ class Workermanpk10Controller extends Server {
 									$starts2 = str_split('1');
 									$ya = $start2[1];
 								}
-
-
-
 								$num2 = 0;
 								for($s=0;$s<count($chehao2);$s++){
 									for($a=0;$a<count($starts2);$a++){
@@ -412,7 +394,6 @@ class Workermanpk10Controller extends Server {
 								$starts8 = substr($start8[0], 3);
 								$num8 = 0;
 								$points8 = 0;
-
 								$num_str8 = fv_split($starts8);
 								$info_str8 = array();
 								for($a=0;$a<count($num_str8);$a++){
@@ -430,7 +411,6 @@ class Workermanpk10Controller extends Server {
 										$info_str8[] = $num_str8[$a];
 									}
 								}
-
 								
 								for($a=0;$a<count($info_str8);$a++){
 									if($current_number['tema']==$info_str8[$a]){
@@ -452,7 +432,6 @@ class Workermanpk10Controller extends Server {
 										$num8++;
 									}
 								}
-
 								if($num8>0){
 									$res8 = $this->add_points($id,$userid,$points8);
 									if($res8){
@@ -533,7 +512,6 @@ class Workermanpk10Controller extends Server {
 			
     	});
 		
-
 		
 		//ping 统计人数
 		\Workerman\Lib\Timer::add($time_interval, function(){
@@ -615,7 +593,6 @@ class Workermanpk10Controller extends Server {
 					}
 					$map['lh'] = serialize($lh);
 					$map['tema'] = $info[0]+$info[1];
-
 					if (C('pk10_gy_set') == 1) {
 						if($map['tema'] % 2 == 0){
 							$map['tema_ds'] = '双';
@@ -634,7 +611,6 @@ class Workermanpk10Controller extends Server {
 						}
 					}
 					
-
 					if (C('pk10_gy_set') == 1) {
 						if($map['tema']>=12){
 							$map['tema_dx'] = '大';
@@ -650,7 +626,6 @@ class Workermanpk10Controller extends Server {
 							$map['tema_dx'] = '小';
 						}
 					}
-
 					
 					if($map['tema']>=3 && $map['tema']<=7){
 						$map['tema_dw'] = 'A';
@@ -667,13 +642,11 @@ class Workermanpk10Controller extends Server {
 						$map['zx'] = '闲';
 					}
 					$map['game'] = $data['game'];
-
 					$res1 = M('number')->add($map);
 					if($res1){
 						F('pk10PeriodNumber',$data['current']['periodNumber']);
 						F('pk10data',$data);
 						F('is_send',0);
-
 						//采集到开奖数据，客服发布通知
 						// $content = "开奖采集数据,请等待系统开奖结算<br/>
 						// 			期号：".$map['periodnumber']." <br/>
@@ -694,7 +667,6 @@ class Workermanpk10Controller extends Server {
 				}
 			}
     	});
-
 	}
 	
 	/*
@@ -819,7 +791,6 @@ class Workermanpk10Controller extends Server {
 						} else {
 							$content_msg =  '「'.$message_data['content'].'」'.'单笔点数最高'.$res['xz_max'].',竞猜失败';
 						}
-
 						$new_message = array(
 							'uid'  => $connection->uid,
 							'type' => 'admin',
@@ -863,41 +834,32 @@ class Workermanpk10Controller extends Server {
 							$user = M('user')->where("id = $userid")->find();
 							//当前玩法是否超过设置金额
 							$wf_points = M('order')->field("sum(del_points) as sum_del")->where("userid = {$userid} and type={$res['type']} and state=1  and number = {$pk10data['next']['periodNumber']}")->find();
-
 							$wf_max_points = 1000000000000;
 							// switch ($res['type']) {
 								// case '1':
 									// $wf_max_points = C('pk10_xz_max')['dxds'];
 									// break;
-
 								// case '2':
 									// $wf_max_points = C('pk10_xz_max')['chehao'];
 									// break;
-
 								// case '3':
 									// $wf_max_points = C('pk10_xz_max')['zuhe'];
 									// break;
-
 								// case '4':
 									// $wf_max_points = C('pk10_xz_max')['lh'];
 									// break;
-
 								// case '5':
 									// $wf_max_points = C('pk10_xz_max')['zx'];
 									// break;
-
 								// case '6':
 									// $wf_max_points = C('pk10_xz_max')['gy'];
 									// break;
-
 								// case '7':
 									// $wf_max_points = C('pk10_xz_max')['tema'];
 									// break;
-
 								// case '8':
 									// $wf_max_points = C('pk10_xz_max')['tema_sz'];
 									// break;
-
 								// case '9':
 									// $wf_max_points = C('pk10_xz_max')['tema_qd'];
 									// break;
@@ -906,7 +868,6 @@ class Workermanpk10Controller extends Server {
 									// $wf_max_points = 0;
 									// break;
 							// }
-
 							//车号限制  123/23/100
 							if ($res['type'] == '2') {
 								$type_list = M('order')->where("userid = {$userid} and state=1  and number = {$pk10data['next']['periodNumber']} and type = 2")->select();
@@ -958,10 +919,8 @@ class Workermanpk10Controller extends Server {
 									break;
 								}
 							}
-
 							//查看已投注金额
 							$user_points = M('order')->field("sum(del_points) as sum_del")->where("userid = {$userid} and state=1  and number = {$pk10data['next']['periodNumber']}")->find();
-
 							if ((intval($user_points['sum_del'])+$res['points']) > C('pk10qi_max_point')) {
 								$points_tips = array(
 									'uid'  => $connection->uid,
@@ -1067,7 +1026,6 @@ class Workermanpk10Controller extends Server {
 								}
 							}
 						}
-
 						if (C('is_say')) {
 							$new_message2 = array(
 								'uid'=>$connection->uid,
@@ -1184,7 +1142,6 @@ class Workermanpk10Controller extends Server {
 		return $res;
 	}
 	protected function add_message($new_message){
-
 		if (!empty($new_message)) {
 			$new_message['game'] = 'pk10';
 			$res = M('message')->add($new_message);

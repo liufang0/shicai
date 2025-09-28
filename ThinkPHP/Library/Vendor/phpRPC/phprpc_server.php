@@ -98,7 +98,7 @@ class PHPRPC_Server {
     }
     function sendHeader() {
         header("HTTP/1.1 200 OK");
-        header("Content-Type: text/plain; charset={$this->charset}");
+        header("Content-Type: text/plain; charset=[$this->charset]");
         header("X-Powered-By: PHPRPC Server/3.0");
         header('P3P: CP="CAO DSP COR CUR ADM DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE GOV"');
         header('Expires: ' . gmdate('D, d M Y H:i:s') . ' GMT');
@@ -172,7 +172,7 @@ class PHPRPC_Server {
         if (is_null($output)) {
             $output = ob_get_clean();
         }
-        $this->buffer .= "phprpc_errno=\"{$this->errno}\";\r\n";
+        $this->buffer .= "phprpc_errno=\"[$this->errno]\";\r\n";
         $this->buffer .= "phprpc_errstr=\"" . $this->encodeString($this->errstr, false) . "\";\r\n";
         $this->sendOutput($output);
         $this->sendCallback();
@@ -192,7 +192,7 @@ class PHPRPC_Server {
                 $errstr = preg_replace('/ in <b>.*<\/b>$/', '', $match[2]);
             }
 
-            $buffer = "phprpc_errno=\"{$errno}\";\r\n" .
+            $buffer = "phprpc_errno=\"[$errno]\";\r\n" .
                       "phprpc_errstr=\"" . $this->encodeString(trim($errstr), false) . "\";\r\n" .
                       "phprpc_output=\"\";\r\n" .
                        $this->callback;
@@ -390,7 +390,7 @@ class PHPRPC_Server {
             $encrypt['y'] = bigint_num2dec(bigint_powmod(bigint_dec2num($encrypt['g']), $x, bigint_dec2num($encrypt['p'])));
             $this->buffer .= "phprpc_encrypt=\"" . $this->encodeString(serialize_fix($encrypt)) . "\";\r\n";
             if ($this->keylen != 128) {
-                $this->buffer .= "phprpc_keylen=\"{$this->keylen}\";\r\n";
+                $this->buffer .= "phprpc_keylen=\"[$this->keylen]\";\r\n";
             }
             $this->sendURL();
         }

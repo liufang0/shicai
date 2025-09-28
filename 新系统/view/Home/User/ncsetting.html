@@ -1,0 +1,123 @@
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+	<title>修改个人信息</title>
+
+	<!-- 引入样式 -->
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/new/css/index.css"/>
+	<link rel="stylesheet" href="/images/css/common.css"/>
+	<script src="/images/js/jquery-1.11.2.min.js"></script>
+	<script src="/images/js/sizeChange.js"></script>
+</head>
+
+<body style="background: #efeae8;">
+    <div class="nav">
+		<h3>修改个人信息</h3>
+		<i class="iconfont icon-40" onclick="back()"></i>
+	</div>
+    <div id="mainer" style="padding-top:50px;">
+
+                <div class="mainer_main">
+
+                    <div class="pass_form" name="mdfLoginPwdForm" novalidate="">
+                        <div class="item">
+                            <div class="t ng-binding">账号</div>
+                            <div class="m"><input type="text" class="input" value="{$user.username}" disabled=""></div>
+                        </div>
+                        <div class="item">
+                            <div class="t ng-binding">用户名</div>
+                            <div class="m"><input type="text" id="nickname" class="input" value="{$user.nickname}" placeholder="请输入昵称"></div>
+                        </div>
+                    </div>
+                    <!--TODO 校验不过的情况下，按钮可以设置成灰色-->
+                    <div class="btnbox">
+                        <input type="button" onclick="tijiao()" class="btn" value="确 认"></div>
+
+                </div>
+
+            </div>
+			
+<style>
+.mainer_main {
+    padding: .2rem;
+}
+.pass_form .item {
+    margin-bottom: .2rem;
+    box-shadow: 0 1px 1px #fdfcfb;
+    border: 1px #dbd3ce solid;
+    height: .86rem;
+    background: #e8e0dd;
+    border-radius: .06rem;
+    position: relative;
+}
+.pass_form .item .t {
+    position: absolute;
+    left: .2rem;
+    top: 0;
+    line-height: .86rem;
+    font-size: .28rem;
+    color: #4c4743;
+}
+.pass_form .item .input {
+    border: 0;
+    background: 0;
+    height: .86rem;
+    font-size: .32rem;
+    text-align: right;
+    width: 96%;
+    padding-right: 4%;
+}
+.btnbox .btn {
+    margin-bottom: .2rem;
+    display: block;
+    height: .88rem;
+    line-height: .88rem;
+    font-size: .36rem;
+    color: #fff;
+    text-align: center;
+    background: #d53434;
+    background-image: -webkit-gradient(linear,0% 0,0% 100%,from(#e54d4d),to(#cf2c2c));
+    border-radius: .06rem;
+    border: 0;
+    cursor: pointer;
+    border: 0;
+    width: 100%;
+    box-shadow: 0 0.05rem 0.1rem rgba(0,0,0,0.1);
+}
+</style>
+<script>
+        var loadMainCssJsRunNum = 0;
+		function tijiao(){
+			var nc = $('#nickname').val();
+			
+			if(!nc){
+				alert('请填写昵称');
+			}else{
+				$.ajax({
+                    url: "{:U('Home/User/ncsetting')}",
+                    type: "post",
+                    data: {nc: nc},
+                    success: function(result) {
+					
+                        if (result.status == 1) { //成功
+                            alert(result.info);
+							location.reload();
+                        }
+
+                    },
+                    
+                });
+			}
+		
+		}
+		 
+
+     
+    </script>
+<?php $a=5;?>
+<include  file="./Template/Home/Run/footer.html" />
+</body>
+
+</html>

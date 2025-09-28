@@ -75,7 +75,7 @@ class Loader {
         $index = md5(strtolower($type) . md5(json_encode(self::$config)));
         if (!isset(self::$cache[$index])) {
             $basicName = 'Wechat' . ucfirst(strtolower($type));
-            $className = "\\Wechat\\{$basicName}";
+            $className = "\\Wechat\\[$basicName]";
             /* 注册类的无命名空间别名，兼容未带命名空间的老版本SDK */
             !class_exists($basicName, FALSE) && class_alias($className, $basicName);
             self::$cache[$index] = new $className(self::config($config));

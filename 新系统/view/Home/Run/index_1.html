@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>{:C('sitename')}</title>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/lib.css" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/public.css" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/index.css" />
+	
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/swiper.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/style.css?v=2">
+    <style type="text/css">
+        .qimo8{ overflow:hidden; width:100%;}
+        .qimo8 .qimo {/*width:99999999px;*/width:8000%; height:30px;}
+        .qimo8 .qimo div{ float:left;}
+        .qimo8 .qimo ul{float:left; height:30px; overflow:hidden; zoom:1; }
+        .qimo8 .qimo ul li{float:left; line-height:1rem; list-style:none;}
+        .qimo8 li a{margin-right:10px;color:#F1BB5C;font-size: .8rem}
+    </style>
+	<style>
+		#sy{font-size:14px;color: #bcb6b6;}
+		.info p{top: 6px;}
+		#Cocos2dGameContainer{
+			width: 100% !important;
+			height: 274px !important;
+		}
+		.top_user{
+			width: 100%;
+		    color: #bcb6b6;
+		    height: 30px;
+		    background: #293039;
+		}
+		.top_user .headimgurl,.top_user .info,.top_user .fen{display: inline-block;}
+		.top_user .headimgurl{width:30px;height: auto}
+		.top_user .info{margin-top: 6px;vertical-align: top;font-size: 14px;}
+		.top_user .fen{float:right;margin-right:10px;}
+		.top_user .btn{
+			display: inline-block;
+		    background-color: #1fa1dc;
+		    width: 60px;
+		    height: 24px;
+		    line-height: 24px;
+		    border-radius: 3px;
+		    text-align: center;
+		    font-size: 14px;
+		    margin-top: 3px;
+		    border: 1px solid #1fa1dc;
+		    color: #FFF;
+		}
+		.top_user .logout{background: #f8ac59;border:1px solid #f8ac59;vertical-align: top;margin-top:4px;}
+		.top_user .bind{background: #f8ac59;border:1px solid #f8ac59;vertical-align: top;margin-top:4px;}
+		.top_user .button-xia{background-color: #1ab394 !important;border:1px solid #1ab394 !important;}
+		.top_user .lore{float: right;margin-right:20px;}
+		.top_user .register{background-color: #4825e1;border:1px solid #4825e1 !important;}
+		.tab-content .wz{padding:0;}
+		.tab-box table{padding: 0;font-size:12px;}
+		
+	</style>
+</head>
+<body>
+<div class="top_user">
+	<if condition="C('is_weixin') eq 1 && $is_weixin">
+		<if condition="$userinfo">
+			<div class="headimgurl no"><img src="{$userinfo.headimgurl}" /></div>
+			<!-- <div class="info">
+				<p><span id="sy">{$userinfo.nickname}</span></p>
+			</div> -->
+			<a href="/Home/Index/bind?id={$userinfo.id}" class="btn bind">绑定</a>
+			<div class="fen">
+				<a href="/Home/Fen/addpage" class="btn button-shang">上分</a>
+				<a href="/Home/Fen/xiapage" class="btn button-xia">下分</a>
+			</div>
+		</if>
+	<else/>
+		<if condition="$userinfo">
+			<div class="headimgurl no"><img src="{$userinfo.headimgurl}" /></div>
+			<div class="info">
+				<p><span id="sy">{$userinfo.nickname}</span></p>
+
+			</div>
+			<a href="/Home/Index/logout" class="btn logout">退出</a>
+			<div class="fen">
+				<a href="/Home/Fen/addpage" class="btn button-shang">上分</a>
+				<a href="/Home/Fen/xiapage" class="btn button-xia">下分</a>
+			</div>
+		<else/>
+			<div class="lore">
+				<a href="/Home/Index/login" class="btn login">登录</a>
+				<a href="/Home/Index/register" class="btn register">注册</a>
+			</div>
+		</if>
+	</if>
+</div>
+<header>
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="__PUBLIC__/Home/css/img/banner1_0.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="__PUBLIC__/Home/css/img/banner2_0.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="__PUBLIC__/Home/css/img/banner3_0.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="__PUBLIC__/Home/css/img/banner4_0.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="__PUBLIC__/Home/css/img/banner5_0.jpg" alt="">
+            </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+</header>
+<section>
+    <div class="top">
+        <img width="100%" src="__PUBLIC__/Home/css/img/kuang.png" alt="">
+        <div class="info">
+            <div id="demo" class="qimo8">
+                <div class="qimo">
+                    <div id="demo1">
+                        <ul>
+                            <li><a href='' >欢迎莅临{:C('sitename')}！本平台重金打造！玩法多样，超高赔率，等你来战！</a></li>
+                            <li><a href='' >欢迎莅临{:C('sitename')}！本平台重金打造！玩法多样，超高赔率，等你来战！</a></li>
+                            <li><a href='' >欢迎莅临{:C('sitename')}！本平台重金打造！玩法多样，超高赔率，等你来战！</a></li>
+                            <li><a href='' >欢迎莅临{:C('sitename')}！本平台重金打造！玩法多样，超高赔率，等你来战！</a></li>
+                            <li><a href='' >欢迎莅临{:C('sitename')}！本平台重金打造！玩法多样，超高赔率，等你来战！</a></li>
+                            <li><a href='' >欢迎莅临{:C('sitename')}！本平台重金打造！玩法多样，超高赔率，等你来战！</a></li>
+                        </ul>
+                    </div>
+                    <div id="demo2"></div>
+                </div>
+            </div>
+            <img src="{$userinfo.headimgurl}">
+            <div class="info_right">
+                <p>游戏昵称：<span>{$userinfo.nickname}</span></p>
+                <p>游戏帐号：<span>{$userinfo.username}</span></p>
+                <p>游戏积分：<span>{$userinfo.points}</span></p>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <ul>
+			<!-- <li>
+                <div>
+                    <a href="{:U('Home/Run/baijiale')}"><img src="__PUBLIC__/Home/css/img/gameIcon3_3.jpg" alt=""></a>
+                </div>
+            </li> -->
+            <li>
+                <div>
+                    <a href="{:U('Home/Run/pk10')}"><img src="__PUBLIC__/Home/css/img/gameIcon1_1.jpg" alt=""></a>
+                </div>
+            </li>
+			<!-- <li>
+                <div>
+                    <a href="{:U('Home/Run/er75sc')}"><img src="__PUBLIC__/Home/css/img/gameIcon1_1_1.jpg" alt=""></a>
+                </div>
+            </li> -->
+            <li>
+                <div>
+                    <a href="{:U('Home/Run/xyft')}"><img src="__PUBLIC__/Home/css/img/gameIcon1_2.jpg" alt=""></a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <a href="{:U('Home/Run/bj28')}"><img src="__PUBLIC__/Home/css/img/gameIcon3_1.jpg" alt=""></a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <a href="{:U('Home/Run/jnd28')}"><img src="__PUBLIC__/Home/css/img/gameIcon3_2.jpg" alt=""></a>
+                </div>
+            </li>
+			<li>
+                <div>
+                    <a href="{:U('Home/Run/ssc')}"><img src="__PUBLIC__/Home/css/img/gameIcon2_1.jpg" alt=""></a>
+                </div>
+            </li>
+			<li>
+                <div>
+                    <a href="{:U('Home/Run/lhc')}"><img src="__PUBLIC__/Home/css/img/lhc.jpg" alt=""></a>
+                </div>
+            </li>
+        </ul>
+    </div>
+	<br/><br/><br/><br/><br/><br/>
+</section>
+<?php $a=6;?>
+<include  file="./Template/Home/Run/footer.html" />
+<script src="__PUBLIC__/Home/js/jquery.js"></script>
+<script src="__PUBLIC__/Home/js/swiper.min.js"></script>
+<script src="__PUBLIC__/Home/js/common.js"></script>
+<script src="__PUBLIC__/Common/layer/layer.js"></script>
+<script>
+	function get_cookie(Name) {
+ 
+	　　var search = Name + "="
+	 
+	　　var returnvalue = "";
+	 
+	　　if (document.cookie.length > 0) {
+	 
+	　　offset = document.cookie.indexOf(search)
+	 
+	　　if (offset != -1) {
+	 
+	　　offset += search.length
+	 
+	　　end = document.cookie.indexOf(";", offset);
+	 
+	　　if (end == -1)
+	 
+	　　end = document.cookie.length;
+	 
+	　　returnvalue=unescape(document.cookie.substring(offset, end))
+	 
+	　　}
+	 
+	　　}
+	 
+	　　return returnvalue;
+ 
+　　} 
+    //轮播图插件
+    var swiper = new Swiper('.swiper-container', {
+        autoplay:true,
+        pagination: {
+            el: '.swiper-pagination',
+        },
+    });
+    //文字无缝滚动
+    var demo = document.getElementById("demo");
+    var demo1 = document.getElementById("demo1");
+    var demo2 = document.getElementById("demo2");
+    demo2.innerHTML=document.getElementById("demo1").innerHTML;
+    function Marquee(){
+        if(demo.scrollLeft-demo2.offsetWidth>=0){
+            demo.scrollLeft-=demo1.offsetWidth;
+        }
+        else{
+            demo.scrollLeft++;
+        }
+    }
+    var myvar=setInterval(Marquee,30);
+    demo.onmouseout=function (){myvar=setInterval(Marquee,30);}
+    demo.onmouseover=function(){clearInterval(myvar);}
+	
+	
+
+	/* if (get_cookie('app')==''){
+		if (get_cookie('popped')==''){
+ 
+		　　layer.open({
+				type: 2,
+				title: '金誉娱乐城提醒您',
+				shadeClose: false,
+				shade: false,
+				maxmin: false, //开启最大化最小化按钮
+				area: ['300px', '300px'],
+				content: "__APP__/Home/Run/modal"
+			});
+		 
+			var exp = new Date();  
+			exp.setTime(exp.getTime() + 1*60*60*1000);//过期时间 
+		　　document.cookie="popped=yes;expires="+exp.toGMTString();
+	 
+	　　}
+	} */
+	 
+</script>
+</body>
+</html>

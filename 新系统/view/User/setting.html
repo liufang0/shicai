@@ -1,0 +1,196 @@
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/new/css/index.css"/>
+    <link rel="stylesheet" href="/images/css/common.css" />
+    <link rel="apple-touch-icon" href="img/logo.png">
+    <link href="__PUBLIC__/Home/css/font-awesome.min.css" rel="stylesheet">
+    <meta name="viewport" content="user-scalable=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <link rel="manifest" href="./manifest.json">
+    
+    <script src="__PUBLIC__/Home/js/store2.mi.js"></script>
+    <script src="/images/js/sizeChange.js"></script>
+    <title>用户设置</title>
+    <style>
+        .center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            max-width: 50%;
+            transform: translate(-50%, -50%)
+        }
+        .mask {
+            padding: 1rem;
+            text-align: center;
+            border-radius: 1rem;
+            background: rgba(0, 0, 0, .4);
+            z-index: 2;
+            color: #fff
+        }
+        .spinner {
+            width: 210px;
+            text-align: center
+        }
+        .spinner>div {
+            width: 30px
+            height: 30px;
+            background-color: #fbac0f;
+            border-radius: 100%;
+            display: inline-block;
+            -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+            animation: bouncedelay 1.4s infinite ease-in-out;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both
+        }
+        .spinner .bounce1 {
+            -webkit-animation-delay: -.32s;
+            animation-delay: -.32s
+        }
+        .spinner .bounce2 {
+            -webkit-animation-delay: -.16s;
+            animation-delay: -.16s
+        }
+        @-webkit-keyframes bouncedelay {
+            0%, 100%, 80% {
+                -webkit-transform: scale(0)
+            }
+            40% {
+                -webkit-transform: scale(1)
+            }
+        }
+        @keyframes bouncedelay {
+            0%, 100%, 80% {
+                transform: scale(0);
+                -webkit-transform: scale(0)
+            }
+            40% {
+                transform: scale(1);
+                -webkit-transform: scale(1)
+            }
+        }
+        .am-list-item,.am-list-body {background: transparent !important; border: 0 !important;}
+        .am-list-item {border-bottom: 1px #efeae8 solid !important;}
+        .font16Color63 { font-size: .22rem !important;color: #4c4743 !important;}
+        .btnbox {margin-top: .35rem;}
+        .btnbox .btn {
+            margin-bottom: .2rem;
+            display: block;
+            height: .72rem;
+            line-height: .72rem;
+            font-size: .30rem;
+            color: #fff;
+            text-align: center;
+            background: #d53434;
+            background-image: none;
+            background-image: -webkit-gradient(linear,0% 0,0% 100%,from(#e54d4d),to(#cf2c2c));
+            border-radius: .06rem;
+            border: 0;
+            cursor: pointer;
+            border: 0;
+            width: 100%;
+            box-shadow: 0 .05rem .1rem rgba(0,0,0,0.1);
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/main.f2823a566.css">
+    <!--script type="text/javascript" src="__PUBLIC__/Home/js/main.98a9f062.js?0"></script-->
+    <style data-styled="" data-styled-version="4.3.2"></style>
+</head>
+<style>
+.set_main {
+    padding: .2rem;
+}
+.set_nav {
+    padding-bottom: .2rem;
+}
+.set_nav ul {
+    margin-bottom: .2rem;
+    border: 1px #e5e1df solid;
+    border-radius: .1rem;
+    background: #fdfbfa;
+    padding: 0 .22rem;
+}
+.set_nav ul li {
+    border-bottom: 1px #efeae8 solid;
+}
+.set_nav ul li a.t1 {
+    background-position: 0 0;
+}
+.set_nav ul li a {
+    display: block;
+    height: .86rem;
+    line-height: .86rem;
+    font-size: .28rem;
+    color: #4c4743;
+    padding-left: .56rem;
+    background: url(/tu/set_ico.png) left top no-repeat;
+    background-size: .36rem 8rem;
+    position: relative;
+}
+.set_nav ul li a:after {
+    display: block;
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    background: url(/tu/r.png) no-repeat;
+    background-size: .15rem .28rem;
+    width: .16rem;
+    height: .28rem;
+    margin-top: -0.14rem;
+}
+.set_nav ul li a.t2 {
+    background-position: 0 -0.88rem;
+}
+.set_nav ul li a.t3 {
+    background-position: 0 -5.66rem;
+}
+#header .topbox h2 {
+    display: block;
+    height: .86rem;
+    text-align: center;
+    font-size: .36rem;
+    color: #fff;
+    line-height: .86rem;
+    cursor: pointer;
+    margin: 0 1.5rem;
+    font-weight: normal;
+}
+</style>
+<body style="padding:0;margin:0;background: #efeae8;">
+    <div class="nav">
+        <h3>用户设置</h3>
+        <i class="iconfont icon-40" onclick="window.location.href='/Home/User/index.html'"></i>
+    </div>
+	<div id="mainer" style="padding-top:50px;">
+
+                <div class="set_main">
+
+                    <div class="set_nav">
+
+                        <ul>
+							<li><a href="{:U('Home/User/txsetting')}" class="t3 ng-binding">修改头像</a></li>
+                            <li><a href="{:U('Home/User/ncsetting')}" class="t1 ng-binding">修改个人信息</a></li>
+                            <li><a href="{:U('Home/User/mmsetting')}" class="t1 ng-binding">修改登录密码</a></li>
+                            <li><a href="{:U('Home/User/txmmsetting')}" class="t2 ng-binding">修改提现密码</a></li>
+                            <li><a href="{:U('Home/Fen/xiapage')}" class="t3 ng-binding">银行卡</a></li>
+						<!--	<li><a href="/pcdd/Home/User/userphoto.html" class="t3 ng-binding">修改头像</a></li>-->
+							<!--<li><a href="http://zb4kj.yb8w.nonghen.cn/qcCMU4" class="t7 ng-binding">app下载</a></li>-->
+                        </ul>
+
+                    </div>
+
+                    <div class="btnbox"><a href="{:U('Home/Index/logout')}" class="btn ng-binding">退 出</a></div>
+
+                </div>
+
+            </div>
+      
+</body>
+
+</html>

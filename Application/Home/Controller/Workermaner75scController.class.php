@@ -1,11 +1,7 @@
 <?php
-
 namespace Home\Controller;
 use Think\Server;
-
-header('content-type:text/html;charset=utf-8');
 class Workermaner75scController extends Server {
-
 	protected $socket = 'websocket://0.0.0.0:15542';
 	
 	/*添加定时器
@@ -16,7 +12,6 @@ class Workermaner75scController extends Server {
 		if (!$auth) {
 			echo "未授权或授权已过期";exit;
 		}
-
 		$beginToday=strtotime('00:00:00');
 		$endToday=strtotime("23:59:59");
 		$caiji = M('caiji')->where("game='er75sc'")->limit(0,1)->order("id desc")->find();
@@ -45,11 +40,9 @@ class Workermaner75scController extends Server {
 			$beginToday=strtotime('00:00:00');
 			$endToday=strtotime("23:59:59");
 			F('game','er75sc');
-
 			$er75scdata = F('er75scdata');
 			$next_time = $er75scdata['next']['delayTimeInterval']+strtotime($er75scdata['next']['awardTime']);
 			$awardtime = $er75scdata['current']['awardTime'];
-
 			if($next_time-time()>C('er75sc_stop_time')-6 && $next_time-time()<75 ){
 				F('er75sc_state',1);
 				setconfig('er75sc_state',1);
@@ -70,7 +63,6 @@ class Workermaner75scController extends Server {
 					$conn -> send(json_encode($new_message));
 				}
 			}
-
 			if($next_time-time()==C('er75sc_stop_time')-6){
 				F('er75sc_state',0);
 				setconfig('er75sc_state',0);
@@ -86,7 +78,6 @@ class Workermaner75scController extends Server {
 				}
 				$this->add_message($new_message);/*添加信息*/
 			}
-
 			echo($next_time-time()."\n");
 			if((($next_time-time()>=58) || (time() > strtotime("23:54:00") && time() < strtotime("23:59:00"))) && F('is_send')==0){
 				echo "start jie suan\n";
@@ -139,7 +130,6 @@ class Workermaner75scController extends Server {
 							);
 							M('push_money')->add($fx_data);
 						}
-
 						$set_add = M('order')->where("id={$id}")->setField(array('is_add'=>1));
 						
 						//分类
@@ -167,7 +157,6 @@ class Workermaner75scController extends Server {
 									$start1 = $ex_info;
 									$info_dxds = '双';
 								}
-
 								// $start1 = explode('/', $list[$i]['jincai']);
 								// $num1 = 0;
 								if ($start1[0] == '') {
@@ -211,7 +200,6 @@ class Workermaner75scController extends Server {
 							//车号(12345/89/20)
 							case 2:
 								$start2 = explode('/', $list[$i]['jincai']);
-
 								if (count($start2) == 3) {
 									$chehao2 = str_split($start2[1]);
 									$starts2 = str_split($start2[0]);
@@ -221,9 +209,6 @@ class Workermaner75scController extends Server {
 									$starts2 = str_split('1');
 									$ya = $start2[1];
 								}
-
-
-
 								$num2 = 0;
 								for($s=0;$s<count($chehao2);$s++){
 									for($a=0;$a<count($starts2);$a++){
@@ -403,7 +388,6 @@ class Workermaner75scController extends Server {
 								$starts8 = substr($start8[0], 3);
 								$num8 = 0;
 								$points8 = 0;
-
 								$num_str8 = fv_split($starts8);
 								$info_str8 = array();
 								for($a=0;$a<count($num_str8);$a++){
@@ -421,7 +405,6 @@ class Workermaner75scController extends Server {
 										$info_str8[] = $num_str8[$a];
 									}
 								}
-
 								
 								for($a=0;$a<count($info_str8);$a++){
 									if($current_number['tema']==$info_str8[$a]){
@@ -443,7 +426,6 @@ class Workermaner75scController extends Server {
 										$num8++;
 									}
 								}
-
 								if($num8>0){
 									$res8 = $this->add_points($id,$userid,$points8);
 									if($res8){
@@ -520,13 +502,11 @@ class Workermaner75scController extends Server {
 					$conn -> send(json_encode($new_message));
 				}
 				$this->add_message($new_message);/*添加信息*/
-
 				
 			}
 			
     	});
 		
-
 		
 		//ping 统计人数
 		\Workerman\Lib\Timer::add($time_interval, function(){
@@ -608,7 +588,6 @@ class Workermaner75scController extends Server {
 					}
 					$map['lh'] = serialize($lh);
 					$map['tema'] = $info[0]+$info[1];
-
 					if (C('er75sc_gy_set') == 1) {
 						if($map['tema'] % 2 == 0){
 							$map['tema_ds'] = '双';
@@ -627,7 +606,6 @@ class Workermaner75scController extends Server {
 						}
 					}
 					
-
 					if (C('er75sc_gy_set') == 1) {
 						if($map['tema']>=12){
 							$map['tema_dx'] = '大';
@@ -643,7 +621,6 @@ class Workermaner75scController extends Server {
 							$map['tema_dx'] = '小';
 						}
 					}
-
 					
 					if($map['tema']>=3 && $map['tema']<=7){
 						$map['tema_dw'] = 'A';
@@ -660,13 +637,11 @@ class Workermaner75scController extends Server {
 						$map['zx'] = '闲';
 					}
 					$map['game'] = $data['game'];
-
 					$res1 = M('number')->add($map);
 					if($res1){
 						F('er75scPeriodNumber',$data['current']['periodNumber']);
 						F('er75scdata',$data);
 						F('is_send',0);
-
 						//采集到开奖数据，客服发布通知
 						// $content = "开奖采集数据,请等待系统开奖结算<br/>
 						// 			期号：".$map['periodnumber']." <br/>
@@ -687,7 +662,6 @@ class Workermaner75scController extends Server {
 				}
 			}
     	});
-
 	}
 	
 	/*
@@ -811,7 +785,6 @@ class Workermaner75scController extends Server {
 						} else {
 							$content_msg =  '「'.$message_data['content'].'」'.'单笔点数最高'.$res['xz_max'].',竞猜失败';
 						}
-
 						$new_message = array(
 							'uid'  => $connection->uid,
 							'type' => 'admin',
@@ -855,41 +828,32 @@ class Workermaner75scController extends Server {
 							$user = M('user')->where("id = $userid")->find();
 							//当前玩法是否超过设置金额
 							$wf_points = M('order')->field("sum(del_points) as sum_del")->where("userid = {$userid} and type={$res['type']} and state=1  and number = {$er75scdata['next']['periodNumber']}")->find();
-
 							$wf_max_points = 0;
 							switch ($res['type']) {
 								case '1':
 									$wf_max_points = C('er75sc_xz_max')['dxds'];
 									break;
-
 								case '2':
 									$wf_max_points = C('er75sc_xz_max')['chehao'];
 									break;
-
 								case '3':
 									$wf_max_points = C('er75sc_xz_max')['zuhe'];
 									break;
-
 								case '4':
 									$wf_max_points = C('er75sc_xz_max')['lh'];
 									break;
-
 								case '5':
 									$wf_max_points = C('er75sc_xz_max')['zx'];
 									break;
-
 								case '6':
 									$wf_max_points = C('er75sc_xz_max')['gy'];
 									break;
-
 								case '7':
 									$wf_max_points = C('er75sc_xz_max')['tema'];
 									break;
-
 								case '8':
 									$wf_max_points = C('er75sc_xz_max')['tema_sz'];
 									break;
-
 								case '9':
 									$wf_max_points = C('er75sc_xz_max')['tema_qd'];
 									break;
@@ -898,7 +862,6 @@ class Workermaner75scController extends Server {
 									$wf_max_points = 0;
 									break;
 							}
-
 							//车号限制  123/23/100
 							if ($res['type'] == '2') {
 								$type_list = M('order')->where("userid = {$userid} and state=1  and number = {$er75scdata['next']['periodNumber']} and type = 2")->select();
@@ -950,10 +913,8 @@ class Workermaner75scController extends Server {
 									break;
 								}
 							}
-
 							//查看已投注金额
 							$user_points = M('order')->field("sum(del_points) as sum_del")->where("userid = {$userid} and state=1  and number = {$er75scdata['next']['periodNumber']}")->find();
-
 							if ((intval($user_points['sum_del'])+$res['points']) > C('er75scqi_max_point')) {
 								$points_tips = array(
 									'uid'  => $connection->uid,
@@ -1059,7 +1020,6 @@ class Workermaner75scController extends Server {
 								}
 							}
 						}
-
 						if (C('is_say')) {
 							$new_message2 = array(
 								'uid'=>$connection->uid,
@@ -1176,7 +1136,6 @@ class Workermaner75scController extends Server {
 		return $res;
 	}
 	protected function add_message($new_message){
-
 		if (!empty($new_message)) {
 			$new_message['game'] = 'er75sc';
 			$res = M('message')->add($new_message);

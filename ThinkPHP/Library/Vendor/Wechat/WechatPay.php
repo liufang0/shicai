@@ -233,7 +233,7 @@ class WechatPay {
         $option["appId"] = $this->appid;
         $option["timeStamp"] = (string)time();
         $option["nonceStr"] = Tools::createNoncestr();
-        $option["package"] = "prepay_id={$prepay_id}";
+        $option["package"] = "prepay_id=[$prepay_id]";
         $option["signType"] = "MD5";
         $option["paySign"] = Tools::getPaySign($option, $this->partnerKey);
         $option['timestamp'] = $option['timeStamp'];

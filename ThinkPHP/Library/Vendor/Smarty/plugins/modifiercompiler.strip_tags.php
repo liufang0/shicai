@@ -24,7 +24,7 @@ function smarty_modifiercompiler_strip_tags($params, $compiler)
         $params[1] = true;
     }
     if ($params[1] === true) {
-        return "preg_replace('!<[^>]*?>!', ' ', {$params[0]})";
+        return "preg_replace('!<[^>]*?>!', ' ', [$params[0]])";
     } else {
         return 'strip_tags(' . $params[0] . ')';
     }
