@@ -1,0 +1,501 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <meta content="no" name="apple-touch-fullscreen" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <title>个人中心</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/new/css/index.css"/>
+
+    <!--<link href="/statics/web/css/css.css" rel="stylesheet" type="text/css">
+    <script src="/statics/web/js/jquery.1.8.2.min.js"></script>
+    <script src="/statics/web/js/style.js"></script>-->
+    <link href="__PUBLIC__/Home//statics/web/css/css.css" rel="stylesheet" type="text/css">
+	
+	<link href="__PUBLIC__/Home/statics/web/css/main.f2823a56.css" rel="stylesheet" type="text/css">
+	<link href="__PUBLIC__/Home/statics/web/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="__PUBLIC__/Home//statics/web/css/red.css" rel="stylesheet" type="text/css"><script src="__PUBLIC__/Home//statics/web/js/jquery.1.8.2.min.js"></script><script src="__PUBLIC__/Home//statics/web/js/style.js"></script>
+    <!-- layer -->
+    <script src="__PUBLIC__/Home//statics/web/extend/layer/mobile/layer.js"></script>
+    <!-- layer - end -->
+    <script src="/images/js/sizeChange.js"></script>
+
+</head>
+<body>
+<style>
+	.index-tabs{height:auto;}
+	.qhlx{z-index:99999; position:fixed; bottom:0;  display:none;   }
+	.mask{background-color: rgba(0,0,0,.4); position:absolute; top:0;}
+	.am-modal-popup{z-index:999;}
+</style>
+<div id="root" style="position:absolute;height:100%;width:100%;top:0">
+  <div class="index-tabs">
+    <div class="am-tab-bar">
+      <div class="am-tabs am-tabs-horizontal am-tabs-bottom">
+        <div class="am-tabs-content-wrap" style="touch-action: pan-x pan-y; position: relative; left: -300%;">
+          <div class="am-tabs-pane-wrap am-tabs-pane-wrap-inactive" role="tabpanel" aria-hidden="true" aria-labelledby="m-tabs-1-0"></div>
+          <div class="am-tabs-pane-wrap am-tabs-pane-wrap-inactive" role="tabpanel" aria-hidden="true" aria-labelledby="m-tabs-1-1"></div>
+          <div class="am-tabs-pane-wrap am-tabs-pane-wrap-inactive" role="tabpanel" aria-hidden="true" aria-labelledby="m-tabs-1-2"></div>
+          <div class="am-tabs-pane-wrap am-tabs-pane-wrap-active" role="tabpanel" aria-hidden="false" aria-labelledby="m-tabs-1-3">
+            <div class="am-tab-bar-item" style="height: auto; padding-bottom:4rem;">
+              <div class="main my-tab">
+                <div style="position: fixed; width: 100%; z-index: 200;"></div>
+                <div class="my-tabbar" style="background-image: url(&quot;https://d38s53scas00u7.cloudfront.net/h5.xyhui.org/img/my/red_bg.png?v=2.0.0&quot;);">
+                  <div class="my-tab-content">
+                    <div class="my-tab-img-box">
+                      <img class="my-tab-img" src="{$user.headimgurl}" alt="">
+                      <div class="user-and-nick-box">
+                        <span style="font-size: 17px; text-align: left;">{$user.nickname}</span>
+                        <span style="font-size: 15px; margin-top: 3px;">
+                          <span style="font-size: 14px;">ID:</span>{$user.id}</span></div>
+                    </div>
+                  </div>
+                  <table class="my-tab-user-money">
+                    <tbody>
+                      <tr>
+                        <th>
+                          <div class="my-tab-money">
+                            <div>{$user.points}元</div>
+                            <div>
+                              <span>可用余额</span>
+                              <img src="https://d38s53scas00u7.cloudfront.net/h5.xyhui.org/img/my/money_icon_big.png?v=2.0.0" alt=""></div>
+                          </div>
+                        </th>
+                        <th>
+                          <div class="my-tab-money">
+                            <div>{$points_tj['ying']}元</div>
+                            <div>
+                              <span>今日盈亏</span>
+                              <img src="https://d38s53scas00u7.cloudfront.net/h5.xyhui.org/img/my/money_icon_big.png?v=2.0.0" alt=""></div>
+                          </div>
+                        </th>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <a href="{:U('/Home/User/setting')}"><img src="https://d38s53scas00u7.cloudfront.net/h5.xyhui.org/img/my/setting.png?v=2.0.0" class="my-tab-setting" alt=""></div></a>
+                <div class="my-tab-money-last">
+                  <div >
+                   <a href="{:U('/Home/Fen/addpage')}"> <img src="https://d38s53scas00u7.cloudfront.net/h5.xyhui.org/img/my/save_money.png?v=2.0.0" alt="">
+                    <span class="font16Color63" style="font-weight: normal;">充值</span></a></div>
+                  <div >
+                   <a href="{:U('Home/Fen/xiapage')}"> <img src="https://d38s53scas00u7.cloudfront.net/h5.xyhui.org/img/my/withdrawal.png?v=2.0.0" alt="">
+                    <span class="font16Color63" style="font-weight: normal;">提现</span></a></div>
+                </div>
+                <div class="am-whitespace am-whitespace-md"></div>
+                <div class="am-list my-tab-list">
+                  <div class="am-list-body">
+                    <div class="am-list-item am-list-item-middle">
+                      <div class="am-list-thumb">
+                        <i class="fa fa-gavel fa-2x  my-table-icon" aria-hidden="true" style="color: rgb(232, 119, 12);"></i>
+                      </div>
+                      <a href="/Home/Run/record" class="am-list-line">
+                        <div class="am-list-content">
+                          <span class="font16Color63">投注记录</span></div>
+                        <div class="am-list-arrow am-list-arrow-horizontal" aria-hidden="true"></div>
+                      </a>
+                      <div class="am-list-ripple" style="display: none;"></div>
+                    </div>
+                    <div class="am-list-item am-list-item-middle">
+                      <div class="am-list-thumb">
+                        <i class="fa fa-file-text-o my-table-icon" aria-hidden="true" style="color: rgb(233, 79, 92);"></i>
+                      </div>
+                      <a href="/Home/User/fenxia" class="am-list-line">
+                        <div class="am-list-content">
+                          <span class="font16Color63">资金明细</span></div>
+                        <div class="am-list-arrow am-list-arrow-horizontal" aria-hidden="true"></div>
+                      </a>
+                      <div class="am-list-ripple" style="display: none;"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="am-whitespace am-whitespace-md"></div>
+                <div class="am-list my-tab-list">
+                  <div class="am-list-body">
+                    <div class="am-list-item am-list-item-middle">
+                      <div class="am-list-thumb">
+                        <i class="fa fa-gift my-table-icon" aria-hidden="true" style="color: rgb(16, 142, 233);"></i>
+                      </div>
+                      <a href="/Home/User/youhui" class="am-list-line">
+                        <div class="am-list-content">
+                          <span class="font16Color63">优惠活动</span></div>
+                        <div class="am-list-arrow am-list-arrow-horizontal" aria-hidden="true"></div>
+                      </a>
+                      <div class="am-list-ripple" style="display: none;"></div>
+                    </div>
+                    <div class="am-list-item am-list-item-middle">
+                      <div class="am-list-thumb">
+                        <i class="fa fa-envelope-o my-table-icon" aria-hidden="true" style="color: rgb(193, 105, 255);"></i>
+                      </div>
+                      <a href="/Home/User/gonggao" class="am-list-line">
+                        <div class="am-list-content">
+                          <span class="font16Color63">公告消息</span></div>
+                        <div class="am-list-arrow am-list-arrow-horizontal" aria-hidden="true"></div>
+                      </a>
+                      <div class="am-list-ripple" style="display: none;"></div>
+                    </div>
+                    <div class="am-list-item am-list-item-middle">
+                      <div class="am-list-thumb">
+                        <i class="fa fa-share-alt my-table-icon" aria-hidden="true" style="color: rgb(232, 119, 12);"></i>
+                      </div>
+                      <a href="{:U('Home/Run/tui')}?uid={$userinfo.id}" class="am-list-line">
+                        <div class="am-list-content">
+                          <span class="font16Color63">我要分享</span></div>
+                        <div class="am-list-arrow am-list-arrow-horizontal" aria-hidden="true"></div>
+                      </a>
+                      <div class="am-list-ripple" style="display: none;"></div>
+                    </div>
+                    <div class="am-list-item am-list-item-middle">
+                      <div class="am-list-thumb">
+                        <i class="fa fa-cloud-download  my-table-icon" aria-hidden="true" style="color: rgb(235, 148, 164);"></i>
+                      </div>
+                      <a href="/Home/User/appkhd" class="am-list-line">
+                        <div class="am-list-content">
+                          <span class="font16Color63">客户端下载</span></div>
+                        <div class="am-list-arrow am-list-arrow-horizontal" aria-hidden="true"></div>
+                      </a>
+                      <div class="am-list-ripple" style="display: none;"></div>
+                    </div>
+                    <div class="am-list-item am-list-item-middle change_load">
+                      <div class="am-list-thumb">
+                        <i class="fa fa-exchange  my-table-icon" aria-hidden="true" style="color: rgb(229, 49, 52);"></i>
+                      </div>
+                      <div class="am-list-line">
+                        <div class="am-list-content">
+                          <span class="font16Color63">线路切换</span></div>
+                        <div class="am-list-arrow am-list-arrow-horizontal" aria-hidden="true"></div>
+                      </div>
+                      <div class="am-list-ripple" style="display: none;"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="am-whitespace am-whitespace-md"></div>
+                <div class="am-whitespace am-whitespace-md"></div>
+                <div class="am-wingblank am-wingblank-lg">
+                  <a href="{:U('Home/Index/logout')}" role="button" class="am-button am-button-warning" aria-disabled="false">
+                    <span>退出登录</span></a>
+                </div>
+                <div class="am-whitespace am-whitespace-md"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="am-modal-wrap am-modal-wrap-popup qhlx" role="dialog">
+	<div class='mask'></div>
+  <div role="document" class="am-modal network-select am-modal-popup am-modal-popup-slide-up">
+    <div class="am-modal-content">
+      <div class="am-modal-body">
+        <div class="am-list">
+          <div class="am-list-body">
+            <div class="am-list-item am-list-item-middle">
+              <div class="am-list-line">
+                <div class="am-list-content">
+                  <div>
+                    <span style="display: inline-block; width: 100px;">线路1</span>
+                    <span style="width: 100px; color: rgb(255, 67, 75); font-size: 14px;"><?=rand(0,100)?> ms</span></div>
+                </div>
+               <div class="am-list-extra">
+                  <i class="fa fa-check-square-o" aria-hidden="true" style="color: rgb(229, 49, 52); font-size: 18px;"></i>
+                </div>
+              </div>
+              <div class="am-list-ripple" style="display: none;"></div>
+            </div>
+            <div class="am-list-item am-list-item-middle">
+              <div class="am-list-line">
+                <div class="am-list-content">
+                  <div>
+                    <span style="display: inline-block; width: 100px;">线路2</span>
+                    <span style="width: 100px; color: rgb(255, 67, 75); font-size: 14px;"><?=rand(0,100)?> ms</span></div>
+                </div>
+				 <div class="am-list-extra">
+                  <i class="fa fa-square-o" aria-hidden="true" style="color: rgb(108, 108, 108); font-size: 18px;"></i>
+                </div>
+                
+              </div>
+              <div class="am-list-ripple" style="display: none;"></div>
+            </div>
+            <div class="am-list-item am-list-item-middle">
+              <div class="am-list-line">
+                <div class="am-list-content">
+                  <div>
+                    <span style="display: inline-block; width: 100px;">线路3</span>
+                    <span style="width: 100px; color: rgb(255, 67, 75); font-size: 14px;"><?=rand(0,100)?> ms</span></div>
+                </div>
+                <div class="am-list-extra">
+                  <i class="fa fa-square-o" aria-hidden="true" style="color: rgb(108, 108, 108); font-size: 18px;"></i>
+                </div>
+              </div>
+              <div class="am-list-ripple" style="display: none;"></div>
+            </div>
+            <div class="am-list-item am-list-item-middle">
+              <div class="am-list-line">
+                <div class="am-list-content">
+                  <div>
+                    <span style="display: inline-block; width: 100px;">线路4</span>
+                    <span style="width: 100px; color: rgb(255, 67, 75); font-size: 14px;"><?=rand(0,100)?> ms</span></div>
+                </div>
+                <div class="am-list-extra">
+                  <i class="fa fa-square-o" aria-hidden="true" style="color: rgb(108, 108, 108); font-size: 18px;"></i>
+                </div>
+              </div>
+              <div class="am-list-ripple" style="display: none;"></div>
+            </div>
+            <div class="am-list-item am-list-item-middle">
+              <div class="am-list-line">
+                <div class="am-list-content">
+                  <div>
+                    <span style="display: inline-block; width: 100px;">线路5</span>
+                    <span style="width: 100px; color: rgb(255, 67, 75); font-size: 14px;"><?=rand(0,100)?> ms</span></div>
+                </div>
+                <div class="am-list-extra">
+                  <i class="fa fa-square-o" aria-hidden="true" style="color: rgb(108, 108, 108); font-size: 18px;"></i>
+                </div>
+              </div>
+              <div class="am-list-ripple" style="display: none;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="popup" style="display:none"></div>
+
+<?php $a=5;?>
+<include  file="./Template/Home/Run/footer.html" />
+<script type="text/javascript">
+	
+	
+	
+	$(document).on('click','.change_load',function(){
+		$('.qhlx').show();
+	}).on('click','.mask',function(){
+		$('.qhlx').hide()
+	}).on('click','.qhlx .am-list-item',function(){
+		localStorage.setItem('num',$(this).index())
+		$(this).find('.fa').css('color','rgb(229, 49, 52)');
+		$(this).find('.fa').addClass('fa-check-square-o');
+		$(this).find('.fa').removeClass('fa-square-o');
+		
+		$(this).siblings().find('.fa').css('color','rgb(108, 108, 108)');
+		$(this).siblings().find('.fa').addClass('fa-square-o');
+		$(this).siblings().find('.fa').removeClass('fa-check-square-o');
+	});
+	
+    $(function(){
+        var isShow_honor = Number(1); //0关 1开
+        if(isShow_honor == 0){
+            $(".head_right").hide();
+            $(".integral").hide();
+        }
+    	var grade = Number(1);
+        var firstScore = Number(0);
+        var lastScore = Number(4999);
+        var myScore = Number(0);
+        var next_status = Number(0);
+        var is_upgrade = Number(0);  //1:需要弹出恭喜升级框，0：不用处理
+
+        //积分升级弹窗
+        if(is_upgrade == 1){
+            if(grade > 0){
+               getHonorBox();
+            }
+        }
+        //点击关闭积分升级弹窗
+        $("body").on("click",".upgrade-close",function(){
+            $(".popup").fadeOut(function(){
+                giveNotice();
+            });
+        })
+
+        //徽章动画效果
+//        if(grade == 1){
+            $(".play").css({'animation-name': 'myalter0'+grade,
+                '-moz-animation-name': 'myalter0'+grade,
+                '-webkit-animation-name': 'myalter0'+grade,
+                '-o-animation-name': 'myalter0'+grade,
+            });
+//        }else if(grade == 2){
+//            $(".play").css({'animation-name': 'myalter02',})
+//        }
+
+        //升级经验条
+        if (next_status == 1) {
+        	 var wid = myScore/myScore*500;
+             $(".line").animate({width: wid}, 2000);
+        } else {
+        	var wid = myScore/lastScore*500;
+            $(".line").animate({width: wid}, 2000);
+        }
+
+        //获取新消息
+//        getMessage();
+        //博饼活动
+        var a = "";
+        $("#bobing").click(function(e){
+            console.log(a)
+            e.preventDefault();
+        })
+
+        isActivity()
+    })
+
+    function isActivity(){
+        $.ajax({
+            url : "?m=api&c=turntable&a=fetch_activity_setting",
+            type : 'POST',
+            data : {},
+            dataType:"json",
+            success: function(data){
+                if(data.status==0){
+                    console.log(data);
+                    if(Number(data.turntable_running) == 0){
+                        $("#turntable").removeAttr("data-href");
+                        $("#turntable div").append("<span>新活动暂未开启</span>");
+//                        $("#turntable").click(function(){
+//                            layer.open({
+//                                content: '幸运大转盘活动已关闭',
+//                                skin: 'msg',
+//                                time: 2 //2秒后自动关闭
+//                            });
+//                        });
+                    }
+                    if(Number(data.bo_bing_info.state) == 0){
+                        $("#bobing").removeAttr("data-href");
+//                        $("#bobing").click(function(){
+//                            layer.open({
+//                                content: '中秋博饼活动已关闭',
+//                                skin: 'msg',
+//                                time: 2 //2秒后自动关闭
+//                            });
+//                        });
+                    }
+                    if(Number(data.christmas_info.state) == 0){
+                        $("#christmas").removeAttr("data-href");
+//                        $("#christmas").click(function(){
+//                            layer.open({
+//                                content: '双旦有礼活动已关闭',
+//                                skin: 'msg',
+//                                time: 2 //2秒后自动关闭
+//                            });
+//                        });
+                    }
+                }else{
+                    layer.open({
+                        content: data.ret_msg,
+                        skin: 'msg',
+                        time: 2 //2秒后自动关闭
+                    });
+                }
+            }
+        });
+
+    }
+
+    //获取荣誉机制状态
+    function getHonorBox() {
+        var data = {
+            "token": 'e68eq5gb5g17m2teisbt2s3913'
+        }
+        $.ajax({
+            url : "?m=web&c=user&a=getHonorBox",
+            type : 'POST',
+            data : data,
+            dataType:"json",
+            success: function(data){
+            	if (data.code == 1) {
+            		var html = '<div class="upgrade-pop"><div class="upgrade-shine_bg"></div><div class="upgrade-wrap"><div class="upgrade-con">'+
+                    '<div class="upgrade-info"></div><div class="upgrade-badge"></div>'+
+                    '<div class="upgrade-name"></div><div class="upgrade-close"></div></div></div></div>';
+		            $(".popup").html(html);
+		            $(".upgrade-badge").css("background", "url(/statics/web/images/honor/badge0"+data.grade+"@2x.png) no-repeat center center");
+		            $(".upgrade-name").css("background", "url(/statics/web/images/honor/fame0"+data.grade+"@2x.png) no-repeat center center");
+		            $(".popup").fadeIn();
+            	}
+            }
+        });
+    }
+
+    function giveNotice () {
+        var data = {
+            "token": 'e68eq5gb5g17m2teisbt2s3913'
+        }
+        $.ajax({
+            url : "?m=web&c=user&a=closeHonorBox",
+            type : 'POST',
+            data : data,
+            dataType:"json",
+            success: function(data){
+            }
+        });
+    }
+</script>
+
+<script type="text/javascript">
+    $(function() {
+      
+        var getUrlParam = function(e){
+            var array = location.search.slice(1).split('&'), obj = {};
+            for (var i = 0; i < array.length; i++){
+                var key = array[i].split('=')[0],
+                        val = array[i].split('=')[1];
+                obj[key] = val;
+            }
+            return obj[e] || null;
+        }
+        var getParam = function(url,e){
+            //console.log(url);
+            var array = url.slice(1).split('&'), obj = {};
+            for (var i = 0; i < array.length; i++){
+                var key = array[i].split('=')[0],
+                        val = array[i].split('=')[1];
+                obj[key] = val;
+            }
+            return obj[e] || null;
+        }
+
+        var n_c = getUrlParam('c');
+        var n_a = getUrlParam('a');
+        var now_href = n_c+n_a;
+        //var now_href = window.location.href;
+       // console.log(now_href);
+        $("nav ul li").each(function() {
+            var href =  $(this).attr("data-href");
+            var c = getParam(href,'c');
+            var a = getParam(href,'a');
+            var href = c+a;
+            //console.log(href);
+            if (now_href == href) {
+                $("nav ul li").removeClass("active");
+                $(this).addClass("active");
+            }
+        });
+    })
+
+	if(localStorage.getItem('num')){
+		
+		var chos = $('.qhlx .am-list-body').find('.am-list-item').eq(localStorage.getItem('num'));
+		
+		chos.find('.fa').css('color','rgb(229, 49, 52)');
+		chos.find('.fa').addClass('fa-check-square-o');
+		chos.find('.fa').removeClass('fa-square-o');
+		
+		chos.siblings().find('.fa').css('color','rgb(108, 108, 108)');
+		chos.siblings().find('.fa').addClass('fa-square-o');
+		chos.siblings().find('.fa').removeClass('fa-check-square-o');
+	}
+	
+	
+</script>
+</body>
+</html>

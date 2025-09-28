@@ -1,0 +1,208 @@
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <link rel="apple-touch-icon" href="img/logo.png">
+ 
+    <meta name="viewport" content="user-scalable=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+ 
+    
+ 
+    <title>{:C('sitename')}</title>
+	<link rel="stylesheet" href="/images/css/common.css" />
+	<link rel="stylesheet" href="/images/css/iconfont.css" />
+	<link rel="stylesheet" href="/images/css/swiper-3.4.2.min.css" />
+	<link href="/images/css/weui.min.css" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" href="/images/css/page.css" />
+	<!-- 引入样式 -->
+	<link rel="stylesheet" type="text/css" href="/images/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="/images/css/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="/images/css/layer.css" />
+    <link rel="stylesheet" type="text/css" href="/images/css/weui.min.css" />
+    <link rel="stylesheet" type="text/css" href="/images/css/down.css" />
+    <link rel="stylesheet" type="text/css" href="/images/css/record.css" />
+    <link rel="stylesheet" type="text/css" href="/images/css/room.css" />
+	<!-- 公用js 自适应js-->
+	<script src="/images/js/sizeChange.js"></script>
+ 
+
+	<style>
+		.flex{
+			display:flex;
+			align-items: center;
+		}
+		.flexCenter{
+			display:flex;
+			align-items: center;
+			justify-content: center;
+		}
+		._body{
+			padding:.5rem;
+		}
+		.divBox{
+			height:.8rem;
+			font-size:.28rem;
+		}
+		.leftBox{
+			text-align: left;
+			width:28%;
+			margin-right:.1rem;
+		}
+		.rightBox{
+			width:70%;
+			text-align: left;
+		}
+		.rightBox>input{
+			width:90%;
+			border:1px solid #6782ab;
+			border-radius:6px;
+			padding:.15rem;
+		}
+		.divBox button{
+			width:	60%;
+			margin: 0.4rem auto 0;
+			height: 0.65rem;
+			line-height: 0.65rem;
+			text-align: center;
+			color: #fff;
+			border-radius: 1.6rem;
+			background: #639bee;
+			border: 1px solid #639bee;
+			box-shadow: 0 0 8px rgba(0,0,0,0.4);
+		}
+		.alert{
+			color:#f24f89;
+			text-align: center;
+			margin-top:.3rem;
+		}
+	</style>
+</head>
+
+<body>
+   <div class="recordType">
+        <ul class="flex">
+            <li class="active" id="mType1">银行</li>
+   
+        </ul>
+    </div>
+	
+	<div class="_body">
+		<div class="divBox flex ">
+			<div class="leftBox">会员昵称</div>
+			<div class="rightBox">
+				{$userinfo.nickname}			</div>
+		</div>
+		<div class="divBox flex ">
+			<div class="leftBox">目前余额</div>
+			<div class="rightBox">
+				{$userinfo.points}			</div>
+		</div>
+		<div class="divBox flex ">
+			<div class="leftBox">支付方式</div>
+			<div class="rightBox">
+				<span>银行卡转帐</span>
+			</div>
+		</div>
+		<div class="divBox flex ">
+			<div class="leftBox">提现金额</div>
+			<div class="rightBox">
+				<input type="text" id='money' value=''>
+			</div>
+		</div>
+		<div class="divBox flex ">
+			<div class="leftBox">银行卡号</div>
+			<div class="rightBox">
+				<input type="number" pattern="\d*" id='card' name='card' vlaue=''>
+			</div>
+		</div>
+		<div class="divBox flex ">
+			<div class="leftBox">开户行</div>
+			<div class="rightBox">
+				<input type="text" name='ubankn' id='ubankn' value=''>
+			</div>
+		</div>
+		<div class="divBox flex ">
+			<div class="leftBox">姓名</div>
+			<div class="rightBox">
+				<input type="text" name='uname' id='uname' value=''>
+			</div>
+		</div>
+
+		
+
+		<div class="divBox flexCenter ">
+			<button id='btn'>提交</button>
+		</div>
+	</div>
+    <div style="display: block;margin:0.15rem auto">
+                <div class="title flex">
+
+                    <p><a href="/">返回首页</a> </p>
+                </div>
+            
+    </div>
+	 
+    	<script src="/images/js/jquery-1.11.2.min.js"></script>
+    <script>
+ 
+		
+		$("#btn").click(function(){
+			var money = $('#money').val();
+			var card = $('#card').val();
+			var ubankn = $('#ubankn').val();
+			var uname = $('#uname').val();
+		
+ 
+			if(money === ''){
+				alert('请输入金额');
+				return false;
+			}
+			
+			if(card === ''){
+				alert('请输入银行卡号');
+				return false;
+			}
+			
+			if(ubankn === ''){
+				alert('请输入开户行');
+				return false;
+			}
+			
+			if(uname === ''){
+				alert('请输入姓名');
+				return false;
+			}
+		
+			$.ajax({
+				url:'/home/fen/xia',
+				type:'post',
+				data:{
+					money:money,
+					bank_account:card,
+					type:3,
+					back_address:ubankn,
+					back_name:uname,
+					uid:{$userinfo.id}
+				},
+				success:function(data){
+					if(data.status == 1){
+						alert(data.info);
+						location.reload();
+					}else{
+						alert(data.info);
+					}
+				}
+			});
+		});
+	  
+        
+    </script>
+
+</body>
+
+</html>

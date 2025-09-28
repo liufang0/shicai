@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户注册 - 蚂蚁数字科技</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 15px 20px;
+            z-index: 1000;
+        }
+        
+        .header-logo {
+            display: flex;
+            align-items: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        
+        .back-button {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+            transition: all 0.3s ease;
+            margin-right: 15px;
+        }
+        
+        .back-button:hover {
+            background: linear-gradient(135deg, #00f2fe, #4facfe);
+            transform: translateY(-2px);
+        }
+        
+        .container {
+            display: flex;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            padding-top: 100px;
+        }
+        
+        .left-section {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .left-content {
+            max-width: 400px;
+            color: white;
+            text-align: center;
+        }
+        
+        .left-content h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #fff, #e3f2fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .left-content p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .feature-item {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .feature-item h3 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .feature-item p {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+        
+        .right-section {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .register-box {
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(25px);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 
+                0 25px 80px rgba(0,0,0,0.15),
+                0 15px 40px rgba(0,0,0,0.08),
+                inset 0 1px 0 rgba(255,255,255,0.8),
+                inset 0 -1px 0 rgba(255,255,255,0.3);
+            border: 1px solid rgba(255,255,255,0.4);
+            width: 100%;
+            max-width: 400px;
+            position: relative;
+        }
+        
+        .register-title {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            background: #f5f5f5;
+            border-radius: 12px;
+            padding: 4px;
+            margin-bottom: 30px;
+        }
+        
+        .tab-button {
+            flex: 1;
+            padding: 10px;
+            background: transparent;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: #666;
+        }
+        
+        .tab-button.active {
+            background: white;
+            color: #333;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+            font-size: 14px;
+        }
+        
+        .input-group {
+            position: relative;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e1e5e9;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .country-select {
+            display: flex;
+            align-items: center;
+            background: white;
+            border: 2px solid #e1e5e9;
+            border-radius: 12px;
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .country-select:hover {
+            border-color: #667eea;
+        }
+        
+        .country-code {
+            font-weight: 600;
+            color: #333;
+            margin-right: 10px;
+        }
+        
+        /* 仅在旧的国家区号容器内去除边框，其余场景保持与 .form-input 一致 */
+        .country-select .phone-input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            background: transparent;
+        }
+        
+        .submit-button {
+            width: 100%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .submit-button:hover {
+            background: linear-gradient(135deg, #764ba2, #667eea);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .links {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .links a {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 14px;
+            margin: 0 10px;
+        }
+        
+        .links a:hover {
+            text-decoration: underline;
+        }
+        
+        .social-login {
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .social-title {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .social-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        .social-button {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-button.wechat {
+            background: #07c160;
+            color: white;
+        }
+        
+        .social-button.google {
+            background: #4285f4;
+            color: white;
+        }
+        
+        .social-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .help-section {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                padding-top: 60px;
+            }
+            
+            .left-section {
+                padding: 20px 20px 10px;
+                min-height: auto;
+            }
+            
+            .left-content h1 {
+                font-size: 2rem;
+                margin-bottom: 15px;
+            }
+            
+            .left-content p {
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                margin-top: 20px;
+            }
+            
+            .feature-item {
+                padding: 12px;
+            }
+            
+            .right-section {
+                padding: 10px 20px 20px;
+            }
+            
+            .register-box {
+                padding: 30px 25px;
+            }
+            
+            .register-title {
+                font-size: 1.5rem;
+                margin-bottom: 25px;
+            }
+            
+            .header {
+                padding: 12px 15px;
+            }
+            
+            .header-logo {
+                font-size: 1rem;
+            }
+            
+            .back-button {
+                padding: 6px 12px;
+                font-size: 12px;
+                margin-right: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .left-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .register-box {
+                padding: 25px 20px;
+                border-radius: 15px;
+            }
+            
+            .form-input, .phone-input {
+                font-size: 16px; /* 防止iOS缩放 */
+            }
+        }
+        
+        /* 动画效果 */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .register-box {
+            animation: slideUp 0.6s ease-out;
+        }
+        
+        .feature-item {
+            animation: slideUp 0.6s ease-out;
+        }
+        
+        .feature-item:nth-child(1) { animation-delay: 0.1s; }
+        .feature-item:nth-child(2) { animation-delay: 0.2s; }
+        .feature-item:nth-child(3) { animation-delay: 0.3s; }
+        .feature-item:nth-child(4) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-logo">
+            <button class="back-button" onclick="goBack()">← 返回首页</button>
+            蚂蚁数字科技
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="register-box">
+                <h2 class="register-title">创建账户</h2>
+
+                <form class="m-t" role="form" method="post" action="{:U('Home/Index/register')}" id="LoginForm" autocomplete="on">
+                    <div class="form-group">
+                        <label class="form-label" for="regUsername">登录账号</label>
+                        <input type="text" class="form-input" id="regUsername" name="username" placeholder="请输入登录账号" autocomplete="username">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="regPhone">手机号</label>
+                        <div class="input-group">
+                            <input type="tel" class="form-input phone-input" id="regPhone" name="phone" placeholder="请输入正确手机号，便于密码找回" maxlength="11" autocomplete="tel">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="regPassword">登录密码</label>
+                        <input type="password" class="form-input" id="regPassword" name="password" placeholder="6-20个字母、数字或组合组成，区分大小写" autocomplete="new-password">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="regPassword1">确认密码</label>
+                        <input type="password" class="form-input" id="regPassword1" name="password1" placeholder="请再次输入密码以确保输入无误" autocomplete="new-password">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="regTxPassword">提现密码</label>
+                        <input type="password" class="form-input" id="regTxPassword" name="txpassword" placeholder="请填写6位数字" autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="regTid">推荐人账号</label>
+                        <input type="text" class="form-input" id="regTid" name="t_id" placeholder="推荐人账号,没有留空" autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="regCode">图片验证码</label>
+                        <div style="display:flex; gap:10px; align-items:center;">
+                            <input type="text" class="form-input" id="regCode" name="code" maxlength="4" placeholder="请输入图片验证码" style="flex:1;" autocomplete="one-time-code">
+                            <img class="weui-vcode-img" src="{:U('Home/Index/getcode')}" id="img-code" style="height:44px;border-radius:8px;border:1px solid #e1e5e9;cursor:pointer;" />
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-button">创建账号</button>
+                </form>
+
+            <div class="links">
+                <a href="/Home/Index/login">已有账户？立即登录</a>
+                <a href="/index.php/Home/index">返回首页</a>
+            </div>
+            <div class="help-section">
+                遇到问题？<a href="#" style="color: #667eea;">联系客服</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function goBack() {
+            window.location.replace('/index.php/Home/index');
+        }
+        // 简化交互：不做额外视觉变换，降低干扰因素
+    </script>
+    
+    <!-- 接入与 register2.html 一致的依赖与接口提交逻辑 -->
+    <script src="__PUBLIC__/Admin/js/jquery.min.js?v=2.1.4"></script>
+    <script src="__PUBLIC__/Admin/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="__PUBLIC__/Common/js/ajaxForm.js"></script>
+    <script src="__PUBLIC__/layer/layer.js"></script>
+    <script>
+        $('#img-code').on('click', function(){
+            $(this).attr('src', "{:U('Home/Index/getcode')}?"+Math.random());
+        });
+
+        $(function(){
+            $('#LoginForm').ajaxForm({
+                type: 'post',
+                headers: { 'X-Requested-With': 'XMLHttpRequest' },
+                dataType: 'json',
+                beforeSubmit: checkForm,
+                success: complete,
+                error: function(xhr){
+                    var msg = '服务不可用或网络错误';
+                    try {
+                        // ThinkPHP 常返回 JSON，解析失败则保留默认文案
+                        var res = JSON.parse(xhr.responseText || '{}');
+                        if (res && res.info) msg = res.info;
+                    } catch(e) {}
+                    layer.msg(msg);
+                }
+            });
+
+            function CheckStr(str) {
+                var myReg = "[@/'\"#!$%&^*]+";
+                var reg = new RegExp(myReg);
+                return reg.test(str);
+            }
+
+            function CheckStrLength(str) {
+                return !(str.length >= 5 && str.length <= 16);
+            }
+
+            function checkForm(){
+                if( '' == $.trim($('input[name="username"]').val())){
+                    layer.alert('用户名不能为空', {icon: 5}, function(index){
+                        layer.close(index);
+                        $('input[name="username"]').focus();
+                    });
+                    return false;
+                }
+                if (CheckStrLength($('input[name="username"]').val())){
+                    layer.alert('用户名必须5-16个字符', {icon: 5}, function(index){
+                        layer.close(index);
+                        $('input[name="username"]').focus();
+                    });
+                    return false;
+                }
+                if (CheckStr($('input[name="username"]').val())){
+                    layer.alert('用户名不能有特殊字符', {icon: 5}, function(index){
+                        layer.close(index);
+                        $('input[name="username"]').focus();
+                    });
+                    return false;
+                }
+                if ( '' == $.trim($('input[name="phone"]').val())){
+                    layer.alert('手机号不能为空', {icon: 5}, function(index){
+                        layer.close(index);
+                        $('input[name="phone"]').focus();
+                    });
+                    return false;
+                }
+                if ($('input[name="password"]').val().length < 6){
+                    layer.alert('密码长度不能低于6位', {icon: 5}, function(index){
+                        layer.close(index);
+                        $('input[name="password"]').focus();
+                    });
+                    return false;
+                }
+                if ( '' == $.trim($('input[name="password"]').val())){
+                    layer.alert('密码不能为空', {icon: 5}, function(index){
+                        layer.close(index);
+                        $('input[name="password"]').focus();
+                    });
+                    return false;
+                }
+                if ($.trim($('input[name="password1"]').val()) != $.trim($('input[name="password"]').val())){
+                    layer.alert('两次密码输入不正确', {icon: 5}, function(index){
+                        layer.close(index);
+                        $('input[name="password1"]').focus();
+                    });
+                    return false;
+                }
+                if ( '' == $.trim($('input[name="txpassword"]').val())){
+                    layer.alert('提现密码不能为空', {icon: 5}, function(index){
+                        layer.close(index);
+                        $('input[name="txpassword"]').focus();
+                    });
+                    return false;
+                }
+                if ( '' == $.trim($('input[name="code"]').val())){
+                    layer.alert('验证码不能为空', {icon: 5}, function(index){
+                        layer.close(index);
+                        $('input[name="code"]').focus();
+                    });
+                    return false;
+                }
+            }
+
+            function complete(data){
+                if(data && data.status==1){
+                    $('.submit-button').attr('disabled','disabled');
+                    layer.msg("注册成功", function (index) {
+                        layer.close(index);
+                        if (data.url) {
+                            window.location.href = data.url;
+                        } else {
+                            window.location.href = '/index.php/Home/index';
+                        }
+                    });
+                }else{
+                    layer.msg(data.info || '注册失败');
+                    $('#img-code').trigger('click');
+                    return false;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

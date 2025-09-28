@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>后台 - 代理返水设置</title>
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+
+		<link rel="shortcut icon" href="favicon.ico">
+		<link href="__PUBLIC__/Admin/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/plugins/iCheck/custom.css" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/animate.min.css" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+	</head>
+
+	<body class="gray-bg">
+		<div class="wrapper wrapper-content animated fadeInRight">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">
+							<h5>代理返水设置</h5>
+							<div class="ibox-tools">
+								<a class="collapse-link">
+									<i class="fa fa-chevron-up"></i>
+								</a>
+							</div>
+						</div>
+						<div class="ibox-content">
+							<form id="signform" action="{:U('Agent/Member/fs_set')}" method="post" class="form-horizontal">
+
+								
+								<div class="form-group">
+									<label class="col-sm-2 control-label">赛车飞艇用户返水百分比</label>
+									<div class="col-sm-6">
+										<select class="form-control" name="pkft_fs">
+											<option <if condition="$userinfo.pkft_fs eq 0.1">selected</if>  value="0.1" >0.1</option>
+											<option <if condition="$userinfo.pkft_fs eq 0.2">selected</if>  value="0.2">0.2</option>
+											<option <if condition="$userinfo.pkft_fs eq 0.3">selected</if>  value="0.3">0.3</option>
+											<option <if condition="$userinfo.pkft_fs eq 0.4">selected</if>  value="0.4">0.4</option>
+											<option <if condition="$userinfo.pkft_fs eq 0.5">selected</if>  value="0.5">0.5</option>
+											<option <if condition="$userinfo.pkft_fs eq 0.6">selected</if>  value="0.6">0.6</option>
+											<option <if condition="$userinfo.pkft_fs eq 0.7">selected</if>  value="0.7">0.7</option>
+											<option <if condition="$userinfo.pkft_fs eq 0.8">selected</if>  value="0.8">0.8</option>
+											<option <if condition="$userinfo.pkft_fs eq 0.9">selected</if>  value="0.9">0.9</option>
+											<option <if condition="$userinfo.pkft_fs eq 1">selected</if>  value="1">1</option>
+										</select>
+										<span>例如：1即为下注流水为100返利1点</span>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">时时彩用户返水百分比</label>
+									<div class="col-sm-6">
+										<select class="form-control" name="ssc_fs">
+											<option <if condition="$userinfo.ssc_fs eq 0.1">selected</if>  value="0.1" >0.1</option>
+											<option <if condition="$userinfo.ssc_fs eq 0.2">selected</if>  value="0.2">0.2</option>
+											<option <if condition="$userinfo.ssc_fs eq 0.3">selected</if>  value="0.3">0.3</option>
+											<option <if condition="$userinfo.ssc_fs eq 0.4">selected</if>  value="0.4">0.4</option>
+											<option <if condition="$userinfo.ssc_fs eq 0.5">selected</if>  value="0.5">0.5</option>
+											<option <if condition="$userinfo.ssc_fs eq 0.6">selected</if>  value="0.6">0.6</option>
+											<option <if condition="$userinfo.ssc_fs eq 0.7">selected</if>  value="0.7">0.7</option>
+											<option <if condition="$userinfo.ssc_fs eq 0.8">selected</if>  value="0.8">0.8</optissc_fson>
+											<option <if condition="$userinfo.ssc_fs eq 0.9">selected</if>  value="0.9">0.9</option>
+											<option <if condition="$userinfo.ssc_fs eq 1">selected</if>  value="1">1</option>
+										</select>
+										<span>例如：1即为下注流水为100返利1点</span>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">PC蛋蛋用户返水百分比</label>
+									<div class="col-sm-6">
+										<select class="form-control" name="pcdd_fs">
+											<option <if condition="$userinfo.pcdd_fs eq 0.1">selected</if>  value="0.1" >0.1</option>
+											<option <if condition="$userinfo.pcdd_fs eq 0.2">selected</if>  value="0.2">0.2</option>
+											<option <if condition="$userinfo.pcdd_fs eq 0.3">selected</if>  value="0.3">0.3</option>
+											<option <if condition="$userinfo.pcdd_fs eq 0.4">selected</if>  value="0.4">0.4</option>
+											<option <if condition="$userinfo.pcdd_fs eq 0.5">selected</if>  value="0.5">0.5</option>
+											<option <if condition="$userinfo.pcdd_fs eq 0.6">selected</if>  value="0.6">0.6</option>
+											<option <if condition="$userinfo.pcdd_fs eq 0.7">selected</if>  value="0.7">0.7</option>
+											<option <if condition="$userinfo.pcdd_fs eq 0.8">selected</if>  value="0.8">0.8</optissc_fson>
+											<option <if condition="$userinfo.pcdd_fs eq 0.9">selected</if>  value="0.9">0.9</option>
+											<option <if condition="$userinfo.pcdd_fs eq 1">selected</if>  value="1">1</option>
+										</select>
+										<span>例如：1即为下注流水为100返利1点</span>
+									</div>
+								</div>
+
+								<div class="hr-line-dashed"></div>
+								<div class="form-group">
+									<div class="col-sm-4 col-sm-offset-2">
+										<button class="btn btn-primary" type="submit">保存信息</button>&nbsp;&nbsp;&nbsp;
+									</div>
+								</div>
+								
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script src="__PUBLIC__/Admin/js/jquery.min.js?v=2.1.4"></script>
+		<script src="__PUBLIC__/Admin/js/bootstrap.min.js?v=3.3.6"></script>
+		<script src="__PUBLIC__/Admin/js/content.min.js?v=1.0.0"></script>
+		<script src="__PUBLIC__/Common/js/ajaxForm.js"></script>
+		<script src="__PUBLIC__/Common/layer/layer.js"></script>
+		<script src="__PUBLIC__/Admin/js/plugins/iCheck/icheck.min.js"></script>
+		
+		<script>
+			$(function(){
+				$('#signform').ajaxForm({
+					success: complete, 
+					dataType: 'json'
+				});
+				function complete(data){
+					if(data.status==1){
+						$('.btn-primary').attr('disabled','disabled');
+						layer.msg(data.info, function(index){
+			 				layer.close(index);
+							window.location.href=data.url;
+						});
+					}else{
+						layer.msg(data.info);
+						return false;	
+					}
+				}
+			});
+		</script>
+	</body>
+
+</html>

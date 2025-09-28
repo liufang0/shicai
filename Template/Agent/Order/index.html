@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>后台 - 竞猜管理</title>
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+
+		<link rel="shortcut icon" href="favicon.ico">
+		<link href="__PUBLIC__/Admin/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/plugins/iCheck/custom.css" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+
+	</head>
+	<style>
+		/*分页样式*/
+		.pages a,.pages span {
+		    display:inline-block;
+		    padding:4px 7px;
+		    margin:0 2px;
+		    border:1px solid #D5D4D4;
+		    -webkit-border-radius:1px;
+		    -moz-border-radius:1px;
+		    border-radius:1px;
+		}
+		.pages a,.pages li {
+		    display:inline-block;
+		    list-style: none;
+		    text-decoration:none; color:#3399ff;
+		}
+		
+		.pages a:hover{
+		    border-color:#3399ff;
+		}
+		.pages span.current{
+		    background:#3399ff;
+		    color:#FFF;
+		    font-weight:700;
+		    border-color:#3399ff;
+		}
+		.pages{
+			text-align: center;
+		}
+		/*分页样式*/
+	</style>
+	<body class="gray-bg">
+		<div class="wrapper wrapper-content animated fadeInRight">	
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">
+							<h5>竞猜管理</h5>
+							
+						</div>
+						<div class="ibox-content">
+							<div class="row">
+								<form method="get" action="{:U('Agent/Order/index')}">
+									<div class="col-sm-2">
+										<select class="form-control" name="game">
+											<option value="">全部</option>
+											<option value="pk10"  <if condition="$game eq 'pk10'">selected</if> >北京赛车</option>
+											<option value="ssc"  <if condition="$game eq 'ssc'">selected</if> >重庆时时彩</option>
+											<option value="xyft"  <if condition="$game eq 'xyft'">selected</if> >幸运飞艇</option>
+											<option value="bj28"  <if condition="$game eq 'bj28'">selected</if> >螞蟻收益</option>
+											<option value="jnd28"  <if condition="$game eq 'jnd28'">selected</if> >螞蟻收益</option>
+										</select>
+									</div>
+									<div class="col-sm-2">
+										<input type="text" placeholder="开始时间" id="starttime" name="starttime" value='{$starttime}' class="form-control">
+									</div>
+									<div class="col-sm-2">
+										<input type="text" placeholder="结束时间" id="endtime" name="endtime" value='{$endtime}' class="form-control">
+									</div>
+									<div class="col-sm-2">
+										<input type="text"  placeholder="请输入用户号或昵称" name="nickname" value="{$nickname}" class="input-sm form-control"> <span class="input-group-btn">
+									</div>
+									<button type="submit" class="btn btn-sm btn-primary"> 搜索</button> </span>
+								</form>
+							</div>
+							<div class="table-responsive">
+								<table class="table table-striped table-hover table-bordered">
+									<thead>
+										<tr>
+											<th>类型</th>
+											<th>期号</th>
+											<th>下注时间</th>
+											<th>头像</th>
+											<th>昵称</th>
+											<th>用户号</th>
+											<th>竞猜内容</th>
+											<th>进项</th>
+											<th>出项</th>
+											<th>输赢</th>
+											<th>余额</th>
+											<if condition="C('is_del_order') eq 1" >
+												<th>操作</th>
+											</if>
+										</tr>
+									</thead>
+									<tbody>
+										<volist name="list" id="vo">
+											<tr>
+												<td width="120" style="text-align: center;">
+													<if condition="$vo.game eq 'ssc'">重庆时时彩</if>
+													<if condition="$vo.game eq 'pk10'">北京赛车</if>
+													<if condition="$vo.game eq 'xyft'">幸运飞艇</if>
+													<if condition="$vo.game eq 'bj28'">螞蟻收益</if>
+													<if condition="$vo.game eq 'jnd28'">螞蟻收益</if>
+												</td>
+												<td width="30" oid="{$vo.id}" style="display: none">{$vo.id}</td>
+												<td width="100">{$vo.number}</td>
+												<td width="100">{$vo.time|date="Y-m-d H:i:s",###}</td>
+												<td width="40"><img style="width: 40px;" src="{$vo.user.headimgurl}"/></td>
+												<td width="100">{$vo.user.nickname}</td>
+												<td width="100">{$vo.user.username}</td>
+												<td width="100">{$vo.jincai}</td>
+												<td width="100">
+													<empty name="vo['uid']">
+															{$vo.add_points}
+														<else/>
+															<if condition="$vo['type'] eq 1">
+																<span style="color: red;">上分&nbsp;&nbsp;{$vo.points}</span>
+															</if>
+													</empty>
+												</td>
+												<td width="100">
+													<empty name="vo['uid']">
+															<if condition="$vo['state'] eq 1">
+																{$vo.del_points}
+																<else/>
+																0.0
+															</if>
+														<else/>
+															<if condition="$vo['type'] eq 0">
+																<span style="color: blue;">下分&nbsp;&nbsp;{$vo.points}</span>
+															</if>
+													</empty>
+												</td>
+												<td width="100">
+												<if condition="$vo['state'] eq 1">
+													<if condition="$vo['is_add'] eq 1">
+														<if condition="$vo['add_points'] - $vo['del_points'] gt 0">
+															{$vo['add_points']-$vo['del_points']}
+															<else/>
+															<span style="color: red;">{$vo['add_points']-$vo['del_points']}</span>
+														</if>
+														<else/>
+														<span style="color: red;">-{$vo.del_points}</span>
+													</if>
+												</if>
+												</td>
+												<td width="100"><if condition="$vo['state'] eq 1 || $vo['uid']">{$vo.balance}<else/>{$vo['balance']+$vo['del_points']}<span style="color:red;">（已取消）</span></if></td>
+												
+												<!-- <td width="100"><a onclick="admin_cancel('{$vo.id}')" class="btn btn-warning">取消</a></td> -->
+											
+												
+											</tr>
+										</volist>
+									</tbody>
+								</table>
+							</div>
+							<div class="pages">
+								{$show}
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<script src="__PUBLIC__/Admin/js/jquery.min.js?v=2.1.4"></script>
+		<script src="__PUBLIC__/Admin/js/bootstrap.min.js?v=3.3.6"></script>
+		<script src="__PUBLIC__/Admin/js/plugins/iCheck/icheck.min.js"></script>
+		<script src="__PUBLIC__/Admin/js/plugins/layer/laydate/laydate.js"></script>
+		<script src="__PUBLIC__/Common/layer/layer.js"></script>
+		<script>
+			laydate({
+			  elem: '#starttime',
+			  istime: true,
+			  format: 'YYYY-MM-DD hh:mm:ss', //日期格式
+			  max: laydate.now(), //+1代表明天，+2代表后天，以此类推
+			});
+			laydate({
+			  elem: '#endtime',
+			  istime: true,
+			  format: 'YYYY-MM-DD hh:mm:ss', //日期格式
+			  max: laydate.now(), //+1代表明天，+2代表后天，以此类推
+			});
+		</script>
+		<script>
+			$(document).ready(function() {
+				$(".i-checks").iCheck({
+					checkboxClass: "icheckbox_square-green",
+					radioClass: "iradio_square-green",
+				})
+			});
+		</script>
+		<script>
+			function del(id){
+				layer.confirm('确定要删除吗？', {
+				  	btn: ['确定','取消'] //按钮
+				}, function(){
+				  	window.location.href="__APP__/Agent/Order/del/id/" + id + ""
+				});
+			}
+
+			function admin_cancel(id){
+				layer.confirm('确定要取消吗？', {
+				  	btn: ['确定','取消'] //按钮
+				}, function(){
+				  	window.location.href="__APP__/Agent/Order/admin_cancel/id/" + id + ""
+				});
+			}
+		</script>
+	</body>
+
+	
+</html>

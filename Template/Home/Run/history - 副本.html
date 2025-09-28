@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/new/css/index.css"/>
+    <meta charset="utf-8">
+    <title>汇丰民投宝</title>
+    <link rel="stylesheet" href="/images/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="/images/css/style_m.css">
+    <link rel="stylesheet" type="text/css" href="/images/css/weui.css">
+    <link rel="stylesheet" type="text/css" href="/images/css/_pk10.css">
+    <script src="/images/js/jquery-1.11.2.min.js"></script>
+    <script src="/images/js/sizeChange.js"></script>
+</head>
+
+<body>
+<div class="nav">
+    <h3>购买记录</h3>
+</div>
+<div class="container">
+
+    <table style="margin:0 auto;">
+        <!-- <tbody> -->
+        <tbody>
+        <tr>
+            <!-- <td class="algC">会员: 13333333333 &nbsp; 点数: 0 &nbsp;   <br /><br />
+            [<a href="/index.php/Home/history?D=0">今天</a>] &nbsp; [<a href="/index.php/Home/history?D=1">昨天</a>] &nbsp; [<a href="/index.php/Home/history?D=2">前天</a>] &nbsp; [<a href="/index.php/Home/history?D=-1">历史</a>] &nbsp;
+           </td> -->
+            <td colspan="4">会员: {$userinfo.nickname} &nbsp; 点数: {$userinfo.points} &nbsp; 今日盈亏：{$nowyk} <br><br></td>
+
+        </tr>
+        <tr>
+
+            <td><a href="/Home/Run/history.html?D=0">[今天] &nbsp; </a></td>
+            <td><a href="/Home/Run/history.html?D=1">[昨天] &nbsp; </a></td>
+            <td><a href="/Home/Run/history.html?D=2">[前天] &nbsp; </a></td>
+            <td><a href="/Home/Run/history.html?D=-1">[历史] &nbsp; </a></td>
+        </tr>
+
+        <!--   </tbody> -->
+
+        </tbody>
+    </table>
+
+    <table class="ShowNumList TableColor1" style="text-align:center">
+        <tbody>
+        <tr>
+            <th>类型</th>
+            <th>期号</th>
+            <th>下注时间</th>
+            <th>竞猜内容</th>
+            <th>输赢</th>
+        </tr>
+        <volist name="list" id="vo">
+            <tr>
+                <td width="20%">{$vo.gamename}</td>
+                <td width="20%">{$vo.number}</td>
+                <td width="20%">{$vo.time}</td>
+                <td width="20%">{$vo.jincai}</td>
+                <td width="30%">{$vo.points}</td>
+            </tr>
+        </volist>
+        </tbody>
+    </table>
+
+</div>
+<?php $a=4;?>
+<include  file="./Template/Home/Run/footer.html" />
+
+</body>
+
+</html>

@@ -1,0 +1,478 @@
+<script type="text/javascript">  
+
+</script>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" style="font-size: 62px;">
+<HEAD>
+  <title>　</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/new/css/index.css" />
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="__PUBLIC__/Home/new/css/page.css" />
+ </HEAD>
+ <BODY onload="connect(15561);">
+  <header>
+     <a onclick="history.go(-1)"><i class="ico02 back fl"></i></a>
+	 <h2>六合彩</h2>
+     <i class="ico null"></i>
+	 <i class="ico plus qx45 fr"></i>
+	 <i class="ico plus qx0 fr"></i>
+	 <!-- <a onclick="showMask()"><i class="ico service fr"></i></a> -->
+	 <include file="Template/Home/Run/home.html"/>
+  </header>
+  <div class="headblank"></div>
+  <div class="gmfix"><div id="01">
+	<div class="gmfl">
+		<p class="line1">距离 <i><b></b></i> 期开奖</p>
+		<p class="line2">0</p>
+	</div>
+	<if condition="$userinfo">
+	<a href='/Home/User/index'><img src="{$userinfo.headimgurl}" style="width:35px; height:35px; border-radius:50px;margin-left:10px">
+	</if>
+	<div class="gmfr">
+		<p class="line3"><i>{$userinfo.nickname}</i> <span class="yeup"></span></p>
+		<p class="line4">元宝:{$userinfo.points} 盈亏:{$points_tj['ying']}</p></a>
+	</div></div>
+
+	<div class="open" onclick="a1()"><div id="02"><span id="hqkj">第 <i>{$kjlist[0].periodnumber}</i> 期 <i>
+	
+	<for start="0" end="7">
+		<span class="num {$kjlist[0]['sebo'][$i]}">{$kjlist[0][$i]}</span>
+	</for>	
+	({$kjlist[0].dx},{$kjlist[0].ds},{$kjlist[0].sx})　</i></span><li class="ico02 down fr"></li></div>
+	
+	
+	<div id="o">
+	<ul class="openmo">
+	<volist name="kjlist" id="vo" key="k">
+	<li>第 <i>{$vo.periodnumber}</i> 期<i> 
+	<for start="0" end="7">
+		<span class="num {$vo['sebo'][$i]}">{$vo[$i]}</span>
+	</for>	
+	<font style="display:inline-block;width:15px"></font>({$vo.dx},{$vo.ds},{$vo.sx})</i></li>
+	</volist>
+	
+	<!--<p><a href='/user/index.php'>点击查看更多开奖记录</a></p>-->
+	</ul>
+	</div>
+</div>
+  </div>
+<!--聊天开始-->
+  <div class="main">
+<ul class="betup"><p class="gonggao"><marquee scrollAmount=4 width=95%>{:C('welcome')}</marquee></p>
+<div id="03">
+<volist name="msglist" id="vo">
+	<if condition="$vo['type'] eq 'admin'">
+		<p class="bettime">{$vo.time}</p>
+		<li class="notice"><center>{$vo.content|htmlspecialchars_decode|stripcslashes}</center></li>
+	</if>
+	<if condition="$vo['type'] eq 'system'">
+		<p class="bettime">{$vo.time}</p>
+		<li class="notice"><center>{$vo.content|htmlspecialchars_decode|stripcslashes}</center></li>
+	</if>
+	<if condition="$vo['type'] eq 'say'">
+		<li><div><div class="uhead"><img src="{$vo.head_img_url}" style= "pointer-events: none;"></div><div class="betinfo"><p class="uname">{$vo.from_client_name}　　{$vo.time}</p><p class="ubet"><i class="ico02 timeico"></i>投注内容：{$vo.content|htmlspecialchars_decode|stripcslashes}</p></div></div></li>
+	</if>
+</volist>
+<li class="notices"><center>仅显示前50条竞猜记录</center></li>
+</div>
+</ul>
+</ul>
+</div>
+<!--聊天结束-->
+
+<div class="alert" id="alert"></div>
+<div class="alert1" id="alert1"></div>
+<div class="chat_box" onclick="$('.bm-layer-wrapper').show();$('.bm-layer').show();tel();">
+<div>
+<table width="90%">
+<tr>
+<td><img src='__PUBLIC__/Home/new/css/ico/face.png' style='width:30px;margin-left: .65em;'></td>
+<td><input disabled="readonly" style="margin-left: .25em;width:97%; height:35px; border:solid #7b7b7b 0.4px;color:#999;background-color: #ffffff;" maxlength="16"  placeholder='投注格式：元宝'></td>
+<td><input type="submit" name="chat" style="width:120%; height:35px; font-size:16px; background:#ff9326;border:solid #ff9326 1px; color:#ffffff;" id="sendbtn" value="投注"></td>
+</tr>
+</table>
+</div>
+</div>
+		<!-- 投注 -->
+		<script type="text/javascript" src="__PUBLIC__/Home/new/css/js/artDialog.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/Home/new/css/js/page.js"></script>
+		<div class="bm-layer-wrapper"></div>
+		<div class="bm-layer">
+			<div class="bm-layer-trigger">
+				<div class="bm-layer-prev"></div>
+				<div class="bm-layer-next"></div>
+			</div>
+			<div class="bm-layer-fixed">
+				<div class="bm-box-btns">
+					<a href="/Home/Run/rulelhc.html"><button type="button" class="bm-btn1 bm-btn-sm">规则说明</button></a>
+				</div>
+				<div class="bm-box-form">
+					投注金额:
+					<input type="tel" placeholder="请输入投注元宝" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"  
+ onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}" value="" maxlength="5" id="J_jine" />
+					<button type="button" class="bm-btn" id="J_touzhu">投注</button>
+				</div>
+			</div>
+		<div class="swiper-container" style="width:320px;">
+		<div class="swiper-wrapper">
+		
+			<div class="swiper-slide bm-box">
+				<div class="bm-box-title">猜特码</div>
+				<div class="bm-box-info"></div>
+				<div class="bm-box-list">
+					<ul>
+						<br>						
+						<li class="bm-box-list-current"><span>大</span><p>1:{:C('lhc_tdxds')}</p></li>
+						<li><span>小</span><p>1:{:C('lhc_tdxds')}</p></li>
+						<li><span>单</span><p>1:{:C('lhc_tdxds')}</p></li>
+						<li><span>双</span><p>1:{:C('lhc_tdxds')}</p></li>
+						<li><span>红波</span><p>1:{:C('lhc_thll')}</p></li>
+						<li><span>绿波</span><p>1:{:C('lhc_thll')}</p></li>
+						<li><span>蓝波</span><p>1:{:C('lhc_thll')}</p></li>
+						<for start="1" end="50">
+							<li><span>{$i}</span><p>1:{:C('lhc_thm')}</p></li>
+						</for>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="swiper-slide bm-box bm-box-red">
+				<div class="bm-box-title">猜正码</div>
+				<div class="bm-box-info"></div>
+				<div class="bm-box-list">
+					<ul>
+						<br>
+						<li class="bm-box-list-current2 current2"><span data="1">正码1</span><p></p></li>
+						<li class="current2"><span data="2">正码2</span><p></p></li>
+						<li class="current2"><span data="3">正码3</span><p></p></li>
+						<li class="current2"><span data="4">正码4</span><p></p></li>
+						<li class="current2"><span data="5">正码5</span><p></p></li>
+						<li class="current2"><span data="6">正码6</span><p></p></li>
+						<li  class="bm-box-list-current"><span>大</span><p>1:{:C('lhc_tdxds')}</p></li>
+						<li><span>小</span><p>1:{:C('lhc_tdxds')}</p></li>
+						<li><span>单</span><p>1:{:C('lhc_tdxds')}</p></li>
+						<li><span>双</span><p>1:{:C('lhc_tdxds')}</p></li>
+						<for start="1" end="50">
+							<li><span>{$i}</span><p>1:{:C('lhc_thm')}</p></li>
+						</for>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="swiper-slide bm-box">
+				<div class="bm-box-title">猜特肖</div>
+				<div class="bm-box-info"></div>
+				<div class="bm-box-list">
+					<ul>
+						<br><li class="bm-box-list-current"><span>鼠</span><p>1:{:C('lhc_tshu')}</p></li>
+						<li><span>牛</span><p>1:{:C('lhc_tniu')}</p></li>
+						<li><span>虎</span><p>1:{:C('lhc_thu')}</p></li>
+						<li><span>兔</span><p>1:{:C('lhc_ttu')}</p></li>
+						<li><span>龙</span><p>1:{:C('lhc_tlong')}</p></li>
+						<li><span>蛇</span><p>1:{:C('lhc_tshe')}</p></li>
+						<li><span>马</span><p>1:{:C('lhc_tma')}</p></li>
+						<li><span>羊</span><p>1:{:C('lhc_tyang')}</p></li>
+						<li><span>猴</span><p>1:{:C('lhc_thou')}</p></li>
+						<li><span>鸡</span><p>1:{:C('lhc_tji')}</p></li>
+						<li><span>狗</span><p>1:{:C('lhc_tgou')}</p></li>
+						<li><span>猪</span><p>1:{:C('lhc_tzhu')}</p></li>
+					</ul>
+				</div>
+			</div>
+			
+		</div>
+		</div>
+		
+		<style type="text/css">
+			html {
+				height:100%;
+			}
+			.body{
+				position-:fixed;
+				height:100%;
+				overflow:hidden;
+			}
+			.red{background-color: red;}
+			.blue{background-color: blue;}
+			.green{background-color: green;}
+			.bm-box-list-current2 {
+				border: 1px solid #000000;
+				transition: border linear .1s,box-shadow linear .1s;
+				-webkit-box-shadow: 0 0 8px rgba(200, 200, 200, 1);
+				border-radius: 3px 3px 3px 3px;
+			}
+			/* 大于321px */
+			@media screen and (min-width:321px){
+				.bm-box-list .current2  {
+					width:47px;
+					height: 30px;
+					margin-bottom: 12px;
+				}
+			}
+			/* 大于375px */
+			@media screen and (min-width:376px){
+				.bm-box-list .current2 {
+					width:52px;
+					height: 40px;
+					margin-bottom: 12px;
+				}
+			}
+		</style>
+		<script type="text/javascript">
+		    /*function tel(){
+		    document.getElementById("J_jine").focus()
+		    } */
+			var tmp_top;
+			$('#J_jine').focus(function(){
+				tmp_top = $('body').scrollTop();
+				$("body").scrollTop( $('body').height() );
+			}).blur(function(){
+				$("body").scrollTop( tmp_top );
+			})
+				;(function(){
+				$('.Q_quxiao').click(function(){
+					$('.bm-layer-wrapper').click();
+					art.dialog({
+						content: '确定要取消本次投注吗？',
+						lock: 1,
+						ok: function(){
+							$.ajax({
+								url:'qx.php?do=2',
+								data: {
+								},
+								success: function(data){
+									//alert(data)
+									document.getElementById("alert1").innerHTML=data
+									$(".alert1").show();
+									setTimeout( "$('.alert1').fadeOut()" , 1000)
+								}
+							})
+						},
+						cancelVal: '关闭'
+						,cancel: function(){
+							//alert(2)
+						}
+					});
+					return !1;
+				});
+					$('.J_quxiao').click(function(){
+					$('.bm-layer-wrapper').click();
+					art.dialog({
+						content: '确定要取消本期全部投注吗？',
+						lock: 1,
+						ok: function(){
+							$.ajax({
+								url:'qx.php?do=1',
+								data: {
+								},
+								success: function(data){
+									//alert(data)
+									document.getElementById("alert1").innerHTML=data
+									$(".alert1").show();
+									setTimeout( "$('.alert1').fadeOut()" , 1000)
+								}
+							})
+						},
+						cancelVal: '关闭'
+						,cancel: function(){
+							//alert(2)
+						}
+					});
+					return !1;
+				})
+				var mySwiper;
+				mySwiper = new Swiper('.swiper-container');
+				$('.bm-layer-prev').on('click', function(e){
+					mySwiper.swipePrev();
+				})
+				$('.bm-layer-next').on('click', function(e){
+					mySwiper.swipeNext();
+				})
+				$('.bm-box-list li').click(function(){
+					if($(this)[0].className=="current2"){
+						$(this).addClass('bm-box-list-current2').siblings().removeClass('bm-box-list-current2');
+					}else{
+						$(this).addClass('bm-box-list-current').siblings().removeClass('bm-box-list-current');
+					}
+				})
+				$('#J_show').click(function(){
+					$('.bm-layer-wrapper').show();
+					$('.bm-layer').show();
+				})
+				$('.bm-layer-wrapper').click(function(){
+					$('.bm-layer-wrapper').hide();
+					$('.bm-layer').hide();
+				})
+				// 第几名/大小单双/金额
+				$('#J_touzhu').click(function(){
+					var active = $('.swiper-slide-active');
+					var lx = $('.bm-box-title', active).html();
+					var lx1 = $('.bm-box-list-current span', active).html();
+					var lx2 = $('.bm-box-list-current2 span', active).attr("data");
+					var je = $('#J_jine').val();
+					
+					if( !je.length ){
+						//alert('金额不能为空。');
+						document.getElementById("alert").innerHTML="金额不能为空";
+						$(".alert").show();
+						setTimeout( "$('.alert').fadeOut()" , 1000)
+						return !1;
+					}
+					//alert(lx)
+					//alert(lx1)
+					//alert(je)
+					//return !1;
+					
+					var input = "";
+					if(lx=='猜正码'){
+						input = lx2+'/'+lx1+'/'+je;
+					}else{
+						input = lx1+"/"+je;
+					}
+					onSubmit(input);
+					
+				})
+			})();
+		</script>
+
+		<!--推送-->
+		<include file="Template/Home/Run/js/lot_im.html"/>
+		<script src='/Public/Common/js/socket.io.js'></script>
+		<!--推送-->
+		
+		<script>
+		
+		var count = 0;
+		function countDown(){
+			$.ajax({
+				url:'/Home/Get/getLhc',
+				data: {
+				},
+				success: function(data){
+					data = JSON.parse(data);
+					$(".line1").html("距离 <i><b>"+data.next.periodNumber+"</b></i> 期开奖");
+					count = data.next.awardTimeInterval/1000;
+					executeCountDown();
+					setInterval(function() {
+						executeCountDown();
+					}, 1000);
+				}
+			})
+		}
+		
+		function executeCountDown(){
+			if(count == 0){
+				$(".line2").html("正在开奖");
+			}else if(count <= {:C('bj28_stop_time')}){
+				count = count - 1;
+				$(".line2").html("已封盘");
+				$('#J_touzhu').attr("disabled",true);
+				$("#J_touzhu").css("background-color","#c7c7c7");
+			}else{
+				count = count - 1;
+				$(".line2").html(count);
+			}
+		}
+		
+		countDown();
+		
+		</script>
+</div>
+
+<!--websocket-start-->
+<div class="rmenu">
+<!-- <a href="/Home/Run/record.html">投注记录</a> -->
+<if condition="C('quick_pay') eq '1' and $userinfo neq null">
+<a href="{:C('quick_pay_domain')}/pay/index.php?appid={:C('quick_pay_appid')}&payno={$userinfo.id}">在线充值</a>
+<else/>
+<a href="/Home/Fen/addpage.html">在线充值</a>
+</if>
+<a href="/Home/Fen/xiapage.html">快速提现</a>
+<!-- <a href="{:U('Home/Run/tui')}?uid={$userinfo.id}">推广赚钱</a> -->
+<a href="/Home/Run/rulelhc.html">游戏规则</a>
+</div>
+
+
+<script>
+$(".bm-btn").click(function(){
+	  //$(".alert").show();
+	  //setTimeout( "$('.alert').fadeOut()" , 1000)
+ });
+$(".f").click(function(){
+	  $(".alert1").show();
+	  setTimeout( "$('.alert1').fadeOut()" , 1000)
+ });
+function a1()
+{
+	$(".openmo").slideToggle();
+}
+ $(".ufmenu, .ufup").click(function(){
+      $(".ufix").animate({height:"0"});
+	   $("header").show();
+ });
+
+ $(".menu").click(function(){
+      $(".ufix").animate({height:"100%"});
+	  $("header").hide();
+
+ });
+
+$(".qx0").click(function(){
+      $(".rmenu").show(300);
+      $(this).hide();
+	  $(".qx45").show();
+ });
+$(".qx45").click(function(){
+      $(".rmenu").hide(300);
+      $(this).hide();
+	  $(".qx0").show();
+ });
+$(".plsm").click(function(){
+      $(".peilv").show();
+	   $(".main, .gmfix").hide();
+ });
+ $(".pltit span").click(function(){
+      $(".peilv").hide();
+	  $(".main, .gmfix").show();
+ });
+function showMask(){     
+$("#mask").css("height",$(document).height());     
+$("#mask").css("width",$(document).width());     
+$("#mask").show();     
+}  
+function hideMask(){     
+$("#mask").hide();     
+}
+</script>
+<div id="mask" class="mask" onclick="hideMask()"><img src="<if condition="$kefu[kefu] neq ''">__ROOT__/Uploads/{$kefu[kefu]}<else/>__PUBLIC__/Admin/img/no_img.jpg</if>" /></div>
+</body>
+</html>
+
+    <foot>
+      <ul class="foot">
+          <li><a href='/Home/Run/rulelhc.html'><i class="gz"></i><br>规则</a></li>
+          <li><a  href='/Home/Run/record.html'><i class="jl"></i><br>记录</a></li>
+          <li><a href="{:U('Home/Run/tui')}?uid={$userinfo.id}"><i class="news" ></i><br>推广</a></li>
+          <li><a onclick="showMask()"><i class="kf"></i><br>客服</a></li>
+          <if condition="C('quick_pay') eq '1' and $userinfo neq null">
+		  <li><a  href="{:C('quick_pay_domain')}/pay/index.php?appid={:C('quick_pay_appid')}&payno={$userinfo.id}"><i class="charge"></i><br>充值</a></li>
+		  <else/>
+		  <li><a  href="/Home/Fen/addpage.html"><i class="charge"></i><br>充值</a></li>
+		  </if>
+          <li><a  href='/Home/User/index'><i class="wd"></i><br>我的</a></li>
+      </ul>
+  </foot>
+
+ <div id="04">
+	</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>		
+

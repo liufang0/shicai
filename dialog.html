@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>POP800在线客服系统</title>
+  <script type="text/javascript">
+	function Request(strName)
+	{
+	
+		var strHref = window.location.href;
+		var intPos = strHref.indexOf("?");
+		var strRight = strHref.substr(intPos + 1);
+		var arrTmp = strRight.split("&");
+		for(var i = 0; i < arrTmp.length; i++)
+		{
+			var arrTemp = arrTmp[i].split("=");
+			if(arrTemp[0].toUpperCase() == strName.toUpperCase()) return arrTemp[1];
+		}
+		if(host==null)
+		{
+			return "";
+		}
+		if(host=="undefined")
+		{
+			return "";
+		}
+		return "";
+	};
+  </script>
+</head>
+  <script type="text/javascript">
+      var host = unescape(Request("h"));
+	  if(host=="")
+	  {
+		  host = "http://api.pop800.com";
+	  }
+	  var wt = unescape(Request("wt"));
+	  if(wt!="")
+	  {
+	  	  document.title = wt;
+	  }
+	   var n = unescape(Request("n"));
+	   var jobNo = unescape(Request("jobNo"));
+      var path = "/web800/c.800";
+	  if(n==""&&jobNo=="")
+	  {
+		  document.write("自定义URL的窗口文件设置成功.请把<span style=\"color:#900;font-weight:bold;\">"+window.location.href+"</span> 复制到系统设置->自定义URL中的地址栏->点击保存即可。");
+	  }
+	  else
+	  {
+		  document.write("<frameset rows=\"*\" cols=\"*\" frameborder=\"no\" border=\"0\" framespacing=\"0\">");
+		  document.write("<frame src=\"" + host + path + window.location.search + "\" title=\"mainFrame\" />");
+		  document.write("</frameset>");
+	  }
+  </script>
+<noframes>
+<body>
+</body>
+</noframes>
+</html>

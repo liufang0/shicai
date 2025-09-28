@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="format-detection" content="telephone=no,email=no"/>
+	<title>{:C('sitename')}</title>
+	<style>
+		* { box-sizing: border-box; }
+		body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei', sans-serif; color: #222; background: #f7f8fa; }
+		.hero {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: #fff; padding: 32px 16px 80px; text-align: center; position: relative;
+		}
+		.hero h1 { margin: 0 0 8px; font-size: 24px; font-weight: 800; letter-spacing: .5px; }
+		.hero p { margin: 0 auto; opacity: .95; max-width: 640px; line-height: 1.6; font-size: 14px; }
+		.cta { margin-top: 18px; display: inline-block; padding: 10px 18px; background: #fff; color: #5a67d8; border-radius: 22px; font-weight: 700; text-decoration: none; box-shadow: 0 6px 20px rgba(0,0,0,.12); }
+		.section { margin: -48px 12px 12px; }
+		.card { background:#fff; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,.08); padding: 16px; }
+		.features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 8px; }
+		.feature { background: #f6f7ff; border: 1px solid #eceefe; border-radius: 10px; padding: 10px; display: flex; align-items: center; gap: 8px; font-size: 13px; }
+		.feature i { font-style: normal; font-size: 16px; }
+		.list { list-style: none; padding: 0; margin: 0; }
+		.list li { padding: 10px 0; border-bottom: 1px solid #f0f2f5; font-size: 14px; display:flex; align-items:center; gap:8px; }
+		.list li:last-child{ border-bottom: 0; }
+		.pill { display:inline-block; padding: 2px 8px; font-size:12px; border-radius: 999px; background:#eef2ff; color:#4f46e5; }
+		.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+		.product { border: 1px solid #eee; border-radius: 10px; padding: 12px; background:#fff; }
+		.product h3 { margin: 0 0 6px; font-size: 16px; }
+		.product p { margin: 0; color:#666; font-size: 12px; }
+		.product a { display: inline-block; margin-top: 8px; color:#5a67d8; text-decoration:none; font-weight:700; }
+		@media(min-width:768px){ .features{ grid-template-columns: repeat(4, 1fr);} .grid{ grid-template-columns: repeat(4,1fr);} .hero h1{ font-size:28px;} }
+	</style>
+	<?php $a = 1; // 激活底部导航-首页 ?>
+	<script>
+		// 可选：后续如需加载公告/轮播数据，可在此处加入 AJAX
+	</script>
+	<meta name="description" content="{:C('sitename')} - 官方首页介绍与产品入口">
+	<meta name="keywords" content="{:C('sitename')}, 产品, 官方, 简介">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<!-- 轻量首页，无外链依赖 -->
+    
+	<style>
+		/* 让底部导航不遮挡内容的空间由 footer 控制，这里不重复设置 */
+	</style>
+</head>
+<body>
+	<header class="hero">
+		<h1>{:C('sitename')}</h1>
+		<p>为您提供稳定可靠的娱乐体验与服务，轻松上手，乐在其中。丰富玩法，安全合规，贴心客服，全程护航。</p>
+		<a class="cta" href="/index.php/Home/Run/index">进入产品</a>
+	</header>
+
+	<main class="section">
+		<section class="card">
+			<div class="pill">平台亮点</div>
+			<div class="features">
+				<div class="feature"><i>⚡</i><span>高性能与稳定性</span></div>
+				<div class="feature"><i>🔒</i><span>安全合规保障</span></div>
+				<div class="feature"><i>🎯</i><span>丰富玩法与房间</span></div>
+				<div class="feature"><i>🤝</i><span>专业客服在线</span></div>
+			</div>
+		</section>
+
+		<section class="card" style="margin-top:12px;">
+			<div class="pill">热门产品</div>
+			<div class="grid" style="margin-top:8px;">
+				<div class="product">
+					<h3>标准房间</h3>
+					<p>规则简单，适合新手体验</p>
+					<a href="/index.php/Home/Run/index">立即进入 →</a>
+				</div>
+				<div class="product">
+					<h3>挑战房间</h3>
+					<p>玩法更丰富，乐趣更多</p>
+					<a href="/index.php/Home/Run/index">立即进入 →</a>
+				</div>
+				<div class="product">
+					<h3>高级房间</h3>
+					<p>自定义与进阶玩法</p>
+					<a href="/index.php/Home/Run/index">立即进入 →</a>
+				</div>
+				<div class="product">
+					<h3>趋势与记录</h3>
+					<p>查看走势与历史记录</p>
+					<a href="{:U('Home/Run/trend')}">去查看 →</a>
+				</div>
+			</div>
+		</section>
+
+		<section class="card" style="margin-top:12px;">
+			<div class="pill">公告</div>
+			<ul class="list" style="margin-top:6px;">
+				<volist name="gonggao" id="gg">
+					<li>📢 <a href="{:U('Home/User/gonggao', array('id'=>$gg['id']))}" style="color:#222; text-decoration:none;">{$gg.title}</a></li>
+				</volist>
+				<notempty name="gonggao"></notempty>
+				<empty name="gonggao">
+					<li>📢 欢迎来到{:C('sitename')}，祝您使用愉快！</li>
+					<li>📢 点击下方“产品”可进入体验。</li>
+				</empty>
+			</ul>
+		</section>
+	</main>
+
+	<include file="Template/Home/Run/footer.html" />
+</body>
+</html>

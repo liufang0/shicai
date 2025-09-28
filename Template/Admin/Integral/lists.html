@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>后台 - 上下分管理</title>
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+
+		
+		<link href="__PUBLIC__/Admin/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/plugins/iCheck/custom.css" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+
+	</head>
+	<style>
+		/*分页样式*/
+		.pages a,.pages span {
+		    display:inline-block;
+		    padding:4px 7px;
+		    margin:0 2px;
+		    border:1px solid #D5D4D4;
+		    -webkit-border-radius:1px;
+		    -moz-border-radius:1px;
+		    border-radius:1px;
+		}
+		.pages a,.pages li {
+		    display:inline-block;
+		    list-style: none;
+		    text-decoration:none; color:#3399ff;
+		}
+		
+		.pages a:hover{
+		    border-color:#3399ff;
+		}
+		.pages span.current{
+		    background:#3399ff;
+		    color:#FFF;
+		    font-weight:700;
+		    border-color:#3399ff;
+		}
+		.pages{
+			text-align: center;
+		}
+		/*分页样式*/
+	</style>
+	<body class="gray-bg">
+		<div class="wrapper wrapper-content animated fadeInRight">	
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">
+							<h5>上下分管理</h5>
+						</div>
+						<div class="ibox-content">
+						<div class="row">
+								<form method="get" action="{:U('Admin/Integral/lists')}">
+									<div class="col-sm-2">
+										<input type="text" placeholder="开始时间" id="starttime" name="starttime" value='{$start}' class="form-control">
+									</div>		
+									<div class="col-sm-2">
+										<input type="text"  placeholder="结束时间" id="endtime" name="endtime" value="{$end}" class="input-sm form-control"> 
+									</div>
+									<div class="col-sm-2">
+									<input type="text"  placeholder="请输入用户UID" name="uid" value="{$uid}" class="input-sm form-control"> <span class="input-group-btn">
+									</div>
+									<div class="col-sm-2">
+									<input type="text"  placeholder="请输入用户号或昵称" name="nickname" value="{$nickname}" class="input-sm form-control"> <span class="input-group-btn">
+									</div>
+									<button type="submit" class="btn btn-sm btn-primary"> 搜索</button> 
+                                	<button class="btn btn-sm btn-primary timesearch" time="today"> 今天</button>
+                                	<button  class="btn btn-sm btn-primary timesearch" time="yestoday"> 昨天</button>
+                                	<button class="btn btn-sm btn-primary timesearch" time="week"> 最近一周</button>
+                                	<button class="btn btn-sm btn-primary timesearch" time="month"> 最近一月</button>
+								</form>
+							</div>
+							<div class="table-responsive">
+								<table class="table table-striped table-hover table-bordered">
+									<thead>
+										<tr>
+											<th>UID</th>
+											<th>头像</th>
+											<th>昵称</th>
+											<th>用户号</th>
+											<th>上下分</th>
+											<th>时间</th>
+										</tr>
+									</thead>
+									<tbody>
+										<volist name="list" id="vo">
+											<tr>
+												<td width="30">{$vo.uid}</td>
+												<td width="40"><img style="width: 40px;" src="{$vo.user.headimgurl}"/></td>
+												<td width="100">{$vo.nickname}</td>
+												<td width="100">{$vo.username}</td>
+												<td width="100">
+													<if condition="$vo['type'] eq 1">
+														<span style="color: red;">上分&nbsp;&nbsp;{$vo.points}</span>
+														<else/>
+														<span style="color: blue;">下分&nbsp;&nbsp;{$vo.points}</span>
+													</if>
+												</td>
+												<td width="100">{$vo.time|date="Y-m-d H:i:s",###}</td>
+											</tr>
+										</volist>
+									</tbody>
+								</table>
+							</div>
+							<div class="pages">
+								{$show}
+							</div>
+							<div>
+							<span>总上分<font color="red">{$sum_data['add']}</font></span>&nbsp;
+							<span>总下分<font color="red">{$sum_data['xia']}</font></span>&nbsp;
+							<span>平台输赢：<font color="red">{$sum_data['add']-$sum_data['xia']}</font></span>&nbsp;
+						</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<script src="__PUBLIC__/Admin/js/jquery.min.js?v=2.1.4"></script>
+		<script src="__PUBLIC__/Admin/js/bootstrap.min.js?v=3.3.6"></script>
+		<script src="__PUBLIC__/Admin/js/plugins/iCheck/icheck.min.js"></script>
+		<script src="__PUBLIC__/Admin/js/plugins/layer/laydate/laydate.js"></script>
+		<script src="__PUBLIC__/Common/layer/layer.js"></script>
+		<script>
+				laydate({
+			  elem: '#starttime',
+			  max: laydate.now(), //+1代表明天，+2代表后天，以此类推
+			  	  istime: true,
+			  format: 'YYYY-MM-DD hh:mm:ss', //日期格式
+			});
+			laydate({
+			  elem: '#endtime',
+			  max: laydate.now(), //+1代表明天，+2代表后天，以此类推
+			  	  istime: true,
+			  format: 'YYYY-MM-DD hh:mm:ss', //日期格式
+			});
+		</script>
+		<script>
+			$('.timesearch').click(function(e){
+				e.stopPropagation();
+				var time_value = $(this).attr('time');
+				location.href = "{:U('Admin/Integral/lists')}?time="+time_value;
+				return false;
+			})
+			$(document).ready(function() {
+				$(".i-checks").iCheck({
+					checkboxClass: "icheckbox_square-green",
+					radioClass: "iradio_square-green",
+				})
+			});
+		</script>
+		
+	</body>
+
+	
+</html>

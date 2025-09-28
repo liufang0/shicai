@@ -1,0 +1,68 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+@font-face { font-family: lanting_gbk;}
+body { margin: 0; padding: 0; letter-spacing: 1px; font-family: 'lanting_gbk', 微软雅黑, 宋体, sans-serif; color: #666; background: #f1fbff;}
+ul,
+li,
+p,
+dl,
+dt,
+dd { list-style: none; margin: 0; padding: 0;}
+a { text-decoration: none; text-align: center;}
+.ms-controller{visibility: hidden;}
+.pay_top { padding-bottom: 32px; width: 100%; background: linear-gradient(to right, #D22727, #7b7dea); color: #fff; font-size: 15px; position: relative; z-index: -1;}
+.logo { position: absolute; height: 16px; width: 75px; background: url(../images/logo3.png); right: 4%; top: 8%;}
+.pay_top p:nth-child(1) { padding: 2% 4%; line-height: 24px;}
+.pay_top p:nth-child(2) { padding: 2% 4%; line-height: 20px; background: url(../images/gg_bg.png);}
+.top_btn { height: 40px; width: 100%; background: #fff; width: 72%; margin: 0 auto; margin-top: -20px; border-radius: 10px; box-shadow: 0 2px 12px #c7edff; line-height: 40px; padding: 0 10%; font-size: 14px;}
+.top_btn i { color: #D22727; font-size: 16px; margin-right: 10px;}
+.top_btn a { color: #666; font-weight: bold;}
+.top_btn a:nth-child(2) { float: right;}
+.choose_goods,
+.choose_pay { width: 92%; margin: 0 auto; border-radius: 10px; background: #fff; overflow: hidden; margin-top: 12px;}
+.choose_title { display: block; height: 45px; font-size: 16px; line-height: 45px; color: #fff; padding-left: 12px; background: #D22727;}
+.choose_goods p { line-height: 40px; padding: 0 12px; font-size: 14px; height: 40px; border-bottom: 1px solid #f8f8f8;}
+.choose_goods p:last-child { border-bottom: none;}
+.s_left { float: left; width: 25%; font-size: 14px;}
+.s_right { float: right; width: 75%; overflow: hidden; text-align: right; word-break: keep-all; display: block;}
+.choose_goods select { border: none; color: #666; font-size: 12px; outline: none; padding-right: 10px; background: none;}
+.choose_goods p input { text-align: right; border: none; font-size: 12px; outline: none;}
+.choose_pay p { line-height: 48px; padding: 0 12px; font-size: 12px; height: 48px; border-bottom: 1px solid #f8f8f8;}
+.choose_pay p img { vertical-align: middle;}
+.choose_pay p:last-child { border-bottom: none;}
+.choose_pay p span { width: 28px; height: 28px; border-radius: 14px; margin-top: 8px; border: 1px solid #eee; float: right;}
+.gouxuan { background: url(../images/gouxuan.png); border: none;}
+.next_btn { height: 44px; width: 100%; font-size: 16px; line-height: 44px; text-align: center; display: block; background: #D22727; color: #fff; margin: 20px auto; border: 2px solid #D22727;}
+.price { height: 40px; margin: 12px 0; line-height: 40px; padding: 0 8%; background: #fff; font-size: 16px; text-align: center; font-weight: bold;}
+.price span { color: #ee2d0c;}
+.shuoming { padding: 2% 4%; font-size: 12px; line-height: 18px; display: block; background: #c2ecff; color: #D22727;}
+.choose_pay input[type=radio] { display: none;}
+.s_box { padding: 2% 4%; font-size: 14px; line-height: 18px; min-height: 25px; display: block; border-bottom: 1px solid #D22727;}
+.s_box span { font-size: 14px; line-height: 18px;}
+.s_box select { width: 70%;}
+
+/* 老版购买 */
+
+#buy_border {width: 92%; border-radius: 5px; margin: 10px auto}
+.step { display: block; height: 45px; font-size: 16px; line-height: 45px; border-top-left-radius: 10px; border-top-right-radius: 10px; color: #fff; padding-left: 12px; background: #D22727;}
+#step_two {padding: 10px;border-top: 0; background: #fff}
+ul#select_pay { background: red}
+ul#select_pay li {display: block;height: 42px;line-height: 42px;float: left;font-weight: bold;color: #173c59;margin-right: 20px;}
+ul#select_pay li.selected {width: 151px;text-align: center}
+
+/* 支付选项 */
+
+.box { border-bottom: 1px solid #eee; font-size: 30px; letter-spacing: 2px; position: relative; padding: 5px 0;}
+.box input { width: 24px; height: 24px; display: none;}
+.box span { position: absolute; display: block; height: 30px; width: 30px; border-radius: 15px; border: 1px solid #eee; right: 1px; top: 50%; margin-top: -15px;}
+.span_on { background: url(../images/right.png); border: none;}
+
+/* 批发价格表格  */
+
+.registera {border: 1px solid #e0e1e1; width: 100%; border-collapse: collapse; margin-bottom: 10px; text-align: center}
+.registera tr th,
+.registera tr td {border-bottom: 1px solid #e0e1e1;border-right: 1px solid #e0e1e1;height: 30px; line-height: 30px;}
+.registera tr th { background: #f1f1f1}
+.red {color: red}
+.fr {float: right}

@@ -1,0 +1,192 @@
+<?php
+$game = 'lhc';
+?>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>{:C('sitename')}</title>
+		<meta name="renderer" content="webkit">
+		<meta name="format-detection" content="telephone=no,email=no"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+		<meta name="telephone=no" content="format-detection">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no" />
+
+		<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+		<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+		<META HTTP-EQUIV="Expires" CONTENT="0">
+
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/lib.css" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/public.css" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/index.css" />
+		<link rel="stylesheet" type="text/css" href="/Template/Home/Run/css/common.css" />
+		<script src='//cdn.bootcss.com/jquery/1.11.3/jquery.js'></script>
+		<script src="__PUBLIC__/layer/layer.js"></script>
+		 <!-- <script type="text/javascript" src="__PUBLIC__/Home/js/ssc_index.js"></script> -->
+	</head>
+	<style>
+		#Cocos2dGameContainer{
+			width: 100% !important;
+			height: 274px !important;
+		}
+		.top_user{
+			width: 100%;
+		    color: #bcb6b6;
+		    height: 30px;
+		    background: #293039;
+		}
+		.top_user .headimgurl,.top_user .info,.top_user .fen{display: inline-block;}
+		.top_user .headimgurl{width:30px;height: auto}
+		.top_user .info{margin-top: 6px;vertical-align: top;font-size: 14px;}
+		.top_user .fen{float:right;margin-right:10px;}
+		.top_user .btn{
+			display: inline-block;
+		    background-color: #1fa1dc;
+		    width: 60px;
+		    height: 24px;
+		    line-height: 24px;
+		    border-radius: 3px;
+		    text-align: center;
+		    font-size: 14px;
+		    margin-top: 3px;
+		    border: 1px solid #1fa1dc;
+		    color: #FFF;
+		}
+		.top_user .logout{background: #f8ac59;border:1px solid #f8ac59;vertical-align: top;margin-top:4px;}
+		.top_user .bind{background: #f8ac59;border:1px solid #f8ac59;vertical-align: top;margin-top:4px;}
+		.top_user .button-xia{background-color: #1ab394 !important;border:1px solid #1ab394 !important;}
+		.top_user .lore{float: right;margin-right:20px;}
+		.top_user .register{background-color: #4825e1;border:1px solid #4825e1 !important;}
+		.tab-content .wz{padding:0;}
+		.tab-box table{padding: 0;font-size:12px;}
+	</style>
+	<body>
+		<div class=" open_form">
+		<div class="sub_right  ">
+			<style>
+				.dx_shadow { width: 1000px; }
+				.top_right { border-bottom: 1px solid #e3e3e3; font-size: 12px; height: 25px; line-height: 25px; }
+				.top_right_red { border-bottom: 1px solid #e3e3e3; color: red; font-size: 12px; height: 25px; line-height: 25px; }
+				.chuxian { height: 25px; line-height: 25px; }
+			</style>
+			<div class="sm g_hide"></div>
+			<table class="sub_table" cellpadding="0" cellspacing="0" border="0" width="980">
+			
+			<?php if($game == 'lhc'){
+				$shengxiao = array(
+					1=>'狗', 13=>'狗', 25=>'狗', 37=>'狗', 49=>'狗', 
+					12=>'猪', 24=>'猪', 36=>'猪', 48=>'猪', 
+					11=>'鼠', 23=>'鼠', 35=>'鼠', 47=>'鼠', 
+					10=>'牛', 22=>'牛', 34=>'牛', 46=>'牛', 
+					9=>'虎', 21=>'虎', 33=>'虎', 45=>'虎',
+					8=>'兔', 20=>'兔', 32=>'兔', 44=>'兔',
+					7=>'龙', 19=>'龙', 31=>'龙', 43=>'龙',
+					6=>'蛇', 18=>'蛇', 30=>'蛇', 42=>'蛇',
+					5=>'马', 17=>'马', 29=>'马', 41=>'马',
+					4=>'羊', 16=>'羊', 28=>'羊', 40=>'羊',
+					3=>'猴', 15=>'猴', 27=>'猴', 39=>'猴',
+					2=>'鸡', 14=>'鸡', 26=>'鸡', 38=>'鸡',
+				);
+				$sebo = array(
+					'1'=>'红波','2'=>'红波','7'=>'红波','8'=>'红波','12'=>'红波','13'=>'红波','18'=>'红波','19'=>'红波','23'=>'红波','24'=>'红波','29'=>'红波','30'=>'红波','34'=>'红波','35'=>'红波','40'=>'红波','45'=>'红波','46'=>'红波',
+					'3'=>'蓝波','4'=>'蓝波','9'=>'蓝波','10'=>'蓝波','14'=>'蓝波','15'=>'蓝波','20'=>'蓝波','25'=>'蓝波','26'=>'蓝波','31'=>'蓝波','36'=>'蓝波','37'=>'蓝波','41'=>'蓝波','42'=>'蓝波','47'=>'蓝波','48'=>'蓝波',
+					'5'=>'绿波','6'=>'绿波','11'=>'绿波','16'=>'绿波','17'=>'绿波','21'=>'绿波','22'=>'绿波','27'=>'绿波','28'=>'绿波','32'=>'绿波','33'=>'绿波','38'=>'绿波','39'=>'绿波','43'=>'绿波','44'=>'绿波','49'=>'绿波'
+				);
+    ?>
+					<thead>
+						<tr id="th_header">
+							<th width="57" class="">开奖期号</th>
+							<th width="380" class="">开奖号码</th>
+							<th colspan="3" class="" width="103">总和</th>
+                            <th colspan="5" class="" width="103">特码</th>
+						</tr>
+					</thead>
+					<tbody id="reslist" linNos="0,1,2,5">
+						<?php 
+							
+							$ay = true;
+							foreach($list as $con){
+								if($ay){
+									$line_row = "";
+									$ay = false;
+								}else{
+									$line_row = "line_row";
+									$ay = true;
+								}
+								$ys['小'] = 'blue';
+								$ys['大'] = 'gray';
+								$ys['单'] = 'blue';
+								$ys['双'] = 'gray';
+								$ys['合小'] = 'blue';
+								$ys['合大'] = 'gray';
+								$ys['合单'] = 'blue';
+								$ys['合双'] = 'gray';
+								$ys['尾大'] = 'blue';
+								$ys['尾小'] = 'gray';
+								$ys['红波'] = 'red';
+								$ys['蓝波'] = 'blue';
+								$ys['绿波'] = 'green';
+								$codes = explode(",", $con['awardnumbers']);
+								foreach($codes as $k=>$v){
+									$codess[$k] = $v<10 ? ''.$v : $v;	
+								}
+								if(count($codes) != 7){
+									continue;
+								}else{
+									$hz = (int)$codes[0] + (int)$codes[1] + (int)$codes[2] + (int)$codes[3] + (int)$codes[4] + (int)$codes[5] + (int)$codes[6];
+								}
+								$dx = $hz >= 175 ? '大' : '小';
+								$ds = $hz % 2 == 0 ? '双' : '单';
+								$tdx = $codes[6] <= 24 ? '小' : '大';
+								$tds = $codes[6] % 2 == 0 ? '双' : '单';
+								if($codes[6]==49){
+									$thdx = '和';	
+								}else{
+									$thdx = array_sum(str_split($codes[6]))>=7 ? '合大' : '合小';
+								}
+								if($codes[6]==49){
+									$thds = '和';	
+								}else{
+									$thds = array_sum(str_split($codes[6]))%2==0 ? '合双' : '合单';
+								}
+								if($codes[6]==49){
+									$twdx = '和';	
+								}else{
+									$twdx = end(str_split($codes[6]))>=5 ? '尾大' : '尾小';
+								}
+								?>
+									<tr class="<?php echo $line_row;?>">
+										<td><?php echo substr($con['periodnumber'],4,3);;?></td>
+										<td style="font-size:0px;">
+											<span class="  ball_s_ ball_s_<?php echo $ys[$sebo[$codes[0]]]; ?> ball_lenght5  "><?php echo $codess[0]; echo $shengxiao[$codes[0]];?></span>
+											<span class="  ball_s_ ball_s_<?php echo $ys[$sebo[$codes[1]]]; ?> ball_lenght5  "><?php echo $codess[1]; echo $shengxiao[$codes[1]];?></span>
+											<span class="  ball_s_ ball_s_<?php echo $ys[$sebo[$codes[2]]]; ?> ball_lenght5  "><?php echo $codess[2]; echo $shengxiao[$codes[2]];?></span>
+											<span class="  ball_s_ ball_s_<?php echo $ys[$sebo[$codes[3]]]; ?> ball_lenght5  "><?php echo $codess[3]; echo $shengxiao[$codes[3]];?></span>
+											<span class="  ball_s_ ball_s_<?php echo $ys[$sebo[$codes[4]]]; ?> ball_lenght5  "><?php echo $codess[4]; echo $shengxiao[$codes[4]];?></span>
+                                            <span class="  ball_s_ ball_s_<?php echo $ys[$sebo[$codes[5]]]; ?> ball_lenght5  "><?php echo $codess[5]; echo $shengxiao[$codes[5]];?></span>
+                                            <span class="  ball_s_ ball_s_<?php echo $ys[$sebo[$codes[6]]]; ?> ball_lenght5  "><?php echo $codess[6]; echo $shengxiao[$codes[6]];?></span>
+										</td>
+										<td class="count"><?php echo $hz;?></td>
+										<td class="<?php echo $ys[$dx];?>"><?php echo $dx;?></td>
+										<td class="<?php echo $ys[$ds];?>"><?php echo $ds;?></td>
+										<td class="<?php echo $ys[$tdx];?>"><?php echo $tdx;?></td>
+										<td class="<?php echo $ys[$tds];?>"><?php echo $tds;?></td>
+                                        <!--td class="<?php echo $ys[$thdx];?>"><?php echo $thdx;?></td>
+										<td class="<?php echo $ys[$thds];?>"><?php echo $thds;?></td>
+                                        <td class="<?php echo $ys[$twdx];?>"><?php echo $twdx;?></td-->
+									</tr>
+						<?php }
+    ?>
+					</tbody>
+			<?php }
+?>
+			</table>
+			<div class="sub_hr"></div>
+		</div>
+	</div>
+	<div class="clear"></div>
+	</body>
+
+</html>

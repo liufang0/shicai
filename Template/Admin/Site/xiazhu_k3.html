@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>后台 - 通用快3下注配置</title>
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+
+		
+		<link href="__PUBLIC__/Admin/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/plugins/iCheck/custom.css" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/animate.min.css" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+
+	</head>
+
+	<body class="gray-bg">
+		<div class="wrapper wrapper-content animated fadeInRight">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">
+							<h5>通用快3下注配置 </h5><span>（修改后需要重启服务生效）</span>
+							<div class="ibox-tools">
+								<a class="collapse-link">
+									<i class="fa fa-chevron-up"></i>
+								</a>
+							</div>
+						</div>
+						<div class="ibox-content">
+							<form id="signform" action="{:U('Admin/Site/xiazhu_k3')}" method="post" class="form-horizontal">
+								<div class="form-group">
+									<label class="col-sm-2 control-label">单笔最低点数</label>
+									<div class="col-sm-6">
+										<input type="text" name="k3qi_min_point" value="{:C('k3qi_min_point')}" placeholder="单笔最低点数" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">用户每期最高点数</label>
+									<div class="col-sm-6">
+										<input type="text" name="k3qi_max_point" value="{:C('k3qi_max_point')}" placeholder="用户每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">和值大小单双</label>
+								    <div class="col-sm-4">
+										<input type="text" name="k3_dxds" value="{:C('k3_dxds')}" placeholder="输入赔率" class="form-control">
+									</div>
+									<div class="col-sm-2"> 
+										<input type="radio" value="1" <if condition="C('k3_xz_open')['dxds'] eq 1">checked</if> class="i-checks" name="k3_xz_open[dxds]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('k3_xz_open')['dxds'] eq 0">checked</if> class="i-checks" name="k3_xz_open[dxds]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="k3_xz_max[dxds]" value="{:C('k3_xz_max')['dxds']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+
+								<div class="hr-line-dashed"></div>
+									<div class="form-group">
+									<label class="col-sm-2 control-label">猜和值点数 (数字4-17)</label>
+								    <div class="col-sm-4">
+										<input type="text" name="k3_tema_4" value="{:C('k3_tema_4')}" placeholder="输入赔率" class="form-control">
+									</div>
+									<div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('k3_xz_open')['tema'] eq 1">checked</if> class="i-checks" name="k3_xz_open[tema]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('k3_xz_open')['tema'] eq 0">checked</if> class="i-checks" name="k3_xz_open[tema]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="k3_xz_max[tema]" value="{:C('k3_xz_max')['tema']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label">数字5,16</label>
+								    <div class="col-sm-4">
+										<input type="text" name="k3_tema_5" value="{:C('k3_tema_5')}" placeholder="输入赔率" class="form-control">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label">数字6,15</label>
+								    <div class="col-sm-4">
+										<input type="text" name="k3_tema_6" value="{:C('k3_tema_6')}" placeholder="输入赔率" class="form-control">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label">数字7,14</label>
+								    <div class="col-sm-4">
+										<input type="text" name="k3_tema_7" value="{:C('k3_tema_7')}" placeholder="输入赔率" class="form-control">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label">数字8,13</label>
+								    <div class="col-sm-4">
+										<input type="text" name="k3_tema_8" value="{:C('k3_tema_8')}" placeholder="输入赔率" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">数字9,12</label>
+								    <div class="col-sm-4">
+										<input type="text" name="k3_tema_9" value="{:C('k3_tema_9')}" placeholder="输入赔率" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">数字10,11</label>
+								    <div class="col-sm-4">
+										<input type="text" name="k3_tema_10" value="{:C('k3_tema_10')}" placeholder="输入赔率" class="form-control">
+									</div>
+								</div>
+
+								<div class="hr-line-dashed"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">单码</label>
+								    <div class="col-sm-4">
+										<input type="text" name="k3_dm" value="{:C('k3_dm')}" placeholder="输入赔率" class="form-control">
+									</div>
+									<div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('k3_xz_open')['dm'] eq 1">checked</if> class="i-checks" name="k3_xz_open[dm]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('k3_xz_open')['dm'] eq 0">checked</if> class="i-checks" name="k3_xz_open[dm]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="k3_xz_max[dm]" value="{:C('k3_xz_max')['dm']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="hr-line-dashed"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">红号</label>
+								    <div class="col-sm-4">
+										<input type="text" name="k3_honghao" value="{:C('k3_honghao')}" placeholder="输入赔率" class="form-control">
+									</div>
+									<div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('k3_xz_open')['honghao'] eq 1">checked</if> class="i-checks" name="k3_xz_open[honghao]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('k3_xz_open')['honghao'] eq 0">checked</if> class="i-checks" name="k3_xz_open[honghao]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="k3_xz_max[honghao]" value="{:C('k3_xz_max')['honghao']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+
+								<div class="hr-line-dashed"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">黑号</label>
+								    <div class="col-sm-4">
+										<input type="text" name="k3_heihao" value="{:C('k3_heihao')}" placeholder="输入赔率" class="form-control">
+									</div>
+									<div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('k3_xz_open')['heihao'] eq 1">checked</if> class="i-checks" name="k3_xz_open[heihao]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('k3_xz_open')['heihao'] eq 0">checked</if> class="i-checks" name="k3_xz_open[heihao]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="k3_xz_max[heihao]" value="{:C('k3_xz_max')['heihao']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+
+								<div class="hr-line-dashed"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">豹子</label>
+								    <div class="col-sm-4">
+										<input type="text" name="k3_baozi" value="{:C('k3_baozi')}" placeholder="输入赔率" class="form-control">
+									</div>
+									<div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('k3_xz_open')['baozi'] eq 1">checked</if> class="i-checks" name="k3_xz_open[baozi]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('k3_xz_open')['baozi'] eq 0">checked</if> class="i-checks" name="k3_xz_open[baozi]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="k3_xz_max[baozi]" value="{:C('k3_xz_max')['baozi']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+
+								<div class="hr-line-dashed"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">二不同</label>
+								    <div class="col-sm-4">
+										<input type="text" name="k3_ebt" value="{:C('k3_ebt')}" placeholder="输入赔率" class="form-control">
+									</div>
+									<div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('k3_xz_open')['ebt'] eq 1">checked</if> class="i-checks" name="k3_xz_open[ebt]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('k3_xz_open')['ebt'] eq 0">checked</if> class="i-checks" name="k3_xz_open[ebt]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="k3_xz_max[ebt]" value="{:C('k3_xz_max')['ebt']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+
+								<div class="hr-line-dashed"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">二相同</label>
+								    <div class="col-sm-4">
+										<input type="text" name="k3_ext" value="{:C('k3_ext')}" placeholder="输入赔率" class="form-control">
+									</div>
+									<div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('k3_xz_open')['ext'] eq 1">checked</if> class="i-checks" name="k3_xz_open[ext]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('k3_xz_open')['ext'] eq 0">checked</if> class="i-checks" name="k3_xz_open[ext]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="k3_xz_max[ext]" value="{:C('k3_xz_max')['ext']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+							
+								<span style="color: red;">*赔率为含本赔率</span>
+								<div class="hr-line-dashed"></div>
+								<div class="form-group">
+									<div class="col-sm-4 col-sm-offset-2">
+										<button class="btn btn-primary" type="submit">保存信息</button>&nbsp;&nbsp;&nbsp;
+										<a class="btn btn-danger" href="{:U('Index/index')}">取消</a>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script src="__PUBLIC__/Admin/js/jquery.min.js?v=2.1.4"></script>
+		<script src="__PUBLIC__/Admin/js/bootstrap.min.js?v=3.3.6"></script>
+		<script src="__PUBLIC__/Admin/js/content.min.js?v=1.0.0"></script>
+		<script src="__PUBLIC__/Common/js/ajaxForm.js"></script>
+		<script src="__PUBLIC__/Common/layer/layer.js"></script>
+		<script src="__PUBLIC__/Admin/js/plugins/iCheck/icheck.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				$(".i-checks").iCheck({
+					checkboxClass: "icheckbox_square-green",
+					radioClass: "iradio_square-green",
+				})
+			});
+		</script>
+		<script>
+			$(function(){
+				$('#signform').ajaxForm({
+					success: complete, 
+					dataType: 'json'
+				});
+				function complete(data){
+					if(data.status==1){
+						$('.btn-primary').attr('disabled','disabled');
+						layer.msg(data.info, function(index){
+			 				layer.close(index);
+							window.location.href=data.url;
+						});
+					}else{
+						layer.msg(data.info);
+						return false;	
+					}
+				}
+			});
+		</script>
+	</body>
+
+</html>
