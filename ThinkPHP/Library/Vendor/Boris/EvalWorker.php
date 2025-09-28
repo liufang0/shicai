@@ -223,7 +223,7 @@ class EvalWorker {
 
   private function _select(&$read, &$except) {
     $write = null;
-    set_error_handler(function(){return true;}, E_WARNING);
+    set_error_handler(function()[return true;}], E_WARNING);
     $result = stream_select($read, $write, $except, 10);
     restore_error_handler();
     return $result;

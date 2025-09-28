@@ -71,12 +71,12 @@ class config {
 		{
 			foreach ($match[1] as $section)
 			{
-				if ($section{0} == '.' && !$this->read_hidden)
+				if ($section[0] == '.' && !$this->read_hidden)
 				{
 					continue;
 				}
 				preg_match("/\[".preg_quote($section)."\](.*?)(\n\[|\Z)/s",$contents,$match);
-				if ($section{0} == '.')
+				if ($section[0] == '.')
 				{
 					$section = substr($section, 1);
 				}

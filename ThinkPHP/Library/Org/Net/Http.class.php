@@ -71,7 +71,7 @@ class Http {
             'block'		=>	TRUE,
             );
 
-        foreach (array_merge($conf_arr, $conf) as $k=>$v) ${$k} = $v;
+        foreach (array_merge($conf_arr, $conf) as $k=>$v) $[$k] = $v;
 
         if($post) {
             if(is_array($post))

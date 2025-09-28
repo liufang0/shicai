@@ -32,7 +32,7 @@ class Smarty {
         if(C('TMPL_ENGINE_CONFIG')) {
             $config  =  C('TMPL_ENGINE_CONFIG');
             foreach ($config as $key=>$val){
-                $tpl->{$key}   =  $val;
+                $tpl->[$key]   =  $val;
             }
         }
         $tpl->assign($var);

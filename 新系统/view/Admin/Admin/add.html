@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>后台 - 管理员添加</title>
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+
+		
+		<link href="__PUBLIC__/Admin/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/plugins/iCheck/custom.css" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/animate.min.css" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+
+	</head>
+
+	<body class="gray-bg">
+		<div class="wrapper wrapper-content animated fadeInRight">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="ibox float-e-margins">
+						<div class="ibox-content">
+							<form id="signform" method="post" action="{:U('Admin/Admin/add')}" class="form-horizontal">
+									<div class="form-group">
+										<label class="col-sm-2 control-label">登录用户名：</label>
+										<div class="col-sm-6">
+											<input type="text" id="username" name="username" value=""  class="form-control">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-2 control-label">角色名：</label>
+										<div class="col-sm-6">
+											<input type="text" id="role" name="role" value=""  class="form-control" >
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-2 control-label">密码</label>
+										<div class="col-sm-6">
+											<input type="text" id="password" name="password" value=""  class="form-control">
+										</div>
+									</div>
+									
+									<div class="hr-line-dashed"></div>
+									<div class="form-group">
+									<input type="hidden" name="id" value="{$userinfo.id}">
+									<div class="col-sm-4 col-sm-offset-2">
+										<button class="btn btn-primary" type="submit">确认</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script src="__PUBLIC__/Admin/js/jquery.min.js?v=2.1.4"></script>
+		<script src="__PUBLIC__/Admin/js/bootstrap.min.js?v=3.3.6"></script>
+		<script src="__PUBLIC__/Admin/js/content.min.js?v=1.0.0"></script>
+		<script src="__PUBLIC__/Common/js/ajaxForm.js"></script>
+		<script src="__PUBLIC__/Common/layer/layer.js"></script>
+		<script>
+			$(function(){
+				$('#signform').ajaxForm({
+					beforeSubmit: checkForm,
+					success: complete, 
+					dataType: 'json'
+				});
+				function checkForm(){
+					
+				}
+				function complete(data){
+					if(data.status==1){
+						$('.btn-primary').attr('disabled','disabled');
+						layer.msg(data.info, function(index){
+			 				layer.close(index);
+							window.parent.location.href=data.url;
+						});
+					}else{
+						layer.msg(data.info);
+						return false;	
+					}
+				}
+			});
+		</script>
+	</body>
+
+</html>

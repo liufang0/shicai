@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>后台 - 收款银行转帐</title>
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+
+		
+		<link href="__PUBLIC__/Admin/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/plugins/iCheck/custom.css" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/animate.min.css" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+
+	</head>
+
+	<body class="gray-bg">
+		<div class="wrapper wrapper-content animated fadeInRight">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">						
+							<div class="ibox-tools">
+								<a class="collapse-link">
+									<i class="fa fa-chevron-up"></i>
+								</a>
+							</div>
+						</div>
+						<div class="ibox-content">
+							<form class="form-horizontal" method="post" action="{:U('Admin/Fen/set4')}" name="signupForm" id="signupForm" enctype="multipart/form-data">
+								<div class="form-group">
+									<label class="col-sm-2 control-label">银行名称 </label>
+									<div class="col-sm-10">
+										<input type="hidden" name="checkpic" id="checkpic" value="__ROOT__/Uploads/{$info.kefu}" />
+										<input type="hidden" name="oldcheckpic" id="oldcheckpic" value="__ROOT__/Uploads/{$info.kefu}" />
+									 	<input type="text" name="bankname" value="{$info.kefu.bankname}" placeholder="请输入银行名称">
+									 
+									</div>
+
+								</div>	
+								<div class="form-group">
+									<label class="col-sm-2 control-label">帐户名称 </label>
+									<div class="col-sm-10">
+									 	<input type="text" name="bankuser" value="{$info.kefu.bankuser}" placeholder="请输入帐户名称">
+									</div>
+									
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">银行账号 </label>
+									<div class="col-sm-10">
+									 	<input type="text" name="banknum" value="{$info.kefu.banknum}" placeholder="请输入银行账号">
+									</div>
+									
+								</div>		
+								<div class="form-group">
+									<label class="col-sm-2 control-label">开户行 </label>
+									<div class="col-sm-10">
+									 	<input type="text" name="bankaddress" value="{$info.kefu.bankaddress}" placeholder="请输入开户行">
+									</div>
+									
+								</div>													
+								<div class="hr-line-dashed"></div>
+								
+								<div class="form-group">
+									<div class="col-sm-4 col-sm-offset-2">
+										<button class="btn btn-primary" type="submit">保存内容</button>
+										<a class="btn btn-danger" href="{:U('Admin/Index/index')}">取消</a>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script src="__PUBLIC__/Admin/js/jquery.min.js?v=2.1.4"></script>
+		<script src="__PUBLIC__/Admin/js/bootstrap.min.js?v=3.3.6"></script>
+		<script src="__PUBLIC__/Admin/js/content.min.js?v=1.0.0"></script>
+		<script src="__PUBLIC__/Common/js/ajaxForm.js"></script>
+		<script src="__PUBLIC__/Common/layer/layer.js"></script>
+		<script>
+			$(function(){
+				$('#signupForm').ajaxForm({
+					success: complete, 
+					dataType: 'json'
+				});
+				function complete(data){
+					if(data.status==1){
+						$('.btn-primary').attr('disabled','disabled');
+						layer.msg(data.info, function(index){
+			 				layer.close(index);
+							window.location.href=data.url;
+						});
+					}else{
+						layer.msg(data.info);
+						return false;	
+					}
+				}
+			});
+		</script>
+		<script>
+			function backpic(picurl){
+				$("#img0").attr("src",picurl);
+				$("input[name='file0']").val("");
+				$("input[name='oldcheckpic']").val(picurl);
+			}
+			$("#file0").change(function(){
+				var objUrl = getObjectURL(this.files[0]) ;
+				console.log("objUrl = "+objUrl) ;
+				if (objUrl) {
+					$("#img0").attr("src", objUrl) ;
+				}
+			}) ;
+	
+			function getObjectURL(file) {
+				var url = null ;
+				if (window.createObjectURL!=undefined) {
+					$("#oldcheckpic").val("nopic");
+					url = window.createObjectURL(file) ;
+				} else if (window.URL!=undefined) {
+					$("#oldcheckpic").val("nopic");
+					url = window.URL.createObjectURL(file) ;
+				} else if (window.webkitURL!=undefined) {
+					$("#oldcheckpic").val("nopic");
+					url = window.webkitURL.createObjectURL(file) ;
+				}
+				return url ;
+			}
+		</script>
+	</body>
+
+</html>

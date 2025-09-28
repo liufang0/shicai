@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		
+		<title>{:C('sitename')}</title>
+
+		<meta name="renderer" content="webkit">
+		<meta name="format-detection" content="telephone=no,email=no"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+		<meta name="telephone=no" content="format-detection">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no" />
+
+		<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+		<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+		<META HTTP-EQUIV="Expires" CONTENT="0">
+
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/lib.css" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/public.css" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/index.css" />
+	</head>
+	<style>
+		#Cocos2dGameContainer{
+			width: 100% !important;
+			height: 274px !important;
+		}
+		.top_user{width:100%;color:#bcb6b6;height: 40px;}
+		.top_user .headimgurl,.top_user .info,.top_user .fen{display: inline-block;}
+		.top_user .headimgurl{width:30px;height: auto}
+		.top_user .info{margin-top: 6px;vertical-align: top;font-size: 14px;}
+		.top_user .fen{float:right;margin-right:10px;}
+		.top_user .btn{
+			display: inline-block;
+		    background-color: #1fa1dc;
+		    width: 80px;
+		    height: 34px;
+		    line-height: 34px;
+		    border-radius: 3px;
+		    text-align: center;
+		    font-size: 14px;
+		    margin-top: 3px;
+		    border: 1px solid #1fa1dc;
+		    color: #FFF;
+		}
+		.top_user .logout{background: #f8ac59;border:1px solid #f8ac59;vertical-align: top;margin-top:4px;}
+		.top_user .bind{background: #f8ac59;border:1px solid #f8ac59;vertical-align: top;margin-top:4px;}
+		.top_user .button-xia{background-color: #1ab394 !important;border:1px solid #1ab394 !important;}
+		.top_user .lore{float: right;margin-right:20px;}
+		.top_user .register{background-color: #4825e1;border:1px solid #4825e1 !important;}
+		.tab-content .wz{padding:0;}
+		.tab-box table{padding: 0;font-size:12px;}
+		.back{
+			display: block;width:100%;height:40px;line-height: 40px;font-size:16px;text-align: center;color:#FFF;
+			position: fixed;bottom:0;background:#393a3e;
+		}
+	</style>
+	<body>
+		<div class="top_user">
+					<div class="fen">
+						<a href="{:U('Home/Run/kaijiang')}?type=pk10" class="btn button-shang">北京赛车</a>
+						<a href="{:U('Home/Run/kaijiang')}?type=xyft" class="btn button-xia">幸运飞艇</a>
+						<a href="{:U('Home/Run/kaijiang')}?type=ssc" class="btn button-xia">重庆时时彩</a>
+					</div>
+		</div>
+		
+		<div class="tab-content">
+			<div class="tab-box wz" data-img='1'>
+				<table border="" cellspacing="" cellpadding="">
+					<thead>
+						<tr>
+							<th>期号</th>
+							<th>开奖号码</th>
+						</tr>
+					</thead>
+					<tbody>
+						<volist name="list" id="vo">
+							<tr>
+								<td>{$vo.periodnumber}</td>
+								<td class="ft-sz-0">
+									<?php
+										$number = unserialize($vo['number']);
+										$lh = unserialize($vo['lh']);
+										?>
+									<volist name="number" id="t" key="k">
+										<span class="shuzi shuzi_{$t}">{$t}</span>
+									</volist>
+								</td>
+						<!-- 		<td class="txt-al-c ft-sz-0" >
+									<span class="tm">{$vo.tema}</span>
+									<span class="tm cl-blue2">{$vo.tema_dx}</span>
+									<span class="tm cl-red">{$vo.tema_ds}</span>
+									<span class="tm cl-blue2">{$vo.zx}</span>
+									<span class="tm">{$vo.tema_dw}</span>
+								</td>
+								<td>
+									<strong class="longhu cl-red">{$lh[0]}</strong>
+									<strong class="longhu cl-blue2">{$lh[1]}</strong>
+									<strong class="longhu cl-red">{$lh[2]}</strong>
+									<strong class="longhu cl-blue2">{$lh[3]}</strong>
+									<strong class="longhu cl-blue2">{$lh[4]}</strong>
+								</td> -->
+							</tr>
+						</volist>
+					</tbody>
+				</table>
+			</div>
+		</div>
+			<a class="back" href="{:U('Home/Run/index')}">返回大厅</a>
+	</body>
+
+</html>

@@ -120,7 +120,7 @@ abstract class Smarty_CacheResource_KeyValueStore extends Smarty_CacheResource {
     /**
      * Empty cache
      *
-     * {@internal the $exp_time argument is ignored altogether }}
+     * [@internal the $exp_time argument is ignored altogether ]}
      *
      * @param Smarty  $smarty   Smarty object
      * @param integer $exp_time expiration time [being ignored]
@@ -139,7 +139,7 @@ abstract class Smarty_CacheResource_KeyValueStore extends Smarty_CacheResource {
     /**
      * Empty cache for a specific template
      *
-     * {@internal the $exp_time argument is ignored altogether}}
+     * [@internal the $exp_time argument is ignored altogether]}
      *
      * @param Smarty  $smarty        Smarty object
      * @param string  $resource_name template name
@@ -239,7 +239,7 @@ abstract class Smarty_CacheResource_KeyValueStore extends Smarty_CacheResource {
     /**
      * Add current microtime to the beginning of $cache_content
      *
-     * {@internal the header uses 8 Bytes, the first 4 Bytes are the seconds, the second 4 Bytes are the microseconds}}
+     * [@internal the header uses 8 Bytes, the first 4 Bytes are the seconds, the second 4 Bytes are the microseconds]}
      *
      * @param string &$content the content to be cached
      */

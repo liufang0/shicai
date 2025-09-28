@@ -1,0 +1,309 @@
+ <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>{:C('sitename')}</title>
+		<meta name="renderer" content="webkit">
+		<meta name="format-detection" content="telephone=no,email=no"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+		<meta name="telephone=no" content="format-detection">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no" />
+
+		<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+		<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+		<META HTTP-EQUIV="Expires" CONTENT="0">
+
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/lib.css" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/public.css" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/index.css" />
+		<script src='//cdn.bootcss.com/jquery/1.11.3/jquery.js'></script>
+		<script src="__PUBLIC__/layer/layer.js"></script>
+		 <!-- <script type="text/javascript" src="__PUBLIC__/Home/js/ssc_index.js"></script> -->
+	</head>
+	<style>
+		#Cocos2dGameContainer{
+			width: 100% !important;
+			height: 274px !important;
+		}
+		.top_user{
+			width: 100%;
+		    color: #bcb6b6;
+		    height: 30px;
+		    background: #293039;
+		}
+		.top_user .headimgurl,.top_user .info,.top_user .fen{display: inline-block;}
+		.top_user .headimgurl{width:30px;height: auto}
+		.top_user .info{margin-top: 6px;vertical-align: top;font-size: 14px;}
+		.top_user .fen{float:right;margin-right:10px;}
+		.top_user .btn{
+			display: inline-block;
+		    background-color: #1fa1dc;
+		    width: 60px;
+		    height: 24px;
+		    line-height: 24px;
+		    border-radius: 3px;
+		    text-align: center;
+		    font-size: 14px;
+		    margin-top: 3px;
+		    border: 1px solid #1fa1dc;
+		    color: #FFF;
+		}
+		.top_user .logout{background: #f8ac59;border:1px solid #f8ac59;vertical-align: top;margin-top:4px;}
+		.top_user .bind{background: #f8ac59;border:1px solid #f8ac59;vertical-align: top;margin-top:4px;}
+		.top_user .button-xia{background-color: #1ab394 !important;border:1px solid #1ab394 !important;}
+		.top_user .lore{float: right;margin-right:20px;}
+		.top_user .register{background-color: #4825e1;border:1px solid #4825e1 !important;}
+		.tab-content .wz{padding:0;}
+		.tab-box table{padding: 0;font-size:12px;}
+	</style>
+	<body>
+		<div class="top_user">
+			<if condition="C('is_weixin') eq 1 && $is_weixin">
+				<if condition="$userinfo">
+					<div class="headimgurl no"><img src="{$userinfo.headimgurl}" /></div>
+					<div class="info">
+						<p><span id="sy">{$userinfo.nickname}</span></p>
+					</div>
+					<a href="/Home/Index/bind?id={$userinfo.id}" class="btn bind">绑定</a>
+					<div class="fen">
+						<a href="/Home/Fen/addpage" class="btn button-shang">上分</a>
+						<a href="/Home/Fen/xiapage" class="btn button-xia">下分</a>
+					</div>
+				</if>
+			<else/>
+				<if condition="$userinfo">
+					<div class="headimgurl no"><img src="{$userinfo.headimgurl}" /></div>
+					<div class="info">
+						<p><span id="sy">{$userinfo.nickname}</span></p>
+
+					</div>
+					<a href="/Home/Index/logout" class="btn logout">退出</a>
+					<div class="fen">
+						<a href="/Home/Fen/addpage" class="btn button-shang">上分</a>
+						<a href="/Home/Fen/xiapage" class="btn button-xia">下分</a>
+					</div>
+				<else/>
+					<div class="lore">
+						<a href="/Home/Index/login" class="btn login">登录</a>
+						<a href="/Home/Index/register" class="btn register">注册</a>
+					</div>
+				</if>
+			</if>
+		</div>
+		<div class="tab-content">
+			<div class="tab-box dh" data-img='0' style="height: 250px;overflow:hidden;background-color: #ccc;scroll:no">
+				<iframe scrolling="no" style="height:100%;width:100%;border: none;" src="/Home/Run/jnd28_kj.html"></iframe>
+
+			</div>
+			
+			<div class="tab-box wz" data-img='1'>
+				<table border="" cellspacing="" cellpadding="">
+					<thead>
+						<tr>
+							<th>期号</th>
+							<th>开奖号码</th>
+							<th>总和</th>
+							<th>龙虎</th>
+							<th>前中后</th>
+						</tr>
+					</thead>
+					<tbody>
+						<volist name="list" id="vo">
+							<tr>
+								<td>{$vo.periodnumber}</td>
+								<td class="ft-sz-0">
+									<?php
+										$number = unserialize($vo['number']);
+										
+										?>
+									<volist name="number" id="t" key="k">
+										<span class="shuzi shuzi_{$t}">{$t}</span>
+									</volist>
+								</td>
+								<td class="txt-al-c ft-sz-0" >
+									<span class="tm ">{$vo.tema}</span>
+									<span class="tm cl-{$vo.tema_dx}">{$vo.tema_dx}</span>
+									<span class="tm cl-{$vo.tema_ds}">{$vo.tema_ds}</span>
+									<span class="tm">{$vo.tema_dw}</span>
+								</td>
+								<td>
+									<strong class="longhu cl-{$vo.lh}">{$vo.lh}</strong>
+								</td>
+								<td>
+									<span class="tm cl-{$vo.q3}">{$vo.q3}</span>
+									<span class="tm cl-{$vo.z3}">{$vo.z3}</span>
+									<span class="tm cl-{$vo.h3}">{$vo.h3}</span>
+								</td>
+							</tr>
+						</volist>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<style type="text/css">
+			.leftRight .nav span{
+				width:54px;
+				height: 33px;
+				display: block;
+				color: #FFF;
+				font-weight: bold;;
+				text-align: center;
+				line-height: 33px;
+				margin-top:6px;
+				border-radius: 5px;
+			}
+			.headimgurl{text-align: center;}
+			.leftRight .nav span.jingcai{background-color: #008dff;}
+			.leftRight .nav span.refresh{background-color: #cf3be6;}
+			.leftRight .nav span.record{background-color: #4688df;}
+			.leftRight .nav span.kaijiang{background-color: #5ac56e;}
+			.leftRight .nav span.rule{background-color: #000;}
+			.leftRight .nav span.kefu{background-color: #705ac5;}
+			.leftRight .nav span.tui{background-color: #31b3a9;}
+			.leftRight .nav span.sf{background-color: #1fa1dc;}
+			.leftRight .nav span.xf{background-color: #1ab394;}
+			.leftRight .nav span.kj{background-color: #4CAF50;}
+			.none{display: none}
+		</style>
+		<div class="main-box">
+			<div class="leftRight">
+				<div class="nav">
+					<a href="{:U('Home/Run/jincaik3')}" class="none" target="myIframe" data-height='350'><span class="jingcai">竞猜下注</span></a>
+					<a href="/Home/Run/index" ><span class="record">返回大厅</span></a>
+					<a onclick="javascript:window.location.href=window.location.href;" class=" shuax" target="myIframe"><span class="refresh">刷新下注</span></a>
+
+					<a href="{:U('Home/Run/record')}?t=1" class="" target="myIframe" data-height='180'>
+					<span class="record">下注记录</span>
+					</a>
+					<!-- <div class="tab-bt" data-bt="1"><span class="kaijiang">开奖记录</span></div> -->
+					<a href="{:U('Home/Run/kjk3')}" class="" target="myIframe" data-height='920'><span class="kj">开奖记录</span></a>
+				
+					<a href="{:U('Home/Run/kefu_wx')}"><span class="kefu">客服微信</span></a>
+					<a href="{:U('Home/Run/rulek3')}" class="" target="myIframe" data-height='920'><span class="rule">游戏规则</span></a>
+					<if condition="C('is_qrcode') eq 1">
+						<a href="{:U('Home/Run/tui')}" class=" active"  data-height='200'><span class="tui">推广</span></a>
+					</if>
+					<a href="/Home/User/index" ><span class="xf">个人中心</span></a>
+					
+				</div>
+				<div class="content">
+					<!--iframe-->
+					<div class="iframewp">
+						<iframe id="myIframe" name="myIframe"></iframe>
+					</div>
+				</div>
+			</div>
+		</div>	
+		
+		
+		
+
+		<script type="text/javascript">
+			$(function() {
+				/*------- 声明对象、参数 -----------*/
+				var wp = $('.main-box .leftRight'),
+					nav = wp.children('.nav'),
+					navli = nav.children('a'),
+					con = wp.children('.content'),
+					iframe = wp.find('.iframewp');
+				var num_hei = 0,
+					h = 100;
+				/*绑定事件*/
+				navli.on('click', function() {
+					var _ = $(this);
+					navli.removeClass('active').filter(_).addClass('active');
+					h = get_dataHei(_);
+					alertHei();
+					navli.filter('.shuax').attr('href', _.attr('href'));
+					navli.filter('.shuax').attr('data-height', _.attr('data-height'));
+				});
+				/*初始化*/
+				//navli.filter('.active').eq(0).children().trigger('click');
+				navli.eq(0).children().trigger('click');
+				windowAlter(alertHei);
+				/*公共方法*/
+				function get_dataHei(obj) {
+					var _ = obj;
+					if(typeof(_.attr('data-height')) != "undefined" && $.trim(_.attr('data-height')).length > 0 && parseInt($.trim(_.attr('data-height'))) > 100) {
+						return parseInt($.trim(_.attr('data-height')));
+					} else {
+						return 100;
+					}
+				}
+
+				function alertHei() {
+					num_hei = nav.outerHeight();
+					num_hei = num_hei * (h / 100);
+					con.css({
+						'height': num_hei + 'px'
+					});
+					num_hei = num_hei - parseFloat(con.css('padding-top')) - parseFloat(con.css('padding-bottom'));
+					if(con.children('.top').is(':visible')) {
+						var iframe_hei = num_hei - con.children('.top').outerHeight(true);
+					} else {
+						var iframe_hei = num_hei;
+					}
+					iframe.css({
+						'height': iframe_hei + 'px'
+					});
+				}
+
+				function getIndexing(obj) {
+					var i = $.inArray(obj[0], navli);
+					return 'go' + (i + 1);
+				}
+
+				function windowAlter(fun) {
+					fun();
+					$(window).resize(fun);
+				}
+
+				function imgloadstate(imgs, fun, Time) {
+					var ys, boole,
+						time = Time || 500,
+						img = imgs[0];
+
+					function pd() {
+						boole = img.complete;
+						if(boole) {
+							fun();
+							clearTimeout(ys);
+						} else {
+							ys = setTimeout(pd, time);
+						}
+					}
+					pd();
+				}
+
+				/*-------------选项卡（hover切换）----------*/
+				tab_hover($('.leftRight .nav'), $('.tab-content'));
+
+				function tab_hover(bt, content) {
+					bt.each(function(i, e) {
+						var _ = $(e);
+						var _c = $(content);
+						var _bt = _.children('.tab-bt'),
+							_box = _c.children('.tab-box');
+
+						_bt.on('click', function() {
+							if(!$(this).hasClass('on')) {
+								var j = $(this).data('bt'),
+									_img = _box.filter('[data-img=' + j + ']');
+								if(_img.length > 0) {
+									_bt.removeClass('on');
+									$(this).addClass('on');
+									_box.stop(true, false).hide().removeClass('on').filter('[data-img=' + j + ']').addClass('on').fadeIn().css("display", "block");
+								}
+							}
+						});
+					})
+				};
+			})
+		</script>
+		
+	
+	</body>
+
+</html>

@@ -1,0 +1,53 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link href="__PUBLIC__/Admin/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+	<title>真人娱乐</title>
+</head>
+<body>
+	<style type="text/css">
+	*{margin:0; padding:0;}
+	img{max-width: 100%; height: auto;}
+	.test{height: 600px; max-width: 600px; font-size: 40px;}
+	</style>
+	
+	<script src='//cdn.bootcss.com/jquery/1.11.3/jquery.js'></script>
+	<script type="text/javascript">
+		function is_weixin() {
+		    var ua = navigator.userAgent.toLowerCase();
+		    if (ua.match(/MicroMessenger/i) == "micromessenger") {
+		        return true;
+		    } else {
+		        return false;
+		    }
+		}
+		var isWeixin = is_weixin();
+		var winHeight = typeof window.innerHeight != 'undefined' ? window.innerHeight : document.documentElement.clientHeight;
+		var weixinTip = $('<div id="weixinTip"><p><img src="__PUBLIC__/Home/img/live_weixin.png" alt="微信打开"/></p><p><span style="color:red">极速体验真人百家乐，请下载app</span></p><p><a class="btn btn-success" href="https://fir.im/85ba" >下载app</a></p></div>');
+		
+		if(isWeixin){
+			$("body").append(weixinTip);
+		}
+		$("#weixinTip").css({
+			"position":"fixed",
+			"left":"0",
+			"top":"0",
+			"height":winHeight,
+			"width":"100%",
+			"z-index":"1000",
+			"background-color":"rgba(0,0,0,0.8)",
+			"filter":"alpha(opacity=80)",
+		});
+		$("#weixinTip p").css({
+			"text-align":"center",
+			"margin-top":"10%",
+			"padding-left":"5%",
+			"padding-right":"5%"
+		});
+	</script>
+</body>
+</html>
+

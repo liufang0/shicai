@@ -1,11 +1,7 @@
 <?php
-
 namespace Home\Controller;
 use Think\Controller;
-
-header('content-type:text/html;charset=utf-8');
 class CaiController extends Controller{
-
 	public function sc2(){
 		$url = "http://www.bwlc.net/bulletin/trax.html";
 		$cpk = http_get($url);
@@ -23,15 +19,12 @@ class CaiController extends Controller{
 				'game' => 'pk10',
 				'addtime' => time()
 			);
-
 			$caijinum = M('caiji')->where("game = 'pk10'")->limit(0,1)->order("id desc")->find();
 			if (strval($caijinum['periodnumber']) != $periodnumber && $periodnumber > $caijinum['periodnumber']) {
 				M('caiji')->add($data);
 			}
 		}
 	}
-
-
 	public function cpkpk(){
 		$url = "http://u7a.chengdashizheng.com/chatbet_v3/game/loginweb.php";
 		// var_dump($url);
@@ -44,7 +37,6 @@ class CaiController extends Controller{
 			$awardnumbers = $value->number;
 			break;
 		}
-
 		if ($periodnumber && $awardnumbers && $awardtime) {
 			$data = array(
 				'periodnumber' => $periodnumber,
@@ -53,7 +45,6 @@ class CaiController extends Controller{
 				'game' => 'pk10',
 				'addtime' => time()
 			);
-
 			$caijinum = M('caiji')->where("game = 'pk10'")->limit(0,1)->order("id desc")->find();
 			if (strval($caijinum['periodnumber']) != $periodnumber  && $periodnumber > $caijinum['periodnumber']) {
 				M('caiji')->add($data);
@@ -81,7 +72,6 @@ class CaiController extends Controller{
 					break;
 				}
 				$awardnumbers[] = $value < 10 ? '0'.$value : $value;
-
 			}
 		}
 		$awardnumbers = implode(',', $awardnumbers);
@@ -93,14 +83,12 @@ class CaiController extends Controller{
 				'game' => 'xyft',
 				'addtime' => time()
 			);
-
 			$caijinum = M('caiji')->where("game = 'xyft'")->limit(0,1)->order("id desc")->find();
 			if (strval($caijinum['periodnumber']) != $periodnumber && $periodnumber > $caijinum['periodnumber']) {
 				M('caiji')->add($data);
 			}
 		}
 	}
-
 	public function dd(){
 				//pk10开奖采集,pk10tv
 				$time = time();
@@ -113,9 +101,7 @@ class CaiController extends Controller{
 						$awardtime = $num[1];
 						$periodnumber = $num[2];
 					}
-
 					preg_match_all('/<span title="(.*?)" class="ball_pks_  ball_pks.*? ball_lenght10  ">\s*.*?<\/span>/',$cpk, $pnum); 
-
 					$awardnumbers = array();
 					if (isset($pnum[1]) && $pnum[1]) {
 						$awardnumbers = array();
@@ -127,7 +113,6 @@ class CaiController extends Controller{
 								break;
 							}
 							$awardnumbers[] = $value;
-
 						}
 					}
 					$awardnumbers = implode(',', $awardnumbers);
@@ -140,7 +125,6 @@ class CaiController extends Controller{
 							'game' => 'pk10',
 							'addtime' => time()
 						);
-
 						$caijinum = M('caiji')->where("game = 'pk10'")->limit(0,1)->order("id desc")->find();
 						if (strval($caijinum['periodnumber']) != $periodnumber  && $periodnumber > $caijinum['periodnumber']) {
 							M('caiji')->add($data);
@@ -148,7 +132,6 @@ class CaiController extends Controller{
 					}			
 				} 
 	}
-
 	public function sc1(){
 		
 		$url = "http://www.pk10tv.com/index.php?c=content&a=list&catid=2";
@@ -159,9 +142,7 @@ class CaiController extends Controller{
 			$awardtime = $num[1];
 			$periodnumber = $num[2];
 		}
-
 		preg_match_all('/<span title="(.*?)" class="ball_pks_  ball_pks.*? ball_lenght10  ">\s*.*?<\/span>/',$cpk, $pnum); 
-
 		$awardnumbers = array();
 		if (isset($pnum[1]) && $pnum[1]) {
 			$awardnumbers = array();
@@ -173,7 +154,6 @@ class CaiController extends Controller{
 					break;
 				}
 				$awardnumbers[] = $value;
-
 			}
 		}
 		$awardnumbers = implode(',', $awardnumbers);
@@ -185,7 +165,6 @@ class CaiController extends Controller{
 				'game' => 'pk10',
 				'addtime' => time()
 			);
-
 			$caijinum = M('caiji')->where("game = 'pk10'")->limit(0,1)->order("id desc")->find();
 			if (strval($caijinum['periodnumber']) != $periodnumber  && $periodnumber > $caijinum['periodnumber']) {
 				M('caiji')->add($data);
@@ -193,5 +172,4 @@ class CaiController extends Controller{
 		}
 	}
 }
-
 ?>

@@ -34,7 +34,7 @@ class ReadHtmlCacheBehavior {
          if(!empty($htmls)) {
             $htmls = array_change_key_case($htmls);
             // 静态规则文件定义格式 actionName=>array('静态规则','缓存时间','附加规则')
-            // 'read'=>array('{id},{name}',60,'md5') 必须保证静态规则的唯一性 和 可判断性
+            // 'read'=>array('[id],[name]',60,'md5') 必须保证静态规则的唯一性 和 可判断性
             // 检测静态规则
             $controllerName = strtolower(CONTROLLER_NAME);
             $actionName     = strtolower(ACTION_NAME);
@@ -62,17 +62,17 @@ class ReadHtmlCacheBehavior {
                     }
                     return (count($match) == 4) ? $match[3]($var) : $var;
                 };
-                $rule     = preg_replace_callback('/{\$(_\w+)\.(\w+)(?:\|(\w+))?}/', $callback, $rule);
-                // {ID|FUN} GET变量的简写
-                $rule     = preg_replace_callback('/{(\w+)\|(\w+)}/', function($match){return $match[2]($_GET[$match[1]]);}, $rule);
-                $rule     = preg_replace_callback('/{(\w+)}/', function($match){return $_GET[$match[1]];}, $rule);
+                $rule     = preg_replace_callback('/[\$(_\w+)\.(\w+)(?:\|(\w+))?]/', $callback, $rule);
+                // [ID|FUN] GET变量的简写
+                $rule     = preg_replace_callback('/[(\w+)\|(\w+)]/', function($match){return $match[2]($_GET[$match[1]]);}, $rule);
+                $rule     = preg_replace_callback('/[(\w+)]/', function($match){return $_GET[$match[1]];}, $rule);
                 // 特殊系统变量
                 $rule   = str_ireplace(
-                    array('{:controller}','{:action}','{:module}'),
+                    array('[:controller]','[:action]','[:module]'),
                     array(CONTROLLER_NAME,ACTION_NAME,MODULE_NAME),
                     $rule);
-                // {|FUN} 单独使用函数
-                $rule  = preg_replace_callback('/{|(\w+)}/', function($match){return $match[1]();},$rule);
+                // [|FUN] 单独使用函数
+                $rule  = preg_replace_callback('/[|(\w+)]/', function($match){return $match[1]();}, $rule);
                 $cacheTime  =   C('HTML_CACHE_TIME',null,60);
                 if(is_array($html)){
                     if(!empty($html[2])) $rule    =   $html[2]($rule); // 应用附加函数

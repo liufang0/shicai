@@ -27,7 +27,7 @@ class HproseResultMode {
     const RawWithEndTag = 3;
 }
 
-class HproseException extends Exception {}
+class HproseException extends Exception []
 
 interface HproseFilter {
     function inputFilter($data);
@@ -698,7 +698,7 @@ else {
     function is_utf8($s) { 
         $len = strlen($s); 
         for($i = 0; $i < $len; ++$i){
-            $c = ord($s{$i});
+            $c = ord($s[$i]);
             switch ($c >> 4) {
                 case 0:
                 case 1:
@@ -711,17 +711,17 @@ else {
                     break;
                 case 12:
                 case 13:
-                    if ((ord($s{++$i}) >> 6) != 0x2) return false;
+                    if ((ord($s[++$i]) >> 6) != 0x2) return false;
                     break;
                 case 14:
-                    if ((ord($s{++$i}) >> 6) != 0x2) return false;
-                    if ((ord($s{++$i}) >> 6) != 0x2) return false;
+                    if ((ord($s[++$i]) >> 6) != 0x2) return false;
+                    if ((ord($s[++$i]) >> 6) != 0x2) return false;
                     break;
                 case 15:
-                    $b = $s{++$i};
+                    $b = $s[++$i];
                     if ((ord($b) >> 6) != 0x2) return false;
-                    if ((ord($s{++$i}) >> 6) != 0x2) return false;
-                    if ((ord($s{++$i}) >> 6) != 0x2) return false;
+                    if ((ord($s[++$i]) >> 6) != 0x2) return false;
+                    if ((ord($s[++$i]) >> 6) != 0x2) return false;
                     if (((($c & 0xf) << 2) | (($b >> 4) & 0x3)) > 0x10) return false;
                     break;
                 default:
@@ -752,7 +752,7 @@ else {
         $length = strlen($s);
         $len = $length;
         while ($pos < $length) {
-            $a = ord($s{$pos++});
+            $a = ord($s[$pos++]);
             if ($a < 0x80) {
                 continue;
             }

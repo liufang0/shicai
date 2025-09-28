@@ -1103,10 +1103,10 @@ class Model {
         $validate = array(
             'require'   =>  '/\S+/',
             'email'     =>  '/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/',
-            'url'       =>  '/^http(s?):\/\/(?:[A-za-z0-9-]+\.)+[A-za-z]{2,4}(:\d+)?(?:[\/\?#][\/=\?%\-&~`@[\]\':+!\.#\w]*)?$/',
+            'url'       =>  '/^http(s?):\/\/(?:[A-za-z0-9-]+\.)+[A-za-z][2,4](:\d+)?(?:[\/\?#][\/=\?%\-&~`@[\]\':+!\.#\w]*)?$/',
             'currency'  =>  '/^\d+(\.\d+)?$/',
             'number'    =>  '/^\d+$/',
-            'zip'       =>  '/^\d{6}$/',
+            'zip'       =>  '/^\d[6]$/',
             'integer'   =>  '/^[-\+]?\d+$/',
             'double'    =>  '/^[-\+]?\d+(\.\d+)?$/',
             'english'   =>  '/^[A-Za-z]+$/',
@@ -1202,8 +1202,8 @@ class Model {
                 // array(field,rule,message,condition,type,when,params)
                 // 判断是否需要执行验证
                 if(empty($val[5]) || ( $val[5]== self::MODEL_BOTH && $type < 3 ) || $val[5]== $type ) {
-                    if(0==strpos($val[2],'{%') && strpos($val[2],'}'))
-                        // 支持提示信息的多语言 使用 {%语言定义} 方式
+                    if(0==strpos($val[2],'[%') && strpos($val[2],']'))
+                        // 支持提示信息的多语言 使用 [%语言定义] 方式
                         $val[2]  =  L(substr($val[2],2,-1));
                     $val[3]  =  isset($val[3])?$val[3]:self::EXISTS_VALIDATE;
                     $val[4]  =  isset($val[4])?$val[4]:'regex';

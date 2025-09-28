@@ -2,7 +2,7 @@
 
 require_once ("../Spyc.php");
 
-function roundTrip($a) { return Spyc::YAMLLoad(Spyc::YAMLDump(array('x' => $a))); }
+function roundTrip($a) [ return Spyc::YAMLLoad(Spyc::YAMLDump(array('x' => $a))); ]
 
 
 class RoundTripTest extends PHPUnit_Framework_TestCase {

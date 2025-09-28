@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta content="target-densitydpi=320,width=750,user-scalable=no" name="viewport" />
+    <meta content="no" name="apple-touch-fullscreen" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <title>充值</title>
+    <!--<link href="/statics/web/css/css.css" rel="stylesheet" type="text/css">-->
+    <!--<script src="/statics/web/js/jquery.1.8.2.min.js"></script>-->
+    <!--<script src="/statics/web/js/style.js"></script>-->
+    <link href="/statics/web/css/css.css" rel="stylesheet" type="text/css">
+    <link href="/statics/web/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/statics/web/css/newmobile.css" rel="stylesheet" type="text/css">
+    <link href="/statics/web/css/style.css" rel="stylesheet" type="text/css">
+     <link href="/statics/web/css/thickbox.css" rel="stylesheet" type="text/css">
+
+<link href="/statics/web/css/red.css" rel="stylesheet" type="text/css">
+
+
+</head>
+<body>
+<header>
+    <em onclick="history.go(-1)">返回</em>
+    <h1>在线充值</h1>
+</header>
+<section class="pb-0" style="padding: 0;margin-top: 86px;">
+    <div class="modify ">
+
+        <div class="wallet">
+            <div class="onLineGirl"><i><img src="{$user.headimgurl}"" /></i> </div>
+            <div class="onLineGirl4"><em>会员账号：{$user.username}</em></div>
+        </div>
+
+        <div>
+	        <ul class="lineRecharge-input">
+	            <li style="border-bottom:none">
+	
+	                <label class="icoMoney" for="money">充值金额:
+
+                    <input type="number" id="money" >
+	
+	                </label>
+	                <p style="position: absolute;top: 35px;right: 53px; color: #ccc">(人民币)</p>
+	<!--<p class="remarks"><span class="red">*</span>范围：100-500000<br>
+	                    建议通过银行卡转账入款</p>-->
+	
+	            </li>
+	        </ul>
+        </div>
+		<div class="amount-tab" id="amount-tab">
+		    		    <div><span>100</span></div>
+		    		    <div><span>300</span></div>
+		    		    <div><span>500</span></div>
+		    		    <div><span>1000</span></div>
+		    		    <div><span>2000</span></div>
+		    		    <div><span>10000</span></div>
+		        </div>
+	    <div style="width: 100%;padding: 20px 30px;"><span style="color: red;">*</span>充值限额： 10 ~ 10000 </div>
+
+       <div id="buy_border" style="padding: 20px 30px;">
+        <div class="step" style="height:60px;padding-top:10px;font-size:30px;">选择支付方式</div>
+        <div id="step_two" style="">
+            <div class="paylist" style="margin-left:10%;">
+                <label>
+                    <div class="box" title="wxpay" data-code='wxpay' style="text-align:left;">
+                        &nbsp;
+                        <img src="/Public/Home/images/wxpay.png" width="450" height="100" style="vertical-align: middle">
+                        <span id="wxpay_span" class="pay_span" type="wxpay"></span>
+                    </div>
+                </label>
+
+                <label>
+                    <div class="box" title="alipay" data-code='alipay'>
+                        &nbsp;<img src="/Public/Home/images/alipay.png" width="450"
+                            height="100" style="vertical-align: middle"> <span
+                            id="alipay_span" class="pay_span" type="alipay"></span>
+                    </div>
+                </label> 
+                
+                
+                <label>
+                    <div class="box" title="qqpay" data-code='qqpay'>
+                        &nbsp;<img src="/Public/Home/images/qqpay.png" width="450"
+                            height="100" style="vertical-align: middle"> <span id="qqpay_span"
+                            class="pay_span" type="qqpay"></span>
+                    </div>
+                </label>
+                <!-- <img src="/Public/Home/images/wt6.png">13 <img src="/Public/Home/images/right.png"> -->
+              
+                
+                <div style="clear: left;"></div>
+            </div>
+        </div>
+        </div>
+
+        <div class="weixintishi">
+        	<p>【温馨提示】</p>
+           	               	  <p>1.填入或选择正确的金额，然后点击“立即充值”按钮</p>
+                  <p>2.系统会返回转账信息或支付二维码等充值信息</p>
+                  <p>3.付款完成后，账户余额将自动变化！</p>
+                    </div>
+        <div class="button" style="margin-top: 50px"><button class="red-btn bgCol" id="xsBtn" onclick="topay()">立即支付</button></div>
+    </div>
+<div id="jumpHtml">
+</div>
+</section>
+<script src="/statics/web/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/statics/web/js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/statics/web/js/avalon.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/statics/web/js/layer.js"></script>
+<script src="/statics/web/js/ayangw.js"></script>
+
+<script src="/statics/web/js/jquery.1.8.2.min.js"></script><script src="/statics/web/js/style.js"></script>
+<script src="/statics/web/extend/layer/mobile/layer.js"></script>
+
+    <script type="text/javascript">
+
+        jQuery(document).ready(
+
+            function($){ 
+                try{
+                    //默认选中
+                    // var title = $(".box:first").attr("title");
+                    // console.log("123123213213" + "  " + title);
+                    // var span = $(".pay_span");
+                    // console.log(span);
+                    // for(var i = 0; i<span.length;i++){
+                    //     var span_id = $(span[i]).attr("id");
+                    //     console.log("span_id : " + span_id);
+                    //     $("#"+span_id).attr("title","false");
+                    //     $("#"+span_id).css({"background-image":"url(/Public/Home/images/wt6.png)","background-size":"100% 100%"});
+                    // }
+                    // $("#"+title+"_span").attr("title","true");
+                    // $("#"+title+"_span").attr("display","inline-block");
+                    // $("#"+title+"_span").css({"background-color":"red"});
+                    // $("#"+title+"_span").css({"background-image":"url(/Public/Home/images/right.png)","background-size":"100% 100%"});
+
+                  $(".box").click(function(){
+                
+                    var title = $(this).attr("title");
+                    var span = $(".pay_span");
+                    for(var i = 0; i<span.length;i++){
+                        var span_id = $(span[i]).attr("id");
+                        $("#"+span_id).attr("title","false");
+                        $("#"+span_id).css({"background-image":"url(/Public/Home/images/wt6.png)","background-size":"100% 100%"});
+                    }
+                    $("#"+title+"_span").attr("title","true");
+                    $("#"+title+"_span").attr("display","inline-block");
+                   // $("#"+title+"_span").css({"background-color":"red"});
+                    $("#"+title+"_span").css({"background-image":"url(/Public/Home/images/right.png)","background-size":"100% 100%"});
+                   
+                    })
+
+
+
+                    // $(".box").click(function(){
+                    //     var title = $(".box").attr("title");
+                    //     var span = $(".pay_span");
+                    //     for(var i = 0; i<span.length;i++){
+                    //         var span_id = $(span[i]).attr("id");
+                    //         $("#"+span_id).attr("title","false");
+                    //         $("#"+span_id).css({"background-image":"url(/Public/Home/images/wt6.png)","background-size":"100% 100%"});
+                    //     }
+                    //     $("#"+title+"_span").attr("title","true");
+                    //     $("#"+title+"_span").attr("display","inline-block");
+                    //    // $("#"+title+"_span").css({"background-color":"red"});
+                    //     $("#"+title+"_span").css({"background-image":"url(/Public/Home/images/right.png)","background-size":"100% 100%"});
+                    // })
+
+                }catch(e){
+
+                }
+
+
+            }
+
+
+        );
+
+        var url = "http://hmyl28.com/?m=web&c=recharge&a=recharge";
+        var lower_limit = "10";
+        var upper_limit = "9999479789.7";
+        var payment_id = "137";
+
+        //判断客户端
+        if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+            url = url + "&method=mobile";
+        } else if (/(Android)/i.test(navigator.userAgent)) {
+            url = url + "&method=mobile";
+        } else {
+            url = url + "&method=pc";
+        };
+
+           
+
+        $(function() {
+
+
+        	$('#amount-tab').children("div").click(function(){
+        		var money = $(this).children('span').text();
+        		$('#money').attr('value', money);
+        		$(this).attr('class', 'active');
+        		$(this).siblings().removeClass('active');
+        	});
+
+            
+            
+        });
+
+        function topay(){
+            var type = "";//支付方式
+            var dtpay_type = "";
+            var payfs = "";
+            var money = 0;
+            var span = $(".pay_span");
+            for(var i = 0; i<span.length;i++){
+                var span_id = $(span[i]).attr("id");
+
+                var s = $("#"+span_id).attr("title");
+                if(s == "true"){
+                    type = $("#"+span_id).attr("type");
+                    break;
+                }
+            }
+
+            if(type==""){
+                alert("请选择支付方式！");
+                return;
+            }
+            if(type == "alipay") payfs = "支付宝";
+            if(type == "qqpay") payfs = "QQ钱包";
+            if(type == "wxpay") payfs = "微信";
+
+            //支付金额
+            var money = parseInt($("#money").val());//获取数量
+            if(isNaN(money) || money==0){
+                alert("请输入充值金额！");
+                return;
+            }
+
+            if(money < 1){
+                alert("每次充值金额必须大于1元！");
+            }
+           
+           if(type == "alipay"){
+                dtpay_type = "alipay";
+           }
+           else if(type=="qqpay")
+           {
+                dtpay_type = "qq";
+           }
+           else if(type=="wxpay"){
+                 dtpay_type = "wechat";
+           }
+
+           var user_id = {$user.id};
+           var user_name = '{$user.username}';
+           var nick_name = '{$user.nickname}';
+            //alert("user_id " + user_id);
+            url = '/wxpay/topay.php?money=' + money 
+             +'&type='+dtpay_type+'&user_id='+user_id
+             +'&user_name=' + user_name + '&nick_name=' + nick_name;
+           
+           console.log("url:" + url);
+              window.location='/wxpay/topay.php?money=' + money 
+              +'&type='+dtpay_type+'&user_id='+user_id
+              +'&user_name=' + user_name + '&nick_name=' + nick_name;
+
+        }
+    </script>
+
+</body>
+</html>

@@ -28,7 +28,7 @@ class Config {
       $searchPaths = array();
 
       if ($userHome = getenv('HOME')) {
-        $searchPaths[] = "{$userHome}/.borisrc";
+        $searchPaths[] = "[$userHome]/.borisrc";
       }
 
       $searchPaths[] = getcwd() . '/.borisrc';

@@ -1,7 +1,7 @@
 <?php
-
 namespace Home\Controller;
 use Think\Controller;
+
 class GetController extends Controller{
 
 	//add by gison 20180503

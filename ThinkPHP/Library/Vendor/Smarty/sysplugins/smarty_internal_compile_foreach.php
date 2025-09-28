@@ -2,7 +2,7 @@
 /**
  * Smarty Internal Plugin Compile Foreach
  *
- * Compiles the {foreach} {foreachelse} {/foreach} tags
+ * Compiles the [foreach] [foreachelse] [/foreach] tags
  *
  * @package Smarty
  * @subpackage Compiler
@@ -39,7 +39,7 @@ class Smarty_Internal_Compile_Foreach extends Smarty_Internal_CompileBase {
     public $shorttag_order = array('from','item','key','name');
 
     /**
-     * Compiles code for the {foreach} tag
+     * Compiles code for the [foreach] tag
      *
      * @param array  $args      array with attributes from parser
      * @param object $compiler  compiler object
@@ -55,7 +55,7 @@ class Smarty_Internal_Compile_Foreach extends Smarty_Internal_CompileBase {
         $from = $_attr['from'];
         $item = $_attr['item'];
         if (!strncmp("\$_smarty_tpl->tpl_vars[$item]", $from, strlen($item) + 24)) {
-            $compiler->trigger_template_error("item variable {$item} may not be the same variable as at 'from'", $compiler->lex->taglineno);
+            $compiler->trigger_template_error("item variable [$item] may not be the same variable as at 'from'", $compiler->lex->taglineno);
         }
 
         if (isset($_attr['key'])) {
@@ -104,7 +104,7 @@ class Smarty_Internal_Compile_Foreach extends Smarty_Internal_CompileBase {
         if ($key != null) {
             $output .= " \$_smarty_tpl->tpl_vars[$key] = new Smarty_Variable;\n";
         }
-        $output .= " \$_from = $from; if (!is_array(\$_from) && !is_object(\$_from)) { settype(\$_from, 'array');}\n";
+        $output .= " \$_from = $from; if (!is_array(\$_from) && !is_object(\$_from)) [ settype(\$_from, 'array');}]\n";
         if ($usesPropTotal) {
             $output .= " \$_smarty_tpl->tpl_vars[$item]->total= \$_smarty_tpl->_count(\$_from);\n";
         }
@@ -176,7 +176,7 @@ class Smarty_Internal_Compile_Foreach extends Smarty_Internal_CompileBase {
 class Smarty_Internal_Compile_Foreachelse extends Smarty_Internal_CompileBase {
 
     /**
-     * Compiles code for the {foreachelse} tag
+     * Compiles code for the [foreachelse] tag
      *
      * @param array  $args array with attributes from parser
      * @param object $compiler compiler object
@@ -205,7 +205,7 @@ class Smarty_Internal_Compile_Foreachelse extends Smarty_Internal_CompileBase {
 class Smarty_Internal_Compile_Foreachclose extends Smarty_Internal_CompileBase {
 
     /**
-     * Compiles code for the {/foreach} tag
+     * Compiles code for the [/foreach] tag
      *
      * @param array  $args      array with attributes from parser
      * @param object $compiler  compiler object

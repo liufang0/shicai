@@ -2,7 +2,7 @@
 /**
  * Smarty Internal Plugin Compile Rdelim
  *
- * Compiles the {rdelim} tag
+ * Compiles the [rdelim] tag
  * @package Smarty
  * @subpackage Compiler
  * @author Uwe Tews
@@ -17,7 +17,7 @@
 class Smarty_Internal_Compile_Rdelim extends Smarty_Internal_CompileBase {
 
     /**
-     * Compiles code for the {rdelim} tag
+     * Compiles code for the [rdelim] tag
      *
      * This tag does output the right delimiter.
      *

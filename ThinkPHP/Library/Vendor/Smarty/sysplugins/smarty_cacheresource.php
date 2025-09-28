@@ -176,7 +176,7 @@ abstract class Smarty_CacheResource {
             return $smarty->_cacheresource_handlers[$type] = self::$resources[$type];
         }
         // give up
-        throw new SmartyException("Unable to load cache resource '{$type}'");
+        throw new SmartyException("Unable to load cache resource '[$type]'");
     }
 
     /**

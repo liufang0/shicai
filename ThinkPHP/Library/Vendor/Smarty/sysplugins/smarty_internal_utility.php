@@ -373,7 +373,7 @@ class Smarty_Internal_Utility {
         $_compile_dir = realpath($__compile_dir);
         if (!$_compile_dir) {
             $status = false;
-            $message = "FAILED: {$__compile_dir} does not exist";
+            $message = "FAILED: [$__compile_dir] does not exist";
             if ($errors === null) {
                 echo $message . ".\n";
             } else {
@@ -381,7 +381,7 @@ class Smarty_Internal_Utility {
             }
         } elseif (!is_dir($_compile_dir)) {
             $status = false;
-            $message = "FAILED: {$_compile_dir} is not a directory";
+            $message = "FAILED: [$_compile_dir] is not a directory";
             if ($errors === null) {
                 echo $message . ".\n";
             } else {
@@ -389,7 +389,7 @@ class Smarty_Internal_Utility {
             }
         } elseif (!is_readable($_compile_dir)) {
             $status = false;
-            $message = "FAILED: {$_compile_dir} is not readable";
+            $message = "FAILED: [$_compile_dir] is not readable";
             if ($errors === null) {
                 echo $message . ".\n";
             } else {
@@ -397,7 +397,7 @@ class Smarty_Internal_Utility {
             }
         } elseif (!is_writable($_compile_dir)) {
             $status = false;
-            $message = "FAILED: {$_compile_dir} is not writable";
+            $message = "FAILED: [$_compile_dir] is not writable";
             if ($errors === null) {
                 echo $message . ".\n";
             } else {
@@ -405,7 +405,7 @@ class Smarty_Internal_Utility {
             }
         } else {
             if ($errors === null) {
-                echo "{$_compile_dir} is OK.\n";
+                echo "[$_compile_dir] is OK.\n";
             }
         }
 
@@ -502,7 +502,7 @@ class Smarty_Internal_Utility {
         $_cache_dir = realpath($__cache_dir);
         if (!$_cache_dir) {
             $status = false;
-            $message = "FAILED: {$__cache_dir} does not exist";
+            $message = "FAILED: [$__cache_dir] does not exist";
             if ($errors === null) {
                 echo $message . ".\n";
             } else {
@@ -510,7 +510,7 @@ class Smarty_Internal_Utility {
             }
         } elseif (!is_dir($_cache_dir)) {
             $status = false;
-            $message = "FAILED: {$_cache_dir} is not a directory";
+            $message = "FAILED: [$_cache_dir] is not a directory";
             if ($errors === null) {
                 echo $message . ".\n";
             } else {
@@ -518,7 +518,7 @@ class Smarty_Internal_Utility {
             }
         } elseif (!is_readable($_cache_dir)) {
             $status = false;
-            $message = "FAILED: {$_cache_dir} is not readable";
+            $message = "FAILED: [$_cache_dir] is not readable";
             if ($errors === null) {
                 echo $message . ".\n";
             } else {
@@ -526,7 +526,7 @@ class Smarty_Internal_Utility {
             }
         } elseif (!is_writable($_cache_dir)) {
             $status = false;
-            $message = "FAILED: {$_cache_dir} is not writable";
+            $message = "FAILED: [$_cache_dir] is not writable";
             if ($errors === null) {
                 echo $message . ".\n";
             } else {
@@ -534,7 +534,7 @@ class Smarty_Internal_Utility {
             }
         } else {
             if ($errors === null) {
-                echo "{$_cache_dir} is OK.\n";
+                echo "[$_cache_dir] is OK.\n";
             }
         }
 

@@ -66,7 +66,7 @@ class Image{
         }
 
         /* 引入处理库，实例化图片处理对象 */
-        $class  =    "Think\\Image\\Driver\\{$class}";
+        $class  =    "Think\\Image\\Driver\\[$class]";
         $this->img = new $class($imgname);
     }
 

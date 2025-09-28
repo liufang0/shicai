@@ -11,7 +11,7 @@
 /**
 * Smarty Internal Plugin Resource Extends
 *
-* Implements the file system as resource for Smarty which {extend}s a chain of template files templates
+* Implements the file system as resource for Smarty which [extend]s a chain of template files templates
 *
 * @package Smarty
 * @subpackage TemplateResources
@@ -33,7 +33,7 @@ class Smarty_Internal_Resource_Extends extends Smarty_Resource {
         foreach ($components as $component) {
             $s = Smarty_Resource::source(null, $source->smarty, $component);
             if ($s->type == 'php') {
-                throw new SmartyException("Resource type {$s->type} cannot be used with the extends resource type");
+                throw new SmartyException("Resource type [$s->type] cannot be used with the extends resource type");
             }
             $sources[$s->uid] = $s;
             $uid .= $s->filepath;
@@ -76,7 +76,7 @@ class Smarty_Internal_Resource_Extends extends Smarty_Resource {
     public function getContent(Smarty_Template_Source $source)
     {
         if (!$source->exists) {
-            throw new SmartyException("Unable to read template {$source->type} '{$source->name}'");
+            throw new SmartyException("Unable to read template [$source->type] '[$source->name]'");
         }
 
         $_rdl = preg_quote($source->smarty->right_delimiter);
@@ -97,11 +97,11 @@ class Smarty_Internal_Resource_Extends extends Smarty_Resource {
 
             // extend sources
             if ($_component != $_last) {
-                if (preg_match_all("!({$_ldl}block\s(.+?){$_rdl})!", $_content, $_open) !=
-                preg_match_all("!({$_ldl}/block{$_rdl})!", $_content, $_close)) {
-                    throw new SmartyException("unmatched {block} {/block} pairs in template {$_component->type} '{$_component->name}'");
+                if (preg_match_all("!([$_ldl]block\s(.+?)[$_rdl])!", $_content, $_open) !=
+                preg_match_all("!([$_ldl]/block[$_rdl])!", $_content, $_close)) {
+                    throw new SmartyException("unmatched [block] [/block] pairs in template [$_component->type] '[$_component->name]'");
                 }
-                preg_match_all("!{$_ldl}block\s(.+?){$_rdl}|{$_ldl}/block{$_rdl}|{$_ldl}\*([\S\s]*?)\*{$_rdl}!", $_content, $_result, PREG_OFFSET_CAPTURE);
+                preg_match_all("![$_ldl]block\s(.+?)[$_rdl]|[$_ldl]/block[$_rdl]|[$_ldl]\*([\S\s]*?)\*[$_rdl]!", $_content, $_result, PREG_OFFSET_CAPTURE);
                 $_result_count = count($_result[0]);
                 $_start = 0;
                 while ($_start+1 < $_result_count) {

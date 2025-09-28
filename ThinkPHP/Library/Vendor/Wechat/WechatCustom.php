@@ -24,14 +24,14 @@ class WechatCustom extends Common {
 
     /**
      * 获取多客服会话记录
-     * @param array $data 数据结构 {"starttime":123456789,"endtime":987654321,"openid":"OPENID","pagesize":10,"pageindex":1,}
+     * @param array $data 数据结构 ["starttime":123456789,"endtime":987654321,"openid":"OPENID","pagesize":10,"pageindex":1,]
      * @return bool|array
      */
     public function getCustomServiceMessage($data) {
         if (!$this->access_token && !$this->getAccessToken()) {
             return false;
         }
-        $result = Tools::httpPost(self::API_URL_PREFIX . self::CUSTOM_SERVICE_GET_RECORD . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_URL_PREFIX . self::CUSTOM_SERVICE_GET_RECORD . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -53,7 +53,7 @@ class WechatCustom extends Common {
         if (!$this->access_token && !$this->getAccessToken()) {
             return false;
         }
-        $result = Tools::httpGet(self::API_URL_PREFIX . self::CUSTOM_SERVICE_GET_KFLIST . "access_token={$this->access_token}");
+        $result = Tools::httpGet(self::API_URL_PREFIX . self::CUSTOM_SERVICE_GET_KFLIST . "access_token=[$this->access_token]");
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -75,7 +75,7 @@ class WechatCustom extends Common {
         if (!$this->access_token && !$this->getAccessToken()) {
             return false;
         }
-        $result = Tools::httpGet(self::API_URL_PREFIX . self::CUSTOM_SERVICE_GET_ONLINEKFLIST . "access_token={$this->access_token}");
+        $result = Tools::httpGet(self::API_URL_PREFIX . self::CUSTOM_SERVICE_GET_ONLINEKFLIST . "access_token=[$this->access_token]");
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -104,7 +104,7 @@ class WechatCustom extends Common {
         if (!$this->access_token && !$this->getAccessToken()) {
             return false;
         }
-        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CUSTOM_SESSION_CREATE . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CUSTOM_SESSION_CREATE . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -137,7 +137,7 @@ class WechatCustom extends Common {
         if (!$this->access_token && !$this->getAccessToken()) {
             return false;
         }
-        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CUSTOM_SESSION_CLOSE . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CUSTOM_SESSION_CLOSE . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -165,7 +165,7 @@ class WechatCustom extends Common {
         if (!$this->access_token && !$this->getAccessToken()) {
             return false;
         }
-        $result = Tools::httpGet(self::API_BASE_URL_PREFIX . self::CUSTOM_SESSION_GET . "access_token={$this->access_token}" . '&openid=' . $openid);
+        $result = Tools::httpGet(self::API_BASE_URL_PREFIX . self::CUSTOM_SESSION_GET . "access_token=[$this->access_token]" . '&openid=' . $openid);
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -199,7 +199,7 @@ class WechatCustom extends Common {
         if (!$this->access_token && !$this->getAccessToken()) {
             return false;
         }
-        $result = Tools::httpGet(self::API_BASE_URL_PREFIX . self::CUSTOM_SESSION_GET_LIST . "access_token={$this->access_token}" . '&kf_account=' . $kf_account);
+        $result = Tools::httpGet(self::API_BASE_URL_PREFIX . self::CUSTOM_SESSION_GET_LIST . "access_token=[$this->access_token]" . '&kf_account=' . $kf_account);
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -220,7 +220,7 @@ class WechatCustom extends Common {
         if (!$this->access_token && !$this->getAccessToken()) {
             return false;
         }
-        $result = Tools::httpGet(self::API_BASE_URL_PREFIX . self::CUSTOM_SESSION_GET_WAIT . "access_token={$this->access_token}");
+        $result = Tools::httpGet(self::API_BASE_URL_PREFIX . self::CUSTOM_SESSION_GET_WAIT . "access_token=[$this->access_token]");
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -246,7 +246,7 @@ class WechatCustom extends Common {
         if (!$this->access_token && !$this->getAccessToken()) {
             return false;
         }
-        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CS_KF_ACCOUNT_ADD_URL . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CS_KF_ACCOUNT_ADD_URL . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -277,7 +277,7 @@ class WechatCustom extends Common {
         if (!$this->access_token && !$this->getAccessToken()) {
             return false;
         }
-        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CS_KF_ACCOUNT_UPDATE_URL . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CS_KF_ACCOUNT_UPDATE_URL . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -299,7 +299,7 @@ class WechatCustom extends Common {
         if (!$this->access_token && !$this->getAccessToken()) {
             return false;
         }
-        $result = Tools::httpGet(self::API_BASE_URL_PREFIX . self::CS_KF_ACCOUNT_DEL_URL . "access_token={$this->access_token}" . '&kf_account=' . $account);
+        $result = Tools::httpGet(self::API_BASE_URL_PREFIX . self::CS_KF_ACCOUNT_DEL_URL . "access_token=[$this->access_token]" . '&kf_account=' . $account);
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -322,7 +322,7 @@ class WechatCustom extends Common {
         if (!$this->access_token && !$this->getAccessToken()) {
             return false;
         }
-        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CS_KF_ACCOUNT_UPLOAD_HEADIMG_URL . "access_token={$this->access_token}" . '&kf_account=' . $account, array('media' => '@' . $imgfile), true);
+        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::CS_KF_ACCOUNT_UPLOAD_HEADIMG_URL . "access_token=[$this->access_token]" . '&kf_account=' . $account, array('media' => '@' . $imgfile), true);
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {

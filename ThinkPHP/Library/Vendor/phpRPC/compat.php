@@ -204,7 +204,7 @@ function declare_empty_class($classname) {
     }
     if (!class_exists($classname)) {
         if (version_compare(phpversion(), "5", "<")) {
-            eval('class ' . $classname . ' { }');
+            eval('class ' . $classname . ' [ ]');
         }
         else {
             eval('

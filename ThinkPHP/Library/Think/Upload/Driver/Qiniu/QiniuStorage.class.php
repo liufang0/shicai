@@ -70,7 +70,7 @@
 		public function upload($config, $file){
 			$uploadToken = $this->UploadToken($this->sk, $this->ak, $config);
 
-			$url 	= 	"{$this->QINIU_UP_HOST}";
+			$url 	= 	"[$this->QINIU_UP_HOST]";
 			$mimeBoundary = md5(microtime());
 			$header = 	array('Content-Type'=>'multipart/form-data;boundary='.$mimeBoundary);
 			$data 	= 	array();
@@ -124,13 +124,13 @@
 					}else if($param['imageView']){
 						$url .= '?imageView/'.$param['mode'];
 						if($param['w'])
-							$url .= "/w/{$param['w']}";
+							$url .= "/w/[$param['w']]";
 						if($param['h'])
-							$url .= "/h/{$param['h']}";
+							$url .= "/h/[$param['h']]";
 						if($param['q'])
-							$url .= "/q/{$param['q']}";
+							$url .= "/q/[$param['q']]";
 						if($param['format'])
-							$url .= "/format/{$param['format']}";
+							$url .= "/format/[$param['format']]";
 					}
 					break;
 				case 'video': //TODO 视频处理
@@ -154,7 +154,7 @@
 		//获取某个路径下的文件列表
 		public function getList($query = array(), $path = ''){
 			$query 			= 	array_merge(array('bucket'=>$this->bucket), $query);
-			$url 			= 	"{$this->QINIU_RSF_HOST}/list?".http_build_query($query);
+			$url 			= 	"[$this->QINIU_RSF_HOST]/list?".http_build_query($query);
 			$accessToken 	= 	$this->accessToken($url);
 			$response 		= 	$this->request($url, 'POST', array('Authorization'=>"QBox $accessToken"));
 			return $response;
@@ -163,7 +163,7 @@
 		//获取某个文件的信息
 		public function info($key){
 			$key 			= 	trim($key);
-			$url 			= 	"{$this->QINIU_RS_HOST}/stat/" . self::Qiniu_Encode("{$this->bucket}:{$key}");
+			$url 			= 	"[$this->QINIU_RS_HOST]/stat/" . self::Qiniu_Encode("[$this->bucket]:[$key]");
 			$accessToken 	= 	$this->accessToken($url);
 			$response 		= 	$this->request($url, 'POST', array(
 				'Authorization' 	=>	"QBox $accessToken",
@@ -175,14 +175,14 @@
 		public function downLink($key){
 			$key = urlencode($key);
 			$key = self::Qiniu_escapeQuotes($key);
-			$url = "http://{$this->domain}/{$key}";
+			$url = "http://[$this->domain]/[$key]";
 			return $url;
 		}
 
 		//重命名单个文件
 		public function rename($file, $new_file){
 			$key = trim($file);
-			$url = "{$this->QINIU_RS_HOST}/move/" . self::Qiniu_Encode("{$this->bucket}:{$key}") .'/'. self::Qiniu_Encode("{$this->bucket}:{$new_file}");
+			$url = "[$this->QINIU_RS_HOST]/move/" . self::Qiniu_Encode("[$this->bucket]:[$key]") .'/'. self::Qiniu_Encode("[$this->bucket]:[$new_file]");
 			trace($url);
 			$accessToken = $this->accessToken($url);
 			$response = $this->request($url, 'POST', array('Authorization'=>"QBox $accessToken"));
@@ -192,7 +192,7 @@
 		//删除单个文件
 		public function del($file){
 			$key = trim($file);
-			$url = "{$this->QINIU_RS_HOST}/delete/" . self::Qiniu_Encode("{$this->bucket}:{$key}");
+			$url = "[$this->QINIU_RS_HOST]/delete/" . self::Qiniu_Encode("[$this->bucket]:[$key]");
 			$accessToken = $this->accessToken($url);
 			$response = $this->request($url, 'POST', array('Authorization'=>"QBox $accessToken"));
 			return $response;
@@ -203,7 +203,7 @@
 			$url = $this->QINIU_RS_HOST . '/batch';
 			$ops = array();
 			foreach ($files as $file) {
-				$ops[] = "/delete/". self::Qiniu_Encode("{$this->bucket}:{$file}");
+				$ops[] = "/delete/". self::Qiniu_Encode("[$this->bucket]:[$file]");
 			}
 			$params = 'op=' . implode('&op=', $ops);
 			$url .= '?'.$params;
@@ -239,7 +239,7 @@
 	        $_headers = array('Expect:');
 	        if (!is_null($headers) && is_array($headers)){
 	            foreach($headers as $k => $v) {
-	                array_push($_headers, "{$k}: {$v}");
+	                array_push($_headers, "[$k]: [$v]");
 	            }
 	        }
 
@@ -252,20 +252,20 @@
 	                $length = ftell($body);
 	                fseek($body, 0);
 
-	                array_push($_headers, "Content-Length: {$length}");
+	                array_push($_headers, "Content-Length: [$length]");
 	                curl_setopt($ch, CURLOPT_INFILE, $body);
 	                curl_setopt($ch, CURLOPT_INFILESIZE, $length);
 	            } else {
 	                $length = @strlen($body);
-	                array_push($_headers, "Content-Length: {$length}");
+	                array_push($_headers, "Content-Length: [$length]");
 	                curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
 	            }
 	        } else {
-	            array_push($_headers, "Content-Length: {$length}");
+	            array_push($_headers, "Content-Length: [$length]");
 	        }
 
 	        // array_push($_headers, 'Authorization: ' . $this->sign($method, $uri, $date, $length));
-	        array_push($_headers, "Date: {$date}");
+	        array_push($_headers, "Date: [$date]");
 
 	        curl_setopt($ch, CURLOPT_HTTPHEADER, $_headers);
 	        curl_setopt($ch, CURLOPT_TIMEOUT, $this->timeout);
@@ -325,7 +325,7 @@
 		private function error($header, $body) {
 	        list($status, $stash) = explode("\r\n", $header, 2);
 	        list($v, $code, $message) = explode(" ", $status, 3);
-	        $message = is_null($message) ? 'File Not Found' : "[{$status}]:{$message}]";
+	        $message = is_null($message) ? 'File Not Found' : "[[$status]]:[$message]]";
 	        $this->error = $message;
 	        $this->errorStr = json_decode($body ,1);
 	        $this->errorStr = $this->errorStr['error'];

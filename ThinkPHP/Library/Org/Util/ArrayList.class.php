@@ -136,7 +136,7 @@ class ArrayList implements \IteratorAggregate {
      */
     public function lastIndexOf($element) {
         for ($i = (count($this->_elements) - 1); $i > 0; $i--) {
-            if ($element == $this->get($i)) { return $i; }
+            if ($element == $this->get($i)) [ return $i; ]
         }
     }
 
@@ -153,7 +153,7 @@ class ArrayList implements \IteratorAggregate {
      */
     public function remove($index) {
         $element = $this->get($index);
-        if (!is_null($element)) { array_splice($this->_elements, $index, 1); }
+        if (!is_null($element)) [ array_splice($this->_elements, $index, 1); ]
         return $element;
     }
 

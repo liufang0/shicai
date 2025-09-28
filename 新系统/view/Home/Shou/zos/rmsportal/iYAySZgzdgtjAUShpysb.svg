@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="36px" viewBox="0 0 30 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch Beta 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch Beta.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#F4F4F4" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="0" y="0" width="28" height="34" rx="2"></rect>
+        <filter x="-7.1%" y="-2.9%" width="114.3%" height="111.8%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.9375   0 0 0 0 0.9375   0 0 0 0 0.9375  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="图标" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="rar" transform="translate(-9.000000, -7.000000)">
+            <g id="Group" transform="translate(10.000000, 7.000000)">
+                <g id="Combined-Shape">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                    <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    <rect stroke="#CCCCCC" stroke-width="1" x="0.5" y="0.5" width="27" height="33" rx="2"></rect>
+                </g>
+                <path d="M3.73242188,28 L3.73242188,20.8417969 L6.77441406,20.8417969 C7.53939185,20.8417969 8.09521311,20.9060866 8.44189453,21.034668 C8.78857595,21.1632493 9.06607969,21.3919254 9.27441406,21.7207031 C9.48274844,22.0494808 9.58691406,22.4254536 9.58691406,22.8486328 C9.58691406,23.3857449 9.42903804,23.8292626 9.11328125,24.1791992 C8.79752446,24.5291359 8.32552397,24.749674 7.69726562,24.8408203 C8.00976719,25.0231129 8.26773987,25.2233062 8.47119141,25.4414062 C8.67464294,25.6595063 8.9488915,26.0468722 9.29394531,26.6035156 L10.1679688,28 L8.43945312,28 L7.39453125,26.4423828 C7.02343564,25.8857394 6.76953193,25.5349942 6.6328125,25.3901367 C6.49609307,25.2452792 6.35123774,25.1459964 6.19824219,25.0922852 C6.04524663,25.038574 5.80273604,25.0117188 5.47070312,25.0117188 L5.17773438,25.0117188 L5.17773438,28 L3.73242188,28 Z M5.17773438,23.8691406 L6.24707031,23.8691406 C6.94043315,23.8691406 7.37337153,23.839844 7.54589844,23.78125 C7.71842534,23.722656 7.85351514,23.6217455 7.95117188,23.4785156 C8.04882861,23.3352857 8.09765625,23.1562511 8.09765625,22.9414062 C8.09765625,22.7005196 8.03336653,22.5060229 7.90478516,22.3579102 C7.77620378,22.2097974 7.59472773,22.1162111 7.36035156,22.0771484 C7.24316348,22.0608723 6.89160449,22.0527344 6.30566406,22.0527344 L5.17773438,22.0527344 L5.17773438,23.8691406 Z M17.4042969,28 L15.8320312,28 L15.2070312,26.3740234 L12.3457031,26.3740234 L11.7548828,28 L10.2216797,28 L13.0097656,20.8417969 L14.5380859,20.8417969 L17.4042969,28 Z M14.7431641,25.1679688 L13.7568359,22.5117188 L12.7900391,25.1679688 L14.7431641,25.1679688 Z M18.1757812,28 L18.1757812,20.8417969 L21.2177734,20.8417969 C21.9827512,20.8417969 22.5385725,20.9060866 22.8852539,21.034668 C23.2319353,21.1632493 23.5094391,21.3919254 23.7177734,21.7207031 C23.9261078,22.0494808 24.0302734,22.4254536 24.0302734,22.8486328 C24.0302734,23.3857449 23.8723974,23.8292626 23.5566406,24.1791992 C23.2408838,24.5291359 22.7688833,24.749674 22.140625,24.8408203 C22.4531266,25.0231129 22.7110992,25.2233062 22.9145508,25.4414062 C23.1180023,25.6595063 23.3922509,26.0468722 23.7373047,26.6035156 L24.6113281,28 L22.8828125,28 L21.8378906,26.4423828 C21.466795,25.8857394 21.2128913,25.5349942 21.0761719,25.3901367 C20.9394524,25.2452792 20.7945971,25.1459964 20.6416016,25.0922852 C20.488606,25.038574 20.2460954,25.0117188 19.9140625,25.0117188 L19.6210938,25.0117188 L19.6210938,28 L18.1757812,28 Z M19.6210938,23.8691406 L20.6904297,23.8691406 C21.3837925,23.8691406 21.8167309,23.839844 21.9892578,23.78125 C22.1617847,23.722656 22.2968745,23.6217455 22.3945312,23.4785156 C22.492188,23.3352857 22.5410156,23.1562511 22.5410156,22.9414062 C22.5410156,22.7005196 22.4767259,22.5060229 22.3481445,22.3579102 C22.2195632,22.2097974 22.0380871,22.1162111 21.8037109,22.0771484 C21.6865229,22.0608723 21.3349639,22.0527344 20.7490234,22.0527344 L19.6210938,22.0527344 L19.6210938,23.8691406 Z" id="RAR" fill="#999999"></path>
+                <rect id="Rectangle-3" fill="#CCCCCC" x="12" y="2" width="2" height="1"></rect>
+                <rect id="Rectangle-3-Copy" fill="#CCCCCC" x="14" y="3" width="2" height="1"></rect>
+                <rect id="Rectangle-3-Copy-2" fill="#CCCCCC" x="12" y="4" width="2" height="1"></rect>
+                <rect id="Rectangle-3-Copy-3" fill="#CCCCCC" x="14" y="5" width="2" height="1"></rect>
+                <rect id="Rectangle-3-Copy-4" fill="#CCCCCC" x="12" y="6" width="2" height="1"></rect>
+                <rect id="Rectangle-3-Copy-5" fill="#CCCCCC" x="14" y="7" width="2" height="1"></rect>
+                <rect id="Rectangle-3-Copy-6" fill="#CCCCCC" x="12" y="8" width="2" height="1"></rect>
+                <rect id="Rectangle-3-Copy-7" fill="#CCCCCC" x="14" y="9" width="2" height="1"></rect>
+                <rect id="Rectangle-3-Copy-8" fill="#CCCCCC" x="12" y="10" width="2" height="1"></rect>
+                <rect id="Rectangle-3-Copy-9" fill="#CCCCCC" x="14" y="11" width="2" height="1"></rect>
+                <rect id="Rectangle-3-Copy-10" fill="#CCCCCC" x="12" y="12" width="2" height="1"></rect>
+                <rect id="Rectangle-3-Copy-11" fill="#CCCCCC" x="14" y="13" width="2" height="1"></rect>
+                <rect id="Rectangle-5" fill="#CCCCCC" x="13" y="7" width="2" height="7"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

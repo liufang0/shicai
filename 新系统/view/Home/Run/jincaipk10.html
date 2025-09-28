@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html id="iframe">
+    <head>
+        <meta charset="utf-8" />
+
+        <title>{:C('sitename')}</title>
+
+        <meta name="renderer" content="webkit">
+        <meta name="format-detection" content="telephone=no,email=no"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+        <meta name="telephone=no"  content="format-detection">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="format-detection" content="telephone=no" />
+
+        <META HTTP-EQUIV="Pragma" CONTENT="no-cache"> 
+        <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache"> 
+        <META HTTP-EQUIV="Expires" CONTENT="0">
+
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/lib.css"/>
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/public.css"/>
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/index.css" />
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/page.css"/>
+
+    </head>
+    <style>
+        .content p{
+            display: inline-block;
+        }
+        .keyborad{
+            display: none;position: absolute;top:33px;left:0px;z-index: 10;padding: 3px;
+            margin:0 !important;border-radius: 6px;background-color: #6a6e71;
+            width:100%;
+        }
+        .keyborad p{width: 100%;margin:5px 0;text-align: center;}
+        .keyborad p span{
+            display: inline-block;width: 13%;height: 40px;line-height:40px;background-color: #293039;color:#FFF;
+            text-align: center;border-radius: 3px;
+        }
+        .keyborad strong{display: inline-block;width:15%;border-radius: 3px;height:40px;line-height: 40px;color:#FFF;}
+        .keyborad .qc{background-color: #f00;}
+        .keyborad .jt{background-color: #00ff7a;}
+        .keyborad .fs{background-color: #008dff;}
+        .keyborad .close{background-color: #c06215;}
+    </style>
+    <body onload="connect();">
+
+
+
+
+
+        <!--弹窗-北京赛车-->
+        <link rel="stylesheet" type="text/css" href="/Template/Home/Run/css/zhicwl-z.css" />
+
+        <style>
+            .zhicwl-qiejlf-tab-04 .zhicwl-akodr dl dt{
+                width: 100%;
+            }
+            .zhicwl-qiejlf-tab-05 .zhicwl-akodr dl dt {
+                width: 100%;
+            }
+            .zhicwl-qiejlf-tab-05 .zhicwl-akodr dl dt:nth-of-type(10){
+                width: 100%;
+            }
+            .zhicwl-qiejlf-tab-05 .zhicwl-akodr dl dt span {
+                font-weight: normal;
+            }
+            .zhicwl-qiejlf-tab-06 .zhicwl-akodr dl dt{
+                width: 20%;  
+            }
+        </style>
+
+        <div class="zhicwl-csplr">
+
+            <div class="zhicwl-yrlof">
+                <div class="zhicwl-arwort">
+                    <div class="zhicwl-arwort-div">
+                        <dl class="zhicwl-tc-01 display-box box-align-center">
+                            <dt class="on"><span>猜大小单双</span></dt>
+                            <dt><span>猜车号</span></dt>
+                            <dt><span>猜龙虎</span></dt>
+                            <div class="zhicwl-hdrte">
+                                <h6>&nbsp;</h6>
+                                <div class="zhicwl-hdrte-nav">
+                                    <ul>
+                                        <li>猜庄闲</li>
+                                        <li>冠亚和大小单</li>
+                                        <li>猜冠亚和值</li>
+                                    </ul>
+                                </div>
+                            </div>					
+                        </dl>
+                    </div>
+                </div>
+            </div>
+
+
+            <section class="zhicwl-qiejlf">
+
+                <!--猜大小单双-->
+                <div class="zhicwl-qiejlf-tab zhicwl-qiejlf-tab-01">
+                    <div class="zhicwl-ldprta display-box box-align-center">
+                        <h2 class="zhicwl-ldprta-left box-flex">猜大小单双</h2>
+                        <div class="zhicwl-repavb zhicwl-guanb"><span>X</span></div>
+                    </div>
+
+                    <div class="zhicwl-keapr">
+                        <div class="zhicwl-zoaprwe">
+                            <dl>
+                                <dt>
+                                    <div>
+                                        <span>冠军</span>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>亚军</span>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>季军</span>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>第四名</span>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>第五名</span>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>第六名</span>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>第七名</span>
+                                    </div>
+                                </dt>				
+                                <dt>
+                                    <div>
+                                        <span>第八名</span>
+                                    </div>
+                                </dt>	
+                                <dt>
+                                    <div>
+                                        <span>第九名</span>
+                                    </div>
+                                </dt>	
+                                <dt>
+                                    <div>
+                                        <span>第十名</span>
+                                    </div>
+                                </dt>								
+                            </dl>
+                        </div>
+                        <div class="zhicwl-akodr">
+                            <dl>
+                                <dt>
+                                    <div>
+                                        <span>大单</span>
+                                        <samp>7、9</samp>
+                                        <samp>x {:C('pk10_zuhe_1')}</samp>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>大双</span>
+                                        <samp>6、8、10</samp>
+                                        <samp>x {:C('pk10_zuhe_2')}</samp>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>小单</span>
+                                        <samp>1、3、5</samp>
+                                        <samp>x {:C('pk10_zuhe_2')}</samp>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>小双</span>
+                                        <samp>2、4</samp>
+                                        <samp>x {:C('pk10_zuhe_1')}</samp>
+                                    </div>
+                                </dt>					
+                            </dl>
+                        </div>
+                        <div class="zhicwl-tvsdpm">
+                            <dl>
+                                <dt>
+                                    <div>
+                                        <span>大</span>
+                                        <samp>6、7、8、9、10</samp>
+                                        <samp>x {:C('pk10_dxds')}</samp>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>小</span>
+                                        <samp>1、2、3、4、5</samp>
+                                        <samp>x {:C('pk10_dxds')}</samp>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>单</span>
+                                        <samp>1、3、5、7、9</samp>
+                                        <samp>x {:C('pk10_dxds')}</samp>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>双</span>
+                                        <samp>2、4、6、8、10</samp>
+                                        <samp>x {:C('pk10_dxds')}</samp>
+                                    </div>
+                                </dt>					
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <!--/猜大小单双-->
+
+                <!--猜车号-->
+                <div class="zhicwl-qiejlf-tab zhicwl-qiejlf-tab-02">
+                    <div class="zhicwl-ldprta display-box box-align-center">
+                        <h2 class="zhicwl-ldprta-left box-flex">猜车号</h2>
+                        <div class="zhicwl-repavb zhicwl-guanb"><span>X</span></div>
+                    </div>
+
+                    <div class="zhicwl-keapr">
+                        <div class="zhicwl-zoaprwe">
+                            <dl>
+                                <dt>
+                                    <div>
+                                        <span>冠军</span>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>亚军</span>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>季军</span>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>第四名</span>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>第五名</span>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>第六名</span>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>第七名</span>
+                                    </div>
+                                </dt>				
+                                <dt>
+                                    <div>
+                                        <span>第八名</span>
+                                    </div>
+                                </dt>	
+                                <dt>
+                                    <div>
+                                        <span>第九名</span>
+                                    </div>
+                                </dt>	
+                                <dt>
+                                    <div>
+                                        <span>第十名</span>
+                                    </div>
+                                </dt>								
+                            </dl>
+                        </div>
+                        <div class="zhicwl-akodr">
+                            <dl>
+                                <dt>
+                                    <div>
+                                        <span>1号</span>
+                                        <samp>x {:C('pk10_chehao')}</samp>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>2号</span>
+                                        <samp>x {:C('pk10_chehao')}</samp>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>3号</span>
+                                        <samp>x {:C('pk10_chehao')}</samp>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>4号</span>
+                                        <samp>x {:C('pk10_chehao')}</samp>
+                                    </div>
+                                </dt>		
+                                <dt>
+                                    <div>
+                                        <span>5号</span>
+                                        <samp>x {:C('pk10_chehao')}</samp>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>6号</span>
+                                        <samp>x {:C('pk10_chehao')}</samp>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>7号</span>
+                                        <samp>x {:C('pk10_chehao')}</samp>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>8号</span>
+                                        <samp>x {:C('pk10_chehao')}</samp>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>9号</span>
+                                        <samp>x {:C('pk10_chehao')}</samp>
+                                    </div>
+                                </dt>			
+                                <dt>
+                                    <div>
+                                        <span>10号</span>
+                                        <samp>x {:C('pk10_chehao')}</samp>
+                                    </div>
+                                </dt>								
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <!--/猜车号-->
+
+                <!--猜龙虎-->
+                <div class="zhicwl-qiejlf-tab zhicwl-qiejlf-tab-03">
+                    <div class="zhicwl-ldprta display-box box-align-center">
+                        <h2 class="zhicwl-ldprta-left box-flex">猜龙虎</h2>
+                        <div class="zhicwl-repavb zhicwl-guanb"><span>X</span></div>
+                    </div>
+                    <div class="zhicwl-keapr">
+                        <div class="zhicwl-zoaprwe">
+                            <dl>
+                                <dt>
+                                    <div>
+                                        <span>龙</span>
+                                        <samp>x {:C('pk10_lh')}</samp>
+                                    </div>								
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>虎</span>
+                                        <samp>x {:C('pk10_lh')}</samp>
+                                    </div>								
+                                </dt>
+                            </dl>
+                        </div>
+                        <div class="zhicwl-akodr">
+                            <dl>
+                                <dt>
+                                    <div>
+                                        <span>冠军</span>
+                                        <samp>vs</samp>
+                                        <b>第十名</b>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>亚军</span>
+                                        <samp>vs</samp>
+                                        <b>第九名</b>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>季军</span>
+                                        <samp>vs</samp>
+                                        <b>第八名</b>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>第四名</span>
+                                        <samp>vs</samp>
+                                        <b>第七名</b>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>第五名</span>
+                                        <samp>vs</samp>
+                                        <b>第六名</b>
+                                    </div>
+                                </dt>							
+                            </dl>
+                        </div>
+                    </div>			
+                </div>
+                <!--/猜龙虎-->
+
+                <!--猜庄闲-->
+                <div class="zhicwl-qiejlf-tab zhicwl-qiejlf-tab-04">
+                    <div class="zhicwl-ldprta display-box box-align-center">
+                        <h2 class="zhicwl-ldprta-left box-flex">猜庄闲</h2> 
+                        <div class="zhicwl-repavb zhicwl-guanb"><span>X</span></div>
+                    </div>
+
+                    <div class="zhicwl-keapr">
+                        <div class="zhicwl-akodr">
+                            <dl>
+                                <dt>
+                                    <div>
+                                        <span>庄</span>
+                                        <samp>x {:C('pk10_zx')}</samp>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>闲</span>
+                                        <samp>x {:C('pk10_zx')}</samp>
+                                    </div>
+                                </dt>								
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <!--/猜庄闲-->
+
+                <!--冠亚和大小单双-->
+                <div class="zhicwl-qiejlf-tab zhicwl-qiejlf-tab-05">
+                    <div class="zhicwl-ldprta display-box box-align-center">
+                        <h2 class="zhicwl-ldprta-left box-flex">冠亚和大小单双</h2>
+                        <div class="zhicwl-repavb zhicwl-guanb"><span>X</span></div>
+                    </div>
+                    <div class="zhicwl-keapr">
+                        <div class="zhicwl-akodr">
+                            <dl>
+                                <dt>
+                                    <div>
+                                        <span>大</span>
+                                        <samp>12、13、14、15、16、17、18、19</samp>
+                                        <samp>x {:C('pk10_tema')}</samp>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>小</span>
+                                        <samp>3、4、5、6、7、8、9、10、11</samp>
+                                        <samp>x {:C('pk10_tema')}</samp>								
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>单</span>
+                                        <samp>3、5、7、9、11、13、15、17、19</samp>
+                                        <samp>x {:C('pk10_tema')}</samp>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>双</span>
+                                        <samp>4、6、8、10、12、14、16、18</samp>
+                                        <samp>x {:C('pk10_tema')}</samp>
+                                    </div>
+                                </dt>
+                                <!--<dt>
+                                        <div>
+                                                <span>05</span>
+                                        </div>
+                                </dt>
+                                <dt>
+                                        <div>
+                                                <span>06</span>
+                                        </div>
+                                </dt>
+                                <dt>
+                                        <div>
+                                                <span>07</span>
+                                        </div>
+                                </dt>
+                                <dt>
+                                        <div>
+                                                <span>08</span>
+                                        </div>
+                                </dt>
+                                <dt>
+                                        <div>
+                                                <span>09</span>
+                                        </div>
+                                </dt>
+                                <dt>
+                                        <div>
+                                                <span>10</span>
+                                        </div>
+                                </dt>-->
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <!--/冠亚和大小单双-->
+
+                <!--冠亚和-->
+                <div class="zhicwl-qiejlf-tab zhicwl-qiejlf-tab-06">
+                    <div class="zhicwl-ldprta display-box box-align-center">
+                        <h2 class="zhicwl-ldprta-left box-flex">猜冠亚和值</h2>
+                        <div class="zhicwl-repavb zhicwl-guanb"><span>X</span></div>
+                    </div>
+
+                    <div class="zhicwl-keapr">
+                        <div class="zhicwl-akodr">
+                            <dl>
+                                <dt>
+                                    <div>
+                                        <span>03</span>
+                                        <samp>x {:C('pk10_tema_sz_1')}</samp>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>04</span>
+                                        <samp>x {:C('pk10_tema_sz_1')}</samp>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>05</span>
+                                        <samp>x {:C('pk10_tema_sz_2')}</samp>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>06</span>
+                                        <samp>x {:C('pk10_tema_sz_2')}</samp>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>07</span>
+                                        <samp>x {:C('pk10_tema_sz_3')}</samp>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>08</span>
+                                        <samp>x {:C('pk10_tema_sz_3')}</samp>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>09</span>
+                                        <samp>x {:C('pk10_tema_sz_4')}</samp>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>10</span>
+                                        <samp>x {:C('pk10_tema_sz_4')}</samp>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>11</span>
+                                        <samp>x {:C('pk10_tema_sz_5')}</samp>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>12</span>
+                                        <samp>x {:C('pk10_tema_sz_4')}</samp>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>13</span>
+                                        <samp>x {:C('pk10_tema_sz_4')}</samp>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>14</span>
+                                        <samp>x {:C('pk10_tema_sz_3')}</samp>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>15</span>
+                                        <samp>x {:C('pk10_tema_sz_3')}</samp>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>16</span>
+                                        <samp>x {:C('pk10_tema_sz_2')}</samp>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>17</span>
+                                        <samp>x {:C('pk10_tema_sz_2')}</samp>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>18</span>
+                                        <samp>x {:C('pk10_tema_sz_1')}</samp>
+                                    </div>
+                                </dt>
+                                <dt>
+                                    <div>
+                                        <span>19</span>
+                                        <samp>x {:C('pk10_tema_sz_1')}</samp>
+                                    </div>
+                                </dt>								
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <!--/冠亚和-->
+
+            </section>			
+
+        </div>
+        <!--/弹窗-北京赛车-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="main-box">
+            <!--第一行（表单、积分在线人数）-->
+            <div class="top">
+                <input id="textarea" type="text" required placeholder="格式:名次/玩法/金额" />
+                <span class="jp_btn"></span>
+                <button class="submit_btn" onclick="onSubmit(); return false;">发送</button>
+
+
+
+
+
+
+
+
+
+
+
+                <button class="zhicwl-xiaz">快捷</button>
+
+
+
+
+
+
+
+
+
+
+                <div class="info">
+                    <p>点数：<span id="sy">{$userinfo.points}</span></p>
+                    <p>人数：<span id="xs"></span></p>
+                </div>
+                <div class="keyborad">
+                    <p>
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>/</span>
+                        <span>-</span>
+                    </p>
+                    <p>
+                        <span>6</span>
+                        <span>7</span>
+                        <span>8</span>
+                        <span>9</span>
+                        <span>0</span>
+                        <span>/</span>
+                        <span>.</span>
+                    </p>
+                    <p>
+                        <span>大</span>
+                        <span>小</span>
+                        <span>单</span>
+                        <span>双</span>
+                        <span>组</span>
+                        <span>和</span>
+                        <span>特</span>
+                    </p>
+                    <p>
+                        <span>庄</span>
+                        <span>闲</span>
+                        <span>龙</span>
+                        <span>虎</span>
+                        <span>A</span>
+                        <span>B</span>
+                        <span>C</span>
+                    </p>
+                    <p>
+                        <strong class="qc">清除</strong>
+                        <strong class="jt">←</strong>
+                        <strong class="fs">发送</strong>
+                        <strong class="close">关闭</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div id="load" style="text-align: center;font-size: 14px;color:#fff;">加载中...</div>
+        <div class="chatting" style="display: none;">
+            <volist name="list" id="vo">
+                <if condition="$vo['type'] eq 'admin'">
+                    <div <if condition="$vo.uid eq $userinfo['id']">class="chatting-li qtr green"<else/>class="chatting-li qtr orange"</if> >
+                        <div class="portrait"><img src="{$vo.head_img_url}"/></div>
+                        <div class="content">
+                            <small><span class="name">{$vo.from_client_name}</span><time>{$vo.time}</time></small>
+                            <p>{$vo.content|htmlspecialchars_decode|stripcslashes}</p>
+                        </div>
+                    </div>
+                </if>
+                <if condition="$vo['type'] eq 'system'">
+                    <div class="chatting-li qtr pink">
+                        <div class="portrait"><img src="{$vo.head_img_url}"/></div>
+                        <div class="content">
+                            <small><span class="name">{$vo.from_client_name}</span><time>{$vo.time}</time></small>
+                            <p>{$vo.content|htmlspecialchars_decode|stripcslashes}</p>
+                        </div>
+                    </div>
+                </if>
+                <if condition="$vo['type'] eq 'say'">
+                    <div <if condition="$vo.uid eq $userinfo['id']">class="chatting-li green"<else/>class="chatting-li"</if> >
+                        <div class="portrait"><img src="{$vo.head_img_url}"/></div>
+                        <div class="content">
+                            <small><span class="name">{$vo.from_client_name}</span><time>{$vo.time}</time></small>
+                            <p>{$vo.content|htmlspecialchars_decode|stripcslashes}</p>
+                        </div>
+                    </div>
+                </if>
+                <if condition="$vo['type'] eq 'error' && $userinfo['id'] eq $vo['uid']">
+                    <div class="chatting-li qtr green">
+                        <div class="portrait"><img src="{$vo.head_img_url}"/></div>
+                        <div class="content">
+                            <small><span class="name">{$vo.from_client_name}</span><time>{$vo.time}</time></small>
+                            <p>{$vo.content|htmlspecialchars_decode|stripcslashes}</p>
+                        </div>
+                    </div>
+                </if>
+                <if condition="$vo['type'] eq 'say_error' && $userinfo['id'] eq $vo['uid']">
+                    <div class="chatting-li green">
+                        <div class="portrait"><img src="{$vo.head_img_url}"/></div>
+                        <div class="content">
+                            <small><span class="name">{$vo.from_client_name}</span><time>{$vo.time}</time></small>
+                            <p>{$vo.content|htmlspecialchars_decode|stripcslashes}</p>
+                        </div>
+                    </div>
+                </if>
+            </volist>
+        </div>
+
+        <script src='//cdn.bootcss.com/jquery/1.11.3/jquery.js'></script>
+        <!--聊天-->
+        <script type="text/javascript" src="__PUBLIC__/worker/js/swfobject.js"></script>
+        <script type="text/javascript" src="__PUBLIC__/worker/js/web_socket.js"></script>
+        <script src="__PUBLIC__/layer/layer.js"></script>
+        <script type="text/javascript">
+                    setTimeout(function() {
+                    $('#load').css('display', 'none');
+                    $('.chatting').css('display', 'block');
+                    }, 1500);
+                    $('.jp_btn').click(function(){
+                    if ($('.keyborad').is(":hidden")) {
+                    $('.keyborad').show();
+                    } else {
+                    $('.keyborad').hide();
+                    }
+
+                    })
+
+                            $('.keyborad span').click(function(){
+                    var value = $(this).text();
+                    var input_value = $('#textarea').val();
+                    $('#textarea').val(input_value + value);
+                    })
+
+                            $('.keyborad .qc').click(function(){
+                    $('#textarea').val('');
+                    })
+
+                            $('.keyborad .jt').click(function(){
+                    var input_value = $('#textarea').val();
+                    var str = input_value.substr(0, input_value.length - 1);
+                    $('#textarea').val(str);
+                    })
+
+                            $('.keyborad .fs').click(function(){
+                    $('.submit_btn').click();
+                    $('.keyborad').hide();
+                    })
+
+                            $('.keyborad .close').click(function(){
+                    $('.keyborad').hide();
+                    })
+
+                            $('.submit_btn').click(function(){
+                    $('.keyborad').hide();
+                    })
+                            // $('#textarea').blur(function(){
+                            // 	$('.keyborad').hide();
+                            // })
+
+
+                            document.onkeydown = function(event){
+                            e = event ? event :(window.event ? window.event : null);
+                            if (e.keyCode == 13){
+                            onSubmit(); return false;
+                            }
+                            }
+
+                    if (typeof console == "undefined") {
+                    this.console = {
+                    log: function(msg) {}
+                    };
+                    }
+                    WEB_SOCKET_SWF_LOCATION = "__PUBLIC__/worker/swf/WebSocketMain.swf";
+                    WEB_SOCKET_DEBUG = true;
+                    var ws, name;
+                    // 连接服务端
+                    function connect(){
+                    // 创建websocket
+                    ws = new WebSocket("ws://" + document.domain + ":15531");
+                    // 当socket连接打开时，发送登录信息
+                    ws.onopen = function(){
+                    var name = "{$userinfo.nickname}";
+                    // 登录
+                    var userid = "{$userinfo.id}";
+                    var login_data = '{"type":"login","client_name":"' + name.replace(/"/g, '\\"') + '","client_id":"' + userid + '"}';
+                    console.log("websocket握手成功，发送登录数据:" + login_data);
+                    ws.send(login_data);
+                    };
+                    // 当有消息时根据消息类型显示不同信息
+                    ws.onmessage = onmessage;
+                    ws.onclose = function(){
+                    console.log("连接关闭，定时重连");
+                    connect();
+                    };
+                    ws.onerror = function() {
+                    console.log("出现错误");
+                    };
+                    }
+
+                    var inte = parseInt(Math.random() * 12 + 1);
+                    function onmessage(e) {
+                    var rate = 0;
+                    var robot_rate = {:C('robot_rate')} ? {:C('robot_rate')} : 3;
+                    switch ({:C('robot_rate')}){
+                    case 5:
+                            rate = 5;
+                    break;
+                    case 4:
+                            rate = 10;
+                    break;
+                    case 3:
+                            rate = 25;
+                    break;
+                    case 2:
+                            rate = 35;
+                    break;
+                    case 1:
+                            rate = 45;
+                    break;
+                    default:
+                            rate = 25;
+                    break;
+                    }
+                    //console.log(e.data);
+                    var data = eval("(" + e.data + ")");
+                    switch (data['type']) {
+                    // 服务端ping客户端
+                    case 'ping':
+                            $('#xs').html(data.content + {:C('online')});
+                    ws.send('{"type":"pong"}');
+                    inte--;
+                    if (inte == 0){
+                    ws.send('{"type":"robot"}');
+                    inte = parseInt(Math.random() * rate + 1) + 2;
+                    }
+                    break;
+                    // 登录 更新用户列表
+                    case 'login':
+                            console.log(data['client_name'] + "登录成功");
+                    break;
+                    // 发言
+                    case 'say':
+                            say(data['uid'], data['from_client_name'], data['head_img_url'], data['content'], data['time']);
+                    break;
+                    // 用户退出 更新用户列表
+                    case 'logout':
+                            break;
+                    case 'broadcast':
+                            //alert('client');
+
+                            //房管
+                            case 'admin':
+                            if ('{$userinfo.id}' == data['uid']){
+                    $(".chatting").prepend('<div class="chatting-li qtr green"><div class="portrait"><img src="' + data['head_img_url'] + '"/></div><div class="content"><small><span class="name">' + data["from_client_name"] + '</span><time>' + data["time"] + '</time></small><p>' + data["content"] + '</p></div></div>');
+                    } else{
+                    $(".chatting").prepend('<div class="chatting-li qtr orange"><div class="portrait"><img src="' + data['head_img_url'] + '"/></div><div class="content"><small><span class="name">' + data["from_client_name"] + '</span><time>' + data["time"] + '</time></small><p>' + data["content"] + '</p></div></div>');
+                    }
+                    break;
+                    //系统
+                    case 'system':
+                            if ('{$userinfo.id}' == data['uid']){
+                    $(".chatting").prepend('<div class="chatting-li qtr green"><div class="portrait"><img src="' + data['head_img_url'] + '"/></div><div class="content"><small><span class="name">' + data["from_client_name"] + '</span><time>' + data["time"] + '</time></small><p>' + data["content"] + '</p></div></div>');
+                    } else{
+                    $(".chatting").prepend('<div class="chatting-li qtr orange"><div class="portrait"><img src="' + data['head_img_url'] + '"/></div><div class="content"><small><span class="name">' + data["from_client_name"] + '</span><time>' + data["time"] + '</time></small><p>' + data["content"] + '</p></div></div>');
+                    }
+                    break;
+                    //积分减
+                    case 'points':
+                            $('#sy').html((parseFloat($('#sy').html()) - data['content']).toFixed(1));
+                    break;
+                    //积分加
+                    case 'pointsadd':
+                            $('#sy').html((parseFloat($('#sy').html()) + data['points']).toFixed(1));
+                    parent.layer.msg('恭喜竞猜成功');
+                    break;
+                    //重载
+                    case 'reload':
+                            if ('{$userinfo.id}' == 9){
+                    window.location.href = window.location.href;
+                    }
+                    break;
+                    //切换
+                    case 'switch':
+                            parent.location.reload();
+                    break;
+                    }
+                    }
+
+
+
+                    function wsTz(tz,money){
+                        var headimgurl = '{$userinfo.headimgurl}';
+                        var from_client_name = '{$userinfo.nickname}';
+                        for (var i = 0; i < tz.length; i++) {
+                            var input = tz[i];
+                            ws.send('{"type":"say","client_name":"' + from_client_name + '","headimgurl":"' + headimgurl + '","content":"' + input.replace(/"/g, '\\"').replace(/\n/g, '\\n').replace(/\r/g, '\\r').replace(/\#\#/g, money) + '"}');
+                        }
+                        $('#textarea').val('');
+                        $(".zhicwl-qiejlf .zhicwl-qiejlf-tab .zhicwl-keapr dt").removeClass('on');
+                        $(".zhicwl-fxalpr-an1").removeClass('on');
+                    }
+                    function checkData(){
+                        
+                            var tz = [];
+                            var hms="";
+                    $.each($('.zhicwl-qiejlf .zhicwl-qiejlf-tab'), function(k, v){
+                    if ($(this).css('display') == 'block'){
+                    switch (k) {
+                    case 0:
+                            tz = [];
+                            hms="";
+                            $(this).find('.zhicwl-keapr .zhicwl-zoaprwe dt').each(function(i){
+                                if($(this).hasClass('on')){
+                                    if(i==9){
+                                        hms+=0;
+                                    }else{
+                                        hms+=(1+i);
+                                    }
+                                }
+                                
+                            })
+                            if(hms==""){
+                                alert("请选择车道");
+                                return false;
+                            }
+                            $(this).find('.zhicwl-keapr .zhicwl-tvsdpm dt.on').each(function(i){
+                                tz.push(hms+$(this).find('span').text()+'##');
+                            })
+                            $(this).find('.zhicwl-keapr .zhicwl-akodr dt.on').each(function(i){
+                                tz.push(hms+'/'+$(this).find('span').text()+'/'+'##');
+                            })
+                            break;
+                    case 1:
+                            tz = [];
+                            hms="";
+                            $(this).find('.zhicwl-keapr .zhicwl-zoaprwe dt').each(function(i){
+                                if($(this).hasClass('on')){
+                                    if(i==9){
+                                        hms+=0;
+                                    }else{
+                                        hms+=(1+i);
+                                    }
+                                }
+                                
+                            })
+                            if(hms==""){
+                                alert("请选择车道");
+                                return false;
+                            }
+//                            $(this).find('.zhicwl-keapr .zhicwl-tvsdpm dt.on').each(function(i){
+//                                tz.push(hms+$(this).find('span').text()+'##');
+//                            })
+                            var cehao="";
+                            $(this).find('.zhicwl-keapr .zhicwl-akodr dt').each(function(i){
+                                if($(this).hasClass('on')){
+                                    if(i==9){
+                                        cehao+=0;  
+                                    }else{
+                                        cehao+=i+1;
+                                    }
+                                }
+//                                tz.push(hms+'/'+$(this).find('span').text()+'/'+'##');
+                            })
+                            
+                            if(cehao==""){
+                                alert("请选择车号");
+                                return false;
+                            }
+                            tz.push(hms+'/'+cehao+'/'+'##');
+                            break;
+                    case 2:
+                            tz = [];
+                            hms="";
+                            
+//                            $(this).find('.zhicwl-keapr .zhicwl-tvsdpm dt.on').each(function(i){
+//                                tz.push(hms+$(this).find('span').text()+'##');
+//                            })
+                            var cehao="";
+                            $(this).find('.zhicwl-keapr .zhicwl-akodr dt').each(function(i){
+                                if($(this).hasClass('on')){
+                                    if(i==9){
+                                        cehao+=0;  
+                                    }else{
+                                        cehao+=i+1;
+                                    }
+                                }
+//                                tz.push(hms+'/'+$(this).find('span').text()+'/'+'##');
+                            })
+                            
+                            if(cehao==""){
+                                alert("请选择车号");
+                                return false;
+                            }
+                            $(this).find('.zhicwl-keapr .zhicwl-zoaprwe dt.on').each(function(i){
+                                tz.push(cehao+'/'+$(this).find('span').text()+'/'+'##');
+                            })
+                            
+                            break;
+                    case 3:
+                            tz = [];
+                            hms="";
+                            
+//                            $(this).find('.zhicwl-keapr .zhicwl-tvsdpm dt.on').each(function(i){
+//                                tz.push(hms+$(this).find('span').text()+'##');
+//                            })
+                            //庄闲
+                            var zx="";
+                            $(this).find('.zhicwl-keapr .zhicwl-akodr dt').each(function(i){
+                                if($(this).hasClass('on')){
+                                    tz.push($(this).find('span').text()+'/'+'##');
+                                }
+//                                tz.push(hms+'/'+$(this).find('span').text()+'/'+'##');
+                            })
+                            
+                            break;
+                    case 4:
+                            tz = [];
+                            hms="";
+                            
+//                            $(this).find('.zhicwl-keapr .zhicwl-tvsdpm dt.on').each(function(i){
+//                                tz.push(hms+$(this).find('span').text()+'##');
+//                            })
+                            $(this).find('.zhicwl-keapr .zhicwl-akodr dt').each(function(i){
+                                if($(this).hasClass('on')){
+                                    tz.push('和'+$(this).find('span').text()+'##');
+                                }
+//                                tz.push(hms+'/'+$(this).find('span').text()+'/'+'##');
+                            })
+                            
+                            break;
+                    case 5:
+                        
+                            
+                            tz = [];
+                            hms="";
+                            
+//                            $(this).find('.zhicwl-keapr .zhicwl-tvsdpm dt.on').each(function(i){
+//                                tz.push(hms+$(this).find('span').text()+'##');
+//                            })
+                            var hz="";
+                            $(this).find('.zhicwl-keapr .zhicwl-akodr dt').each(function(i){
+                                if($(this).hasClass('on')){
+                                    hz+=i+3;
+                                }
+                            })
+                            tz.push('和'+hz+'/'+'##');
+                            break;
+                    }
+                    }
+                    });
+                    
+                            if(tz.length>0){
+                                return tz;
+                            }else{
+                                alert("请选择玩法");
+                                return false;
+                            }
+                    }
+                    // 提交对话
+                    function onSubmit() {
+                    var headimgurl = '{$userinfo.headimgurl}';
+                    var input = document.getElementById("textarea");
+                    var from_client_name = '{$userinfo.nickname}';
+                    if (input.value == ''){
+                    $('#textarea').focus();
+                    return false;
+                    }
+                    ws.send('{"type":"say","client_name":"' + from_client_name + '","headimgurl":"' + headimgurl + '","content":"' + input.value.replace(/"/g, '\\"').replace(/\n/g, '\\n').replace(/\r/g, '\\r') + '"}');
+                    $('#textarea').val('');
+                    //$('#dialog').scrollTop(0);
+                    }
+                    // 发言
+                    function say(uid, from_client_name, head_img_url, content, time) {
+                    if ('{$userinfo.id}' == uid){
+                    $(".chatting").prepend('<div class="chatting-li green"><div class="portrait"><img src="' + head_img_url + '"/></div><div class="content"><small><span class="name">' + from_client_name + '</span><time>' + time + '</time></small><p>' + content + '</p></div></div>');
+                    } else{
+                    $(".chatting").prepend('<div class="chatting-li"><div class="portrait"><img src="' + head_img_url + '"/></div><div class="content"><small><span class="name">' + from_client_name + '</span><time>' + time + '</time></small><p>' + content + '</p></div></div>');
+                    }
+                    }
+        </script>
+        <!--聊天-->
+
+        <!--推送-->
+        <script src='/Public/Common/js/socket.io.js'></script>
+        <script>
+                    var uid = '{$userinfo.id}';
+        </script>
+        <script>
+            function escape2Html(str) {
+            var arrEntities = {'lt':'<', 'gt':'>', 'nbsp':' ', 'amp':'&', 'quot':'"'};
+            return str.replace(/&(lt|gt|nbsp|amp|quot);/ig, function(all, t){return arrEntities[t]; });
+            }
+            $(document).ready(function() {
+            // 连接服务端
+            var socket = io('http://' + document.domain + ':12223');
+            // 连接后登录
+            socket.on('connect', function() {
+            socket.emit('login', uid);
+            });
+            // 后端推送来消息时
+            socket.on('new_msg', function(msg) {
+            var data = eval("(" + escape2Html(msg) + ")");
+            if (data['type'] == '3' || data['type'] == '4' || data['type'] == '1' || data['type'] == '2') {
+            return false;
+            }
+            var time = data['time'];
+            var content = data['content'];
+            if (data['points'] && data['to'] == '{$userinfo.id}'){
+            var points = parseFloat($('#sy').html()) + parseFloat(data['points']);
+            $('#sy').html(points);
+            }
+            $(".chatting").prepend('<div class="chatting-li qtr pink"><div class="portrait"><img src="/Public/main/img/system.jpg"/></div><div class="content"><small><span class="name">客服</span><time>' + time + '</time></small><p>' + content + '</p></div></div>');
+            });
+            });
+        </script>
+        <!--推送-->
+
+
+        <script src="/Template/Home/Run/js/zhicwl-z.js"></script>
+
+    </body>
+</html>

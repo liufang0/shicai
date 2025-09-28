@@ -40,7 +40,7 @@ class Smarty_Internal_Compile_Private_Modifier extends Smarty_Internal_CompileBa
             if (isset($compiler->smarty->registered_plugins[Smarty::PLUGIN_MODIFIER][$modifier])) {
                 $function = $compiler->smarty->registered_plugins[Smarty::PLUGIN_MODIFIER][$modifier][0];
                 if (!is_array($function)) {
-                    $output = "{$function}({$params})";
+                    $output = "[$function]([$params])";
                 } else {
                     if (is_object($function[0])) {
                         $output = '$_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_MODIFIER][\'' . $modifier . '\'][0][0]->' . $function[1] . '(' . $params . ')';
@@ -61,13 +61,13 @@ class Smarty_Internal_Compile_Private_Modifier extends Smarty_Internal_CompileBa
             } else if ($function = $compiler->getPlugin($modifier, Smarty::PLUGIN_MODIFIER)) {
                 // check if modifier allowed
                 if (!is_object($compiler->smarty->security_policy) || $compiler->smarty->security_policy->isTrustedModifier($modifier, $compiler)) {
-                    $output = "{$function}({$params})";
+                    $output = "[$function]([$params])";
                 }
                 // check if trusted PHP function
             } else if (is_callable($modifier)) {
                 // check if modifier allowed
                 if (!is_object($compiler->smarty->security_policy) || $compiler->smarty->security_policy->isTrustedPhpModifier($modifier, $compiler)) {
-                    $output = "{$modifier}({$params})";
+                    $output = "[$modifier]([$params])";
                 }
             } else {
                 $compiler->trigger_template_error("unknown modifier \"" . $modifier . "\"", $compiler->lex->taglineno);

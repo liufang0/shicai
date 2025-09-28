@@ -1,0 +1,60 @@
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>{:C('sitename')}</title>
+		<meta name="format-detection" content="telephone=no,email=no"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+		<script type="text/javascript">
+			//WebSocket = null;
+		</script>
+		<script src='//cdn.bootcss.com/jquery/1.11.3/jquery.js'></script>
+	</head>
+	<style type="text/css">
+		body,
+		canvas,
+		div {
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+			-khtml-user-select: none;
+			-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+		}
+	</style>
+	<body>
+		<!-- 视频 -->
+		<style>
+			#Cocos2dGameContainer{
+				width: 100% !important;
+				height: 274px !important;
+			}
+		</style>
+		<div id="canvas" style="text-align: center; font-size: 0">
+			<canvas id="gameCanvas" width="1136" height="640" style="width:120%;height:274px"></canvas>
+		</div>
+		
+		<script src="__PUBLIC__/main/ft/mbase.js"></script>
+		<script src="__PUBLIC__/main/ft/cocos2d.js"></script>
+		<script type="text/javascript">
+			var acontainer = $('#acontainer');
+			var hasData = false;
+
+			function AddList(data) {
+				if(data.length > 0) {
+					hasData = true;
+					acontainer.html(data[0].data);
+					acontainer.show();
+				}
+			}
+
+			function beforeStartRunning() {
+				acontainer.hide();
+			}
+
+			function afterEndRunning() {
+				if(hasData) acontainer.show();
+			}
+		</script>
+	</body>
+
+</html>

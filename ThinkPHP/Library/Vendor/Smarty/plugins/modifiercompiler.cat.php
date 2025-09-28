@@ -14,7 +14,7 @@
  * Date:     Feb 24, 2003<br>
  * Purpose:  catenate a value to a variable<br>
  * Input:    string to catenate<br>
- * Example:  {$var|cat:"foo"}
+ * Example:  [$var|cat:"foo"]
  *
  * @link http://smarty.php.net/manual/en/language.modifier.cat.php cat
  *          (Smarty online manual)

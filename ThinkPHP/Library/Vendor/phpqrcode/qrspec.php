@@ -496,7 +496,7 @@
                     
                     ?>
                 <style>
-                    .m { background-color: white; }
+                    .m [ background-color: white; ]
                 </style>
                 <?php
                     echo '<pre><tt><br/ ><br/ ><br/ >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
@@ -523,12 +523,12 @@
                 
                 ?>
                 <style>
-                    .p { background-color: yellow; }
-                    .m { background-color: #00FF00; }
-                    .s { background-color: #FF0000; }
-                    .c { background-color: aqua; }
-                    .x { background-color: pink; }
-                    .f { background-color: gold; }
+                    .p [ background-color: yellow; ]
+                    .m [ background-color: #00FF00; ]
+                    .s [ background-color: #FF0000; ]
+                    .c [ background-color: aqua; ]
+                    .x [ background-color: pink; ]
+                    .f [ background-color: gold; ]
                 </style>
                 <?php
                 echo "<pre><tt>";
@@ -579,14 +579,14 @@
         }
 
         //----------------------------------------------------------------------
-        public static function rsBlockNum($spec)     { return $spec[0] + $spec[3]; }
-        public static function rsBlockNum1($spec)    { return $spec[0]; }
-        public static function rsDataCodes1($spec)   { return $spec[1]; }
-        public static function rsEccCodes1($spec)    { return $spec[2]; }
-        public static function rsBlockNum2($spec)    { return $spec[3]; }
-        public static function rsDataCodes2($spec)   { return $spec[4]; }
-        public static function rsEccCodes2($spec)    { return $spec[2]; }
-        public static function rsDataLength($spec)   { return ($spec[0] * $spec[1]) + ($spec[3] * $spec[4]);    }
-        public static function rsEccLength($spec)    { return ($spec[0] + $spec[3]) * $spec[2]; }
+        public static function rsBlockNum($spec)     [ return $spec[0] + $spec[3]; ]
+        public static function rsBlockNum1($spec)    [ return $spec[0]; ]
+        public static function rsDataCodes1($spec)   [ return $spec[1]; ]
+        public static function rsEccCodes1($spec)    [ return $spec[2]; ]
+        public static function rsBlockNum2($spec)    [ return $spec[3]; ]
+        public static function rsDataCodes2($spec)   [ return $spec[4]; ]
+        public static function rsEccCodes2($spec)    [ return $spec[2]; ]
+        public static function rsDataLength($spec)   [ return ($spec[0] * $spec[1]) + ($spec[3] * $spec[4]);    ]
+        public static function rsEccLength($spec)    [ return ($spec[0] + $spec[3]) * $spec[2]; ]
         
     }

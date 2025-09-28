@@ -1,0 +1,297 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{:C('sitename')}</title>
+    <meta name="format-detection" content="telephone=no,email=no"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+    <script src="/images/js/jquery-1.11.2.min.js"></script>
+
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="/images/css/common.css"/>
+    <link href="/images/css/style.css" rel="stylesheet"/>
+    <link href="/images/css/weui.min.css" rel="stylesheet"/>
+    <!-- 公用js 自适应js-->
+    <script src="/images/js/sizeChange.js"></script>
+    <script type="text/javascript" src="/images/js/public/zepto.min.js"></script>
+    <script type="text/javascript" src="/images/js/public/weui.min.js"></script>
+    <script type="text/javascript" src="/images/js/public/ajaxUtil.js"></script>
+    <script type="text/javascript" src="/images/js/public/loadmore.js"></script>
+    <style>
+        .wrapper{background: transparent;}
+        .uploadBox {
+            border-top: 1px solid #d9d9d9;
+        }
+
+        .uploadBox img {
+            width: 50%;
+            margin: 10px auto;
+        }
+
+        .uploadBox input {
+            /* margin:10px auto; */
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            z-index: 1000;
+        }
+
+        .uploadBox .fileBox {
+            width: 100%;
+            position: relative;
+        }
+
+        .uploadBox .fileBox div {
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            text-align: center;
+            z-index: 100;
+            margin-bottom: 10px;
+        }
+
+        .uploadBox .fileBox div span {
+            background: #fff;
+            display: inline-block;
+            padding: 5px 15px;
+            color: #444444;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        .weui-cells{background:0 0}
+        .weui-cells::before{border:0}
+        .weui-cell{background:#e8e0dd;border:1px #dbd3ce solid;margin-top:.3rem;border-radius:.06rem}
+        .weui-input{background:0;border:0;text-align:left}
+        ::placeholder{color:#ad978e}
+        .login .apply .btn{background:#d53434;background-image:-webkit-gradient(linear,0 0,0 100%,from(#e54d4d),to(#cf2c2c));width:100%;line-height:.74rem;height:.74rem;box-shadow:0 .05rem .1rem rgba(0,0,0,.16);font-weight:700}
+        .login .apply .btn1{font-weight:400!important;background:#e8e0dd;color:#4c4743;background-image:-webkit-gradient(linear,0 0,0 100%,from(#eee2dd),to(#e2d3cd));width:100%;line-height:.74rem;height:.74rem;box-shadow:0 .05rem .1rem rgba(0,0,0,.16);font-weight:700}
+        .login .apply .btn1:hover{border:1px #d53434 solid;background:#d53434;background-image:none;background-image:-webkit-gradient(linear,0 0,0 100%,from(#e54d4d),to(#cf2c2c));color:#fff}
+        .weui-cell{padding:0}
+        .weui-cell .weui-input{height:.75rem;padding:0;}
+        .weui-cell .weui-cell__bd{position:relative}
+        .weui-cell { margin: 0; margin-bottom: .2rem;}
+
+        .weui-label {width: 90px; padding-right: 15px; text-align: right;font-size: .22rem;}
+        .weui-label>i {font-style: normal;color: #e54d4d;padding-right: 4px;}
+        .weui-cell .weui-input {font-size: .22rem;}
+    </style>
+</head>
+
+<body style="background: #efeae8;">
+<div class="nav" style="background: #d02e2e;">
+    <h3>用户注册</h3>
+    <i class="iconfont icon-40" onclick="back()"></i>
+</div>
+
+<div class="wrapper login" id="main" style="padding-top: 0.8rem;">
+    <div class="page">
+        <div class="formDiv" style="padding: .15rem;">
+            <form class="m-t" role="form" method="post" action="{:U('Home/Index/register')}" id="LoginForm">
+                <div class="weui-cells weui-cells_form" style="margin-top: 0">
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd"><label class="weui-label"><i>*</i>登录账号</label></div>
+                        <div class="weui-cell__bd">
+                            <input class="weui-input" name="username" type="text" placeholder="请输入登录账号"/>
+                        </div>
+                    </div>
+
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd"><label class="weui-label"><i>*</i>手机号</label></div>
+                        <div class="weui-cell__bd">
+                            <input class="weui-input" name="phone" type="text" placeholder="请输入正确手机号，便于密码找回"/>
+                        </div>
+                    </div>
+
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd"><label class="weui-label"><i>*</i>登录密码</label></div>
+                        <div class="weui-cell__bd">
+                            <input class="weui-input" name="password" type="password" placeholder="6-20个字母、数字或组合组成，区分大小写"/>
+                        </div>
+                    </div>
+
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd"><label class="weui-label"><i>*</i>确认密码</label></div>
+                        <div class="weui-cell__bd">
+                            <input class="weui-input" name="password1" type="password" placeholder="请再次输入密码以确保输入无误"/>
+                        </div>
+                    </div>
+					<div class="weui-cell">
+                        <div class="weui-cell__hd"><label class="weui-label"><i>*</i>提现密码</label></div>
+                        <div class="weui-cell__bd">
+                            <input class="weui-input" name="txpassword" type="password" placeholder="请填写6位数字"/>
+                        </div>
+                    </div>
+                    <div class="weui-cell">
+                        <div class="weui-cell__hd"><label class="weui-label"><i>*</i>推荐人账号</label></div>
+                        <div class="weui-cell__bd">
+                            <input class="weui-input" name="t_id" type="text" placeholder="推荐人账号,没有留空"/>
+                        </div>
+                    </div>
+                     <div class="weui-cell weui-cell_vcode">
+                         <div class="weui-cell__hd"><label class="weui-label">图片验证码</label></div>
+                         <div class="weui-cell__bd">
+                             <input class="weui-input" name="code" type="text" maxlength='4' placeholder="请输入图片验证码" />
+                         </div>
+                         <div class="weui-cell__ft">
+                             <img class="weui-vcode-img" src="{:U('Home/Index/getcode')}" id="img-code" />
+                         </div>
+                     </div>
+                </div>
+                <div class="apply">
+                    <button type="submit" class="btn" id="apply">创建账号</button>
+                </div>
+            </form>
+            <div class="apply">
+                <button type="button" onclick="window.location.href='/Home/Index/login'" class="btn btn1">我已有账号，去登录</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="__PUBLIC__/Admin/js/jquery.min.js?v=2.1.4"></script>
+<script src="__PUBLIC__/Admin/js/bootstrap.min.js?v=3.3.6"></script>
+
+<script src="__PUBLIC__/Common/js/ajaxForm.js"></script>
+<script src="__PUBLIC__/layer/layer.js"></script>
+<script type="text/javascript">
+    $('.facesj').click(function () {
+        $num = Math.round(Math.random() * 23 + 1);
+        $('.img_head').attr('src', '/Public/Home/img/face/' + $num + '.png');
+        $('.input_head').val('/Public/Home/img/face/' + $num + '.png');
+    })
+
+    $('#img-code').click(function() {
+        $(this).attr('src', "{:U('Home/Index/getcode')}?"+Math.random());
+    });
+
+    $(function () {
+        $('#LoginForm').ajaxForm({
+            beforeSubmit: checkForm,
+            success: complete,
+            dataType: 'json'
+        });
+        function CheckStr(str) {
+            var myReg = "[@/'\"#!$%&^*]+";
+            var reg = new RegExp(myReg);
+            if (reg.test(str)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function CheckStrLength(str) {
+            if (str.length >= 5 && str.length <= 16) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        function checkForm() {
+            if ('' == $.trim($('input[name="username"]').val())) {
+                layer.alert('用户名不能为空', {icon: 5}, function (index) {
+                    layer.close(index);
+                    $('input[name="username"]').focus();
+                });
+                return false;
+            }
+            if (CheckStrLength($('input[name="username"]').val())) {
+                layer.alert('用户名必须5-16个字符', {icon: 5}, function (index) {
+                    layer.close(index);
+                    $('input[name="username"]').focus();
+                });
+                return false;
+            }
+
+            if (CheckStr($('input[name="username"]').val())) {
+                layer.alert('用户名不能有特殊字符', {icon: 5}, function (index) {
+                    layer.close(index);
+                    $('input[name="username"]').focus();
+                });
+                return false;
+            }
+
+            if ('' == $.trim($('input[name="phone"]').val())) {
+                layer.alert('手机号不能为空', {icon: 5}, function (index) {
+                    layer.close(index);
+                    $('input[name="phone"]').focus();
+                });
+                return false;
+            }
+
+            if ($('input[name="password"]').val().length < 6) {
+                layer.alert('密码长度不能低于6位', {icon: 5}, function (index) {
+                    layer.close(index);
+                    $('input[name="password"]').focus();
+                });
+                return false;
+            }
+
+            if ('' == $.trim($('input[name="password"]').val())) {
+                layer.alert('密码不能为空', {icon: 5}, function (index) {
+                    layer.close(index);
+                    $('input[name="password"]').focus();
+                });
+                return false;
+            }
+
+            if ($.trim($('input[name="password1"]').val()) != $.trim($('input[name="password"]').val())) {
+                layer.alert('两次密码输入不正确', {icon: 5}, function (index) {
+                    layer.close(index);
+                    $('input[name="password1"]').focus();
+                });
+                return false;
+            }
+
+			if ('' == $.trim($('input[name="txpassword"]').val())) {
+                layer.alert('提现密码不能为空', {icon: 5}, function (index) {
+                    layer.close(index);
+                    $('input[name="txpassword"]').focus();
+                });
+                return false;
+            }
+			
+            if ('' == $.trim($('input[name="code"]').val())) {
+                layer.alert('验证码不能为空', {icon: 5}, function (index) {
+                    layer.close(index);
+                    $('input[name="code"]').focus();
+                });
+                return false;
+            }
+
+            /*if ($('#password').val() != $('#repassword').val()) {
+             layer.alert('两次输入的密码不一致', {icon: 5}, function(index){
+             layer.close(index);
+             $('#password').focus();
+             });
+             return false;
+             }*/
+        }
+
+        function complete(data) {
+            if (data.status == 1) {
+                $('.btn').attr('disabled', 'disabled');
+                layer.msg("注册成功", function (index) {
+                    layer.close(index);
+                    window.location.href = '/index.php/Home/index';
+                });
+            } else {
+                layer.msg(data.info || '注册失败');
+                $('#img-code').trigger('click')
+                return false;
+            }
+        }
+    });
+</script>
+</body>
+
+</html>

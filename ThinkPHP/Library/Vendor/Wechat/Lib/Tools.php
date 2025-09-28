@@ -41,7 +41,7 @@ class Tools {
         ksort($arrdata);
         $params = array();
         foreach ($arrdata as $key => $value) {
-            $params[] = "{$key}={$value}";
+            $params[] = "[$key]=[$value]";
         }
         return $method(join('&', $params));
     }
@@ -56,9 +56,9 @@ class Tools {
         ksort($option);
         $buff = '';
         foreach ($option as $k => $v) {
-            $buff .= "{$k}={$v}&";
+            $buff .= "[$k]=[$v]&";
         }
-        return strtoupper(md5("{$buff}key={$partnerKey}"));
+        return strtoupper(md5("[$buff]key=[$partnerKey]"));
     }
 
     /**
@@ -70,13 +70,13 @@ class Tools {
      * @return string
      */
     static public function arr2xml($data, $root = 'xml', $item = 'item', $id = 'id') {
-        return "<{$root}>" . self::_data_to_xml($data, $item, $id) . "</{$root}>";
+        return "<[$root]>" . self::_data_to_xml($data, $item, $id) . "</[$root]>";
     }
 
     static private function _data_to_xml($data, $item = 'item', $id = 'id', $content = '') {
         foreach ($data as $key => $val) {
-            is_numeric($key) && $key = "{$item} {$id}=\"{$key}\"";
-            $content .= "<{$key}>";
+            is_numeric($key) && $key = "[$item] [$id]=\"[$key]\"";
+            $content .= "<[$key]>";
             if (is_array($val) || is_object($val)) {
                 $content .= self::_data_to_xml($val);
             } elseif (is_numeric($val)) {
@@ -106,7 +106,7 @@ class Tools {
      * @return string
      */
     static public function json_encode($array) {
-        return preg_replace_callback('/\\\\u([0-9a-f]{4})/i', create_function('$matches', 'return mb_convert_encoding(pack("H*", $matches[1]), "UTF-8", "UCS-2BE");'), json_encode($array));
+        return preg_replace_callback('/\\\\u([0-9a-f][4])/i', create_function('$matches', 'return mb_convert_encoding(pack("H*", $matches[1]), "UTF-8", "UCS-2BE");'), json_encode($array));
     }
 
     /**

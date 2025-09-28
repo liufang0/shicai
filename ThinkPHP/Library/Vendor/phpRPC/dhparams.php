@@ -58,7 +58,7 @@ class DHParams {
             $a = array(96, 128, 160);
         }
         $this->len = $this->getNearest($len, $a);
-        $dhParams = unserialize(file_get_contents("dhparams/{$this->len}.dhp", true));
+        $dhParams = unserialize(file_get_contents("dhparams/[$this->len].dhp", true));
         $this->dhParams = $dhParams[mt_rand(0, count($dhParams) - 1)];
     }
     function getL() {

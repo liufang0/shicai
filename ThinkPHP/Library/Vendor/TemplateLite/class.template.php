@@ -561,11 +561,11 @@ class Template_Lite {
 
 		if (strpos($output, $this->_sl_md5) !== false)
 		{
-			preg_match_all('!' . $this->_sl_md5 . '{_run_insert (.*)}' . $this->_sl_md5 . '!U',$output,$_match);
+			preg_match_all('!' . $this->_sl_md5 . '[_run_insert (.*)]' . $this->_sl_md5 . '!U',$output,$_match);
 			foreach($_match[1] as $value)
 			{
 				$arguments = unserialize($value);
-				$output = str_replace($this->_sl_md5 . '{_run_insert ' . $value . '}' . $this->_sl_md5, call_user_func_array('insert_' . $arguments['name'], array((array)$arguments, $this)), $output);
+				$output = str_replace($this->_sl_md5 . '[_run_insert ' . $value . ']' . $this->_sl_md5, call_user_func_array('insert_' . $arguments['name'], array((array)$arguments, $this)), $output);
 			}
 		}
 
@@ -785,7 +785,7 @@ class Template_Lite {
 	{
 		if ($this->cache)
 		{
-			return $this->_sl_md5 . '{_run_insert ' . serialize((array)$arguments) . '}' . $this->_sl_md5;
+			return $this->_sl_md5 . '[_run_insert ' . serialize((array)$arguments) . ']' . $this->_sl_md5;
 		}
 		else
 		{

@@ -1,11 +1,7 @@
 <?php
-
 namespace Home\Controller;
 use Think\Server;
-
-header('content-type:text/html;charset=utf-8');
 class WorkermansscController extends Server {
-
 	protected $socket = 'websocket://0.0.0.0:15533';
 	
 	/*添加定时器
@@ -16,7 +12,6 @@ class WorkermansscController extends Server {
 		if (!$auth) {
 			echo "未授权或授权已过期";exit;
 		}
-
 		$beginToday=strtotime('09:00:00');
 		$endToday=strtotime("23:59:59");
 		$caiji = M('caiji')->where("game='ssc'")->limit(0,1)->order("id desc")->find();
@@ -31,7 +26,6 @@ class WorkermansscController extends Server {
 		} else {
 			$st_time = 280;
 		}
-
 		if($nexttime-time()>C('ssc_stop_time') && $nexttime-time()<$st_time){
 			F('ssc_state',1);
 			setconfig('ssc_state',1);
@@ -51,18 +45,15 @@ class WorkermansscController extends Server {
 			$beginToday=strtotime('09:00:00');
 			$endToday=strtotime("23:59:59");
 			F('game','ssc');
-
 			$sscdata = F('sscdata');
 			$next_time = $sscdata['next']['delayTimeInterval']+strtotime($sscdata['next']['awardTime']);
 			$awardtime = $sscdata['current']['awardTime'];
-
 			$time = time();
 			if ($time < strtotime("21:57:00") && $time > strtotime("02:00:00")) {
 				$st_time = 580;
 			} else {
 				$st_time = 280;
 			}
-
 			if($next_time-time()>C('ssc_stop_time') && $next_time-time()<$st_time ){
 				F('ssc_state',1);
 				setconfig('ssc_state',1);
@@ -70,7 +61,6 @@ class WorkermansscController extends Server {
 				F('ssc_state',0);
 				setconfig('ssc_state',0);
 			}
-
 			if($next_time-time()==30+C('ssc_stop_time')){
 				$new_message = array(
 					'type' => 'admin',
@@ -83,7 +73,6 @@ class WorkermansscController extends Server {
 					$conn -> send(json_encode($new_message));
 				}
 			}
-
 			if($next_time-time()==C('ssc_stop_time')){
 				F('ssc_state',0);
 				setconfig('ssc_state',0);
@@ -122,7 +111,6 @@ class WorkermansscController extends Server {
 				$list = M('order')->where("number = {$current_number['periodnumber']} && state = 1 && is_add = 0 && game = 'ssc'")->order("time ASC")->select();
 				
 				if($list){
-
 					for($i=0;$i<count($list);$i++){
 						$id = $list[$i]['id'];
 						$userid = $list[$i]['userid'];
@@ -140,7 +128,6 @@ class WorkermansscController extends Server {
 							);
 							M('push_money')->add($fx_data);
 						}
-
 						$set_add = M('order')->where("id={$id}")->setField(array('is_add'=>1));
 						
 						//分类
@@ -148,7 +135,6 @@ class WorkermansscController extends Server {
 							//定位球(12345/89/20)
 							case 1:
 								$start1 = explode('/', $list[$i]['jincai']);
-
 								if (count($start1) == 3) {
 									$chehao1 = str_split($start1[1]);
 									$starts1 = str_split($start1[0]);
@@ -176,7 +162,6 @@ class WorkermansscController extends Server {
 									}
 								} 
 								break;
-
 							//龙虎合(龙100)
 							case 2:
 								$start2 = substr($list[$i]['jincai'], 0,3);
@@ -185,14 +170,12 @@ class WorkermansscController extends Server {
 								if ($start2 == $current_number['lh']) {
 										$num2 = 1;
 								}
-
 								if($num2>0){
 									if ($start2 == '龙' || $start2 == '虎') {
 										$points2 = $num2*$starts2*C('ssc_lhh_1');
 									} else if($start2 == '合') {
 										$points2 = $num2*$starts2*C('ssc_lhh_2');
 									}
-
 									$res2= $this->add_points($id,$userid,$points2);
 									if($res2){
 										$this->send_msg('pointsadd',$points2,$userid);
@@ -236,7 +219,6 @@ class WorkermansscController extends Server {
 								$start4 = substr($list[$i]['jincai'], 0,3);
 								$starts4 = substr($list[$i]['jincai'],3);
 								$num4 = 0;
-
 								if ($start4 == '大' || $start4 == '小') {
 									if ($start4 == $current_number['tema_dx']) {
 										$num4++;
@@ -246,7 +228,6 @@ class WorkermansscController extends Server {
 										$num4++;
 									}
 								}
-
 								if($num4>0){
 									$points4 = $num4*$starts4*C('ssc_zdxds');
 									$res4 = $this->add_points($id,$userid,$points4);
@@ -255,14 +236,12 @@ class WorkermansscController extends Server {
 									}
 								}
 								break;
-
 							//前中后  前豹子100  中顺子100
 							case 5:
 								$start5 = substr($list[$i]['jincai'], 0,3); 
 								$starts5 = substr($list[$i]['jincai'], 3,6);
 								$money5 = substr($list[$i]['jincai'], 9);
 								$num5 = 0;
-
 								if ($start5 == '前') {
 									if ($starts5 == $current_number['q3']) {
 										$num5 = 1;
@@ -276,7 +255,6 @@ class WorkermansscController extends Server {
 										$num5 = 1;
 									}
 								}
-
 								if($num5>0){
 									if ($starts5 == '豹子') {
 										$points5 = $num5*$money5*C('ssc_qzh_1');
@@ -293,7 +271,6 @@ class WorkermansscController extends Server {
 									if ($starts5 == '杂六') {
 										$points5 = $num5*$money5*C('ssc_qzh_5');
 									} 
-
 									$res5 = $this->add_points($id,$userid,$points5);
 									if($res5){
 										$this->send_msg('pointsadd',$points5,$userid);
@@ -383,7 +360,6 @@ class WorkermansscController extends Server {
 					$conn -> send(json_encode($new_message));
 				}
 				$this->add_message($new_message);/*添加信息*/
-
 				$new_message = array(
 					'delay'=>'0',
 					'type' => 'admin',
@@ -397,12 +373,10 @@ class WorkermansscController extends Server {
 					$conn -> send(json_encode($new_message));
 				}
 				$this->add_message($new_message);/*添加信息*/
-
 			}
 			
     	});
 		
-
 		
 		//ping 统计人数
 		\Workerman\Lib\Timer::add($time_interval, function(){
@@ -462,7 +436,6 @@ class WorkermansscController extends Server {
 						$map['lh'] = '虎';
 					}
 					$map['tema'] = $info[0]+$info[1]+$info[2]+$info[3]+$info[4];
-
 					//大小单双
 					if($map['tema'] % 2 == 0){
 						$map['tema_ds'] = '双';
@@ -476,7 +449,6 @@ class WorkermansscController extends Server {
 					}else{
 						$map['tema_dx'] = '小';
 					}
-
 					//区段
 					if($map['tema']>=0 && $map['tema']<=15){
 						$map['tema_dw'] = 'A';
@@ -492,14 +464,12 @@ class WorkermansscController extends Server {
 					$map['q3'] = ssc_qzh(array($info[0],$info[1],$info[2]));
 					$map['z3'] = ssc_qzh(array($info[1],$info[2],$info[3]));
 					$map['h3'] = ssc_qzh(array($info[2],$info[3],$info[4]));
-
 					$map['game'] = $data['game'];
 					$res1 = M('number')->add($map);
 					if($res1){
 						F('sscPeriodNumber',$data['current']['periodNumber']);
 						F('sscdata',$data);
 						F('is_send',0);
-
 						//采集到开奖数据，客服发布通知
 						// $content = "开奖采集数据,请等待系统开奖结算<br/>
 						// 			期号：".$map['periodnumber']." <br/>
@@ -519,7 +489,6 @@ class WorkermansscController extends Server {
 				}
 			}
     	});
-
 	}
 	
 	/*
@@ -643,7 +612,6 @@ class WorkermansscController extends Server {
 						} else {
 							$content_msg =  '「'.$message_data['content'].'」'.'单笔点数最高'.$res['xz_max'].',竞猜失败';
 						}
-
 						$new_message = array(
 							'uid'  => $connection->uid,
 							'type' => 'admin',
@@ -687,29 +655,23 @@ class WorkermansscController extends Server {
 							$user = M('user')->where("id = $userid")->find();
 							//当前玩法是否超过设置金额
 							$wf_points = M('order')->field("sum(del_points) as sum_del")->where("userid = {$userid} and type={$res['type']} and state=1  and number = {$sscdata['next']['periodNumber']}")->find();
-
 							$wf_max_points = 1000000000000;
 							// switch ($res['type']) {
 								// case '1':
 									// $wf_max_points = C('ssc_xz_max')['dwq'];
 									// break;
-
 								// case '2':
 									// $wf_max_points = C('ssc_xz_max')['lhh'];
 									// break;
-
 								// case '3':
 									// $wf_max_points = C('ssc_xz_max')['dxds'];
 									// break;
-
 								// case '4':
 									// $wf_max_points = C('ssc_xz_max')['zdxds'];
 									// break;
-
 								// case '5':
 									// $wf_max_points = C('ssc_xz_max')['qzh'];
 									// break;
-
 								// case '6':
 									// $wf_max_points = C('ssc_xz_max')['tema_qd'];
 									// break;
@@ -724,7 +686,6 @@ class WorkermansscController extends Server {
 									// $wf_max_points = 0;
 									// break;
 							// }
-
 							//车号限制  123/23/100
 							if ($res['type'] == '1') {
 								$type_list = M('order')->where("userid = {$userid} and state=1  and number = {$sscdata['next']['periodNumber']} and type = 1")->select();
@@ -776,7 +737,6 @@ class WorkermansscController extends Server {
 									break;
 								}
 							}
-
 							if (($wf_points['sum_del'] + $res['points']) > $wf_max_points) {
 								$points_tips = array(
 									'uid'  => $connection->uid,
@@ -792,10 +752,8 @@ class WorkermansscController extends Server {
 								$this->add_message($points_tips);/*添加信息*/
 								break;
 							}
-
 							//查看已投注金额
 							$user_points = M('order')->field("sum(del_points) as sum_del")->where("userid = {$userid} and state=1  and number = {$sscdata['next']['periodNumber']}")->find();
-
 							if ((intval($user_points['sum_del'])+$res['points']) > C('sscqi_max_point')) {
 								$points_tips = array(
 									'uid'  => $connection->uid,
@@ -810,7 +768,6 @@ class WorkermansscController extends Server {
 								$this->add_message($points_tips);/*添加信息*/
 								break;
 							}
-
 							$map['userid'] = $userid;
 							$map['type'] = $res['type'];
 							$map['state'] = 1;
@@ -846,7 +803,6 @@ class WorkermansscController extends Server {
 										$connection -> send(json_encode($points_del));
 									}
 								}
-
 								$new_message2 = array(
 									'uid'=>$connection->uid,
 									'type' => 'say',
@@ -900,7 +856,6 @@ class WorkermansscController extends Server {
 								}
 							}
 						}
-
 						if (C('is_say')) {
 							$new_message2 = array(
 								'uid'=>$connection->uid,
@@ -1016,7 +971,6 @@ class WorkermansscController extends Server {
 		$res = M('order')->add($mew_message);
 		return $res;
 	}
-
 	protected function add_message($new_message){
 		if (!empty($new_message)) {
 			$new_message['game'] = 'ssc';
@@ -1053,7 +1007,6 @@ class WorkermansscController extends Server {
 	        $connection->send(json_encode($message_points));
 	    }
 	} 
-
 	
 	
 	

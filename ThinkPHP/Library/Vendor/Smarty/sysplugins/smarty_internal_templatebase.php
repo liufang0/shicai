@@ -120,11 +120,11 @@ abstract class Smarty_Internal_TemplateBase extends Smarty_Internal_Data {
         // checks if template exists
         if (!$_template->source->exists) {
             if ($_template->parent instanceof Smarty_Internal_Template) {
-                $parent_resource = " in '{$_template->parent->template_resource}'";
+                $parent_resource = " in '[$_template->parent->template_resource]'";
             } else {
                 $parent_resource = '';
             }
-            throw new SmartyException("Unable to load template {$_template->source->type} '{$_template->source->name}'{$parent_resource}");
+            throw new SmartyException("Unable to load template [$_template->source->type] '[$_template->source->name]'[$parent_resource]");
         }
         // read from cache or render
         if (!($_template->caching == Smarty::CACHING_LIFETIME_CURRENT || $_template->caching == Smarty::CACHING_LIFETIME_SAVED) || !$_template->cached->valid) {
@@ -171,7 +171,7 @@ abstract class Smarty_Internal_TemplateBase extends Smarty_Internal_Data {
                     try {
                         ob_start();
                         if (empty($_template->properties['unifunc']) || !is_callable($_template->properties['unifunc'])) {
-                            throw new SmartyException("Invalid compiled template for '{$_template->template_resource}'");
+                            throw new SmartyException("Invalid compiled template for '[$_template->template_resource]'");
                         }
                         $_template->properties['unifunc']($_template);
                         if (isset($_template->_capture_stack[0])) {
@@ -222,9 +222,9 @@ abstract class Smarty_Internal_TemplateBase extends Smarty_Internal_Data {
                 }
                 $_template->properties['has_nocache_code'] = false;
                 // get text between non-cached items
-                $cache_split = preg_split("!/\*%%SmartyNocache:{$_template->properties['nocache_hash']}%%\*\/(.+?)/\*/%%SmartyNocache:{$_template->properties['nocache_hash']}%%\*/!s", $_output);
+                $cache_split = preg_split("!/\*%%SmartyNocache:[$_template->properties['nocache_hash']]%%\*\/(.+?)/\*/%%SmartyNocache:[$_template->properties['nocache_hash']]%%\*/!s", $_output);
                 // get non-cached items
-                preg_match_all("!/\*%%SmartyNocache:{$_template->properties['nocache_hash']}%%\*\/(.+?)/\*/%%SmartyNocache:{$_template->properties['nocache_hash']}%%\*/!s", $_output, $cache_parts);
+                preg_match_all("!/\*%%SmartyNocache:[$_template->properties['nocache_hash']]%%\*\/(.+?)/\*/%%SmartyNocache:[$_template->properties['nocache_hash']]%%\*/!s", $_output, $cache_parts);
                 $output = '';
                 // loop over items, stitch back together
                 foreach ($cache_split as $curr_idx => $curr_split) {
@@ -233,13 +233,13 @@ abstract class Smarty_Internal_TemplateBase extends Smarty_Internal_Data {
                     if (isset($cache_parts[0][$curr_idx])) {
                         $_template->properties['has_nocache_code'] = true;
                         // remove nocache tags from cache output
-                        $output .= preg_replace("!/\*/?%%SmartyNocache:{$_template->properties['nocache_hash']}%%\*/!", '', $cache_parts[0][$curr_idx]);
+                        $output .= preg_replace("!/\*/?%%SmartyNocache:[$_template->properties['nocache_hash']]%%\*/!", '', $cache_parts[0][$curr_idx]);
                     }
                 }
                 if (!$no_output_filter && (isset($this->smarty->autoload_filters['output']) || isset($this->smarty->registered_filters['output']))) {
                     $output = Smarty_Internal_Filter_Handler::runFilter('output', $output, $_template);
                 }
-                // rendering (must be done before writing cache file because of {function} nocache handling)
+                // rendering (must be done before writing cache file because of [function] nocache handling)
                 $_smarty_tpl = $_template;
                 try {
                     ob_start();
@@ -258,7 +258,7 @@ abstract class Smarty_Internal_TemplateBase extends Smarty_Internal_Data {
                 // var_dump('renderTemplate', $_template->has_nocache_code, $_template->template_resource, $_template->properties['nocache_hash'], $_template->parent->properties['nocache_hash'], $_output);
                 if (!empty($_template->properties['nocache_hash']) && !empty($_template->parent->properties['nocache_hash'])) {
                     // replace nocache_hash
-                    $_output = preg_replace("/{$_template->properties['nocache_hash']}/", $_template->parent->properties['nocache_hash'], $_output);
+                    $_output = preg_replace("/[$_template->properties['nocache_hash']]/", $_template->parent->properties['nocache_hash'], $_output);
                     $_template->parent->has_nocache_code = $_template->parent->has_nocache_code || $_template->has_nocache_code;
                 }
             }
@@ -410,9 +410,9 @@ abstract class Smarty_Internal_TemplateBase extends Smarty_Internal_Data {
     public function registerPlugin($type, $tag, $callback, $cacheable = true, $cache_attr = null)
     {
         if (isset($this->smarty->registered_plugins[$type][$tag])) {
-            throw new SmartyException("Plugin tag \"{$tag}\" already registered");
+            throw new SmartyException("Plugin tag \"[$tag]\" already registered");
         } elseif (!is_callable($callback)) {
-            throw new SmartyException("Plugin \"{$tag}\" not callable");
+            throw new SmartyException("Plugin \"[$tag]\" not callable");
         } else {
             $this->smarty->registered_plugins[$type][$tag] = array($callback, (bool) $cacheable, (array) $cache_attr);
         }
@@ -653,7 +653,7 @@ abstract class Smarty_Internal_TemplateBase extends Smarty_Internal_Data {
      */
     public function loadFilter($type, $name)
     {
-        $_plugin = "smarty_{$type}filter_{$name}";
+        $_plugin = "smarty_[$type]filter_[$name]";
         $_filter_name = $_plugin;
         if ($this->smarty->loadPlugin($_plugin)) {
             if (class_exists($_plugin, false)) {
@@ -664,7 +664,7 @@ abstract class Smarty_Internal_TemplateBase extends Smarty_Internal_Data {
                 return true;
             }
         }
-        throw new SmartyException("{$type}filter \"{$name}\" not callable");
+        throw new SmartyException("[$type]filter \"[$name]\" not callable");
         return false;
     }
 
@@ -677,7 +677,7 @@ abstract class Smarty_Internal_TemplateBase extends Smarty_Internal_Data {
      */
     public function unloadFilter($type, $name)
     {
-        $_filter_name = "smarty_{$type}filter_{$name}";
+        $_filter_name = "smarty_[$type]filter_[$name]";
         if (isset($this->smarty->registered_filters[$type][$_filter_name])) {
             unset ($this->smarty->registered_filters[$type][$_filter_name]);
             return true;

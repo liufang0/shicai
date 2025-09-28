@@ -2,7 +2,6 @@
 namespace Home\Controller;
 
 use Think\Server;
-header('content-type:text/html;charset=utf-8');
 
 class CaijiController extends Server
 {

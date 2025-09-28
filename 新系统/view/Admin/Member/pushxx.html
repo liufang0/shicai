@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>后台 - 下线列表</title>
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+
+		
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+		<link href="__PUBLIC__/Admin/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/plugins/iCheck/custom.css" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+
+	</head>
+	<style>
+		/*分页样式*/
+		.pages a,.pages span {
+		    display:inline-block;
+		    padding:4px 7px;
+		    margin:0 2px;
+		    border:1px solid #D5D4D4;
+		    -webkit-border-radius:1px;
+		    -moz-border-radius:1px;
+		    border-radius:1px;
+		}
+		.pages a,.pages li {
+		    display:inline-block;
+		    list-style: none;
+		    text-decoration:none; color:#3399ff;
+		}
+		
+		.pages a:hover{
+		    border-color:#3399ff;
+		}
+		.pages span.current{
+		    background:#3399ff;
+		    color:#FFF;
+		    font-weight:700;
+		    border-color:#3399ff;
+		}
+		.pages{
+			text-align: center;
+		}
+		/*分页样式*/
+		
+		.layui-layer{
+			top:48px !important;
+		}
+	</style>
+	<body class="gray-bg">
+		<div class="wrapper wrapper-content animated fadeInRight">	
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">
+							<h5>下线列表</h5>
+						</div>
+						<div class="ibox-content">
+							<div class="row">
+							<form method="get" action="{:U('Admin/Member/pushxx')}">
+								<div class="col-sm-2">
+									<input type="text" placeholder="开始时间" id="starttime" name="starttime" value='{$start|default=""}' class="form-control">
+									<input type="hidden" name="id" value="{$id}">
+								</div>
+								<div class="col-sm-2">
+									<input type="text"  placeholder="结束时间" id="endtime" name="endtime" value="{$end|default=''}" class="input-sm form-control"> 
+								</div>
+								<button type="submit" class="btn btn-sm btn-primary"> 搜索</button> 
+			                	<button class="btn btn-sm btn-primary timesearch" time="today"> 今天</button>
+			                	<button  class="btn btn-sm btn-primary timesearch" time="yestoday"> 昨天</button>
+			                	<button class="btn btn-sm btn-primary timesearch" time="week"> 最近一周</button>
+			                	<button class="btn btn-sm btn-primary timesearch" time="month"> 最近一月</button>
+							</form>
+						</div>
+							<div class="" >
+								<table class="table table-striped table-hover table-bordered" style="width:auto;overflow:auto;display:inline-block;">
+									<thead>
+										<tr>
+											<!-- <th></th> -->
+											<th>头像</th>
+											<th>昵称</th>
+											<th>用户名</th>
+											<th>注册时间</th>
+											<th>状态</th>
+											<th>所得佣金</th>
+											<th>进项流水</th>
+											<th>出项流水</th>
+											<th>客户输赢</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+									<tbody>
+										<volist name="list" id="vo">
+											<tr>
+												<!-- <td width="20"><input type="checkbox" class="i-checks" name="ids[]"></td> -->
+												<td width="60"><img src="{$vo.headimgurl}"/></td>
+												<td width="100">{$vo.nickname}</td>
+												<td width="100">{$vo.username}</td>
+												<td width="100">{$vo.reg_time|date="Y-m-d H:i:s",###}</td>
+												<td width="100" style="text-align: center;">
+													<if condition="$vo['status'] eq 1">正常</if>
+													<if condition="$vo['status'] eq 0">禁用</if>
+												</td>
+												<td width="100">{$vo.yong}</td>
+												<td width="100">{$vo.add_points|default="0"}</td>
+												<td width="100">{$vo.del_points|default="0"}</td>
+												<td width="100">{$vo.ying}</td>
+												<td width="200">
+
+												<a href="__APP__/Admin/Member/pushmoney/id/{$vo.id}" class="btn btn-primary">返利明细</a>
+												<a href="__APP__/Admin/Member/pushxx/id/{$vo.id}" class="btn btn-primary">查看下线</a>
+												</td>
+											</tr>
+										</volist>
+									</tbody>
+								</table>
+							</div>
+							<div class="pages">
+								{$show}
+							</div>
+							<div style="float: left;width: 50%">
+								<span>直属下级所得总佣金<font color="red">{$yong['sum_yong']|default='0'}</font></span>&nbsp;
+								<span>直属下级总上分<font color="red">{$integral['add_fen']|default='0'}</font></span>&nbsp;
+								<span>直属下级总下分<font color="red">{$integral['xia_fen']|default='0'}</font></span><br>	
+								<span>直属下级总进项流水<font color="red">{$order['sum_add']|default='0'}</font></span>&nbsp;
+								<span>直属下级总出项流水<font color="red">{$order['sum_del']|default='0'}</font></span>&nbsp;
+								<span>直属下级总客户输赢<font color="red">{$order['ying']|default='0'}</font></span>&nbsp;
+							</div>
+							<div style="float: left;width: 50%">
+								<span>三级下级所得总佣金<font color="red">{$yong_all['sum_yong']|default='0'}</font></span>&nbsp;
+								<span>三级下级总上分<font color="red">{$integral_all['add_fen']|default='0'}</font></span>&nbsp;
+								<span>三级下级总下分<font color="red">{$integral_all['xia_fen']|default='0'}</font></span><br>	
+								<span>三级下级总进项流水<font color="red">{$order_all['sum_add']|default='0'}</font></span>&nbsp;
+								<span>三级下级总出项流水<font color="red">{$order_all['sum_del']|default='0'}</font></span>&nbsp;
+								<span>三级下级总客户输赢<font color="red">{$order_all['ying']|default='0'}</font></span>&nbsp;
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		
+	</body>
+	<script src="__PUBLIC__/Admin/js/jquery.min.js?v=2.1.4"></script>
+	<script src="__PUBLIC__/Admin/js/bootstrap.min.js?v=3.3.6"></script>
+	<script src="__PUBLIC__/Admin/js/plugins/iCheck/icheck.min.js"></script>
+	<script src="__PUBLIC__/Admin/js/plugins/layer/laydate/laydate.js"></script>
+	<script src="__PUBLIC__/Common/layer/layer.js"></script>
+	<script type="text/javascript">
+			laydate({
+			  elem: '#starttime',
+			  max: laydate.now(), //+1代表明天，+2代表后天，以此类推
+			  istime: true,
+			  format: 'YYYY-MM-DD hh:mm:ss', //日期格式
+			});
+			laydate({
+			  elem: '#endtime',
+			  max: laydate.now(), //+1代表明天，+2代表后天，以此类推
+			  istime: true,
+			  format: 'YYYY-MM-DD hh:mm:ss', //日期格式
+			});
+			$('.timesearch').click(function(e){
+				e.stopPropagation();
+				var time_value = $(this).attr('time');
+				location.href = "{:U('Admin/Member/pushxx')}?id={$id}&time="+time_value;
+				return false;
+			})
+	</script>
+	
+</html>

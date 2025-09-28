@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <title>{:C('sitename')}</title>
+
+    <!-- 引入样式 -->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/new/css/index.css"/>
+    <link rel="stylesheet" href="/images/css/common.css"/>
+    <script src="/images/js/jquery-1.11.2.min.js"></script>
+    <script src="/images/js/sizeChange.js"></script>
+    <script src="__PUBLIC__/Common/js/ajaxForm.js"></script>
+
+    <style>
+        .mainer_main {
+            padding: .2rem;
+            margin-top: 0.8rem;
+        }
+        .main_form {
+            padding-bottom: .2rem;
+        }
+        .main_form .item {
+            margin-bottom: .1rem;
+            min-height: .76rem;
+            border: 1px #e5e1df solid;
+            line-height: .76rem;
+            font-size: .22rem;
+            background: #fdfbfa;
+            border-radius: .08rem;
+            position: relative;
+        }
+        .main_form .item .t {
+            position: absolute;
+            left: .3rem;
+            top: 0;
+            font-style: normal;
+        }
+        .main_form .item .m .input {
+            display: block;
+            border: 0;
+            background: 0;
+            height: .76rem;
+            font-size: .24rem;
+            text-align: right;
+            color: #4c4743;
+            width: 95%;
+        }
+        ::placeholder {
+            color: #ad978e;
+        }
+        input, textarea {
+            -webkit-user-select: auto;
+            margin: 0px;
+            padding: 0px;
+            padding-right: 0px;
+            outline: none;
+        }
+        .main_form .tip {
+            text-align: right;
+            margin-bottom: .2rem;
+            color: #e54d4d;
+            padding-right: .3rem;
+        }
+        .main_form .item .m .select {
+            border: 0;
+            background: 0;
+            background-size: auto;
+            height: .76rem;
+            font-size: .24rem;
+            text-align: right;
+            direction: rtl;
+            color: #4c4743;
+            width: 100%;
+            padding-right: 5%;
+            background-size: .64rem .86rem;
+        }
+        .btnbox .btn {
+            margin-bottom: .2rem;
+            display: block;
+            height: .76rem;
+            line-height: .76rem;
+            font-size: .30rem;
+            color: #fff;
+            text-align: center;
+            background: #d53434;
+            background-image: none;
+            background-image: -webkit-gradient(linear,0% 0,0% 100%,from(#e54d4d),to(#cf2c2c));
+            border-radius: .06rem;
+            border: 0;
+            cursor: pointer;
+            border: 0;
+            width: 100%;
+            box-shadow: 0 .05rem .1rem rgba(0,0,0,0.1);
+        }
+
+    </style>
+
+
+</head>
+
+<body style="background: #efeae8;">
+<div class="nav">
+    <h3>修改银行卡</h3>
+    <i class="iconfont icon-40" onclick="back()"></i>
+</div>
+<div class="mainer_main">
+    <form method="post" action="{:U('Home/Fen/yhkxg')}" id="submitForm">
+    <div class="main_form">
+        <div class="item">
+            <div class="t ng-binding">姓名</div>
+            <div class="m"><input type="text" class="input" name="bankrealname" value="{$banklist.0.bankrealname}" ></div>
+        </div>
+        <div class="item">
+            <div class="t ng-binding">银行卡号</div>
+            <div class="m"><input type="text" name="bankid" class="input" value="{$banklist.0.bankid}" placeholder="请输入账号"></div>
+        </div>
+        <div class="item">
+            <div class="t ng-binding">所属银行</div>
+            <div class="m">
+                <select name="bankname" class="select">
+                    <option value="交通银行" <?php if($banklist[0]['bankname']=='交通银行')echo "selected";?>>交通银行</option>
+                    <option value="招商银行" <?php if($banklist[0]['bankname']=='招商银行')echo "selected";?>>招商银行</option>
+                    <option value="中国银行" <?php if($banklist[0]['bankname']=='中国银行')echo "selected";?>>中国银行</option>
+                    <option value="建设银行" <?php if($banklist[0]['bankname']=='建设银行')echo "selected";?>>建设银行</option>
+                    <option value="工商银行" <?php if($banklist[0]['bankname']=='工商银行')echo "selected";?>>工商银行</option>
+                    <option value="农业银行" <?php if($banklist[0]['bankname']=='农业银行')echo "selected";?>>农业银行</option>
+                    <option value="邮储银行" <?php if($banklist[0]['bankname']=='邮储银行')echo "selected";?>>邮储银行</option>
+                    <option value="中信银行" <?php if($banklist[0]['bankname']=='中信银行')echo "selected";?>>中信银行</option>
+                    <option value="浦发银行" <?php if($banklist[0]['bankname']=='浦发银行')echo "selected";?>>浦发银行</option>
+                    <option value="兴业银行" <?php if($banklist[0]['bankname']=='兴业银行')echo "selected";?>>兴业银行</option>
+                    <option value="民生银行" <?php if($banklist[0]['bankname']=='民生银行')echo "selected";?>>民生银行</option>
+                    <option value="光大银行" <?php if($banklist[0]['bankname']=='光大银行')echo "selected";?>>光大银行</option>
+                    <option value="华夏银行" <?php if($banklist[0]['bankname']=='华夏银行')echo "selected";?>>华夏银行</option>
+                    <option value="广发银行" <?php if($banklist[0]['bankname']=='广发银行')echo "selected";?>>广发银行</option>
+                    <option value="浙商银行" <?php if($banklist[0]['bankname']=='浙商银行')echo "selected";?>>浙商银行</option>
+                    <option value="上海银行" <?php if($banklist[0]['bankname']=='上海银行')echo "selected";?>>上海银行</option>
+                </select>
+            </div>
+        </div>
+        <div class="item">
+            <div class="t ng-binding">开户网点</div>
+            <div class="m"><input type="text" name="bankzh" class="input" value="{$banklist.0.bankzh}" placeholder="请输入开户网点"></div>
+        </div>
+    </div>
+    <div class="btnbox"><input type="submit" class="btn" value="修改银行卡"></div>
+    </form>
+</div>
+<?php $a=5;?>
+<include  file="./Template/Home/Run/footer.html" />
+
+<script>
+    $(function(){
+        $('#submitForm').ajaxForm({
+            beforeSubmit: checkForm,
+            success: complete,
+            dataType: 'json'
+        });
+        function checkForm(){
+             
+			 if ('' == $.trim($('input[name="bankrealname"]').val())) {
+                layer.alert('姓名不能为空', {icon: 5}, function (index) {
+                    layer.close(index);
+                    $('input[name="bankrealname"]').focus();
+                });
+                return false;
+            }
+            if ('' == $.trim($('input[name="bankid"]').val())) {
+                layer.alert('银行卡号不能为空', {icon: 5}, function (index) {
+                    layer.close(index);
+                    $('input[name="bankid"]').focus();
+                });
+                return false;
+            }
+
+            if ('' == $.trim($('input[name="bankzh"]').val())) {
+                layer.alert('开户网点不能为空', {icon: 5}, function (index) {
+                    layer.close(index);
+                    $('input[name="bankzh"]').focus();
+                });
+                return false;
+            }
+        }
+        function complete(data){
+            if(data.status==1){
+                $('.btn').attr('disabled','disabled');
+                alert('修改成功');
+                setTimeout(function(){
+                    window.location.href='{:U("Home/Fen/xiapage")}';
+                },1000);
+
+            }else{
+                alert(data.info);
+                return false;
+            }
+        }
+    });
+</script>
+</body>
+
+</html>

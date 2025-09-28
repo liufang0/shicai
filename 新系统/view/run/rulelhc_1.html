@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html id="iframe">
+	<head>
+		<meta charset="UTF-8">
+		
+		<title>{:C('sitename')}</title>
+		
+		<meta name="renderer" content="webkit">
+		<meta name="format-detection" content="telephone=no,email=no"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+		<meta name="telephone=no"  content="format-detection">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no" />
+		
+		<META HTTP-EQUIV="Pragma" CONTENT="no-cache"> 
+		<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache"> 
+		<META HTTP-EQUIV="Expires" CONTENT="0">
+		
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/lib.css"/>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/page.css"/>
+	</head>
+	<body>
+		<div class="regulation">
+			<h3 class="cl-red txt-al-c">【{:C('sitename')}】</h3>
+			<div class="">
+				<h4 class="cl-orange">【六合彩游戏介绍】</h4>
+				
+				六合彩（英文：Mark Six）是香港合法彩票，一周开奖3次，每周二、四、六晚上9:35开奖，遇特殊情况会偶尔会有变动开奖时间。
+			</div>
+			<div class="">
+				<h4 class="cl-orange">【相关资料】</h4>
+				<p>
+				<p>
+		【开奖时间】周二四六晚9:35,一周3期。<br>
+		【开始投注】开奖前48小时。<br>
+		【封盘时间】开奖前{:C('lhc_stop_time')}分钟。<br>
+		【正 特 码】开奖结果前6个号码为正码，分别为正1到正6，第7个号码为特码。<br>
+		【生肖说明】生肖顺序为: 鼠↦牛↦虎↦兔↦龙↦蛇↦马↦羊↦猴↦鸡↦狗↦猪；如今年是狗年，就是以狗为开始，依顺序奖49个号码分别与12个生肖对应，如下：<br>
+			&nbsp;&nbsp;☉狗：1,13,25,37,49<br>
+			&nbsp;&nbsp;☉猪：12,24,36,48<br>
+			&nbsp;&nbsp;☉鼠：11,23,35,47<br>
+			&nbsp;&nbsp;☉牛：10,22,34,46<br>
+			&nbsp;&nbsp;☉虎：9,21,33,45<br>
+			&nbsp;&nbsp;☉兔：8,20,32,44<br>
+			&nbsp;&nbsp;☉龙：7,19,31,43<br>
+			&nbsp;&nbsp;☉蛇：5,18,30,42<br>
+			&nbsp;&nbsp;☉马：5,17,29,41<br>
+			&nbsp;&nbsp;☉羊：4,16,28,40<br>
+			&nbsp;&nbsp;☉猴：3,15,27,39<br>
+			&nbsp;&nbsp;☉鸡：2,14,26,38<br>
+		</p>
+				</p>
+			</div>
+			<div class="">
+				<h4 class="cl-orange">【赔率介绍】</h4>
+				<p>
+				<p>
+					生肖：{:C('lhc_tsx')}倍(含本)<br>
+					色波：{:C('lhc_thll')}倍(含本)<br>
+					正码赔率：{:C('lhc_zhm')}倍(含本)<br>
+					特码赔率：{:C('lhc_thm')}倍(含本)<br>
+					特码大小单双：{:C('lhc_dxds')}倍(含本)<br>
+					正码大小单双：{:C('lhc_tdxds')}倍(含本)<br>
+					</p>
+				</p>
+			</div>
+			<div class="">
+				<h4 class="cl-orange">【玩法】</h4>
+				
+				<if condition="C('lhc_xz_open')['tdxds'] eq 1">
+					<h5 class="cl-blue">
+						【竞猜大小单双】
+						<p>竞猜对象为正特码(1~7球)。开奖结果与所竞猜相同则为中奖，其余为不中，如果竞猜结果是49为和则竞猜还本。</p>
+					</h5>
+					<p>
+						☉小: 01~24为小(含24)；<br>
+						☉大: 25~48为大(含48)；<br>
+						☉单: 01,03...45,47，不能整除2的奇数。<br>
+						☉双: 02,04...46,48；能整除2的偶数。<br>
+						☉和: 49(开和竞猜大小单双还本)<br> 
+						■竞猜格式：球号/大小单双/金额<br>
+						■竞猜例子：</span><br />
+						<small>例：7/大/100 为 竞猜特码大100</small>
+						<small>例：12/大/100 为 1,2号球大各100 总200</small>
+				</if>
+				
+				
+				<if condition="C('lhc_xz_open')['thm'] eq 1">
+					<h5 class="cl-blue">
+					【猜正特码】
+						<p>竞猜对象为正特码(1~7球)。一个数字1注(竞猜01~49)，竞猜球号数字与开奖数字相同则为中奖，否则为不中！若不输入第几球，系统默认为第7颗球</p>
+					</h5>
+					<p>
+						■竞猜格式：球号/数字/金额<br />
+						<small>例：7/45/100 为 特码45号100</small>
+						<small>例：7/33.48/100 为 特码43,48号各100 总200</small>
+						<small>例：12/20.12/100 为1,2号球20,12号各100 总400</small>
+					</p>
+				</if>
+				
+				
+				<if condition="C('lhc_xz_open')['tsx'] eq 1">
+					<h5 class="cl-blue">
+						【猜特肖】
+						<p>竞猜对象特码。一个生肖为竞猜单位，开奖结果含竞猜的生肖则为中奖，否则为不中！
+如:竞猜狗，开奖结果中含有生肖狗，则中奖，否则为不中。</p>
+					</h5>
+					<p>
+						■格式：生肖/金额<br />
+						<small>例：狗/100 为 买生肖狗100</small>
+						<small>例：牛/100 为 买生肖牛100</small>
+					</p>
+				</if>
+			
+				<if condition="C('lhc_xz_open')['thll'] eq 1">
+					<h5 class="cl-blue">
+						【猜波色】
+						<p>竞猜对象为特码(7球)。竞猜位置波色与开奖相同则为中奖，否则为不中！</p>
+						<p style="color:red">☉红波:01,02,07,08,12,13,18,19,23,<br />24,29,30,34,35,40,45,46；</p>
+						<p style="color:rgb(39, 118, 255)">☉蓝波:03,04,09,10,14,15,20,25,<br />26,31,36,37,41,42,47,48；</p>
+						<p style="color:rgb(0, 128, 0)">☉绿波:05,06,11,16,17,21,22,27,<br />28,32,33,38,39,43,44,49；
+						</p>
+					</h5>
+					<p>
+						■格式：名次/号码/金额<br />
+						<small>例：蓝波/100</small>
+						<small>例：红波/100</small>
+						<small>例：绿波/100</small>
+					</p>
+				</if>
+				
+				
+				<h4 class="cl-orange">每期下注：总额10万封顶</h4>
+			</div>	
+			<div>
+				<h4 class="cl-orange">【说明】</h4>
+				<p>
+					
+			 ■竞猜时因各地网路品质不定，可能有1-2秒延迟，以系统判定是否竞猜成功为准。<br />
+					
+			 ■一切结果以竞猜记录为准，如果扣了点未有竞猜记录，请联系客服处理，无任是否中奖一律按退还余点处理。
+		<br />
+				</p>
+			</div>
+		</div>
+	</body>
+</html>

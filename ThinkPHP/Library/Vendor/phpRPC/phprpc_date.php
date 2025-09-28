@@ -437,7 +437,7 @@ class PHPRPC_Date {
         if (is_int($dt)) {
             return new PHPRPC_Date($dt);
         }
-        $shortFormat = '(\d|\d{2}|\d{3}|\d{4})-([1-9]|0[1-9]|1[012])-([1-9]|0[1-9]|[12]\d|3[01])';
+        $shortFormat = '(\d|\d[2]|\d[3]|\d[4])-([1-9]|0[1-9]|1[012])-([1-9]|0[1-9]|[12]\d|3[01])';
         if (preg_match("/^$shortFormat$/", $dt, $match)) {
             $year   = intval($match[1]);
             $month  = intval($match[2]);
@@ -472,7 +472,7 @@ class PHPRPC_Date {
                 return false;
             }
         }
-        $fullFormat = $longFormat . '\.(\d|\d{2}|\d{3})';
+        $fullFormat = $longFormat . '\.(\d|\d[2]|\d[3])';
         if (preg_match("/^$fullFormat$/", $dt, $match)) {
             $year   = intval($match[1]);
             $month  = intval($match[2]);

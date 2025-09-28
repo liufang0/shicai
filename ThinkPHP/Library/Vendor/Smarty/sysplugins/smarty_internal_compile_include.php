@@ -2,7 +2,7 @@
 /**
 * Smarty Internal Plugin Compile Include
 *
-* Compiles the {include} tag
+* Compiles the [include] tag
 *
 * @package Smarty
 * @subpackage Compiler
@@ -51,7 +51,7 @@ class Smarty_Internal_Compile_Include extends Smarty_Internal_CompileBase {
     public $optional_attributes = array('_any');
 
     /**
-    * Compiles code for the {include} tag
+    * Compiles code for the [include] tag
     *
      * @param array $args array with attributes from parser
      * @param object $compiler compiler object
@@ -90,7 +90,7 @@ class Smarty_Internal_Compile_Include extends Smarty_Internal_CompileBase {
             $_caching = self::CACHING_NOCACHE_CODE;
         }
         /*
-        * if the {include} tag provides individual parameter for caching
+        * if the [include] tag provides individual parameter for caching
         * it will not be included into the common cache file and treated like
         * a nocache section
         */
@@ -146,16 +146,16 @@ class Smarty_Internal_Compile_Include extends Smarty_Internal_CompileBase {
                         $compiled_code = $tpl->compiler->compileTemplate($tpl);
                         // release compiler object to free memory
                         unset($tpl->compiler);
-                        // merge compiled code for {function} tags
+                        // merge compiled code for [function] tags
                         $compiler->template->properties['function'] = array_merge($compiler->template->properties['function'], $tpl->properties['function']);
                         // merge filedependency
                         $tpl->properties['file_dependency'][$tpl->source->uid] = array($tpl->source->filepath, $tpl->source->timestamp,$tpl->source->type);
                         $compiler->template->properties['file_dependency'] = array_merge($compiler->template->properties['file_dependency'], $tpl->properties['file_dependency']);
                         // remove header code
-                        $compiled_code = preg_replace("/(<\?php \/\*%%SmartyHeaderCode:{$tpl->properties['nocache_hash']}%%\*\/(.+?)\/\*\/%%SmartyHeaderCode%%\*\/\?>\n)/s", '', $compiled_code);
+                        $compiled_code = preg_replace("/(<\?php \/\*%%SmartyHeaderCode:[$tpl->properties['nocache_hash']]%%\*\/(.+?)\/\*\/%%SmartyHeaderCode%%\*\/\?>\n)/s", '', $compiled_code);
                         if ($tpl->has_nocache_code) {
                             // replace nocache_hash
-                            $compiled_code = preg_replace("/{$tpl->properties['nocache_hash']}/", $compiler->template->properties['nocache_hash'], $compiled_code);
+                            $compiled_code = preg_replace("/[$tpl->properties['nocache_hash']]/", $compiler->template->properties['nocache_hash'], $compiled_code);
                             $compiler->template->has_nocache_code = true;
                         }
                         $compiler->merged_templates[$tpl->properties['unifunc']] = $compiled_code;
@@ -166,7 +166,7 @@ class Smarty_Internal_Compile_Include extends Smarty_Internal_CompileBase {
                 }
             }
         }
-        // delete {include} standard attributes
+        // delete [include] standard attributes
         unset($_attr['file'], $_attr['assign'], $_attr['cache_id'], $_attr['compile_id'], $_attr['cache_lifetime'], $_attr['nocache'], $_attr['caching'], $_attr['scope'], $_attr['inline']);
         // remaining attributes must be assigned as smarty variable
         if (!empty($_attr)) {

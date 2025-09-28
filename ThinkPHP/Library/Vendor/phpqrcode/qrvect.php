@@ -108,7 +108,7 @@
             
             
             // redefine the 'rectfill' operator to shorten the syntax
-            $output .= '/F { rectfill } def'."\n";
+            $output .= '/F [ rectfill ] def'."\n";
             
             // set the symbol color
             $output .= $back_color_string;

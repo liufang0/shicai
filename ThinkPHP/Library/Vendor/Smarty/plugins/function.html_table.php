@@ -7,7 +7,7 @@
  */
 
 /**
- * Smarty {html_table} function plugin
+ * Smarty [html_table] function plugin
  *
  * Type:     function<br>
  * Name:     html_table<br>
@@ -32,16 +32,16 @@
  * </pre>
  * Examples:
  * <pre>
- * {table loop=$data}
- * {table loop=$data cols=4 tr_attr='"bgcolor=red"'}
- * {table loop=$data cols="first,second,third" tr_attr=$colors}
+ * [table loop=$data]
+ * [table loop=$data cols=4 tr_attr='"bgcolor=red"']
+ * [table loop=$data cols="first,second,third" tr_attr=$colors]
  * </pre>
  *
  * @author Monte Ohrt <monte at ohrt dot com>
  * @author credit to Messju Mohr <messju at lammfellpuschen dot de>
  * @author credit to boots <boots dot smarty at yahoo dot com>
  * @version 1.1
- * @link http://www.smarty.net/manual/en/language.function.html.table.php {html_table}
+ * @link http://www.smarty.net/manual/en/language.function.html.table.php [html_table]
  *          (Smarty online manual)
  * @param array                    $params   parameters
  * @param Smarty_Internal_Template $template template object

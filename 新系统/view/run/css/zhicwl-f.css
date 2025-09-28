@@ -1,0 +1,285 @@
+/*盒布局*/
+
+.display-box {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -o-box;
+	display: -ms-flexbox;
+	display: box;
+}
+/*垂直方向-居中对其*/
+
+.box-align-center {
+	-webkit-box-align: center;
+	-moz-box-align: center;
+	-o-box-align: center;
+	-ms-flex-align: center;
+	box-align: center;
+}
+/*垂直方向-顶部对齐*/
+
+.box-align-start {
+	-moz-box-align: start;
+	-webkit-box-align: start;
+	-ms-flex-align: start;
+	-o-box-align: start;
+	box-align: start;
+}
+/*垂直方向-底部对齐*/
+
+.box-align-end {
+	-moz-box-align: end;
+	-webkit-box-align: end;
+	-o-box-align: end;
+	-ms-flex-align: end;
+	box-align: end;
+}
+/*水平方向-居中对齐*/
+
+.box-pack-center {
+	-moz-box-pack: center;
+	-webkit-box-pack: center;
+	-o-box-pack: center;
+	-ms-flex-pack: center;
+	box-pack: center;
+}
+/*水平方向-左则对齐*/
+
+.box-pack-start {
+	-moz-box-pack: start;
+	-webkit-box-pack: start;
+	-o-box-pack: start;
+	-ms-flex-pack: start;
+	box-pack: start;
+}
+/*水平方向-右则对齐*/
+
+.box-pack-end {
+	-moz-box-pack: end;
+	-webkit-box-pack: end;
+	-o-box-pack: end;
+	-ms-flex-pack: end;
+	box-pack: end;
+}
+/*设置元素为可伸缩*/
+
+.box-flex {
+	-moz-box-flex: 1;
+	-webkit-box-flex: 1;
+	-o-box-flex: 1;
+	-ms-flex: 1;
+	box-flex: 1;
+}
+/*/盒布局*/
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	font-family: "微软雅黑";
+}
+
+div {
+	-webkit-user-select: none;
+}
+
+.zhicwl-xfqugao {
+	height: 50px;
+}
+
+.zhicwl-fxalpr {
+	visibility: hidden;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	z-index: 9999;
+	width: 100%;
+	height: 48px;
+	background-color: #465161;
+	text-align: center;
+	padding: 0 10px;
+	color: #FFF;
+}
+
+.zhicwl-fxalpr>div {
+	padding: 0;
+	width: 33.3333%;
+	cursor: pointer;
+}
+
+.zhicwl-fxalpr span {
+	border-radius: 4px;
+	overflow: hidden;
+	background-color: #D0D0D0;
+	color: #6A6E71;
+	font-size: 14px;
+	padding: 7px 10px;
+	vertical-align: middle;
+	display: block;
+}
+
+.zhicwl-fxalpr .zhicwl-fxalpr-an2 {
+	width: auto;
+}
+
+.zhicwl-fxalpr .zhicwl-fxalpr-an2 span {
+	background-color: transparent;
+	color: #FFF;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.zhicwl-fxalpr .zhicwl-fxalpr-an1.on span,
+.zhicwl-fxalpr .zhicwl-fxalpr-an3.on span {
+	background-color: #DB0000;
+	color: #FFF;
+}
+/*确定下单弹窗*/
+
+.zhicwl-qdxldfp {
+	display: none;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	z-index: 99999;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, .5);
+	color: #FFF;
+}
+
+.zhicwl-qdxldfp-div {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	z-index: 999;
+	width: 100%;
+	height: auto;
+	background-color: #FFF;
+	color: #000;
+	padding: 10px 10px;
+}
+
+.zhicwl-jdoas h2 {
+	display: block;
+	padding: 0;
+	margin: 0;
+	font-weight: normal;
+	font-size: 15px;
+}
+
+.zhicwl-jdlptr {
+	display: inline-block;
+	border-radius: 100%;
+	width: 22px;
+	text-align: center;
+	cursor: pointer;
+	height: 22px;
+	line-height: 22px;
+	background-color: #DB0000;
+	color: #FFF;
+}
+
+.zhicwl-ghsknbr {
+	font-size: 14px;
+	text-align: center;
+	padding: 20px 0;
+}
+
+.zhicwl-ghsknbr span {
+	color: #FF0000;
+}
+
+.zhicwl-xzje-inp {
+	padding: 0 5px;
+}
+
+.zhicwl-xzje-inp input {
+	display: block;
+	border: 1px solid #A9A9B1;
+	width: 100%;
+	border-radius: 3px;
+	overflow: hidden;
+	height: 28px;
+	text-align: right;
+	padding: 0 7px;
+	color: #A9A9B1;
+}
+
+.zhicwl-xzje-inp input.on {
+	color: #FF0000;
+}
+
+.zhicwl-xzqkl button {
+	display: block;
+	background-color: #465161;
+	border: none;
+	border-radius: 3px;
+	overflow: hidden;
+	color: #FFF;
+	height: 28px;
+	padding: 0 10px;
+	font-size: 13px;
+}
+
+.zhicwl-sailsp {
+	margin-top: 20px;
+}
+
+.zhicwl-sailsp dl {
+	overflow: hidden;
+	margin: 0 -5px;
+}
+
+.zhicwl-sailsp dl dt {
+	position: relative;
+	float: left;
+	width: 16.66666%;
+	padding: 0 5px;
+	cursor: pointer;
+}
+
+.zhicwl-sailsp dl dt img {
+	display: block;
+}
+
+.zhicwl-sailsp dl dt b {
+	position: absolute;
+	left: 0;
+	top: 50%;
+	margin-top: -9px;
+	z-index: 1;
+	width: 100%;
+	font-weight: normal;
+	font-size: 12px;
+	text-align: center;
+	max-width: 92px;
+}
+
+.zhicwl-qxldpr {
+	margin: 0 -7.5px;
+	margin-top: 20px;
+}
+
+.zhicwl-qxldpr>div {
+	width: 50%;
+	text-align: center;
+	padding: 0 7.5px;
+}
+
+.zhicwl-qxldpr span {
+	background-color: #DB0000;
+	border-radius: 4px;
+	overflow: hidden;
+	color: #FFF;
+	font-size: 14px;
+	font-weight: normal;
+	display: block;
+	height: 34px;
+	line-height: 34px;
+	cursor: pointer;
+}
+
+.zhicwl-qxldpr .zhicwl-qxldpr-an1 span {
+	background-color: #465161;
+}

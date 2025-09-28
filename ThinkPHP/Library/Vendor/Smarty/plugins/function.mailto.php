@@ -7,7 +7,7 @@
  */
 
 /**
- * Smarty {mailto} function plugin
+ * Smarty [mailto] function plugin
  *
  * Type:     function<br>
  * Name:     mailto<br>
@@ -31,15 +31,15 @@
  * </pre>
  * Examples:
  * <pre>
- * {mailto address="me@domain.com"}
- * {mailto address="me@domain.com" encode="javascript"}
- * {mailto address="me@domain.com" encode="hex"}
- * {mailto address="me@domain.com" subject="Hello to you!"}
- * {mailto address="me@domain.com" cc="you@domain.com,they@domain.com"}
- * {mailto address="me@domain.com" extra='class="mailto"'}
+ * [mailto address="me@domain.com"]
+ * [mailto address="me@domain.com" encode="javascript"]
+ * [mailto address="me@domain.com" encode="hex"]
+ * [mailto address="me@domain.com" subject="Hello to you!"]
+ * [mailto address="me@domain.com" cc="you@domain.com,they@domain.com"]
+ * [mailto address="me@domain.com" extra='class="mailto"']
  * </pre>
  *
- * @link http://www.smarty.net/manual/en/language.function.mailto.php {mailto}
+ * @link http://www.smarty.net/manual/en/language.function.mailto.php [mailto]
  *          (Smarty online manual)
  * @version 1.2
  * @author Monte Ohrt <monte at ohrt dot com>

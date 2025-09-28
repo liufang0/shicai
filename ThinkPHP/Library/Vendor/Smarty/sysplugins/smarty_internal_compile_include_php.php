@@ -2,7 +2,7 @@
 /**
  * Smarty Internal Plugin Compile Include PHP
  *
- * Compiles the {include_php} tag
+ * Compiles the [include_php] tag
  *
  * @package Smarty
  * @subpackage Compiler
@@ -40,7 +40,7 @@ class Smarty_Internal_Compile_Include_Php extends Smarty_Internal_CompileBase {
     public $optional_attributes = array('once', 'assign');
 
     /**
-     * Compiles code for the {include_php} tag
+     * Compiles code for the [include_php] tag
      *
      * @param array  $args     array with attributes from parser
      * @param object $compiler compiler object
@@ -49,7 +49,7 @@ class Smarty_Internal_Compile_Include_Php extends Smarty_Internal_CompileBase {
     public function compile($args, $compiler)
     {
         if (!($compiler->smarty instanceof SmartyBC)) {
-            throw new SmartyException("{include_php} is deprecated, use SmartyBC class to enable");
+            throw new SmartyException("[include_php] is deprecated, use SmartyBC class to enable");
         }
         // check and get attributes
         $_attr = $this->getAttributes($compiler, $args);
@@ -78,7 +78,7 @@ class Smarty_Internal_Compile_Include_Php extends Smarty_Internal_CompileBase {
             }
         }
         if ($_filepath == false) {
-            $compiler->trigger_template_error("{include_php} file '{$_file}' is not readable", $compiler->lex->taglineno);
+            $compiler->trigger_template_error("[include_php] file '[$_file]' is not readable", $compiler->lex->taglineno);
         }
 
         if (isset($compiler->smarty->security_policy)) {
@@ -97,9 +97,9 @@ class Smarty_Internal_Compile_Include_Php extends Smarty_Internal_CompileBase {
         }
 
         if (isset($_assign)) {
-            return "<?php ob_start(); include{$_once} ('{$_filepath}'); \$_smarty_tpl->assign({$_assign},ob_get_contents()); ob_end_clean();?>";
+            return "<?php ob_start(); include[$_once] ('[$_filepath]'); \$_smarty_tpl->assign([$_assign],ob_get_contents()); ob_end_clean();?>";
         } else {
-            return "<?php include{$_once} ('{$_filepath}');?>\n";
+            return "<?php include[$_once] ('[$_filepath]');?>\n";
         }
     }
 

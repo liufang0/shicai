@@ -111,7 +111,7 @@ class Lite {
      * @param array $config 连接信息
      * @return string
      */
-    protected function parseDsn($config){}
+    protected function parseDsn($config)(){}
 
     /**
      * 释放查询结果
@@ -134,7 +134,7 @@ class Lite {
         $this->queryStr     =   $str;
         if(!empty($bind)){
             $that   =   $this;
-            $this->queryStr =   strtr($this->queryStr,array_map(function($val) use($that){ return '\''.$that->escapeString($val).'\''; },$bind));
+            $this->queryStr =   strtr($this->queryStr,array_map(function($val) use($that){ return '\''.$that->escapeString($val).'\''; ],$bind));
         }
         //释放前次的查询结果
         if ( !empty($this->PDOStatement) ) $this->free();
@@ -176,7 +176,7 @@ class Lite {
         $this->queryStr = $str;
         if(!empty($bind)){
             $that   =   $this;
-            $this->queryStr =   strtr($this->queryStr,array_map(function($val) use($that){ return '\''.$that->escapeString($val).'\''; },$bind));
+            $this->queryStr =   strtr($this->queryStr,array_map(function($val) use($that){ return '\''.$that->escapeString($val).'\''; ],$bind));
         }      
         //释放前次的查询结果
         if ( !empty($this->PDOStatement) ) $this->free();

@@ -22,7 +22,7 @@ class ETCore{
 	var $HtmID		= '';				//静态文件ID
 	var $HtmTime	= '180';			//秒为单位，默认三分钟
 	var $AutoImage	= 1;				//自动解析图片目录开关默认值
-	var $Hacker		= "<?php if(!defined('ET3!')){die('You are Hacker!<br>Power by Ease Template!');}";
+	var $Hacker		= "<?php if(!defined('ET3!'))[die('You are Hacker!<br>Power by Ease Template!');}]";
 	var $Compile	= array();
 	var $Analysis	= array();
 	var $Emc		= array();
@@ -83,23 +83,23 @@ class ETCore{
 		}
 		
 		$CompileBasic = array(
-				'/(\{\s*|<!--\s*)inc_php:([a-zA-Z0-9_\[\]\.\,\/\?\=\#\:\;\-\|\^]{5,200})(\s*\}|\s*-->)/eis',
+				'/(\[\s*|<!--\s*)inc_php:([a-zA-Z0-9_\[\]\.\,\/\?\=\#\:\;\-\|\^]{5,200])(\s*\}|\s*-->)/eis',
 
 				'/<!--\s*DEL\s*-->/is',
 				'/<!--\s*IF(\[|\()(.+?)(\]|\))\s*-->/is',
 				'/<!--\s*ELSEIF(\[|\()(.+?)(\]|\))\s*-->/is',
 				'/<!--\s*ELSE\s*-->/is',
 				'/<!--\s*END\s*-->/is',
-				'/<!--\s*([a-zA-Z0-9_\$\[\]\'\"]{2,60})\s*(AS|as)\s*(.+?)\s*-->/',
+				'/<!--\s*([a-zA-Z0-9_\$\[\]\'\"][2,60])\s*(AS|as)\s*(.+?)\s*-->/',
 				'/<!--\s*while\:\s*(.+?)\s*-->/is',
 					
-				'/(\{\s*|<!--\s*)lang\:(.+?)(\s*\}|\s*-->)/eis',
-				'/(\{\s*|<!--\s*)row\:(.+?)(\s*\}|\s*-->)/eis',
-				'/(\{\s*|<!--\s*)color\:\s*([\#0-9A-Za-z]+\,[\#0-9A-Za-z]+)(\s*\}|\s*-->)/eis',
-				'/(\{\s*|<!--\s*)dir\:([^\{\}]{1,100})(\s*\}|\s*-->)/eis',
-				'/(\{\s*|<!--\s*)run\:(\}|\s*-->)\s*(.+?)\s*(\{|<!--\s*)\/run(\s*\}|\s*-->)/is',
-				'/(\{\s*|<!--\s*)run\:(.+?)(\s*\}|\s*-->)/is',
-				'/\{([a-zA-Z0-9_\'\"\[\]\$]{1,100})\}/',
+				'/(\[\s*|<!--\s*)lang\:(.+?)(\s*\]|\s*-->)/eis',
+				'/(\[\s*|<!--\s*)row\:(.+?)(\s*\]|\s*-->)/eis',
+				'/(\[\s*|<!--\s*)color\:\s*([\#0-9A-Za-z]+\,[\#0-9A-Za-z]+)(\s*\]|\s*-->)/eis',
+				'/(\[\s*|<!--\s*)dir\:([^\{\]][1,100])(\s*\}|\s*-->)/eis',
+				'/(\[\s*|<!--\s*)run\:(\]|\s*-->)\s*(.+?)\s*(\[|<!--\s*)\/run(\s*\]|\s*-->)/is',
+				'/(\[\s*|<!--\s*)run\:(.+?)(\s*\]|\s*-->)/is',
+				'/\[([a-zA-Z0-9_\'\"\[\]\$]{1,100])\}/',
 		   );
 		$this->Compile = (is_array($this->Compile))?array_merge($this->Compile,$CompileBasic):$CompileBasic;
 
@@ -201,10 +201,10 @@ class ETCore{
 		if (eregi("run:",$ShowTPL)){
 			$run	 = 1;
 			//Fix =
-			$ShowTPL = preg_replace('/(\{|<!--\s*)run:(\}|\s*-->)\s*=/','{run:}echo ',$ShowTPL);
+			$ShowTPL = preg_replace('/(\[|<!--\s*)run:(\]|\s*-->)\s*=/','[run:]echo ',$ShowTPL);
 			$ShowTPL = preg_replace('/(\{|<!--\s*)run:\s*=/','{run:echo ',$ShowTPL);
 			//Fix Run 1
-			$ShowTPL = preg_replace('/(\{|<!--\s*)run:(\}|\s*-->)\s*(.+?)\s*(\{|<!--\s*)\/run(\}|\s*-->)/is', '(T_T)\\3;(T_T!)',$ShowTPL);
+			$ShowTPL = preg_replace('/(\[|<!--\s*)run:(\]|\s*-->)\s*(.+?)\s*(\[|<!--\s*)\/run(\]|\s*-->)/is', '(T_T)\\3;(T_T!)',$ShowTPL);
 		}
 		
 		//Fix XML
@@ -356,7 +356,7 @@ class ETCore{
 	function inc_preg(
 				$content
 			){
-		return preg_replace('/<\!--\s*\#include\s*file\s*=(\"|\')([a-zA-Z0-9_\.\|]{1,100})(\"|\')\s*-->/eis', '$this->inc("\\2")', preg_replace('/(\{\s*|<!--\s*)inc\:([^\{\} ]{1,100})(\s*\}|\s*-->)/eis', '$this->inc("\\2")', $content));
+		return preg_replace('/<\!--\s*\#include\s*file\s*=(\"|\')([a-zA-Z0-9_\.\|][1,100])(\"|\')\s*-->/eis', '$this->inc("\\2")', preg_replace('/(\[\s*|<!--\s*)inc\:([^\{\] ][1,100])(\s*\}|\s*-->)/eis', '$this->inc("\\2")', $content));
 	}
 
 
@@ -378,8 +378,8 @@ class ETCore{
 				$this->IncList[] = $Files;
 				$cache_file = $this->CacheDir.$this->TplID.$Files.".".$this->Language.".php";
 				return "<!-- ET_inc_cache[".$Files."] -->
-<!-- IF(@is_file('".$cache_file."')) -->{inc_php:".$cache_file."}
-<!-- IF(\$EaseTemplate3_Cache) -->{run:@eval('echo \"'.\$EaseTemplate3_Cache.'\";')}<!-- END -->
+<!-- IF(@is_file('".$cache_file."')) -->[inc_php:".$cache_file."]
+<!-- IF(\$EaseTemplate3_Cache) -->[run:@eval('echo \"'.\$EaseTemplate3_Cache.'\";')]<!-- END -->
 <!-- END -->";
 			}elseif($this->RunType=='MemCache'){
 				//cache date
@@ -446,7 +446,7 @@ class ETCore{
 			$update		= 0;
 			$settime	= ($settime>0)?$settime:@filemtime($filname);
 			foreach ($this->IncFile AS $k=>$v) {
-				if (@filemtime($v)>$settime){$update = 1;}
+				if (@filemtime($v)>$settime)[$update = 1;}]
 			}
 			//更新缓存
 			if($update==1){
@@ -829,9 +829,9 @@ class ETCore{
 
 			if(trim($Nums[1]) != ''){
 				$Co	 	= explode(":",$Nums[1]);
-				$OutStr = "if(\$_i%$Numr===0){\$row_count++;echo(\$row_count%2===0)?'</tr><tr bgcolor=\"$Co[0]\">':'</tr><tr bgcolor=\"$Co[1]\">';}";
+				$OutStr = "if(\$_i%$Numr===0)[\$row_count++;echo(\$row_count%2===0)?'</tr><tr bgcolor=\"$Co[0]\">':'</tr><tr bgcolor=\"$Co[1]\">';}]";
 			}else{
-				$OutStr = "if(\$_i%$Numr===0){echo '$input';}";
+				$OutStr = "if(\$_i%$Numr===0)[echo '$input';}]";
 			}
 			return '";'.$OutStr.'echo "';
 		}

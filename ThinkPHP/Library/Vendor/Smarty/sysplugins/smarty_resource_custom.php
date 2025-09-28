@@ -77,7 +77,7 @@ abstract class Smarty_Resource_Custom extends Smarty_Resource {
             return $content;
         }
 
-        throw new SmartyException("Unable to read template {$source->type} '{$source->name}'");
+        throw new SmartyException("Unable to read template [$source->type] '[$source->name]'");
     }
 
     /**

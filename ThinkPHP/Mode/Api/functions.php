@@ -693,18 +693,18 @@ function redirect($url, $time=0, $msg='') {
     //多行URL地址支持
     $url        = str_replace(array("\n", "\r"), '', $url);
     if (empty($msg))
-        $msg    = "系统将在{$time}秒之后自动跳转到{$url}！";
+        $msg    = "系统将在[$time]秒之后自动跳转到[$url]！";
     if (!headers_sent()) {
         // redirect
         if (0 === $time) {
             header('Location: ' . $url);
         } else {
-            header("refresh:{$time};url={$url}");
+            header("refresh:[$time];url=[$url]");
             echo($msg);
         }
         exit();
     } else {
-        $str    = "<meta http-equiv='Refresh' content='{$time};URL={$url}'>";
+        $str    = "<meta http-equiv='Refresh' content='[$time];URL=[$url]'>";
         if ($time != 0)
             $str .= $msg;
         exit($str);
@@ -813,16 +813,16 @@ function xml_encode($data, $root='think', $item='item', $attr='', $id='id', $enc
     if(is_array($attr)){
         $_attr = array();
         foreach ($attr as $key => $value) {
-            $_attr[] = "{$key}=\"{$value}\"";
+            $_attr[] = "[$key]=\"[$value]\"";
         }
         $attr = implode(' ', $_attr);
     }
     $attr   = trim($attr);
-    $attr   = empty($attr) ? '' : " {$attr}";
-    $xml    = "<?xml version=\"1.0\" encoding=\"{$encoding}\"?>";
-    $xml   .= "<{$root}{$attr}>";
+    $attr   = empty($attr) ? '' : " [$attr]";
+    $xml    = "<?xml version=\"1.0\" encoding=\"[$encoding]\"?>";
+    $xml   .= "<[$root][$attr]>";
     $xml   .= data_to_xml($data, $item, $id);
-    $xml   .= "</{$root}>";
+    $xml   .= "</[$root]>";
     return $xml;
 }
 
@@ -837,12 +837,12 @@ function data_to_xml($data, $item='item', $id='id') {
     $xml = $attr = '';
     foreach ($data as $key => $val) {
         if(is_numeric($key)){
-            $id && $attr = " {$id}=\"{$key}\"";
+            $id && $attr = " [$id]=\"[$key]\"";
             $key  = $item;
         }
-        $xml    .=  "<{$key}{$attr}>";
+        $xml    .=  "<[$key][$attr]>";
         $xml    .=  (is_array($val) || is_object($val)) ? data_to_xml($val, $item, $id) : $val;
-        $xml    .=  "</{$key}>";
+        $xml    .=  "</[$key]>";
     }
     return $xml;
 }

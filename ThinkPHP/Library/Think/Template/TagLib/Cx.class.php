@@ -57,8 +57,8 @@ class Cx extends TagLib {
      * volist标签解析 循环输出数据集
      * 格式：
      * <volist name="userList" id="user" empty="" >
-     * {user.username}
-     * {user.email}
+     * [user.username]
+     * [user.email]
      * </volist>
      * @access public
      * @param array $tag 标签属性
@@ -71,7 +71,7 @@ class Cx extends TagLib {
         $empty =    isset($tag['empty'])?$tag['empty']:'';
         $key   =    !empty($tag['key'])?$tag['key']:'i';
         $mod   =    isset($tag['mod'])?$tag['mod']:'2';
-        // 允许使用函数设定数据集 <volist name=":fun('arg')" id="vo">{$vo.name}</volist>
+        // 允许使用函数设定数据集 <volist name=":fun('arg')" id="vo">[$vo.name]</volist>
         $parseStr   =  '<?php ';
         if(0===strpos($name,':')) {
             $parseStr   .= '$_result='.substr($name,1).';';

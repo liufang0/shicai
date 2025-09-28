@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<!-- 数据源（隐藏）：房间限额与用户余额供 JS 读取 -->
+	<div id="limitsData"
+		 data-values='<?=json_encode([$limit[0][0], $limit[1][0], $limit[2][0]]);?>'
+		 data-points='{$userinfo.points|default=0}'
+		 style="display:none"></div>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>选择房间</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			min-height: 100vh;
+			line-height: 1.6;
+			/* 由底部导航统一控制 padding-bottom */
+		}
+
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 20px;
+		}
+
+		.back-button {
+			position: fixed;
+			top: 20px;
+			left: 20px;
+			background: linear-gradient(135deg, #667eea, #764ba2);
+			border: none;
+			padding: 12px 20px;
+			border-radius: 25px;
+			color: white;
+			cursor: pointer;
+			font-size: 16px;
+			font-weight: 600;
+			box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+			transition: all 0.3s ease;
+			z-index: 1000;
+		}
+
+		.back-button:hover {
+			background: linear-gradient(135deg, #764ba2, #667eea);
+			transform: translateY(-2px);
+			box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+		}
+
+		.product-detail-content {
+			background: transparent;
+			border-radius: 10px;
+			padding: 10px;
+			margin-top: 20px;
+			animation: slideUp 0.6s ease-out;
+		}
+
+		@keyframes slideUp {
+			from {
+				opacity: 0;
+				transform: translateY(15px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.detail-header {
+			text-align: center;
+			margin-bottom: 8px;
+			padding-bottom: 5px;
+			border-bottom: 1px solid #f0f0f0;
+		}
+
+		.detail-icon {
+			font-size: 1.5rem;
+			margin-bottom: 3px;
+		}
+
+		.detail-title {
+			font-size: 1.2rem;
+			font-weight: 700;
+			color: #333;
+			margin-bottom: 3px;
+		}
+
+		.detail-subtitle {
+			font-size: 0.75rem;
+			color: #666;
+			max-width: 500px;
+			margin: 0 auto;
+		}
+
+		.tier-modules {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			gap: 8px;
+			margin: 10px 0;
+		}
+
+		.tier-module {
+			background: white;
+			border-radius: 8px;
+			padding: 10px;
+			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+			transition: all 0.3s ease;
+			border: 1px solid rgba(0, 0, 0, 0.1);
+			position: relative;
+			overflow: hidden;
+		}
+
+		.tier-module:hover {
+			transform: translateY(-10px);
+			box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+		}
+
+		.tier-module.featured {
+			border-color: #667eea;
+			transform: scale(1.05);
+		}
+
+		.tier-module.featured::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 4px;
+			background: linear-gradient(90deg, #667eea, #764ba2);
+		}
+
+		.tier-header {
+			margin-bottom: 6px;
+			position: relative;
+		}
+
+		.tier-badge {
+			display: inline-block;
+			background: linear-gradient(135deg, #667eea, #764ba2);
+			color: white;
+			padding: 2px 8px;
+			border-radius: 8px;
+			font-weight: 600;
+			font-size: 0.65rem;
+			margin-bottom: 3px;
+		}
+
+		.basic-tier .tier-badge {
+			background: linear-gradient(135deg, #4facfe, #00f2fe);
+		}
+
+		.enterprise-tier .tier-badge {
+			background: linear-gradient(135deg, #fa709a, #fee140);
+		}
+
+		.tier-price {
+			font-size: 1rem;
+			font-weight: 700;
+			color: #333;
+		}
+
+		.popular-badge {
+			position: absolute;
+			top: -4px;
+			right: -4px;
+			background: #ff6b6b;
+			color: white;
+			padding: 1px 6px;
+			border-radius: 6px;
+			font-size: 0.55rem;
+			font-weight: 600;
+		}
+
+		.tier-content h4 {
+			font-size: 0.85rem;
+			color: #333;
+			margin-bottom: 4px;
+			font-weight: 600;
+		}
+
+		.tier-features {
+			list-style: none;
+			margin-bottom: 6px;
+		}
+
+		.tier-features li {
+			padding: 1px 0;
+			color: #555;
+			font-size: 0.7rem;
+			line-height: 1.2;
+		}
+
+		.tier-features li::before {
+			content: '✓';
+			color: #4caf50;
+			font-weight: bold;
+			margin-right: 6px;
+		}
+
+		.tier-button {
+			width: 100%;
+			padding: 6px;
+			background: linear-gradient(135deg, #667eea, #764ba2);
+			color: white;
+			border: none;
+			border-radius: 4px;
+			font-size: 0.75rem;
+			font-weight: 600;
+			cursor: pointer;
+			transition: all 0.3s ease;
+		}
+
+		.tier-button:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+		}
+
+		.basic-tier .tier-button {
+			background: linear-gradient(135deg, #4facfe, #00f2fe);
+		}
+
+		.enterprise-tier .tier-button {
+			background: linear-gradient(135deg, #fa709a, #fee140);
+		}
+
+		.tabBox {
+			position: fixed;
+			width: 100%;
+			height: .8rem;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			bottom: 0;
+			left: 0;
+			background: #ececec;
+		}
+
+		.tabBox li {
+			width: 33.3%;
+			display: flex;
+			align-items: center;
+			height: 100%;
+			border-right: 1px solid #ddd;
+		}
+
+		.tabBox li:last-child {
+			border: 0;
+		}
+
+		.tabBox li a {
+			display: block;
+			width: 100%;
+			text-align: center;
+			color: #fcc155 !important;
+		}
+
+		/* 隐藏弹层（保留 tips，已移除授权码相关） */
+		.tips { display: none; }
+
+		@media (max-width: 768px) {
+			.container {
+				padding: 15px;
+			}
+
+			.product-detail-content {
+				padding: 25px;
+				margin-top: 60px;
+			}
+
+			.detail-title {
+				font-size: 2rem;
+			}
+
+			.tier-modules {
+				grid-template-columns: 1fr;
+				gap: 20px;
+			}
+
+			.tier-module.featured {
+				transform: none;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<?php $a = 6; // 激活底部导航-产品 ?>
+	<div class="container">
+		<button class="back-button" onclick="goBack()">← 返回产品中心</button>
+
+		<div class="product-detail-content">
+			<div class="detail-header">
+				<div class="detail-icon">🔒</div>
+				<div class="detail-title">选择房间</div>
+				<div class="detail-subtitle">请选择您要进入的房间等级</div>
+			</div>
+
+			<!-- 三个等级模块 -->
+			<div class="tier-modules">
+				<!-- 基础版 -->
+				<div class="tier-module basic-tier">
+					<div class="tier-header">
+						<div class="tier-badge">初级房间</div>
+						<div class="tier-price">¥
+							<?php echo $limit[0][0];?>
+						</div>
+					</div>
+					<div class="tier-content">
+						<h4>初级房间</h4>
+						<ul class="tier-features">
+							<li>基础游戏体验</li>
+							<li>简单玩法</li>
+							<li>适合新手</li>
+							<li>标准支持</li>
+							<li>在线帮助</li>
+						</ul>
+						<button class="tier-button" onclick="room(1)">进入初级房间</button>
+					</div>
+				</div>
+
+				<!-- 专业版 -->
+				<div class="tier-module pro-tier featured">
+					<div class="tier-header">
+						<div class="tier-badge">中级房间</div>
+						<div class="tier-price">¥
+							<?php echo $limit[1][0];?>
+						</div>
+						<div class="popular-badge">推荐</div>
+					</div>
+					<div class="tier-content">
+						<h4>中级房间</h4>
+						<ul class="tier-features">
+							<li>进阶游戏玩法</li>
+							<li>更多挑战</li>
+							<li>协同游戏</li>
+							<li>实时监控</li>
+							<li>合规娱乐</li>
+							<li>专业支持</li>
+							<li>定制选项</li>
+						</ul>
+						<button class="tier-button" onclick="room(2)">进入中级房间</button>
+					</div>
+				</div>
+
+				<!-- 企业版 -->
+				<div class="tier-module enterprise-tier">
+					<div class="tier-header">
+						<div class="tier-badge">高级房间</div>
+						<div class="tier-price">¥
+							<?php echo $limit[2][0];?>
+						</div>
+					</div>
+					<div class="tier-content">
+						<h4>高级房间</h4>
+						<ul class="tier-features">
+							<li>私有化游戏</li>
+							<li>自研玩法</li>
+							<li>跨级挑战</li>
+							<li>高性能体验</li>
+							<li>法律合规</li>
+							<li>专属团队</li>
+							<li>7x24服务</li>
+							<li>娱乐保险</li>
+						</ul>
+						<button class="tier-button" onclick="room(3)">进入高级房间</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<input type="hidden" id="hall" value="1" />
+
+	
+
+	<!-- 温馨提示 start-->
+	<div class="tips">
+		<h3>温馨提示<i class="iconfont"></i></h3>
+		<p>余额不足</p>
+		<i class="iconfont icon-guanbi"></i>
+	</div>
+	
+    
+	
+	<script src="/images/js/jquery-1.11.2.min.js"></script>
+   
+	<script src="/images/js/layer.js"></script>
+	<script src="/images/js/room.js"></script>
+  	
+	<script>
+		// 返回按钮
+		function goBack(){
+			// 返回到产品/大厅页面
+			window.location.href = '/Home/Run/index';
+		}
+		// 兜底提示方法，避免未定义报错
+		function tips(msg){
+			try { if (layer && layer.msg) { layer.msg(msg); return; } } catch(e) {}
+			alert(msg);
+		}
+		function room(r){
+			// 从隐藏数据节点读取限额与余额，避免在 JS 内直接拼 PHP/模板标签
+			var dataEl = document.getElementById('limitsData');
+			var limits = [];
+			try { limits = JSON.parse(dataEl.getAttribute('data-values') || '[0,0,0]'); } catch (e) { limits = [0,0,0]; }
+			var userPoints = parseFloat(dataEl.getAttribute('data-points') || '0');
+			
+			if(r==1 && userPoints < limits[0]){
+				alert("余额不足<?php echo $limit[0][0];?>!");
+				return false;
+			}else if(r==2 && userPoints < limits[1]){
+				alert("余额不足<?php echo $limit[1][0];?>!");
+				return false;
+			}else if(r==3 && userPoints < limits[2]){
+				alert("余额不足<?php echo $limit[2][0];?>!");
+				return false;
+			}
+			if(r==1){
+				window.location.href="{$url}/fangjian/a";
+			}else if(r==2){
+				window.location.href="{$url}/fangjian/b";
+			}else if(r==3){
+				window.location.href="{$url}/fangjian/c";
+			}
+          	
+				/*$.post('/index.php/Home/Index/checkMoney', {
+				'h' : 1,
+				'r' : r
+			}, function(rs) {
+				if(rs.result=="s"){
+					window.location.href="{$url}";
+				}else if(rs.error==1){
+					layer.msg("参数错误!");
+				}else if(rs.error==2){
+					layer.msg("余额不足!");
+				}
+			});*/
+		}
+      
+    </script> 
+	<include file="Template/Home/Run/footer.html" />
+</body>
+</html>
+
+<!-- <include file="Template/Home/Run/foot.html"/> -->
+
+ 

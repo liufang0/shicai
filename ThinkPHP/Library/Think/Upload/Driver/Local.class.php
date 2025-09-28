@@ -102,7 +102,7 @@ class Local{
         if(mkdir($dir, 0777, true)){
             return true;
         } else {
-            $this->error = "目录 {$savepath} 创建失败！";
+            $this->error = "目录 [$savepath] 创建失败！";
             return false;
         }
     }

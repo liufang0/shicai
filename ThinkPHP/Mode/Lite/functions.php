@@ -164,7 +164,7 @@ function L($name=null, $value=null) {
             // 支持变量
             $replace = array_keys($value);
             foreach($replace as &$v){
-                $v = '{$'.$v.'}';
+                $v = '[$'.$v.']';
             }
             return str_replace($replace,$value,isset($_lang[$name]) ? $_lang[$name] : $name);        
         }
@@ -922,7 +922,7 @@ function U($url='',$vars='',$suffix=true,$domain=false) {
     }
 
     if(C('URL_MODEL') == 0) { // 普通模式URL转换
-        $url        =   __APP__.'?'.C('VAR_MODULE')."={$module}&".http_build_query(array_reverse($var));
+        $url        =   __APP__.'?'.C('VAR_MODULE')."=[$module]&".http_build_query(array_reverse($var));
         if($urlCase){
             $url    =   strtolower($url);
         }        
@@ -998,18 +998,18 @@ function redirect($url, $time=0, $msg='') {
     //多行URL地址支持
     $url        = str_replace(array("\n", "\r"), '', $url);
     if (empty($msg))
-        $msg    = "系统将在{$time}秒之后自动跳转到{$url}！";
+        $msg    = "系统将在[$time]秒之后自动跳转到[$url]！";
     if (!headers_sent()) {
         // redirect
         if (0 === $time) {
             header('Location: ' . $url);
         } else {
-            header("refresh:{$time};url={$url}");
+            header("refresh:[$time];url=[$url]");
             echo($msg);
         }
         exit();
     } else {
-        $str    = "<meta http-equiv='Refresh' content='{$time};URL={$url}'>";
+        $str    = "<meta http-equiv='Refresh' content='[$time];URL=[$url]'>";
         if ($time != 0)
             $str .= $msg;
         exit($str);

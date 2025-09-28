@@ -2,7 +2,7 @@
 /**
  * Smarty Internal Plugin Compile Append
  *
- * Compiles the {append} tag
+ * Compiles the [append] tag
  *
  * @package Smarty
  * @subpackage Compiler
@@ -18,7 +18,7 @@
 class Smarty_Internal_Compile_Append extends Smarty_Internal_Compile_Assign {
 
     /**
-     * Compiles code for the {append} tag
+     * Compiles code for the [append] tag
      *
      * @param array $args array with attributes from parser
      * @param object $compiler compiler object

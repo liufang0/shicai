@@ -119,7 +119,7 @@ abstract class Driver {
      * @param array $config 连接信息
      * @return string
      */
-    protected function parseDsn($config){}
+    protected function parseDsn($config)(){}
 
     /**
      * 释放查询结果
@@ -142,7 +142,7 @@ abstract class Driver {
         $this->queryStr     =   $str;
         if(!empty($this->bind)){
             $that   =   $this;
-            $this->queryStr =   strtr($this->queryStr,array_map(function($val) use($that){ return '\''.$that->escapeString($val).'\''; },$this->bind));
+            $this->queryStr =   strtr($this->queryStr,array_map(function($val) use($that){ return '\''.$that->escapeString($val).'\''; ],$this->bind));
         }
         if($fetchSql){
             return $this->queryStr;
@@ -195,7 +195,7 @@ abstract class Driver {
         $this->queryStr = $str;
         if(!empty($this->bind)){
             $that   =   $this;
-            $this->queryStr =   strtr($this->queryStr,array_map(function($val) use($that){ return '\''.$that->escapeString($val).'\''; },$this->bind));
+            $this->queryStr =   strtr($this->queryStr,array_map(function($val) use($that){ return '\''.$that->escapeString($val).'\''; ],$this->bind));
         }
         if($fetchSql){
             return $this->queryStr;
@@ -371,15 +371,15 @@ abstract class Driver {
     protected function parseSet($data) {
         foreach ($data as $key=>$val){
             if(is_array($val) && 'exp' == $val[0]){
-                $set[]  =   $this->parseKey($key).'='.$val[1];
+                $set(){}  =   $this->parseKey($key).'='.$val[1];
             }elseif(is_null($val)){
-                $set[]  =   $this->parseKey($key).'=NULL';
+                $set(){}  =   $this->parseKey($key).'=NULL';
             }elseif(is_scalar($val)) {// 过滤非标量数据
                 if(0===strpos($val,':') && in_array($val,array_keys($this->bind)) ){
-                    $set[]  =   $this->parseKey($key).'='.$this->escapeString($val);
+                    $set(){}  =   $this->parseKey($key).'='.$this->escapeString($val);
                 }else{
                     $name   =   count($this->bind);
-                    $set[]  =   $this->parseKey($key).'=:'.$name;
+                    $set(){}  =   $this->parseKey($key).'=:'.$name;
                     $this->bindParam($name,$val);
                 }
             }
@@ -445,9 +445,9 @@ abstract class Driver {
             $array   =  array();
             foreach ($fields as $key=>$field){
                 if(!is_numeric($key))
-                    $array[] =  $this->parseKey($key).' AS '.$this->parseKey($field);
+                    $array(){} =  $this->parseKey($key).' AS '.$this->parseKey($field);
                 else
-                    $array[] =  $this->parseKey($field);
+                    $array(){} =  $this->parseKey($field);
             }
             $fieldsStr = implode(',', $array);
         }else{
@@ -468,9 +468,9 @@ abstract class Driver {
             $array   =  array();
             foreach ($tables as $table=>$alias){
                 if(!is_numeric($table))
-                    $array[] =  $this->parseKey($table).' '.$this->parseKey($alias);
+                    $array(){} =  $this->parseKey($table).' '.$this->parseKey($alias);
                 else
-                    $array[] =  $this->parseKey($alias);
+                    $array(){} =  $this->parseKey($alias);
             }
             $tables  =  $array;
         }elseif(is_string($tables)){
@@ -521,7 +521,7 @@ abstract class Driver {
                         $str   =  array();
                         foreach ($array as $m=>$k){
                             $v =  $multi?$val[$m]:$val;
-                            $str[]   = $this->parseWhereItem($this->parseKey($k),$v);
+                            $str(){}   = $this->parseWhereItem($this->parseKey($k),$v);
                         }
                         $whereStr .= '( '.implode(' OR ',$str).' )';
                     }elseif(strpos($key,'&')){
@@ -529,7 +529,7 @@ abstract class Driver {
                         $str   =  array();
                         foreach ($array as $m=>$k){
                             $v =  $multi?$val[$m]:$val;
-                            $str[]   = '('.$this->parseWhereItem($this->parseKey($k),$v).')';
+                            $str(){}   = '('.$this->parseWhereItem($this->parseKey($k),$v).')';
                         }
                         $whereStr .= '( '.implode(' AND ',$str).' )';
                     }else{
@@ -557,7 +557,7 @@ abstract class Driver {
                         if(in_array($likeLogic,array('AND','OR','XOR'))){
                             $like       =   array();
                             foreach ($val[1] as $item){
-                                $like[] = $key.' '.$this->exp[$exp].' '.$this->parseValue($item);
+                                $like(){} = $key.' '.$this->exp[$exp].' '.$this->parseValue($item);
                             }
                             $whereStr .= '('.implode(' '.$likeLogic.' ',$like).')';                          
                         }
@@ -643,7 +643,7 @@ abstract class Driver {
                 }
                 $array   =  array();
                 foreach ($where as $field=>$data)
-                    $array[] = $this->parseKey($field).' = '.$this->parseValue($data);
+                    $array(){} = $this->parseKey($field).' = '.$this->parseValue($data);
                 $whereStr   = implode($op,$array);
                 break;
         }
@@ -685,9 +685,9 @@ abstract class Driver {
             $array   =  array();
             foreach ($order as $key=>$val){
                 if(is_numeric($key)) {
-                    $array[] =  $this->parseKey($val);
+                    $array(){} =  $this->parseKey($val);
                 }else{
-                    $array[] =  $this->parseKey($key).' '.$val;
+                    $array(){} =  $this->parseKey($key).' '.$val;
                 }
             }
             $order   =  implode(',',$array);
@@ -750,7 +750,7 @@ abstract class Driver {
             $str  =   'UNION ';
         }
         foreach ($union as $u){
-            $sql[] = $str.(is_array($u)?$this->buildSelectSql($u):$u);
+            $sql(){} = $str.(is_array($u)?$this->buildSelectSql($u):$u);
         }
         return implode(' ',$sql);
     }
@@ -801,18 +801,18 @@ abstract class Driver {
         $this->parseBind(!empty($options['bind'])?$options['bind']:array());
         foreach ($data as $key=>$val){
             if(is_array($val) && 'exp' == $val[0]){
-                $fields[]   =  $this->parseKey($key);
-                $values[]   =  $val[1];
+                $fields(){}   =  $this->parseKey($key);
+                $values(){}   =  $val[1];
             }elseif(is_null($val)){
-                $fields[]   =   $this->parseKey($key);
-                $values[]   =   'NULL';
+                $fields(){}   =   $this->parseKey($key);
+                $values(){}   =   'NULL';
             }elseif(is_scalar($val)) { // 过滤非标量数据
-                $fields[]   =   $this->parseKey($key);
+                $fields(){}   =   $this->parseKey($key);
                 if(0===strpos($val,':') && in_array($val,array_keys($this->bind))){
-                    $values[]   =   $this->parseValue($val);
+                    $values(){}   =   $this->parseValue($val);
                 }else{
                     $name       =   count($this->bind);
-                    $values[]   =   ':'.$name;
+                    $values(){}   =   ':'.$name;
                     $this->bindParam($name,$val);
                 }
             }
@@ -843,20 +843,20 @@ abstract class Driver {
             $value   =  array();
             foreach ($data as $key=>$val){
                 if(is_array($val) && 'exp' == $val[0]){
-                    $value[]   =    $val[1];
+                    $value(){}   =    $val[1];
                 }elseif(is_null($val)){
-                    $value[]   =   'NULL';
+                    $value(){}   =   'NULL';
                 }elseif(is_scalar($val)){
                     if(0===strpos($val,':') && in_array($val,array_keys($this->bind))){
-                        $value[]   =   $this->parseValue($val);
+                        $value(){}   =   $this->parseValue($val);
                     }else{
                         $name       =   count($this->bind);
-                        $value[]   =   ':'.$name;
+                        $value(){}   =   ':'.$name;
                         $this->bindParam($name,$val);
                     }
                 }
             }
-            $values[]    = 'SELECT '.implode(',', $value);
+            $values(){}    = 'SELECT '.implode(',', $value);
         }
         $sql   =  'INSERT INTO '.$this->parseTable($options['table']).' ('.implode(',', $fields).') '.implode(' UNION ALL ',$values);
         $sql   .= $this->parseComment(!empty($options['comment'])?$options['comment']:'');

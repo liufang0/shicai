@@ -89,7 +89,7 @@ class Smarty_Internal_Config_File_Compiler {
         if ($this->smarty->_parserdebug) $parser->PrintTrace();
         // get tokens from lexer and parse them
         while ($lex->yylex()) {
-            if ($this->smarty->_parserdebug) echo "<br>Parsing  {$parser->yyTokenName[$lex->token]} Token {$lex->value} Line {$lex->line} \n";
+            if ($this->smarty->_parserdebug) echo "<br>Parsing  [$parser->yyTokenName[$lex->token]] Token [$lex->value] Line [$lex->line] \n";
             $parser->doParse($lex->token, $lex->value);
         }
         // finish parsing process
@@ -117,7 +117,7 @@ class Smarty_Internal_Config_File_Compiler {
             // $line--;
         }
         $match = preg_split("/\n/", $this->lex->data);
-        $error_text = "Syntax error in config file '{$this->config->source->filepath}' on line {$line} '{$match[$line-1]}' ";
+        $error_text = "Syntax error in config file '[$this->config->source->filepath]' on line [$line] '[$match[$line-1]]' ";
         if (isset($args)) {
             // individual error message
             $error_text .= $args;

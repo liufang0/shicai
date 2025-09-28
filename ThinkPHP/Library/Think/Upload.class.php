@@ -256,7 +256,7 @@ class Upload {
         $class = strpos($driver,'\\')? $driver : 'Think\\Upload\\Driver\\'.ucfirst(strtolower($driver));
         $this->uploader = new $class($config);
         if(!$this->uploader){
-            E("不存在上传驱动：{$name}");
+            E("不存在上传驱动：[$name]");
         }
     }
 
@@ -367,7 +367,7 @@ class Upload {
         $rule = $this->saveName;
         if (empty($rule)) { //保持文件名不变
             /* 解决pathinfo中文文件名BUG */
-            $filename = substr(pathinfo("_{$file['name']}", PATHINFO_FILENAME), 1);
+            $filename = substr(pathinfo("_[$file['name']]", PATHINFO_FILENAME), 1);
             $savename = $filename;
         } else {
             $savename = $this->getName($rule, $file['name']);

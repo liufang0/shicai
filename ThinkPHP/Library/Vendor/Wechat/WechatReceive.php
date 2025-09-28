@@ -525,14 +525,14 @@ class WechatReceive extends Common {
 
     /**
      * 发送客服消息
-     * @param array $data 消息结构{"touser":"OPENID","msgtype":"news","news":{...}}
+     * @param array $data 消息结构["touser":"OPENID","msgtype":"news","news":{...]}
      * @return bool|array
      */
     public function sendCustomMessage($data) {
         if (!$this->access_token && !$this->getAccessToken()) {
             return false;
         }
-        $result = Tools::httpPost(self::API_URL_PREFIX . self::CUSTOM_SEND_URL . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_URL_PREFIX . self::CUSTOM_SEND_URL . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -561,7 +561,7 @@ class WechatReceive extends Common {
         if (!$this->access_token && !$this->getAccessToken()) {
             return false;
         }
-        $result = Tools::httpPost(self::API_URL_PREFIX . self::TEMPLATE_SET_INDUSTRY_URL . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_URL_PREFIX . self::TEMPLATE_SET_INDUSTRY_URL . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -584,7 +584,7 @@ class WechatReceive extends Common {
         $data = array('template_id_short' => $tpl_id);
         if (!$this->access_token && !$this->getAccessToken())
             return false;
-        $result = Tools::httpPost(self::API_URL_PREFIX . self::TEMPLATE_ADD_TPL_URL . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_URL_PREFIX . self::TEMPLATE_ADD_TPL_URL . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -630,7 +630,7 @@ class WechatReceive extends Common {
         if (!$this->access_token && !$this->getAccessToken()) {
             return false;
         }
-        $result = Tools::httpPost(self::API_URL_PREFIX . self::TEMPLATE_SEND_URL . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_URL_PREFIX . self::TEMPLATE_SEND_URL . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -683,7 +683,7 @@ class WechatReceive extends Common {
         if (!$this->access_token && !$this->getAccessToken()) {
             return false;
         }
-        $result = Tools::httpPost(self::API_URL_PREFIX . self::MASS_SEND_URL . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_URL_PREFIX . self::MASS_SEND_URL . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -717,7 +717,7 @@ class WechatReceive extends Common {
         if (!$this->access_token && !$this->getAccessToken()) {
             return false;
         }
-        $result = Tools::httpPost(self::API_URL_PREFIX . self::MASS_SEND_GROUP_URL . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_URL_PREFIX . self::MASS_SEND_GROUP_URL . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -739,7 +739,7 @@ class WechatReceive extends Common {
         if (!$this->access_token && !$this->getAccessToken()) {
             return false;
         }
-        $result = Tools::httpPost(self::API_URL_PREFIX . self::MASS_DELETE_URL . "access_token={$this->access_token}", Tools::json_encode(array('msg_id' => $msg_id)));
+        $result = Tools::httpPost(self::API_URL_PREFIX . self::MASS_DELETE_URL . "access_token=[$this->access_token]", Tools::json_encode(array('msg_id' => $msg_id)));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -771,7 +771,7 @@ class WechatReceive extends Common {
         if (!$this->access_token && !$this->getAccessToken()) {
             return false;
         }
-        $result = Tools::httpPost(self::API_URL_PREFIX . self::MASS_PREVIEW_URL . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_URL_PREFIX . self::MASS_PREVIEW_URL . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -797,7 +797,7 @@ class WechatReceive extends Common {
         if (!$this->access_token && !$this->getAccessToken()) {
             return false;
         }
-        $result = Tools::httpPost(self::API_URL_PREFIX . self::MASS_QUERY_URL . "access_token={$this->access_token}", Tools::json_encode(array('msg_id' => $msg_id)));
+        $result = Tools::httpPost(self::API_URL_PREFIX . self::MASS_QUERY_URL . "access_token=[$this->access_token]", Tools::json_encode(array('msg_id' => $msg_id)));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {

@@ -10,7 +10,7 @@ namespace Boris;
 class ShallowParser {
   private $_pairs = array(
     '('   => ')',
-    '{'   => '}',
+    '['   => ']',
     '['   => ']',
     '"'   => '"',
     "'"   => "'",
@@ -202,7 +202,7 @@ class ShallowParser {
 
   private function _isLambda($input) {
     return preg_match(
-      '/^([^=]*?=\s*)?function\s*\([^\)]*\)\s*(use\s*\([^\)]*\)\s*)?\s*\{.*\}\s*;?$/is',
+      '/^([^=]*?=\s*)?function\s*\([^\)]*\)\s*(use\s*\([^\)]*\)\s*)?\s*\[.*\]\s*;?$/is',
       trim($input)
     );
   }

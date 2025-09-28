@@ -2,7 +2,7 @@
 /**
  * Smarty Internal Plugin Compile Continue
  *
- * Compiles the {continue} tag
+ * Compiles the [continue] tag
  *
  * @package Smarty
  * @subpackage Compiler
@@ -33,7 +33,7 @@ class Smarty_Internal_Compile_Continue extends Smarty_Internal_CompileBase {
     public $shorttag_order = array('levels');
 
     /**
-     * Compiles code for the {continue} tag
+     * Compiles code for the [continue] tag
      *
      * @param array  $args      array with attributes from parser
      * @param object $compiler  compiler object
@@ -67,10 +67,10 @@ class Smarty_Internal_Compile_Continue extends Smarty_Internal_CompileBase {
             $stack_count--;
         }
         if ($level_count != 0) {
-            $compiler->trigger_template_error("cannot continue {$_levels} level(s)", $compiler->lex->taglineno);
+            $compiler->trigger_template_error("cannot continue [$_levels] level(s)", $compiler->lex->taglineno);
         }
         $compiler->has_code = true;
-        return "<?php continue {$_levels}?>";
+        return "<?php continue [$_levels]?>";
     }
 
 }

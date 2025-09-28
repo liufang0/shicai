@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>后台 - 数据采集</title>
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+
+		
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+		<link href="__PUBLIC__/Admin/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/plugins/iCheck/custom.css" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+
+	</head>
+	<style>
+		/*分页样式*/
+		.pages a,.pages span {
+		    display:inline-block;
+		    padding:4px 7px;
+		    margin:0 2px;
+		    border:1px solid #D5D4D4;
+		    -webkit-border-radius:1px;
+		    -moz-border-radius:1px;
+		    border-radius:1px;
+		}
+		.pages a,.pages li {
+		    display:inline-block;
+		    list-style: none;
+		    text-decoration:none; color:#3399ff;
+		}
+		
+		.pages a:hover{
+		    border-color:#3399ff;
+		}
+		.pages span.current{
+		    background:#3399ff;
+		    color:#FFF;
+		    font-weight:700;
+		    border-color:#3399ff;
+		}
+		.pages{
+			text-align: center;
+		}
+		/*分页样式*/
+		
+		.layui-layer{
+			top:48px !important;
+		}
+	</style>
+	<body class="gray-bg">
+		<div class="wrapper wrapper-content animated fadeInRight">	
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">
+							<h5>幸运飞艇数据采集&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="red">已开启采集</font></h5>
+							<a class="input-group-btn" href="{:U('Admin/Caiji/addxyft')}"><span class="btn btn-sm btn-success" style="margin-left:20px;">手动添加开奖</span></a>
+						</div>
+						<div class="ibox-content">
+							<div class="" >
+								<table class="table table-striped table-hover table-bordered" style="width:auto;overflow:auto;display:inline-block;">
+									<thead>
+										<tr>
+											<th width="100">类型</th>
+											<th width="200">期号</th>
+											<th width="250">开奖时间</th>
+											<th width="400">开奖号码</th>
+										</tr>
+									</thead>
+									<tbody>
+										<volist name="list" id="vo">
+											<tr>
+												<td width="50" style="text-align: center;">
+													<if condition="$vo['game'] eq pk10">北京赛车</if>
+													<if condition="$vo['game'] eq xyft">幸运飞艇</if>
+												</td>
+												<td width="100">{$vo.periodnumber}</td>
+												<td width="100">{$vo.awardtime}</td>
+												<td width="100">{$vo.awardnumbers}</td>
+												
+											</tr>
+										</volist>
+									</tbody>
+								</table>
+							</div>
+							<div class="pages">
+								{$show}
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<script src="__PUBLIC__/Admin/js/jquery.min.js?v=2.1.4"></script>
+		<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+		<script src="__PUBLIC__/Admin/js/plugins/iCheck/icheck.min.js"></script>
+		<script src="__PUBLIC__/Common/layer/layer.js"></script>
+		<script>
+			$(document).ready(function() {
+				$(".i-checks").iCheck({
+					checkboxClass: "icheckbox_square-green",
+					radioClass: "iradio_square-green",
+				})
+			});
+		</script>
+		<script>
+			function integral(id){
+				layer.open({
+			      	type: 2,
+			      	title: '会员上分',
+			      	shadeClose: true,
+			      	shade: false,
+			     	maxmin: true, //开启最大化最小化按钮
+			      	area: ['300px', '500px'],
+			      	content: "__APP__/Admin/Integral/index/id/" + id + ""
+			    });
+			}
+			function under(id){
+				layer.open({
+			      	type: 2,
+			      	title: '会员下分',
+			      	shadeClose: true,
+			      	shade: false,
+			     	maxmin: true, //开启最大化最小化按钮
+			      	area: ['300px', '500px'],
+			      	content: "__APP__/Admin/Integral/under/id/" + id + ""
+			    });
+			}
+			function disable(id){
+				layer.confirm('确定要禁用吗？禁用后将不能登录。', {
+				  	btn: ['确定','取消'] //按钮
+				}, function(){
+				  	window.location.href="__APP__/Admin/Member/disable/id/" + id + ""
+				});
+			}
+			function endisable(id){
+				layer.confirm('确定要启用吗？', {
+				  	btn: ['确定','取消'] //按钮
+				}, function(){
+				  	window.location.href="__APP__/Admin/Member/endisable/id/" + id + ""
+				});
+			}
+		</script>
+	</body>
+
+	
+</html>

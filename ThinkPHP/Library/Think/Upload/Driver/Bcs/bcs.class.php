@@ -1054,7 +1054,7 @@ class BaiduBCS {
 	 */
 	public static function validate_bucket($bucket) {
 		//bucket 正则
-		$pattern1 = '/^[a-z][-a-z0-9]{4,61}[a-z0-9]$/';
+		$pattern1 = '/^[a-z][-a-z0-9][4,61][a-z0-9]$/';
 		if (! preg_match ( $pattern1, $bucket )) {
 			return false;
 		}

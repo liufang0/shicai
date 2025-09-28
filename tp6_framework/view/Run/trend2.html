@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <title>{:C('sitename')}</title>
+
+    <!-- 引入样式 -->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/new/css/index.css"/>
+    <link rel="stylesheet" href="/images/css/common.css"/>
+    <script src="/images/js/jquery-1.11.2.min.js"></script>
+    <script src="/images/js/sizeChange.js"></script>
+
+    <style>
+        .table table {margin-top: 0;}
+        table{border: 0;border-collapse: collapse;}
+        table tr:nth-child(2n){background: #555;color: black;}
+        table td {border:#F3F3F3 solid 1px;}
+        table td span { display: block;color:#fff}
+        .table th {
+            background: #E4C05F;
+            color: #ffffff;
+            font-size: .27rem;
+        }
+        .main p{    line-height: 1.6em;
+            background: #fff;
+            margin: 1em 0;
+            border-radius: 5px;
+            padding: 10px;}
+        .main p span.gm{font-size:1.2em;line-height:1.8em;color: #FD645E;}
+        .main p span.yk{font-size:1.2em;font-weight:bold;line-height:1.8em;float:right}
+        .pg a{color:#0083D0;border: #dedede solid 1px; padding: 6px 12px;}
+        .pg span{color:#fff;display:inline;border:1px solid #dedede;padding: 6px 12px;background: #0083D0;}
+        .pg a.next {
+            margin-right: 0;
+            position: relative;
+            top: 0;
+            right: 0;
+            z-index: 9999;
+        }
+        .pg a.prev {
+            margin-left: 0;
+            position: relative;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+        }
+
+    </style>
+
+
+</head>
+
+<body style="background: #efeae8;">
+    <div class="nav">
+        <h3>走势图</h3>
+        <i class="iconfont icon-40" onclick="back()"></i>
+    </div>
+    <div class="main table" style="margin-top: 0.8rem !important;">
+        <table>
+            <thead>
+            <tr>
+                <th width="20%">期号</th>
+                <th width="8%">值</th>
+                <th width="9%">大</th>
+                <th width="9%">小</th>
+                <th width="9%">单</th>
+                <th width="9%">双</th>
+                <th width="9%">大单</th>
+                <th width="9%">小单</th>
+                <th width="9%">大双</th>
+                <th width="9%">小双</th>
+            </tr>
+            </thead>
+            <tbody>
+                <volist name="kjlist" id="vo">
+                <tr>
+                    <td>{$vo.periodnumber}</td>
+                    <td style="color:#0083D0">{$vo.tema}</td>
+                    <td>{$vo['tema_dx'] == '大'?'<span style="background:#0083D0">大</span>':''}</td>
+                    <td>{$vo['tema_dx'] == '小'?'<span style="background:#0083D0">小</span>':''}</td>
+                    <td>{$vo['tema_ds'] == '单'?'<span style="background:#0083D0">单</span>':''}</td>
+                    <td>{$vo['tema_ds'] == '双'?'<span style="background:#0083D0">双</span>':''}</td>
+                    <td>{$vo['zuhe'] == '大单'?'<span style="background:#2BB387">大单</span>':''}</td>
+                    <td>{$vo['zuhe'] == '小单'?'<span style="background:#2BB387">小单</span>':''}</td>
+                    <td>{$vo['zuhe'] == '大双'?'<span style="background:#2BB387">大双</span>':''}</td>
+                    <td>{$vo['zuhe'] == '小双'?'<span style="background:#2BB387">小双</span>':''}</td>
+                </tr>
+                </volist>
+
+            </tbody></table>
+
+        <!--<div class="pg" style="text-align:center;margin-top:2rem;margin-bottom:3rem;">-->
+            <!--<div>  <span class="current">1</span><a class="num" href="/pcdd/Home/P/BjChart/f/1/p/2.html">2</a><a class="num" href="/pcdd/Home/P/BjChart/f/1/p/3.html">3</a> <a class="next" href="/pcdd/Home/P/BjChart/f/1/p/2.html">下一页</a> <a class="end" href="/pcdd/Home/P/BjChart/f/1/p/775.html">775</a></div>  </div>-->
+        <!--</div>-->
+</div>
+
+<?php $a=2;?>
+<include  file="./Template/Home/Run/footer.html" />
+
+
+
+</body>
+
+</html>

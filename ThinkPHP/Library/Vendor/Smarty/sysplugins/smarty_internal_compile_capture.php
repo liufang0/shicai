@@ -2,7 +2,7 @@
 /**
  * Smarty Internal Plugin Compile Capture
  *
- * Compiles the {capture} tag
+ * Compiles the [capture] tag
  *
  * @package Smarty
  * @subpackage Compiler
@@ -33,7 +33,7 @@ class Smarty_Internal_Compile_Capture extends Smarty_Internal_CompileBase {
     public $optional_attributes = array('name', 'assign', 'append');
 
     /**
-     * Compiles code for the {capture} tag
+     * Compiles code for the [capture] tag
      *
      * @param array  $args     array with attributes from parser
      * @param object $compiler compiler object
@@ -67,7 +67,7 @@ class Smarty_Internal_Compile_Capture extends Smarty_Internal_CompileBase {
 class Smarty_Internal_Compile_CaptureClose extends Smarty_Internal_CompileBase {
 
     /**
-     * Compiles code for the {/capture} tag
+     * Compiles code for the [/capture] tag
      *
      * @param array  $args     array with attributes from parser
      * @param object $compiler compiler object

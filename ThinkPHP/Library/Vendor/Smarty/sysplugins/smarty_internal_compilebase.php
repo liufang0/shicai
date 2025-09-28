@@ -90,7 +90,7 @@ abstract class Smarty_Internal_CompileBase {
                             $_indexed_attr[$kv['key']] = false;
                         }
                     } else {
-                        $compiler->trigger_template_error("illegal value of option flag \"{$kv['key']}\"", $compiler->lex->taglineno);
+                        $compiler->trigger_template_error("illegal value of option flag \"[$kv['key']]\"", $compiler->lex->taglineno);
                     }
                     // must be named attribute
                 } else {
@@ -163,7 +163,7 @@ abstract class Smarty_Internal_CompileBase {
                 }
             }
             // wrong nesting of tags
-            $compiler->trigger_template_error("unclosed {" . $_openTag . "} tag");
+            $compiler->trigger_template_error("unclosed [" . $_openTag . "] tag");
             return;
         }
         // wrong nesting of tags

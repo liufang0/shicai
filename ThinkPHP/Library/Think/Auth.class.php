@@ -20,7 +20,7 @@ namespace Think;
  * 3，一个用户可以属于多个用户组(think_auth_group_access表 定义了用户所属用户组)。我们需要设置每个用户组拥有哪些规则(think_auth_group 定义了用户组权限)
  * 
  * 4，支持规则表达式。
- *      在think_auth_rule 表中定义一条规则时，如果type为1， condition字段就可以定义规则表达式。 如定义{score}>5  and {score}<100  表示用户的分数在5-100之间时这条规则才会通过。
+ *      在think_auth_rule 表中定义一条规则时，如果type为1， condition字段就可以定义规则表达式。 如定义[score]>5  and [score]<100  表示用户的分数在5-100之间时这条规则才会通过。
  */
 
 //数据库
@@ -198,7 +198,7 @@ class Auth{
             if (!empty($rule['condition'])) { //根据condition进行验证
                 $user = $this->getUserInfo($uid);//获取用户信息,一维数组
 
-                $command = preg_replace('/\{(\w*?)\}/', '$user[\'\\1\']', $rule['condition']);
+                $command = preg_replace('/\[(\w*?)\]/', '$user[\'\\1\']', $rule['condition']);
                 //dump($command);//debug
                 @(eval('$condition=(' . $command . ');'));
                 if ($condition) {

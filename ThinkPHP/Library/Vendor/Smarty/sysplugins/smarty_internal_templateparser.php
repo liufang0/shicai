@@ -2155,7 +2155,7 @@ static public $yy_action = array(
 #line 118 "smarty_internal_templateparser.y"
     function yy_r4(){
     if ($this->compiler->has_code) {
-        $tmp =''; foreach ($this->compiler->prefix_code as $code) {$tmp.=$code;} $this->compiler->prefix_code=array();
+        $tmp =''; foreach ($this->compiler->prefix_code as $code) [$tmp.=$code;}] $this->compiler->prefix_code=array();
         $this->_retvalue = new _smarty_tag($this, $this->compiler->processNocacheCode($tmp.$this->yystack[$this->yyidx + 0]->minor,true));
     } else {
         $this->_retvalue = new _smarty_tag($this, $this->yystack[$this->yyidx + 0]->minor);
@@ -2805,7 +2805,7 @@ static public $yy_action = array(
     if ($this->security) {
         $this->compiler->trigger_template_error (self::Err2);
     }
-    $this->_retvalue = '->{'.$this->compileVariable($this->yystack[$this->yyidx + -1]->minor).$this->yystack[$this->yyidx + 0]->minor.'}';
+    $this->_retvalue = '->['.$this->compileVariable($this->yystack[$this->yyidx + -1]->minor).$this->yystack[$this->yyidx + 0]->minor.']';
     }
 #line 2806 "smarty_internal_templateparser.php"
 #line 931 "smarty_internal_templateparser.y"
@@ -2813,7 +2813,7 @@ static public $yy_action = array(
     if ($this->security) {
         $this->compiler->trigger_template_error (self::Err2);
     }
-    $this->_retvalue = '->{'.$this->yystack[$this->yyidx + -2]->minor.$this->yystack[$this->yyidx + 0]->minor.'}';
+    $this->_retvalue = '->['.$this->yystack[$this->yyidx + -2]->minor.$this->yystack[$this->yyidx + 0]->minor.']';
     }
 #line 2814 "smarty_internal_templateparser.php"
 #line 938 "smarty_internal_templateparser.y"
@@ -2821,7 +2821,7 @@ static public $yy_action = array(
     if ($this->security) {
         $this->compiler->trigger_template_error (self::Err2);
     }
-    $this->_retvalue = '->{\''.$this->yystack[$this->yyidx + -4]->minor.'\'.'.$this->yystack[$this->yyidx + -2]->minor.$this->yystack[$this->yyidx + 0]->minor.'}';
+    $this->_retvalue = '->[\''.$this->yystack[$this->yyidx + -4]->minor.'\'.'.$this->yystack[$this->yyidx + -2]->minor.$this->yystack[$this->yyidx + 0]->minor.']';
     }
 #line 2822 "smarty_internal_templateparser.php"
 #line 946 "smarty_internal_templateparser.y"
@@ -3061,7 +3061,7 @@ static public $yy_action = array(
         if (array_key_exists($yyruleno, self::$yyReduceMap)) {
             // call the action
             $this->_retvalue = null;
-            $this->{'yy_r' . self::$yyReduceMap[$yyruleno]}();
+            $this->['yy_r' . self::$yyReduceMap[$yyruleno]]();
             $yy_lefthand_side = $this->_retvalue;
         }
         $yygoto = self::$yyRuleInfo[$yyruleno]['lhs'];

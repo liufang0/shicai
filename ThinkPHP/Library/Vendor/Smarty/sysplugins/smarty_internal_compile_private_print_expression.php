@@ -56,7 +56,7 @@ class Smarty_Internal_Compile_Private_Print_Expression extends Smarty_Internal_C
         }
         if (isset($_attr['assign'])) {
             // assign output to variable
-            $output = "<?php \$_smarty_tpl->assign({$_attr['assign']},{$parameter['value']});?>";
+            $output = "<?php \$_smarty_tpl->assign([$_attr['assign']],[$parameter['value']]);?>";
         } else {
             // display value
             $output = $parameter['value'];
@@ -83,17 +83,17 @@ class Smarty_Internal_Compile_Private_Print_Expression extends Smarty_Internal_C
                 }
                 // autoescape html
                 if ($compiler->template->smarty->escape_html) {
-                    $output = "htmlspecialchars({$output}, ENT_QUOTES, SMARTY_RESOURCE_CHAR_SET)";
+                    $output = "htmlspecialchars([$output], ENT_QUOTES, SMARTY_RESOURCE_CHAR_SET)";
                 }
                 // loop over registerd filters
                 if (!empty($compiler->template->smarty->registered_filters[Smarty::FILTER_VARIABLE])) {
                     foreach ($compiler->template->smarty->registered_filters[Smarty::FILTER_VARIABLE] as $key => $function) {
                         if (!is_array($function)) {
-                            $output = "{$function}({$output},\$_smarty_tpl)";
+                            $output = "[$function]([$output],\$_smarty_tpl)";
                         } else if (is_object($function[0])) {
-                            $output = "\$_smarty_tpl->smarty->registered_filters[Smarty::FILTER_VARIABLE][{$key}][0]->{$function[1]}({$output},\$_smarty_tpl)";
+                            $output = "\$_smarty_tpl->smarty->registered_filters[Smarty::FILTER_VARIABLE][[$key]][0]->[$function[1]]([$output],\$_smarty_tpl)";
                         } else {
-                            $output = "{$function[0]}::{$function[1]}({$output},\$_smarty_tpl)";
+                            $output = "[$function[0]]::[$function[1]]([$output],\$_smarty_tpl)";
                         }
                     }
                 }
@@ -105,7 +105,7 @@ class Smarty_Internal_Compile_Private_Print_Expression extends Smarty_Internal_C
                             $output = $result;
                         } else {
                             // not found, throw exception
-                            throw new SmartyException("Unable to load filter '{$name}'");
+                            throw new SmartyException("Unable to load filter '[$name]'");
                         }
                     }
                 }
@@ -121,7 +121,7 @@ class Smarty_Internal_Compile_Private_Print_Expression extends Smarty_Internal_C
             }
 
             $compiler->has_output = true;
-            $output = "<?php echo {$output};?>";
+            $output = "<?php echo [$output];?>";
         }
         return $output;
     }
@@ -134,7 +134,7 @@ class Smarty_Internal_Compile_Private_Print_Expression extends Smarty_Internal_C
     */
     private function compile_output_filter($compiler, $name, $output)
     {
-        $plugin_name = "smarty_variablefilter_{$name}";
+        $plugin_name = "smarty_variablefilter_[$name]";
         $path = $compiler->smarty->loadPlugin($plugin_name, false);
         if ($path) {
             if ($compiler->template->caching) {
@@ -148,7 +148,7 @@ class Smarty_Internal_Compile_Private_Print_Expression extends Smarty_Internal_C
             // not found
             return false;
         }
-        return "{$plugin_name}({$output},\$_smarty_tpl)";
+        return "[$plugin_name]([$output],\$_smarty_tpl)";
     }
 
 }

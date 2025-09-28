@@ -66,7 +66,7 @@ class Gd{
             $this->gif = new $class($imgname);
             $this->img = imagecreatefromstring($this->gif->image());
         } else {
-            $fun = "imagecreatefrom{$this->info['type']}";
+            $fun = "imagecreatefrom[$this->info['type']]";
             $this->img = $fun($imgname);
         }
     }
@@ -410,7 +410,7 @@ class Gd{
         $locate = Image::IMAGE_WATER_SOUTHEAST, $offset = 0, $angle = 0){
         //资源检测
         if(empty($this->img)) E('没有可以被写入文字的图像资源');
-        if(!is_file($font)) E("不存在的字体文件：{$font}");
+        if(!is_file($font)) E("不存在的字体文件：[$font]");
 
         //获取文字信息
         $info = imagettfbbox($size, $angle, $font, $text);

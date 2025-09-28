@@ -163,7 +163,7 @@ class _PHPRPC_Client {
         if (!isset($urlparts['path'])) {
             $urlparts['path'] = "/";
         }
-        else if (($urlparts['path']{0} != '/') && ($_SERVER["PHP_SELF"]{0} == '/')) {
+        else if (($urlparts['path'][0] != '/') && ($_SERVER["PHP_SELF"][0] == '/')) {
             $urlparts['path'] = substr($_SERVER["PHP_SELF"], 0, strrpos($_SERVER["PHP_SELF"], '/') + 1) . $urlparts['path'];
         }
 
@@ -262,7 +262,7 @@ class _PHPRPC_Client {
         if (count($args) > 0) {
             $request .= "&phprpc_args=" . base64_encode($this->_encrypt(serialize_fix($args), 1));
         }
-        $request .= "&phprpc_encrypt={$this->_encryptMode}";
+        $request .= "&phprpc_encrypt=[$this->_encryptMode]";
         if (!$byRef) {
             $request .= "&phprpc_ref=false";
         }
@@ -360,7 +360,7 @@ class _PHPRPC_Client {
                           "Cache-Control: no-cache\r\n";
         }
         else {
-            $url = "{$this->_server['scheme']}://{$this->_server['host']}:{$this->_server['port']}{$this->_server['path']}";
+            $url = "[$this->_server['scheme']]://[$this->_server['host']]:[$this->_server['port']][$this->_server['path']]";
             $connection = "Proxy-Connection: " . ($this->_keep_alive ? 'keep-alive' : 'close') . "\r\n";
             if (!is_null($this->_proxy['user'])) {
                 $connection .= "Proxy-Authorization: Basic " . base64_encode($this->_proxy['user'] . ":" . $this->_proxy['pass']) . "\r\n";
@@ -376,16 +376,16 @@ class _PHPRPC_Client {
         }
         $content_len = strlen($request_body);
         $request =
-            "POST $url HTTP/{$this->_http_version}\r\n" .
-            "Host: {$this->_server['host']}:{$this->_server['port']}\r\n" .
+            "POST $url HTTP/[$this->_http_version]\r\n" .
+            "Host: [$this->_server['host']]:[$this->_server['port']]\r\n" .
             "User-Agent: PHPRPC Client 3.0 for PHP\r\n" .
             $auth .
             $connection .
             $cookie .
             "Accept: */*\r\n" .
             "Accept-Encoding: gzip,deflate\r\n" .
-            "Content-Type: application/x-www-form-urlencoded; charset={$this->_charset}\r\n" .
-            "Content-Length: {$content_len}\r\n" .
+            "Content-Type: application/x-www-form-urlencoded; charset=[$this->_charset]\r\n" .
+            "Content-Length: [$content_len]\r\n" .
             "\r\n" .
             $request_body;
         fputs($this->_socket, $request, strlen($request));
@@ -463,7 +463,7 @@ class _PHPRPC_Client {
         else {
             return new PHPRPC_Error(E_ERROR, "Illegal PHPRPC server.");
         }
-        if (preg_match('/text\/plain\; charset\=([^,;]*)([,;]|$)/i', $header['content-type'][0], $match)) {
+        if (preg_match('/text\/plain\; charset\=([^,;}]*)([,;}]|$)/i', $header['content-type'][0], $match)) {
             $this->_charset = $match[1];
         }
         if (isset($header['set-cookie'])) {
@@ -511,7 +511,7 @@ class _PHPRPC_Client {
     }
     function _key_exchange() {
         if (!is_null($this->_key) || ($this->_encryptMode == 0)) return true;
-        $request = "phprpc_encrypt=true&phprpc_keylen={$this->_keylen}";
+        $request = "phprpc_encrypt=true&phprpc_keylen=[$this->_keylen]";
         $result = $this->_post($request);
         if (is_a($result, 'PHPRPC_Error')) {
             return $result;

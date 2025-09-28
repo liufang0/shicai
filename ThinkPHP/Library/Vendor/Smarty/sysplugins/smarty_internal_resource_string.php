@@ -13,7 +13,7 @@
  *
  * Implements the strings as resource for Smarty template
  *
- * {@internal unlike eval-resources the compiled state of string-resources is saved for subsequent access}}
+ * [@internal unlike eval-resources the compiled state of string-resources is saved for subsequent access]}
  *
  * @package Smarty
  * @subpackage TemplateResources

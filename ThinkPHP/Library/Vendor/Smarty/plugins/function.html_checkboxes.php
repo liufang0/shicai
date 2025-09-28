@@ -7,7 +7,7 @@
  */
 
 /**
- * Smarty {html_checkboxes} function plugin
+ * Smarty [html_checkboxes] function plugin
  *
  * File:       function.html_checkboxes.php<br>
  * Type:       function<br>
@@ -16,9 +16,9 @@
  * Purpose:    Prints out a list of checkbox input types<br>
  * Examples:
  * <pre>
- * {html_checkboxes values=$ids output=$names}
- * {html_checkboxes values=$ids name='box' separator='<br>' output=$names}
- * {html_checkboxes values=$ids checked=$checked separator='<br>' output=$names}
+ * [html_checkboxes values=$ids output=$names]
+ * [html_checkboxes values=$ids name='box' separator='<br>' output=$names]
+ * [html_checkboxes values=$ids checked=$checked separator='<br>' output=$names]
  * </pre>
  * Params:
  * <pre>
@@ -32,7 +32,7 @@
  * - escape     (optional) - escape the content (not value), defaults to true
  * </pre>
  *
- * @link http://www.smarty.net/manual/en/language.function.html.checkboxes.php {html_checkboxes}
+ * @link http://www.smarty.net/manual/en/language.function.html.checkboxes.php [html_checkboxes]
  *      (Smarty online manual)
  * @author     Christopher Kvarme <christopher.kvarme@flashjab.com>
  * @author credits to Monte Ohrt <monte at ohrt dot com>

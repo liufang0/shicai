@@ -43,7 +43,7 @@ class Smarty_Security {
     public $secure_dir = array();
     /**
      * This is an array of directories where trusted php scripts reside.
-     * {@link $security} is disabled during their inclusion/execution.
+     * [@link $security] is disabled during their inclusion/execution.
      *
      * @var array
      */
@@ -182,7 +182,7 @@ class Smarty_Security {
             return true;
         }
 
-        $compiler->trigger_template_error("PHP function '{$function_name}' not allowed by security setting");
+        $compiler->trigger_template_error("PHP function '[$function_name]' not allowed by security setting");
         return false; // should not, but who knows what happens to the compiler in the future?
     }
 
@@ -200,7 +200,7 @@ class Smarty_Security {
             return true;
         }
 
-        $compiler->trigger_template_error("access to static class '{$class_name}' not allowed by security setting");
+        $compiler->trigger_template_error("access to static class '[$class_name]' not allowed by security setting");
         return false; // should not, but who knows what happens to the compiler in the future?
     }
 
@@ -218,7 +218,7 @@ class Smarty_Security {
             return true;
         }
 
-        $compiler->trigger_template_error("modifier '{$modifier_name}' not allowed by security setting");
+        $compiler->trigger_template_error("modifier '[$modifier_name]' not allowed by security setting");
         return false; // should not, but who knows what happens to the compiler in the future?
     }
 
@@ -242,12 +242,12 @@ class Smarty_Security {
             if (empty($this->disabled_tags) || !in_array($tag_name, $this->disabled_tags)) {
                 return true;
             } else {
-                $compiler->trigger_template_error("tag '{$tag_name}' disabled by security setting", $compiler->lex->taglineno);
+                $compiler->trigger_template_error("tag '[$tag_name]' disabled by security setting", $compiler->lex->taglineno);
             }
         } else if (in_array($tag_name, $this->allowed_tags) && !in_array($tag_name, $this->disabled_tags)) {
             return true;
         } else {
-            $compiler->trigger_template_error("tag '{$tag_name}' not allowed by security setting", $compiler->lex->taglineno);
+            $compiler->trigger_template_error("tag '[$tag_name]' not allowed by security setting", $compiler->lex->taglineno);
         }
         return false; // should not, but who knows what happens to the compiler in the future?
     }
@@ -271,12 +271,12 @@ class Smarty_Security {
             if (empty($this->disabled_modifiers) || !in_array($modifier_name, $this->disabled_modifiers)) {
                 return true;
             } else {
-                $compiler->trigger_template_error("modifier '{$modifier_name}' disabled by security setting", $compiler->lex->taglineno);
+                $compiler->trigger_template_error("modifier '[$modifier_name]' disabled by security setting", $compiler->lex->taglineno);
             }
         } else if (in_array($modifier_name, $this->allowed_modifiers) && !in_array($modifier_name, $this->disabled_modifiers)) {
             return true;
         } else {
-            $compiler->trigger_template_error("modifier '{$modifier_name}' not allowed by security setting", $compiler->lex->taglineno);
+            $compiler->trigger_template_error("modifier '[$modifier_name]' not allowed by security setting", $compiler->lex->taglineno);
         }
         return false; // should not, but who knows what happens to the compiler in the future?
     }
@@ -294,7 +294,7 @@ class Smarty_Security {
             return true;
         }
 
-        throw new SmartyException("stream '{$stream_name}' not allowed by security setting");
+        throw new SmartyException("stream '[$stream_name]' not allowed by security setting");
     }
 
     /**
@@ -372,7 +372,7 @@ class Smarty_Security {
         }
 
         // give up
-        throw new SmartyException("directory '{$_filepath}' not allowed by security setting");
+        throw new SmartyException("directory '[$_filepath]' not allowed by security setting");
     }
 
     /**
@@ -385,7 +385,7 @@ class Smarty_Security {
     public function isTrustedPHPDir($filepath)
     {
         if (empty($this->trusted_dir)) {
-            throw new SmartyException("directory '{$filepath}' not allowed by security setting (no trusted_dir specified)");
+            throw new SmartyException("directory '[$filepath]' not allowed by security setting (no trusted_dir specified)");
         }
 
         // check if index is outdated
@@ -419,7 +419,7 @@ class Smarty_Security {
             $directory = substr($directory, 0, $pos);
         }
 
-        throw new SmartyException("directory '{$_filepath}' not allowed by security setting");
+        throw new SmartyException("directory '[$_filepath]' not allowed by security setting");
     }
 
 }

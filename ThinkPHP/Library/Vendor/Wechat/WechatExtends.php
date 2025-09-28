@@ -73,7 +73,7 @@ class WechatExtends extends Common {
             'action'   => 'long2short',
             'long_url' => $long_url
         );
-        $result = Tools::httpPost(self::API_URL_PREFIX . self::SHORT_URL . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_URL_PREFIX . self::SHORT_URL . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -106,7 +106,7 @@ class WechatExtends extends Common {
         if ($type == 1) {
             unset($data['expire_seconds']);
         }
-        $result = Tools::httpPost(self::API_URL_PREFIX . self::QRCODE_CREATE_URL . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_URL_PREFIX . self::QRCODE_CREATE_URL . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -149,7 +149,7 @@ class WechatExtends extends Common {
         } elseif ($region) {
             $data['region'] = $region;
         }
-        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::SEMANTIC_API_URL . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::SEMANTIC_API_URL . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {
@@ -181,7 +181,7 @@ class WechatExtends extends Common {
             'begin_date' => $begin_date,
             'end_date'   => $end_date ? $end_date : $begin_date
         );
-        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::$DATACUBE_URL_ARR[$type][$subtype] . "access_token={$this->access_token}", Tools::json_encode($data));
+        $result = Tools::httpPost(self::API_BASE_URL_PREFIX . self::$DATACUBE_URL_ARR[$type][$subtype] . "access_token=[$this->access_token]", Tools::json_encode($data));
         if ($result) {
             $json = json_decode($result, true);
             if (!$json || !empty($json['errcode'])) {

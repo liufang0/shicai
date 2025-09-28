@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta content="target-densitydpi=320,width=750,user-scalable=no" name="viewport" />
+    <meta content="no" name="apple-touch-fullscreen" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <title>钱包</title>
+    <!--<link href="/statics/web/css/css.css?v=3" rel="stylesheet" type="text/css">-->
+    <!--<script src="/statics/web/js/jquery.1.8.2.min.js"></script>-->
+    <!--<script src="/statics/web/js/style.js"></script>-->
+    <link href="/statics/web/css/css.css" rel="stylesheet" type="text/css">
+<link href="/statics/web/css/red.css" rel="stylesheet" type="text/css"><script src="/statics/web/js/jquery.1.8.2.min.js"></script><script src="/statics/web/js/style.js"></script></head>
+<body>
+<header class="head-wallet">
+    <em onclick="history.go(-1)">返回</em>
+    <h1>充值</h1>
+    <!---->
+</header>
+<section class="pb-0">
+    <div class="modify">
+        <!-- <h3 class="yuE">账户余额<em></em></h3> -->
+        <div class="bankCard2 chongzhi">
+            
+            <dl>
+                <dt>
+                    <div class="tab-item active"><span><i class="icoTop"></i>线上充值</span></div>
+                    <div class="tab-item"><span><i class="icoBot"></i>线下充值</span></div>
+                </dt>
+                <dd>
+                                        <ul id="onlineCharge">
+                                                <li><input id="radioali133" name="radio" type="radio" value="133,ali" checked/><label for="radioali133" style="background: url(/up_files/room/zhifubao.png) no-repeat left; background-size: 53px 53px;" class="icoWeix2">小强支付宝扫码支付</label></li>
+                                                <li><input id="radioalih133" name="radio" type="radio" value="133,alih" /><label for="radioalih133" style="background: url(/up_files/room/zhifubao.png) no-repeat left; background-size: 53px 53px;" class="icoWeix2">小强支付宝H5支付</label></li>
+                                                <li><input id="radioali186" name="radio" type="radio" value="186,ali" /><label for="radioali186" style="background: url(/up_files/room/zhifubao.png) no-repeat left; background-size: 53px 53px;" class="icoWeix2">万付宝支付宝支付</label></li>
+                                                <li><input id="radioaliwap186" name="radio" type="radio" value="186,aliwap" /><label for="radioaliwap186" style="background: url(/up_files/room/zhifubao.png) no-repeat left; background-size: 53px 53px;" class="icoWeix2">万付宝支付宝H5支付</label></li>
+                                                <li><input id="radiowx132" name="radio" type="radio" value="132,wx" /><label for="radiowx132" style="background: url(/up_files/room/weixin.png) no-repeat left; background-size: 53px 53px;" class="icoWeix2">小强微信扫码支付</label></li>
+                                                <li><input id="radiowxh132" name="radio" type="radio" value="132,wxh" /><label for="radiowxh132" style="background: url(/up_files/room/weixin.png) no-repeat left; background-size: 53px 53px;" class="icoWeix2">小强微信H5支付</label></li>
+                                                <li><input id="radioqq134" name="radio" type="radio" value="134,qq" /><label for="radioqq134" style="background: url(/up_files/room/qqWallet.png) no-repeat left; background-size: 53px 53px;" class="icoWeix2">小强QQ钱包扫码支付</label></li>
+                                                <li><input id="radioqqh134" name="radio" type="radio" value="134,qqh" /><label for="radioqqh134" style="background: url(/up_files/room/qqWallet.png) no-repeat left; background-size: 53px 53px;" class="icoWeix2">小强QQ钱包H5支付</label></li>
+                                                <li><input id="radiowy131" name="radio" type="radio" value="131,wy" /><label for="radiowy131" style="background: url(/up_files/room/yinlian.png) no-repeat left; background-size: 53px 53px;" class="icoWeix2">网银支付</label></li>
+                                                <!-- <li class="button" style="margin-top: 20px; padding-bottom: 40px;">
+                            <button class="colorDa" id="xsBtn">去支付</button>
+                        </li> -->
+                    </ul>
+                                    </dd>
+                <dd style="display: none">
+                                        <ul>
+                                                                        <li data-href="http://hmyl28.com/?m=web&c=recharge&a=rechargeOfflineMoney&payment_id=73">
+                                                <label class=" icoWeix2 ">
+                        微信转银行卡(大额转账,单笔5001以上送2%)<em>(充值限额： 10.00~99884873.00)</em>
+                        </label>
+                        </li>
+                                                                            <li data-href="http://hmyl28.com/?m=web&c=recharge&a=rechargeOfflineMoney&payment_id=80">
+                                                <label class=" icoZfb2 ">
+                        支付宝转银行卡(大额转账,单笔5001以上送2%)<em>(充值限额： 10~9999963154.99)</em>
+                        </label>
+                        </li>
+                                                                            <li data-href="http://hmyl28.com/?m=web&c=recharge&a=rechargeOfflineMoney&payment_id=137">
+                                                <label class=" icoYinl2 ">
+                        银行转账(大额转账,单笔5001以上送2%)<em>(充值限额： 10~9999479789.70)</em>
+                        </label>
+                        </li>
+                                            </ul>
+                                    </dd>
+            </dl>
+        </div>
+    </div>
+</section>
+    <script type="text/javascript">
+        $(function() {
+            $("#onlineCharge li").click(function() {
+                var payment_data =  $('input[name=radio]:checked').val();
+                var arrPayment = payment_data.split(',');
+               	window.location.href = "http://hmyl28.com/?m=web&c=recharge&a=rechargeOnlineMoney&payment_id=" + arrPayment[0] + "&channel_type=" + arrPayment[1];
+            });
+            $('.tab-item').click(function(){
+                var _index = $(this).index();
+                $(this).addClass("active").siblings().removeClass('active');
+                $('.bankCard2 dd').eq(_index).show().siblings("dd").hide();
+            });
+        });
+    </script>
+</body>
+</html>

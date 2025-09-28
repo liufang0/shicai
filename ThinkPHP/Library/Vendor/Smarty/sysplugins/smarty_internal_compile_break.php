@@ -2,7 +2,7 @@
 /**
  * Smarty Internal Plugin Compile Break
  *
- * Compiles the {break} tag
+ * Compiles the [break] tag
  *
  * @package Smarty
  * @subpackage Compiler
@@ -32,7 +32,7 @@ class Smarty_Internal_Compile_Break extends Smarty_Internal_CompileBase {
     public $shorttag_order = array('levels');
 
     /**
-     * Compiles code for the {break} tag
+     * Compiles code for the [break] tag
      *
      * @param array  $args array with attributes from parser
      * @param object $compiler   compiler object
@@ -66,10 +66,10 @@ class Smarty_Internal_Compile_Break extends Smarty_Internal_CompileBase {
             $stack_count--;
         }
         if ($level_count != 0) {
-            $compiler->trigger_template_error("cannot break {$_levels} level(s)", $compiler->lex->taglineno);
+            $compiler->trigger_template_error("cannot break [$_levels] level(s)", $compiler->lex->taglineno);
         }
         $compiler->has_code = true;
-        return "<?php break {$_levels}?>";
+        return "<?php break [$_levels]?>";
     }
 
 }

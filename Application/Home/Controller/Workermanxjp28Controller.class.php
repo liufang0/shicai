@@ -2,10 +2,7 @@
  
 namespace Home\Controller;
 use Think\Server;
-
-header('content-type:text/html;charset=utf-8');
 class Workermanxjp28Controller extends Server {
-
 	protected $socket = 'websocket://0.0.0.0:15536';
 	
 	/*添加定时器
@@ -16,7 +13,6 @@ class Workermanxjp28Controller extends Server {
 		if (!$auth) {
 			echo "未授权或授权已过期";exit;
 		}
-
 		$beginToday=strtotime('00:00:00');
 		$endToday=strtotime("23:59:59");
 		$caiji = M('caiji')->where("game='xjp28'")->limit(0,1)->order("id desc")->find();
@@ -45,7 +41,6 @@ class Workermanxjp28Controller extends Server {
 			$beginToday=strtotime('00:00:00');
 			$endToday=strtotime("23:59:59");
 			F('game','xjp28');
-
 			$xjp28data = F('xjp28data');
 			$next_time = $xjp28data['next']['delayTimeInterval']+strtotime($xjp28data['next']['awardTime']);
 			$awardtime = $xjp28data['current']['awardTime'];
@@ -70,7 +65,6 @@ class Workermanxjp28Controller extends Server {
 					$conn -> send(json_encode($new_message));
 				}
 			}
-
 			if($next_time-time()==C('xjp28_stop_time')){
 				F('xjp28_state',0);
 				setconfig('xjp28_state',0);
@@ -106,7 +100,6 @@ class Workermanxjp28Controller extends Server {
 						$current_number['zuhe'] = '大单';
 					}
 				}
-
 				if ($tema_number >=0 && $tema_number <=5) {
 					$current_number['jdx'] = '极小';
 				} else if($tema_number >= 22 && $tema_number <=27) {
@@ -114,7 +107,6 @@ class Workermanxjp28Controller extends Server {
 				}  else {
 					$current_number['jdx'] = '';
 				}
-
 				//当前局所有竞猜
 				$today_time = strtotime(date('Y-m-d',time()));
 				$list = M('order')->where("number = {$current_number['periodnumber']} && time > '{$today_time}' && state = 1 && is_add = 0 && game='xjp28'")->order("time ASC")->select();
@@ -136,7 +128,6 @@ class Workermanxjp28Controller extends Server {
 							);
 							M('push_money')->add($fx_data);
 						}
-
 						$set_add = M('order')->where("id={$id}")->setField(array('is_add'=>1));
 						//分类
 						switch($list[$i]['type']){
@@ -146,7 +137,6 @@ class Workermanxjp28Controller extends Server {
 								$start1 = substr($list[$i]['jincai'], 0,3);
 								$starts1 = substr($list[$i]['jincai'],3);
 								$num1 = 0;
-
 								if ($start1 == '大' || $start1 == '小') {
 									if ($start1 == $current_number['tema_dx']) {
 										$num1 = 1;
@@ -156,7 +146,6 @@ class Workermanxjp28Controller extends Server {
 										$num1 = 1;
 									}
 								}
-
 								if($num1>0){
 									if ($current_number['tema'] == '13' || $current_number['tema'] == '14') {
 										if(C('xjp28_1314_open') == '1'){
@@ -181,18 +170,15 @@ class Workermanxjp28Controller extends Server {
 									}
 								}
 								break;
-
 							//组合  大单100  小100  
 							case 2:
 								$start2 = substr($list[$i]['jincai'], 0,6);
 								$starts2 = substr($list[$i]['jincai'],6);
 								$num2 = 0;
-
 							
 								if ($start2 == $current_number['zuhe']) {
 									$num2 = 1;
 								}
-
 								if($num2>0){
 									if ($current_number['tema'] == '13' || $current_number['tema'] == '14') {
 										$points2 = $num2*$starts2*C('xjp28_zuhe_md');
@@ -210,8 +196,6 @@ class Workermanxjp28Controller extends Server {
 									}
 								}
 								break;
-
-
 							//极大小  极大100  
 							case 3:
 								$start3 = substr($list[$i]['jincai'], 0,6);
@@ -220,7 +204,6 @@ class Workermanxjp28Controller extends Server {
 								if ($start3 == $current_number['jdx']) {
 									$num3 = 1;
 								}
-
 								if($num3>0){
 									$points3 = $num3*$starts3*C('xjp28_jdx');
 									$res3 = $this->add_points($id,$userid,$points3);
@@ -229,19 +212,14 @@ class Workermanxjp28Controller extends Server {
 									}
 								}
 								break;
-
-
 							//庄闲和    庄100  和100
 							case 4:
 								$start4 = substr($list[$i]['jincai'], 0,3);
 								$starts4 = substr($list[$i]['jincai'],3);
-
 								$num4 = 0;
-
 								if ($start4 == $current_number['zx']) {
 									$num4 = 1;
 								}
-
 								if($num4 > 0 ){
 									if ($start4 == '庄' || $start4 == '闲') {
 										if ($current_number['zx'] == '和') {
@@ -252,15 +230,12 @@ class Workermanxjp28Controller extends Server {
 									} else {
 										$points4 = $num4*$starts4*C('xjp28_zx_2');
 									}
-
 									$res4 = $this->add_points($id,$userid,$points4);
 									if($res4){
 										$this->send_msg('pointsadd',$points4,$userid);
 									}
 								}
 								break;
-
-
 							//豹子对子顺子 100  白字100  
 							case 5:
 								$start5 = substr($list[$i]['jincai'], 0,6);
@@ -269,7 +244,6 @@ class Workermanxjp28Controller extends Server {
 								if ($start5 == $current_number['q3']) {
 									$num5 = 1;
 								}
-
 								if($num5>0){
 									if ($start5 == '豹子') {
 										$points5 = $num5*$starts5*C('xjp28_bds_1');
@@ -289,17 +263,13 @@ class Workermanxjp28Controller extends Server {
 									}
 								}
 								break;
-
-
 							//特码数字 3点100  
 							case 6:
 								$start6 = explode('点', $list[$i]['jincai']);
-
 								$num6 = 0;
 								if ($start6[0] == $current_number['tema']) {
 									$num6 = 1;
 								}
-
 								if($num6>0){
 									if ($start6[0] == '0' || $start6[0] == '27') {
 										$points6 = $num6*$start6[1]*C('xjp28_tema_0');
@@ -330,7 +300,6 @@ class Workermanxjp28Controller extends Server {
 									} else if($start6[0] == '13' || $start6[0] == '14') {
 										$points6 = $num6*$start6[1]*C('xjp28_tema_13');
 									}	
-
 									$res6 = $this->add_points($id,$userid,$points6);
 									if($res6){
 										$this->send_msg('pointsadd',$points6,$userid);
@@ -343,7 +312,6 @@ class Workermanxjp28Controller extends Server {
 				
 				F('is_send',1);
 				F('xjp28_state',0);
-
 				
 				$info = explode(',', $current_number['awardnumbers']);
 				
@@ -383,7 +351,6 @@ class Workermanxjp28Controller extends Server {
 			
     	});
 		
-
 		
 		//ping 统计人数
 		\Workerman\Lib\Timer::add($time_interval, function(){
@@ -422,7 +389,6 @@ class Workermanxjp28Controller extends Server {
 		\Workerman\Lib\Timer::add(5, function(){
 			$caiji = M('caiji')->where("game='xjp28'")->limit(0,1)->order("id desc")->find();
 			$data = json_decode(xjp28_format($caiji),true);
-
 			if(F('xjp28PeriodNumber')!=$data['current']['periodNumber']){
 				$today_time = date('Y-m-d',time()) . " 00:00:00";
 				$res = M('number')->where("game = 'xjp28' and periodnumber = {$data['current']['periodNumber']} and awardtime > '{$today_time}'")->find();
@@ -440,7 +406,6 @@ class Workermanxjp28Controller extends Server {
 					$numberThree = $info[2];
 					
 					$map['tema'] = $numberOne+$numberTwo+$numberThree ;
-
 					if($map['tema'] % 2 == 0){
 						$map['tema_ds'] = '双';
 					}
@@ -461,9 +426,7 @@ class Workermanxjp28Controller extends Server {
 					}else{
 						$map['zx'] = '闲';
 					}
-
 					$map['q3'] = bj28_qzh(array($numberOne,$numberTwo,$numberThree));
-
 					$map['game'] = $data['game'];
 					$res1 = M('number')->add($map);
 					if($res1){
@@ -474,7 +437,6 @@ class Workermanxjp28Controller extends Server {
 				}
 			}
     	});
-
 	}
 	
 	/*
@@ -598,7 +560,6 @@ class Workermanxjp28Controller extends Server {
 						} else {
 							$content_msg =  '「'.$message_data['content'].'」'.'单笔点数最高'.$res['xz_max'].',竞猜失败';
 						}
-
 						$new_message = array(
 							'uid'  => $connection->uid,
 							'type' => 'admin',
@@ -642,38 +603,30 @@ class Workermanxjp28Controller extends Server {
 							$user = M('user')->where("id = $userid")->find();
 							//当前玩法是否超过设置金额
 							$wf_points = M('order')->field("sum(del_points) as sum_del")->where("userid = {$userid} and type={$res['type']} and state=1  and number = {$xjp28data['next']['periodNumber']}")->find();
-
 							$wf_max_points = 0;
 							switch ($res['type']) {
 								case '1':
 									$wf_max_points = C('xjp28_xz_max')['dxds'];
 									break;
-
 								case '2':
 									$wf_max_points = C('xjp28_xz_max')['zuhe'];
 									break;
-
 								case '3':
 									$wf_max_points = C('xjp28_xz_max')['jdx'];
 									break;
-
 								case '4':
 									$wf_max_points = C('xjp28_xz_max')['zx'];
 									break;
-
 								case '5':
 									$wf_max_points = C('xjp28_xz_max')['bds'];
 									break;
-
 								case '6':
 									$wf_max_points = C('xjp28_xz_max')['tema'];
 									break;
-
 								default:
 									$wf_max_points = 0;
 									break;
 							}
-
 							if (($wf_points['sum_del'] + $res['points']) > $wf_max_points) {
 								$points_tips = array(
 									'uid'  => $connection->uid,
@@ -689,10 +642,8 @@ class Workermanxjp28Controller extends Server {
 								$this->add_message($points_tips);/*添加信息*/
 								break;
 							}
-
 							//查看已投注金额
 							$user_points = M('order')->field("sum(del_points) as sum_del")->where("userid = {$userid} and state=1  and number = {$xjp28data['next']['periodNumber']}")->find();
-
 							if ((intval($user_points['sum_del'])+$res['points']) > C('xjp28qi_max_point')) {
 								$points_tips = array(
 									'uid'  => $connection->uid,
@@ -707,7 +658,6 @@ class Workermanxjp28Controller extends Server {
 								$this->add_message($points_tips);/*添加信息*/
 								break;
 							}
-
 							$map['userid'] = $userid;
 							$map['type'] = $res['type'];
 							$map['state'] = 1;
@@ -798,7 +748,6 @@ class Workermanxjp28Controller extends Server {
 								}
 							}
 						}
-
 						if (C('is_say')) {
 							$new_message2 = array(
 								'uid'=>$connection->uid,
@@ -915,7 +864,6 @@ class Workermanxjp28Controller extends Server {
 		return $res;
 	}
 	protected function add_message($new_message){
-
 		if (!empty($new_message)) {
 			$new_message['game'] = 'xjp28';
 			$res = M('message')->add($new_message);

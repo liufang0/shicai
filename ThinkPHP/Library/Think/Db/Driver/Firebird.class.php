@@ -41,7 +41,7 @@ class Firebird extends Driver{
         $this->queryStr = $str;
         if(!empty($this->bind)){
             $that   =   $this;
-            $this->queryStr =   strtr($this->queryStr,array_map(function($val) use($that){ return '\''.$that->escapeString($val).'\''; },$this->bind));
+            $this->queryStr =   strtr($this->queryStr,array_map(function($val) use($that){ return '\''.$that->escapeString($val).'\''; ],$this->bind));
         }
         if($fetchSql){
             return $this->queryStr;
