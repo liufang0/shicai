@@ -9,3 +9,109 @@ ERR: Undefined constant "Think\_PHP_FILE_"
 NOTIC: [2] Cannot modify header information - headers already sent by (output started at /home/runner/work/shicai/shicai/Application/Common/Conf/db.php:1) /home/runner/work/shicai/shicai/ThinkPHP/Library/Think/Think.class.php 第 229 行.
 NOTIC: [2] Cannot modify header information - headers already sent by (output started at /home/runner/work/shicai/shicai/Application/Common/Conf/db.php:1) /home/runner/work/shicai/shicai/ThinkPHP/Library/Think/Think.class.php 第 230 行.
 
+[ 2025-09-28T20:47:35+08:00 ] ::1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000006s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000246s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000380s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000401s ]
+
+[ 2025-09-28T20:48:48+08:00 ] ::1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000006s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000040s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000011s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000023s ]
+
+[ 2025-09-28T20:48:48+08:00 ] ::1 /Home/Get/getjnd28
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000006s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000035s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000016s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000035s ]
+NOTIC: [2] Undefined array key 0 /home/runner/work/shicai/shicai/ThinkPHP/Library/Think/Db/Driver.class.php 第 113 行.
+NOTIC: [2] Undefined array key 0 /home/runner/work/shicai/shicai/ThinkPHP/Library/Think/Db/Driver.class.php 第 113 行.
+NOTIC: [2] Undefined array key 0 /home/runner/work/shicai/shicai/ThinkPHP/Library/Think/Db/Driver.class.php 第 113 行.
+NOTIC: [2] Trying to access array offset on false /home/runner/work/shicai/shicai/Application/Home/Controller/GetController.class.php 第 90 行.
+NOTIC: [8192] strtotime(): Passing null to parameter #1 ($datetime) of type string is deprecated /home/runner/work/shicai/shicai/Application/Home/Controller/GetController.class.php 第 90 行.
+NOTIC: [2] Trying to access array offset on false /home/runner/work/shicai/shicai/Application/Home/Controller/GetController.class.php 第 93 行.
+NOTIC: [8192] explode(): Passing null to parameter #2 ($string) of type string is deprecated /home/runner/work/shicai/shicai/Application/Home/Controller/GetController.class.php 第 93 行.
+NOTIC: [2] Trying to access array offset on false /home/runner/work/shicai/shicai/Application/Home/Controller/GetController.class.php 第 94 行.
+NOTIC: [2] Trying to access array offset on false /home/runner/work/shicai/shicai/Application/Home/Controller/GetController.class.php 第 96 行.
+NOTIC: [2] Trying to access array offset on false /home/runner/work/shicai/shicai/Application/Home/Controller/GetController.class.php 第 97 行.
+NOTIC: [2] Trying to access array offset on false /home/runner/work/shicai/shicai/Application/Home/Controller/GetController.class.php 第 98 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000332s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000349s ]
+
+[ 2025-09-28T20:49:09+08:00 ] ::1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000007s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000037s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000011s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000023s ]
+
+[ 2025-09-28T20:49:52+08:00 ] ::1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000054s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000021s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000043s ]
+
+[ 2025-09-28T20:49:52+08:00 ] ::1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000006s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000033s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000012s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000028s ]
+
+[ 2025-09-28T20:50:02+08:00 ] ::1 /Home/Get/getjnd28
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000009s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000054s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000023s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000049s ]
+NOTIC: [2] Undefined array key 0 /home/runner/work/shicai/shicai/ThinkPHP/Library/Think/Db/Driver.class.php 第 113 行.
+NOTIC: [2] Undefined array key 0 /home/runner/work/shicai/shicai/ThinkPHP/Library/Think/Db/Driver.class.php 第 113 行.
+NOTIC: [2] Undefined array key 0 /home/runner/work/shicai/shicai/ThinkPHP/Library/Think/Db/Driver.class.php 第 113 行.
+NOTIC: [2] Trying to access array offset on false /home/runner/work/shicai/shicai/Application/Home/Controller/GetController.class.php 第 90 行.
+NOTIC: [8192] strtotime(): Passing null to parameter #1 ($datetime) of type string is deprecated /home/runner/work/shicai/shicai/Application/Home/Controller/GetController.class.php 第 90 行.
+NOTIC: [2] Trying to access array offset on false /home/runner/work/shicai/shicai/Application/Home/Controller/GetController.class.php 第 93 行.
+NOTIC: [8192] explode(): Passing null to parameter #2 ($string) of type string is deprecated /home/runner/work/shicai/shicai/Application/Home/Controller/GetController.class.php 第 93 行.
+NOTIC: [2] Trying to access array offset on false /home/runner/work/shicai/shicai/Application/Home/Controller/GetController.class.php 第 94 行.
+NOTIC: [2] Trying to access array offset on false /home/runner/work/shicai/shicai/Application/Home/Controller/GetController.class.php 第 96 行.
+NOTIC: [2] Trying to access array offset on false /home/runner/work/shicai/shicai/Application/Home/Controller/GetController.class.php 第 97 行.
+NOTIC: [2] Trying to access array offset on false /home/runner/work/shicai/shicai/Application/Home/Controller/GetController.class.php 第 98 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000030s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000056s ]
+
+[ 2025-09-28T20:50:02+08:00 ] ::1 /Home/Get/getBj28
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000007s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000044s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000014s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000034s ]
+NOTIC: [2] Undefined array key 0 /home/runner/work/shicai/shicai/ThinkPHP/Library/Think/Db/Driver.class.php 第 113 行.
+NOTIC: [2] Undefined array key 0 /home/runner/work/shicai/shicai/ThinkPHP/Library/Think/Db/Driver.class.php 第 113 行.
+NOTIC: [2] Undefined array key 0 /home/runner/work/shicai/shicai/ThinkPHP/Library/Think/Db/Driver.class.php 第 113 行.
+NOTIC: [2] Trying to access array offset on false /home/runner/work/shicai/shicai/Application/Home/Controller/GetController.class.php 第 74 行.
+NOTIC: [8192] strtotime(): Passing null to parameter #1 ($datetime) of type string is deprecated /home/runner/work/shicai/shicai/Application/Home/Controller/GetController.class.php 第 74 行.
+NOTIC: [2] Trying to access array offset on false /home/runner/work/shicai/shicai/Application/Home/Controller/GetController.class.php 第 77 行.
+NOTIC: [8192] explode(): Passing null to parameter #2 ($string) of type string is deprecated /home/runner/work/shicai/shicai/Application/Home/Controller/GetController.class.php 第 77 行.
+NOTIC: [2] Trying to access array offset on false /home/runner/work/shicai/shicai/Application/Home/Controller/GetController.class.php 第 78 行.
+NOTIC: [2] Trying to access array offset on false /home/runner/work/shicai/shicai/Application/Home/Controller/GetController.class.php 第 80 行.
+NOTIC: [2] Trying to access array offset on false /home/runner/work/shicai/shicai/Application/Home/Controller/GetController.class.php 第 81 行.
+NOTIC: [2] Trying to access array offset on false /home/runner/work/shicai/shicai/Application/Home/Controller/GetController.class.php 第 82 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000021s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000043s ]
+

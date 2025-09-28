@@ -2,8 +2,6 @@
 
 namespace Home\Controller;
 use Think\Controller;
-
-header('content-type:text/html;charset=utf-8');
 class GetController extends Controller{
 
 	//add by gison 20180503
