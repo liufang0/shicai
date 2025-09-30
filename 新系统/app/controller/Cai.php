@@ -28,12 +28,12 @@ class Cai extends BaseController
                 'periodnumber' => $periodnumber,
                 'awardnumbers' => $awardnumbers,
                 'awardtime' => $awardtime,
-                'game' => 'pk10',
+                'game' => '幸运飞艇',
                 'addtime' => time()
             ];
             
             $caijinum = Db::table('caiji')
-                ->where("game", 'pk10')
+                ->where("game", '幸运飞艇')
                 ->order("id desc")
                 ->limit(1)
                 ->find();
@@ -45,7 +45,7 @@ class Cai extends BaseController
     }
 
     /**
-     * 采集PK10数据
+     * 采集幸运飞艇数据
      */
     public function cpkpk()
     {
@@ -65,12 +65,12 @@ class Cai extends BaseController
                 'periodnumber' => $periodnumber,
                 'awardnumbers' => $awardnumbers,
                 'awardtime' => $awardtime,
-                'game' => 'pk10',
+                'game' => '幸运飞艇',
                 'addtime' => time()
             ];
             
             $caijinum = Db::table('caiji')
-                ->where("game", 'pk10')
+                ->where("game", '幸运飞艇')
                 ->order("id desc")
                 ->limit(1)
                 ->find();

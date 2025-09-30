@@ -137,11 +137,11 @@ var firstTopDisLayer = cc.Layer.extend({
 	g_isMusicPlay = !1,
 	g_isAddMaskSpr = !0,
 	g_carNumber = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    g_hostIp = "http://"+document.domain+"/Home/Get/getPk10?t="+ Math.random(),
-	pk10Scene = cc.Scene.extend({
+    g_hostIp = "http://"+document.domain+"/Home/Get/get幸运飞艇?t="+ Math.random(),
+	幸运飞艇Scene = cc.Scene.extend({
 		onEnter: function() {
 			this._super();
-			var a = new pk10;
+			var a = new 幸运飞艇;
 			a.init();
 			this.addChild(a);
 			g_isAddMaskSpr || a.initCarMask(g_carNumber)
@@ -292,7 +292,7 @@ var firstTopDisLayer = cc.Layer.extend({
 			for (var a = 0; a < maxCarNumber; a++) this._carArray[a].rmSpr(a)
 		}
 	}),
-	pk10 = cc.Layer.extend({
+	幸运飞艇 = cc.Layer.extend({
 		_paoDaoSprite: null,
 		_winSize: null,
 		_carMgrLayer: null,
@@ -673,7 +673,7 @@ var firstTopDisLayer = cc.Layer.extend({
 		},
 		gotoMainScene: function() {
 			g_isAddMaskSpr = !1;
-			var a = new pk10Scene;
+			var a = new 幸运飞艇Scene;
 			cc.Director.getInstance().replaceScene(a);
 			"function" == typeof afterEndRunning && afterEndRunning()
 		}

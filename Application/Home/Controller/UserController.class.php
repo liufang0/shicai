@@ -589,7 +589,7 @@ class UserController extends BaseController{
 
 	public function xiazhu(){
 			$t = I('t');
-		$pkdata = F('pk10data');
+		$pkdata = F('幸运飞艇data');
 		$map = array();
 		if($t == 1){
 			$beginToday=mktime(0,0,0,date('m'),date('d'),date('Y'));

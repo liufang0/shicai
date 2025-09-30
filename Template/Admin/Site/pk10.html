@@ -32,7 +32,7 @@
 							</div>
 						</div>
 						<div class="ibox-content">
-							<form id="signform" action="{:U('Admin/Site/pk10')}" method="post" class="form-horizontal">
+							<form id="signform" action="{:U('Admin/Site/幸运飞艇')}" method="post" class="form-horizontal">
 								<div class="form-group">
 									<label class="col-sm-3 control-label">客服欢迎语</label>
 									<div class="col-sm-6">
@@ -164,7 +164,7 @@
 								<!--div class="form-group">
 									<label class="col-sm-3 control-label">极速赛车封盘时间</label>
 									<div class="col-sm-6">
-										<input type="text" name="pk10_stop_time" value="{:C('pk10_stop_time')}" placeholder="60" class="form-control">秒
+										<input type="text" name="幸运飞艇_stop_time" value="{:C('幸运飞艇_stop_time')}" placeholder="60" class="form-control">秒
 										<span>（建议60秒，修改后需要重启服务生效）</span>
 									</div>
 
@@ -234,11 +234,11 @@
 								<!--div class="form-group">
 									<label class="col-sm-3 control-label">是否开盘极速赛车</label>
 									<div class="col-sm-6">
-										<input type="radio" value="1" <if condition="C('is_open_pk10') eq 1">checked</if> class="i-checks" name="is_open_pk10">开启&nbsp;&nbsp;
-										<input type="radio" value="0" <if condition="C('is_open_pk10') eq 0">checked</if> class="i-checks" name="is_open_pk10">关闭
+										<input type="radio" value="1" <if condition="C('is_open_幸运飞艇') eq 1">checked</if> class="i-checks" name="is_open_幸运飞艇">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('is_open_幸运飞艇') eq 0">checked</if> class="i-checks" name="is_open_幸运飞艇">关闭
 										<br><br>
-										开始时间：<input type="text" name="is_open_pk10_begin_time" value="{:C('is_open_pk10_begin_time')}" placeholder="09:00:00" class="form-control">
-										结束时间：<input type="text" name="is_open_pk10_end_time" value="{:C('is_open_pk10_end_time')}" placeholder="23:59:59" class="form-control">
+										开始时间：<input type="text" name="is_open_幸运飞艇_begin_time" value="{:C('is_open_幸运飞艇_begin_time')}" placeholder="09:00:00" class="form-control">
+										结束时间：<input type="text" name="is_open_幸运飞艇_end_time" value="{:C('is_open_幸运飞艇_end_time')}" placeholder="23:59:59" class="form-control">
 									</div>
 								</div>
 								
@@ -305,16 +305,16 @@
 								<!--<div class="form-group">
 									<label class="col-sm-3 control-label">北京赛车采集设置</label>
 									<div class="col-sm-6">
-										<select class="form-control pk10_kj_select" name="pk10_kj_select">
-											<option <if condition="C('pk10_kj_select') eq 1">selected</if>  value="1" >使用本系统自带采集开奖</option>
-											<option <if condition="C('pk10_kj_select') eq 2">selected</if>  value="2">使用彩票控接口开奖</option>
+										<select class="form-control 幸运飞艇_kj_select" name="幸运飞艇_kj_select">
+											<option <if condition="C('幸运飞艇_kj_select') eq 1">selected</if>  value="1" >使用本系统自带采集开奖</option>
+											<option <if condition="C('幸运飞艇_kj_select') eq 2">selected</if>  value="2">使用彩票控接口开奖</option>
 										</select>
 									</div>
 								</div>
-								<div class="form-group pk10_api"  <if condition="C('pk10_kj_select') eq 1">style='display:none'</if> >
+								<div class="form-group 幸运飞艇_api"  <if condition="C('幸运飞艇_kj_select') eq 1">style='display:none'</if> >
 									<label class="col-sm-3 control-label">彩票控北京赛车接口</label>
 									<div class="col-sm-6">
-										<input type="text" name="pk10_api" value="{:C('pk10_api')}" placeholder="http://api.kaijiangtong.com/lottery/?name=bjpks&format=json&uid=&token=79f6d380de334fed70722118b413e" class="form-control">
+										<input type="text" name="幸运飞艇_api" value="{:C('幸运飞艇_api')}" placeholder="http://api.kaijiangtong.com/lottery/?name=bjpks&format=json&uid=&token=79f6d380de334fed70722118b413e" class="form-control">
 									</div>
 								</div>
 
@@ -422,11 +422,11 @@
 		<script src="__PUBLIC__/Common/layer/layer.js"></script>
 		<script src="__PUBLIC__/Admin/js/plugins/iCheck/icheck.min.js"></script>
 		<script>
-			$('.pk10_kj_select').change(function(){
+			$('.幸运飞艇_kj_select').change(function(){
 				if ($(this).val() == 2) {
-					$('.pk10_api').show();
+					$('.幸运飞艇_api').show();
 				}else {
-					$('.pk10_api').hide();
+					$('.幸运飞艇_api').hide();
 				}
 			})
 

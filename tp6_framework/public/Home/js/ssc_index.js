@@ -491,7 +491,7 @@ $(function() {
 				/*iframe(); //加载动画界面
 				isfirthload = false;
 				tools.insertVideo(); //向视频中添加数据
-				tools.setPK10TB(); //启动纠错*/
+				tools.set幸运飞艇TB(); //启动纠错*/
 				//视频区
 				var hour = $("#timebox").find(".hour").text();
 				var minute = $("#timebox").find(".minute").text();
@@ -931,7 +931,7 @@ function excuteAnimate(arr, id) {
 	}, 100);
 }
 //开奖动画
-var intervalPk10 = null;
+var interval幸运飞艇 = null;
 
 //获得当前日的日期
 function getSystime() {
@@ -950,7 +950,7 @@ function getSystime() {
 var reloadotherData = null;
 
 function clearinterval(interval) {
-	clearInterval(intervalPk10);
+	clearInterval(interval幸运飞艇);
 }
 
 var listdata = {};

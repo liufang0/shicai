@@ -45,7 +45,7 @@ $game = isset($argv[2]) ? $argv[2] : 'all';
 
 // 游戏列表
 $games = [
-    'pk10' => 'app\\controller\\WorkermanPk10',
+    '幸运飞艇' => 'app\\controller\\Workerman幸运飞艇',
     'ssc' => 'app\\controller\\WorkermanSsc', 
     'bj28' => 'app\\controller\\WorkermanBj28',
     'jnd28' => 'app\\controller\\WorkermanJnd28',

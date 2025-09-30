@@ -15,9 +15,9 @@ class GetController extends Controller{
 		echo json_encode($format);
 	}
 
-	public function getPk10(){
-		$caiji = M('caiji')->where("game='pk10'")->limit(0,1)->order("id desc")->find();
-		$format = json_decode(pk10_format($caiji),true);
+	public function get幸运飞艇(){
+		$caiji = M('caiji')->where("game='幸运飞艇'")->limit(0,1)->order("id desc")->find();
+		$format = json_decode(幸运飞艇_format($caiji),true);
 		// if (strtotime($format['current']['awardTime']) > strtotime("23:56:00")) {
 		// 	$time = strtotime($format['next']['awardTime']) + 9*60*60-300;
 		// 	$format['next']['awardTime'] = date('Y-m-d H:i:s',$time);

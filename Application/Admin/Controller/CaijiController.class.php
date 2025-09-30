@@ -5,17 +5,17 @@ use Think\Controller;
 
 class CaijiController extends BaseController{
 	
-	public function pk10(){
+	public function 幸运飞艇(){
 		$auth = auth_check(C('auth_code'),$_SERVER['HTTP_HOST']);
 		if (!$auth) {
 			echo "未授权或授权已过期";exit;
 		}
 		
 		$caiji = M('caiji');
-		$count = $caiji->where("game='pk10'")->count();
+		$count = $caiji->where("game='幸运飞艇'")->count();
 		$page = new \Think\Page($count,20);
 		$show = $page->show();
-		$list = $caiji->where("game='pk10'")->limit($page->firstRow.','.$page->listRows)->order("periodnumber desc")->select();
+		$list = $caiji->where("game='幸运飞艇'")->limit($page->firstRow.','.$page->listRows)->order("periodnumber desc")->select();
 
 		$this->assign('show',$show);
 		$this->assign('list',$list);
@@ -464,7 +464,7 @@ class CaijiController extends BaseController{
 		}
 	}
 
-	public function addpk10(){
+	public function add幸运飞艇(){
 		if(IS_POST){
 			if(!IS_AJAX){
 				$this->error('提交方式不正确！');
@@ -472,7 +472,7 @@ class CaijiController extends BaseController{
 				$data['periodnumber'] = I('periodnumber');
  				$data['awardnumbers'] = I('awardnumbers');
  				$data['awardtime'] = time();
- 				$data['game'] = 'pk10';
+ 				$data['game'] = '幸运飞艇';
  				$data['addtime'] = time();
 
  				//增加手动开奖结算
@@ -581,7 +581,7 @@ class CaijiController extends BaseController{
 					}
 				}	
 				//当前局所有竞猜
-				$list = M('order')->where("number = {$current_number['periodnumber']}   && state = 1 && is_add = 0 && game='pk10'")->order("time ASC")->select();
+				$list = M('order')->where("number = {$current_number['periodnumber']}   && state = 1 && is_add = 0 && game='幸运飞艇'")->order("time ASC")->select();
 				// var_dump($list);exit;
 				if($list){
 					for($i=0;$i<count($list);$i++){
@@ -632,7 +632,7 @@ class CaijiController extends BaseController{
 									}
 								}
 								if($num1>0){
-									$points1 = $num1*$start1[2]*C('pk10_dxds');
+									$points1 = $num1*$start1[2]*C('幸运飞艇_dxds');
 									$res1 = $this->add_points($id,$userid,$points1);
 									
 								} 
@@ -660,7 +660,7 @@ class CaijiController extends BaseController{
 									}
 								}
 								if($num2>0){
-									$points2 = $num2*$start2[2]*C('pk10_chehao');
+									$points2 = $num2*$start2[2]*C('幸运飞艇_chehao');
 									$res2 = $this->add_points($id,$userid,$points2);
 								
 								} 
@@ -683,9 +683,9 @@ class CaijiController extends BaseController{
 								}
 								if($num3>0){
 									if($start3[1]=='大单' || $start3[1]=='小双'){
-										$points3 = $num3*$start3[2]*C('pk10_zuhe_1');
+										$points3 = $num3*$start3[2]*C('幸运飞艇_zuhe_1');
 									}else{
-										$points3 = $num3*$start3[2]*C('pk10_zuhe_2');
+										$points3 = $num3*$start3[2]*C('幸运飞艇_zuhe_2');
 									}
 									$res3 = $this->add_points($id,$userid,$points3);
 									
@@ -708,7 +708,7 @@ class CaijiController extends BaseController{
 									}
 								}
 								if($num4>0){
-									$points4 = $num4*$start4[2]*C('pk10_lh');
+									$points4 = $num4*$start4[2]*C('幸运飞艇_lh');
 									$res4 = $this->add_points($id,$userid,$points4);
 									
 								} 
@@ -718,7 +718,7 @@ class CaijiController extends BaseController{
 							case 5:
 								$start5 = explode('/', $list[$i]['jincai']);
 								if($current_number['zx'] == $start5[0]){
-									$points5 = $start5[1]*C('pk10_zx');
+									$points5 = $start5[1]*C('幸运飞艇_zx');
 									$res5 = $this->add_points($id,$userid,$points5);
 									
 								}
@@ -754,7 +754,7 @@ class CaijiController extends BaseController{
 									}
 								}
 								if($num6>0){
-									$points6 = $num6*$start6[2]*C('pk10_gy');
+									$points6 = $num6*$start6[2]*C('幸运飞艇_gy');
 									$res6 = $this->add_points($id,$userid,$points6);
 									
 								} 
@@ -778,7 +778,7 @@ class CaijiController extends BaseController{
 								}
 								if($num7>0){
 									if ($num7 == 1) {
-										$points7 = $starts7*C('pk10_tema');
+										$points7 = $starts7*C('幸运飞艇_tema');
 									} else{
 										$points7 = $starts7*1;
 									}
@@ -823,19 +823,19 @@ class CaijiController extends BaseController{
 								for($a=0;$a<count($info_str8);$a++){
 									if($current_number['tema']==$info_str8[$a]){
 										if(in_array($info_str8[$a], $tema1)){
-											$points8 += intval($start8[1]*C('pk10_tema_sz_1'));
+											$points8 += intval($start8[1]*C('幸运飞艇_tema_sz_1'));
 										}
 										if(in_array($info_str8[$a], $tema2)){
-											$points8 += intval($start8[1]*C('pk10_tema_sz_2'));
+											$points8 += intval($start8[1]*C('幸运飞艇_tema_sz_2'));
 										}
 										if(in_array($info_str8[$a], $tema3)){
-											$points8 += intval($start8[1]*C('pk10_tema_sz_3'));
+											$points8 += intval($start8[1]*C('幸运飞艇_tema_sz_3'));
 										}
 										if(in_array($info_str8[$a], $tema4)){
-											$points8 += intval($start8[1]*C('pk10_tema_sz_4'));
+											$points8 += intval($start8[1]*C('幸运飞艇_tema_sz_4'));
 										}
 										if(in_array($info_str8[$a], $tema5)){
-											$points8 += intval($start8[1]*C('pk10_tema_sz_5'));
+											$points8 += intval($start8[1]*C('幸运飞艇_tema_sz_5'));
 										}
 										$num8++;
 									}
@@ -855,9 +855,9 @@ class CaijiController extends BaseController{
 									for($a=0;$a<count($starts9);$a++){
 										if($current_number['tema_dw']==$starts9[$a]){
 											if($starts9[$a]=='A' || $starts9[$a]=='C'){
-												$points9 = $start9[1]*C('pk10_tema_qd_1');
+												$points9 = $start9[1]*C('幸运飞艇_tema_qd_1');
 											}else{
-												$points9 = $start9[1]*C('pk10_tema_qd_2');
+												$points9 = $start9[1]*C('幸运飞艇_tema_qd_2');
 											}
 											$num9 = 1;
 										}
@@ -865,9 +865,9 @@ class CaijiController extends BaseController{
 								}else{
 									if($current_number['tema_dw']==$start9[0]){
 										if($start9[0]=='A' || $start9[0]=='C'){
-											$points9 = $start9[1]*C('pk10_tema_qd_1');
+											$points9 = $start9[1]*C('幸运飞艇_tema_qd_1');
 										}else{
-											$points9 = $start9[1]*C('pk10_tema_qd_2');
+											$points9 = $start9[1]*C('幸运飞艇_tema_qd_2');
 										}
 										$num9 = 1;
 									}
@@ -1008,7 +1008,7 @@ class CaijiController extends BaseController{
 					}
 				}	
 				//当前局所有竞猜
-				$list = M('order')->where("number = {$current_number['periodnumber']}   && state = 1 && is_add = 0 && game='pk10'")->order("time ASC")->select();
+				$list = M('order')->where("number = {$current_number['periodnumber']}   && state = 1 && is_add = 0 && game='幸运飞艇'")->order("time ASC")->select();
 				// var_dump($list);exit;
 				if($list){
 					for($i=0;$i<count($list);$i++){
@@ -1059,7 +1059,7 @@ class CaijiController extends BaseController{
 									}
 								}
 								if($num1>0){
-									$points1 = $num1*$start1[2]*C('pk10_dxds');
+									$points1 = $num1*$start1[2]*C('幸运飞艇_dxds');
 									$res1 = $this->add_points($id,$userid,$points1);
 									
 								} 
@@ -1087,7 +1087,7 @@ class CaijiController extends BaseController{
 									}
 								}
 								if($num2>0){
-									$points2 = $num2*$start2[2]*C('pk10_chehao');
+									$points2 = $num2*$start2[2]*C('幸运飞艇_chehao');
 									$res2 = $this->add_points($id,$userid,$points2);
 								
 								} 
@@ -1110,9 +1110,9 @@ class CaijiController extends BaseController{
 								}
 								if($num3>0){
 									if($start3[1]=='大单' || $start3[1]=='小双'){
-										$points3 = $num3*$start3[2]*C('pk10_zuhe_1');
+										$points3 = $num3*$start3[2]*C('幸运飞艇_zuhe_1');
 									}else{
-										$points3 = $num3*$start3[2]*C('pk10_zuhe_2');
+										$points3 = $num3*$start3[2]*C('幸运飞艇_zuhe_2');
 									}
 									$res3 = $this->add_points($id,$userid,$points3);
 									
@@ -1135,7 +1135,7 @@ class CaijiController extends BaseController{
 									}
 								}
 								if($num4>0){
-									$points4 = $num4*$start4[2]*C('pk10_lh');
+									$points4 = $num4*$start4[2]*C('幸运飞艇_lh');
 									$res4 = $this->add_points($id,$userid,$points4);
 									
 								} 
@@ -1145,7 +1145,7 @@ class CaijiController extends BaseController{
 							case 5:
 								$start5 = explode('/', $list[$i]['jincai']);
 								if($current_number['zx'] == $start5[0]){
-									$points5 = $start5[1]*C('pk10_zx');
+									$points5 = $start5[1]*C('幸运飞艇_zx');
 									$res5 = $this->add_points($id,$userid,$points5);
 									
 								}
@@ -1181,7 +1181,7 @@ class CaijiController extends BaseController{
 									}
 								}
 								if($num6>0){
-									$points6 = $num6*$start6[2]*C('pk10_gy');
+									$points6 = $num6*$start6[2]*C('幸运飞艇_gy');
 									$res6 = $this->add_points($id,$userid,$points6);
 									
 								} 
@@ -1205,7 +1205,7 @@ class CaijiController extends BaseController{
 								}
 								if($num7>0){
 									if ($num7 == 1) {
-										$points7 = $starts7*C('pk10_tema');
+										$points7 = $starts7*C('幸运飞艇_tema');
 									} else{
 										$points7 = $starts7*1;
 									}
@@ -1282,9 +1282,9 @@ class CaijiController extends BaseController{
 									for($a=0;$a<count($starts9);$a++){
 										if($current_number['tema_dw']==$starts9[$a]){
 											if($starts9[$a]=='A' || $starts9[$a]=='C'){
-												$points9 = $start9[1]*C('pk10_tema_qd_1');
+												$points9 = $start9[1]*C('幸运飞艇_tema_qd_1');
 											}else{
-												$points9 = $start9[1]*C('pk10_tema_qd_2');
+												$points9 = $start9[1]*C('幸运飞艇_tema_qd_2');
 											}
 											$num9 = 1;
 										}
@@ -1292,9 +1292,9 @@ class CaijiController extends BaseController{
 								}else{
 									if($current_number['tema_dw']==$start9[0]){
 										if($start9[0]=='A' || $start9[0]=='C'){
-											$points9 = $start9[1]*C('pk10_tema_qd_1');
+											$points9 = $start9[1]*C('幸运飞艇_tema_qd_1');
 										}else{
-											$points9 = $start9[1]*C('pk10_tema_qd_2');
+											$points9 = $start9[1]*C('幸运飞艇_tema_qd_2');
 										}
 										$num9 = 1;
 									}

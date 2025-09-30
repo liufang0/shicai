@@ -44,7 +44,7 @@ Route::group('api', function () {
 
 // 游戏控制路由
 Route::group('run', function () {
-    Route::get('pk10', 'Run/pk10');
+    Route::get('幸运飞艇', 'Run/幸运飞艇');
     Route::get('ssc', 'Run/ssc');
     Route::get('bj28', 'Run/bj28');
     Route::get('jnd28', 'Run/jnd28');

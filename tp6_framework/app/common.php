@@ -138,9 +138,9 @@ function lhc_format2($caiji) {
 }
 
 /**
- * PK10数据格式化
+ * 幸运飞艇数据格式化
  */
-function pk10_format($caiji) {
+function 幸运飞艇_format($caiji) {
     $periodNumber = $caiji['periodnumber'];
     $awardTime = $caiji['awardtime'];
     $awardNumbers = $caiji['awardnumbers'];

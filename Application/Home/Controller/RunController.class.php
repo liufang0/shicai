@@ -364,7 +364,7 @@ class RunController extends BaseController
         }
     }
 
-    public function pk10()
+    public function 幸运飞艇()
     {
         $auth = auth_check(C('auth_code'), $_SERVER['HTTP_HOST']);
         if (! $auth) {
@@ -377,7 +377,7 @@ class RunController extends BaseController
         }
 
         // 10期结果
-        $list = M('number')->distinct(true)->field('id',true)->where("game='pk10'")
+        $list = M('number')->distinct(true)->field('id',true)->where("game='幸运飞艇'")
             ->order("id DESC")
             ->limit(10)
             ->select();
@@ -428,7 +428,7 @@ class RunController extends BaseController
         $this->assign('kjlist', $kjlist);
 
         // 聊天信息
-        $msglist = M('message')->where("status=1 and game='pk10'")
+        $msglist = M('message')->where("status=1 and game='幸运飞艇'")
             ->order("id DESC")
             ->limit(20)
             ->select();
@@ -441,13 +441,13 @@ class RunController extends BaseController
         $this->assign('type', $type);
         $this->assign('options', $options);
         if (C('index_page') == '1') {
-            $this->display("pk10_1");
+            $this->display("幸运飞艇_1");
         } else {
             $this->display();
         }
     }
 
-    public function onepk10()
+    public function one幸运飞艇()
     {
         $auth = auth_check(C('auth_code'), $_SERVER['HTTP_HOST']);
         if (! $auth) {
@@ -460,7 +460,7 @@ class RunController extends BaseController
         }
 
         // 10期结果
-        $list = M('number')->where("game='pk10'")->distinct(true)->field('id',true)
+        $list = M('number')->where("game='幸运飞艇'")->distinct(true)->field('id',true)
             ->order("id DESC")
             ->limit(10)
             ->select();
@@ -509,7 +509,7 @@ class RunController extends BaseController
         $this->assign('kjlist', $kjlist);
 
         // 聊天信息
-        $msglist = M('message')->where("status=1 and game='pk10'")
+        $msglist = M('message')->where("status=1 and game='幸运飞艇'")
             ->order("id DESC")
             ->limit(20)
             ->select();
@@ -524,13 +524,13 @@ class RunController extends BaseController
         $this->assign('type', $type);
         $this->assign('options', $options);
         if (C('index_page') == '1') {
-            $this->display("pk10_1");
+            $this->display("幸运飞艇_1");
         } else {
             $this->display();
         }
     }
 
-    public function twopk10()
+    public function two幸运飞艇()
     {
         $auth = auth_check(C('auth_code'), $_SERVER['HTTP_HOST']);
         if (! $auth) {
@@ -543,7 +543,7 @@ class RunController extends BaseController
         }
 
         // 10期结果
-        $list = M('number')->where("game='pk10'")->distinct(true)->field('id',true)
+        $list = M('number')->where("game='幸运飞艇'")->distinct(true)->field('id',true)
             ->order("id DESC")
             ->limit(10)
             ->select();
@@ -592,7 +592,7 @@ class RunController extends BaseController
         $this->assign('kjlist', $kjlist);
 
         // 聊天信息
-        $msglist = M('message')->where("status=1 and game='pk10'")
+        $msglist = M('message')->where("status=1 and game='幸运飞艇'")
             ->order("id DESC")
             ->limit(20)
             ->select();
@@ -607,7 +607,7 @@ class RunController extends BaseController
         $this->assign('type', $type);
         $this->assign('options', $options);
         if (C('index_page') == '1') {
-            $this->display("pk10_1");
+            $this->display("幸运飞艇_1");
         } else {
             $this->display();
         }
@@ -2017,10 +2017,10 @@ class RunController extends BaseController
     }
 
     /* 竞猜 */
-    public function jincaipk10()
+    public function jincai幸运飞艇()
     {
         // 聊天信息
-        $list = M('message')->where("status=1 and game='pk10'")
+        $list = M('message')->where("status=1 and game='幸运飞艇'")
             ->order("id DESC")
             ->limit(20)
             ->select();
@@ -2113,10 +2113,10 @@ class RunController extends BaseController
     }
 
     // 开奖记录
-    public function kjpk10()
+    public function kj幸运飞艇()
     {
         // 20期结果
-        $list = M('number')->where("game='pk10'")
+        $list = M('number')->where("game='幸运飞艇'")
             ->order("id DESC")
             ->limit(30)
             ->select();
@@ -2420,7 +2420,7 @@ class RunController extends BaseController
             }
         }
 
-        $pk10data = F('pk10data');
+        $幸运飞艇data = F('幸运飞艇data');
         $er75scdata = F('er75scdata');
         $xyftdata = F('xyftdata');
         $sscdata = F('sscdata');
@@ -2431,7 +2431,7 @@ class RunController extends BaseController
 
         $this->assign('list1', $list1);
         $this->assign('state', F('state'));
-        $this->assign('pk10number', $pk10data['next']['periodNumber']);
+        $this->assign('幸运飞艇number', $幸运飞艇data['next']['periodNumber']);
         $this->assign('er75scnumber', $er75scdata['next']['periodNumber']);
         $this->assign('xyftnumber', $xyftdata['next']['periodNumber']);
         $this->assign('sscnumber', $sscdata['next']['periodNumber']);
@@ -2458,10 +2458,10 @@ class RunController extends BaseController
     }
 
     /* 规则 */
-    public function rulepk10()
+    public function rule幸运飞艇()
     {
         if (C('index_page') == '1') {
-            $this->display("rulepk10_1");
+            $this->display("rule幸运飞艇_1");
         } else {
             $this->display();
         }
@@ -2551,7 +2551,7 @@ class RunController extends BaseController
     // public function del_all(){
     // $state = F('state');
     // $userinfo = session('user');
-    // $pkdata = F('pk10data');
+    // $pkdata = F('幸运飞艇data');
     // if($state==1){
     // $number = I('number');
     // $list = M('order')->where("number = {$number} && userid = {$userinfo['id']}")->select();
@@ -2607,7 +2607,7 @@ class RunController extends BaseController
         $this->ajaxReturn($data);
 
         // $state = F('state');
-        // $pkdata = F('pk10data');
+        // $pkdata = F('幸运飞艇data');
         // if($state==1){
         // $id = I('id');
         // $info = M('order')->where("id = $id")->find();

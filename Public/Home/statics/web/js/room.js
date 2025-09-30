@@ -516,7 +516,7 @@ fnSet.button = function(aWanf,aJine,aWanfT){
     //}
     //var issue = $("#issue").html();
     //todo
-    if(userinfo.lottery_type ==2||userinfo.lottery_type ==9 || userinfo.lottery_type ==4 || userinfo.lottery_type==5 || userinfo.lottery_type == 6 || userinfo.lottery_type == 11){ //北京PK10和幸运飞艇
+    if(userinfo.lottery_type ==2||userinfo.lottery_type ==9 || userinfo.lottery_type ==4 || userinfo.lottery_type==5 || userinfo.lottery_type == 6 || userinfo.lottery_type == 11){ //北京幸运飞艇和幸运飞艇
         if (aWanf.length) {
             var html = '';
             for (var i = 0; i < aWanf.length; i++) {
@@ -621,7 +621,7 @@ $(function(){
             event.preventDefault();
         })
 
-        //PK10最小投注金额
+        //幸运飞艇最小投注金额
         if($("#lower").val() -  $("#user_group_lower").val() >= 0){
             $(".stake-limit span").text($("#lower").val());
         }else{
@@ -820,7 +820,7 @@ $(function(){
         //$(".cenMoney").css("margin-top",-(height/2))
         event.stopPropagation();
     })
-    //北京PK10和幸运飞艇选号操作
+    //北京幸运飞艇和幸运飞艇选号操作
     //$(".bettingKey-pkft .play").on("click","ul li", function(){
     //    //todo
     //    $(".play .desc").text($(this).children("div").attr("data-desc"));
@@ -943,7 +943,7 @@ $(function(){
             }
         }
     };
-    fnSet.oddsUpdatePk10 = function (msg) {
+    fnSet.oddsUpdate幸运飞艇 = function (msg) {
         for(var i =0 ; i<wanfOdds.length; i++){
             if(wanfOdds[i].name =="猜双面"){
                 wanfOdds[i].panel =msg.panel_1;
@@ -956,7 +956,7 @@ $(function(){
             // }
         }
     }
-    fnSet.oddsUpdatePk10_2 = function (msg) {
+    fnSet.oddsUpdate幸运飞艇_2 = function (msg) {
         for(var i =0 ; i<wanfOdds.length; i++){
             if(wanfOdds[i].name =="冠亚和"){
                 if((msg.panel_3["冠亚"] && msg.panel_3["冠亚"].length) || (msg.panel_3["区段"] && msg.panel_3["区段"].length) || (msg.panel_3["和"] && msg.panel_3["和"].length) ){
@@ -975,7 +975,7 @@ $(function(){
             }
         }
     }
-    fnSet.oddsUpdatePk10_3 = function (msg) {
+    fnSet.oddsUpdate幸运飞艇_3 = function (msg) {
         for(var i =0 ; i<wanfOdds.length; i++){
 
             if(wanfOdds[i].name =="猜冠亚"){
@@ -1755,7 +1755,7 @@ $(function(){
 
         }else{
             var len = $(".play ul li .pit").length;
-            if (len > 1) {  //北京PK10和幸运飞艇猜数字多选
+            if (len > 1) {  //北京幸运飞艇和幸运飞艇猜数字多选
                 for (var i = 0; i < len; i++) {
                     var wanf = $(".play ul li .pit span").eq(i).text();
                     var jine = window.parseInt($("#inputNumber").val());
@@ -3152,9 +3152,9 @@ function getOdds() {
                     if(userinfo.lottery_type ==5 || userinfo.lottery_type == 6 || userinfo.lottery_type == 11){
                         fnSet.oddsUpdateSSC(odds);
                     }else if(userinfo.lottery_type ==2 ||userinfo.lottery_type ==9 || userinfo.lottery_type == 4){
-                        fnSet.oddsUpdatePk10(odds);
-                        fnSet.oddsUpdatePk10_2(odds);
-                        fnSet.oddsUpdatePk10_3(odds);
+                        fnSet.oddsUpdate幸运飞艇(odds);
+                        fnSet.oddsUpdate幸运飞艇_2(odds);
+                        fnSet.oddsUpdate幸运飞艇_3(odds);
                     }else if(userinfo.lottery_type == 1 || userinfo.lottery_type == 3){
                         fnSet.oddsUpdate(odds);
                     }

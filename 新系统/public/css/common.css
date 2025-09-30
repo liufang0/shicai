@@ -262,7 +262,7 @@ table { border-collapse: collapse; border-spacing: 0; }
 .open_items_other .info_10050 .ball-gp .t { height: 82px; line-height: 80px; }
 
 /*开奖号码背景-首页样式*/
-/*pk10*/
+/*幸运飞艇*/
 .ball_pks_ { display: inline-block; width: 42px; height: 42px; line-height: 35px; margin-right: 3px; text-align: center; font-size: 16px; font-family: "微软雅黑"; color: #000; font-weight: bold; background: transparent url(balls_bg.png) no-repeat scroll -402px -448px; }
 .ball_pks1 { background-position: 0px -34px; }
 .ball_pks2 { background-position: -44px -34px; }
@@ -488,7 +488,7 @@ table { border-collapse: collapse; border-spacing: 0; }
 .open_form .sub_r_open_form_10049 .sub_mid_c .result { margin-top: 5px; margin-left: 30px; }
 .open_form .sub_r_open_form_10050 .sub_mid_c .result { margin-top: 5px; margin-left: 30px; }
 .open_form .sub_r_open_form_10051 .sub_mid_c .result { margin-top: 5px; margin-left: 30px; }
-/*pk10 补充*/
+/*幸运飞艇 补充*/
 .open_form .sub_r_open_form_10016 .sub_mid_c .result .ball_pks_ { margin-right: 7px; }
 /*扑克三 补充*/
 .open_form .sub_r_open_form_10042 .sub_mid_c .result { margin-top: 5px; margin-left: 50px; }
@@ -587,7 +587,7 @@ table { border-collapse: collapse; border-spacing: 0; }
 .sub_table .ball_pks9 { background-position: -350px -0px; }
 .sub_table .ball_pks10 { background-position: -395px -0px; }
 
-/*.sub_table .pk10_nums_shade { background: url(pk10-nums-shade.png) no-repeat; width: 25px; height: 25px; float: left; padding-right: 4px; padding-left: 5px; }
+/*.sub_table .幸运飞艇_nums_shade { background: url(幸运飞艇-nums-shade.png) no-repeat; width: 25px; height: 25px; float: left; padding-right: 4px; padding-left: 5px; }
 .sub_table .nums_pks1 { background-position: 0px 0px; }
 .sub_table .nums_pks2 { background-position: 0px -27px; }
 .sub_table .nums_pks3 { background-position: 0px -54px; }

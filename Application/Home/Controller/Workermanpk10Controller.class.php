@@ -1,7 +1,7 @@
 <?php
 namespace Home\Controller;
 use Think\Server;
-class Workermanpk10Controller extends Server {
+class Workerman幸运飞艇Controller extends Server {
 	protected $socket = 'websocket://0.0.0.0:15531';
 	
 	/*添加定时器
@@ -14,23 +14,23 @@ class Workermanpk10Controller extends Server {
 		// }
 		$beginToday=strtotime('00:00:00');
 		$endToday=strtotime("23:59:59");
-		$caiji = M('caiji')->where("game='pk10'")->limit(0,1)->order("id desc")->find();
-		$data =  pk10_format($caiji);
+		$caiji = M('caiji')->where("game='幸运飞艇'")->limit(0,1)->order("id desc")->find();
+		$data =  幸运飞艇_format($caiji);
 		
 		$time_interval = 1;
 		$pkdata = json_decode($data,true);
 		$nexttime = 75+strtotime($pkdata['next']['awardTime']);
 		
-		//if($nexttime-time()>C('pk10_stop_time') && $nexttime-time()<288 && time()>$beginToday && time()<$endToday){
+		//if($nexttime-time()>C('幸运飞艇_stop_time') && $nexttime-time()<288 && time()>$beginToday && time()<$endToday){
 		if(true){
-			F('pk10_state',1);
-			setconfig('pk10_state',1);
+			F('幸运飞艇_state',1);
+			setconfig('幸运飞艇_state',1);
 		}else{
-			F('pk10_state',0);
-			setconfig('pk10_state',0);
+			F('幸运飞艇_state',0);
+			setconfig('幸运飞艇_state',0);
 		}
-		if(!F('pk10data')){
-			F('pk10data',$pkdata);
+		if(!F('幸运飞艇data')){
+			F('幸运飞艇data',$pkdata);
 		}
 		if(!F('is_send')){
 			F('is_send',1);
@@ -41,39 +41,39 @@ class Workermanpk10Controller extends Server {
 		
 			$beginToday=strtotime('00:00:00');
 			$endToday=strtotime("23:59:59");
-			F('game','pk10');
-			$pk10data = F('pk10data');
-			$next_time = 75+strtotime($pk10data['next']['awardTime']);
-			$awardtime = $pk10data['current']['awardTime'];
-		//	if($next_time-time()>C('pk10_stop_time') && $next_time-time()<288 && time()>$beginToday && time()<$endToday ){
+			F('game','幸运飞艇');
+			$幸运飞艇data = F('幸运飞艇data');
+			$next_time = 75+strtotime($幸运飞艇data['next']['awardTime']);
+			$awardtime = $幸运飞艇data['current']['awardTime'];
+		//	if($next_time-time()>C('幸运飞艇_stop_time') && $next_time-time()<288 && time()>$beginToday && time()<$endToday ){
 			if(true){
-				F('pk10_state',1);
-				setconfig('pk10_state',1);
+				F('幸运飞艇_state',1);
+				setconfig('幸运飞艇_state',1);
 			}else{
-				F('pk10_state',0);
-				setconfig('pk10_state',0);
+				F('幸运飞艇_state',0);
+				setconfig('幸运飞艇_state',0);
 			}
 			
-			if($next_time-time()== 24+C('pk10_stop_time')){
+			if($next_time-time()== 24+C('幸运飞艇_stop_time')){
 				$new_message = array(
 					'type' => 'admin',
 					'head_img_url'=>'/Public/main/img/kefu.jpg',
 					'from_client_name' => 'GM管理员',
-					'content'=>'期号:'.$pk10data['next']['periodNumber'].'<br/>'.'--距离封盘还有30秒--',
+					'content'=>'期号:'.$幸运飞艇data['next']['periodNumber'].'<br/>'.'--距离封盘还有30秒--',
 					'time'=>date('H:i:s')
 				);
 				foreach ($this->worker->connections as $conn) {
 					$conn -> send(json_encode($new_message));
 				}
 			}
-			if($next_time-time()==C('pk10_stop_time')-6){
-				F('pk10_state',0);
-				setconfig('pk10_state',0);
+			if($next_time-time()==C('幸运飞艇_stop_time')-6){
+				F('幸运飞艇_state',0);
+				setconfig('幸运飞艇_state',0);
 				$new_message = array(
 					'type' => 'admin',
 					'head_img_url'=>'/Public/main/img/kefu.jpg',
 					'from_client_name' => 'GM管理员',
-					'content'=>'期号:'.$pk10data['next']['periodNumber'].'关闭，请耐心等待开奖',
+					'content'=>'期号:'.$幸运飞艇data['next']['periodNumber'].'关闭，请耐心等待开奖',
 					'time'=>date('H:i:s')
 				);
 				foreach ($this->worker->connections as $conn) {
@@ -87,7 +87,7 @@ class Workermanpk10Controller extends Server {
 				echo $current_number['periodnumber']."结算\n";
 				//结算
 				//开奖结果
-				$current_number = M('number')->where("game='pk10'")->order('id DESC')->find();
+				$current_number = M('number')->where("game='幸运飞艇'")->order('id DESC')->find();
 				$number1 = explode(',', $current_number['awardnumbers']);
 				$lh = unserialize($current_number['lh']);
 				for($i=0;$i<count($number1);$i++){
@@ -114,7 +114,7 @@ class Workermanpk10Controller extends Server {
 				}	
 				//当前局所有竞猜
 				$today_time = strtotime(date('Y-m-d',time()));
-				$list = M('order')->where("number = {$current_number['periodnumber']} && time > '{$today_time}' && state = 1 && is_add = 0 && game='pk10'")->order("time ASC")->select();
+				$list = M('order')->where("number = {$current_number['periodnumber']} && time > '{$today_time}' && state = 1 && is_add = 0 && game='幸运飞艇'")->order("time ASC")->select();
 				
 				if($list){
 					for($i=0;$i<count($list);$i++){
@@ -194,12 +194,12 @@ class Workermanpk10Controller extends Server {
 									}
 								}
 								if($num1>0){
-									$points1 = $num1*$start1[1]*C('pk10_dxds');
+									$points1 = $num1*$start1[1]*C('幸运飞艇_dxds');
 									$res1 = $this->add_points($id,$userid,$points1);
 									if($res1){
 										$this->send_msg('pointsadd',$points1,$userid);
 									}
-									//echo C('pk10_dxds');
+									//echo C('幸运飞艇_dxds');
 								} 
 								break;
 								
@@ -232,7 +232,7 @@ class Workermanpk10Controller extends Server {
 									}
 								}
 								if($num2>0){
-									$points2 = $num2*$ya*C('pk10_chehao');
+									$points2 = $num2*$ya*C('幸运飞艇_chehao');
 									$res2 = $this->add_points($id,$userid,$points2);
 									if($res2){
 										$this->send_msg('pointsadd',$points2,$userid);
@@ -257,9 +257,9 @@ class Workermanpk10Controller extends Server {
 								}
 								if($num3>0){
 									if($start3[1]=='大单' || $start3[1]=='小双'){
-										$points3 = $num3*$start3[2]*C('pk10_zuhe_1');
+										$points3 = $num3*$start3[2]*C('幸运飞艇_zuhe_1');
 									}else{
-										$points3 = $num3*$start3[2]*C('pk10_zuhe_2');
+										$points3 = $num3*$start3[2]*C('幸运飞艇_zuhe_2');
 									}
 									$res3 = $this->add_points($id,$userid,$points3);
 									if($res3){
@@ -284,7 +284,7 @@ class Workermanpk10Controller extends Server {
 									}
 								}
 								if($num4>0){
-									$points4 = $num4*$start4[2]*C('pk10_lh');
+									$points4 = $num4*$start4[2]*C('幸运飞艇_lh');
 									$res4 = $this->add_points($id,$userid,$points4);
 									if($res4){
 										$this->send_msg('pointsadd',$points4,$userid);
@@ -296,7 +296,7 @@ class Workermanpk10Controller extends Server {
 							case 5:
 								$start5 = explode('/', $list[$i]['jincai']);
 								if($current_number['zx'] == $start5[0]){
-									$points5 = $start5[1]*C('pk10_zx');
+									$points5 = $start5[1]*C('幸运飞艇_zx');
 									$res5 = $this->add_points($id,$userid,$points5);
 									if($res5){
 										$this->send_msg('pointsadd',$points5,$userid);
@@ -335,7 +335,7 @@ class Workermanpk10Controller extends Server {
 									}
 								}
 								if($num6>0){
-									$points6 = $num6*$start6[2]*C('pk10_gy');
+									$points6 = $num6*$start6[2]*C('幸运飞艇_gy');
 									$res6 = $this->add_points($id,$userid,$points6);
 									if($res6){
 										$this->send_msg('pointsadd',$points6,$userid);
@@ -348,7 +348,7 @@ class Workermanpk10Controller extends Server {
 								$start7 = substr($list[$i]['jincai'], 3,3); 
 								$starts7 = substr($list[$i]['jincai'], 6);
 								$num7 = 0;
-								if($current_number['tema'] == 11 && C('pk10_gy_set') == 2){
+								if($current_number['tema'] == 11 && C('幸运飞艇_gy_set') == 2){
 									$num7 = 2;
 								}else if($start7=='大' || $start7=='小'){
 									if($current_number['tema_dx']==$start7){
@@ -361,14 +361,14 @@ class Workermanpk10Controller extends Server {
 								}
 								if($num7>0){
 									if ($num7 == 1) {
-										if (C('pk10_gy_set') == 1) {
+										if (C('幸运飞艇_gy_set') == 1) {
 											if($start7=='大' || $start7=='双'){
-												$points7 = $starts7*C('pk10_tema_1');
+												$points7 = $starts7*C('幸运飞艇_tema_1');
 											}else{
-												$points7 = $starts7*C('pk10_tema_2');
+												$points7 = $starts7*C('幸运飞艇_tema_2');
 											}
 										} else{
-											$points7 = $starts7*C('pk10_tema');
+											$points7 = $starts7*C('幸运飞艇_tema');
 										}
 										
 									} else{
@@ -415,19 +415,19 @@ class Workermanpk10Controller extends Server {
 								for($a=0;$a<count($info_str8);$a++){
 									if($current_number['tema']==$info_str8[$a]){
 										if(in_array($info_str8[$a], $tema1)){
-											$points8 += intval($start8[1]*C('pk10_tema_sz_1'));
+											$points8 += intval($start8[1]*C('幸运飞艇_tema_sz_1'));
 										}
 										if(in_array($info_str8[$a], $tema2)){
-											$points8 += intval($start8[1]*C('pk10_tema_sz_2'));
+											$points8 += intval($start8[1]*C('幸运飞艇_tema_sz_2'));
 										}
 										if(in_array($info_str8[$a], $tema3)){
-											$points8 += intval($start8[1]*C('pk10_tema_sz_3'));
+											$points8 += intval($start8[1]*C('幸运飞艇_tema_sz_3'));
 										}
 										if(in_array($info_str8[$a], $tema4)){
-											$points8 += intval($start8[1]*C('pk10_tema_sz_4'));
+											$points8 += intval($start8[1]*C('幸运飞艇_tema_sz_4'));
 										}
 										if(in_array($info_str8[$a], $tema5)){
-											$points8 += intval($start8[1]*C('pk10_tema_sz_5'));
+											$points8 += intval($start8[1]*C('幸运飞艇_tema_sz_5'));
 										}
 										$num8++;
 									}
@@ -449,9 +449,9 @@ class Workermanpk10Controller extends Server {
 									for($a=0;$a<count($starts9);$a++){
 										if($current_number['tema_dw']==$starts9[$a]){
 											if($starts9[$a]=='A' || $starts9[$a]=='C'){
-												$points9 = $start9[1]*C('pk10_tema_qd_1');
+												$points9 = $start9[1]*C('幸运飞艇_tema_qd_1');
 											}else{
-												$points9 = $start9[1]*C('pk10_tema_qd_2');
+												$points9 = $start9[1]*C('幸运飞艇_tema_qd_2');
 											}
 											$num9 = 1;
 										}
@@ -459,9 +459,9 @@ class Workermanpk10Controller extends Server {
 								}else{
 									if($current_number['tema_dw']==$start9[0]){
 										if($start9[0]=='A' || $start9[0]=='C'){
-											$points9 = $start9[1]*C('pk10_tema_qd_1');
+											$points9 = $start9[1]*C('幸运飞艇_tema_qd_1');
 										}else{
-											$points9 = $start9[1]*C('pk10_tema_qd_2');
+											$points9 = $start9[1]*C('幸运飞艇_tema_qd_2');
 										}
 										$num9 = 1;
 									}
@@ -478,7 +478,7 @@ class Workermanpk10Controller extends Server {
 				}
 				
 				F('is_send',1);
-				F('pk10_state',0);
+				F('幸运飞艇_state',0);
 				
 				$content = $current_number['periodnumber']."期结算已完毕！<br/>
 							号码：".$current_number['awardnumbers'];
@@ -500,7 +500,7 @@ class Workermanpk10Controller extends Server {
 					'type' => 'admin',
 					'head_img_url'=>'/Public/main/img/kefu.jpg',
 					'from_client_name' => 'GM管理员',
-					'content'=>'期号:'.$pk10data['next']['periodNumber'].'开放，祝各位中大奖',
+					'content'=>'期号:'.$幸运飞艇data['next']['periodNumber'].'开放，祝各位中大奖',
 					'time'=>date('H:i:s')
 				);
 				
@@ -548,12 +548,12 @@ class Workermanpk10Controller extends Server {
 		
 		//存每期结果
 		\Workerman\Lib\Timer::add(5, function(){
-			$caiji = M('caiji')->where("game='pk10'")->limit(0,1)->order("id desc")->find();
-			$data = json_decode(pk10_format($caiji),true);
+			$caiji = M('caiji')->where("game='幸运飞艇'")->limit(0,1)->order("id desc")->find();
+			$data = json_decode(幸运飞艇_format($caiji),true);
 		
-			if(F('pk10PeriodNumber')!=$data['current']['periodNumber']){
+			if(F('幸运飞艇PeriodNumber')!=$data['current']['periodNumber']){
 				$today_time = date('Y-m-d',time()) . " 00:00:00";
-				$res = M('number')->where("game = 'pk10' and periodnumber = {$data['current']['periodNumber']} and awardtime > '{$today_time}'")->find();
+				$res = M('number')->where("game = '幸运飞艇' and periodnumber = {$data['current']['periodNumber']} and awardtime > '{$today_time}'")->find();
 				if(!$res){
 					$map['awardnumbers'] = $data['current']['awardNumbers'];
 					$map['awardtime'] = $data['current']['awardTime'];
@@ -593,7 +593,7 @@ class Workermanpk10Controller extends Server {
 					}
 					$map['lh'] = serialize($lh);
 					$map['tema'] = $info[0]+$info[1];
-					if (C('pk10_gy_set') == 1) {
+					if (C('幸运飞艇_gy_set') == 1) {
 						if($map['tema'] % 2 == 0){
 							$map['tema_ds'] = '双';
 						}
@@ -611,7 +611,7 @@ class Workermanpk10Controller extends Server {
 						}
 					}
 					
-					if (C('pk10_gy_set') == 1) {
+					if (C('幸运飞艇_gy_set') == 1) {
 						if($map['tema']>=12){
 							$map['tema_dx'] = '大';
 						}else{
@@ -644,8 +644,8 @@ class Workermanpk10Controller extends Server {
 					$map['game'] = $data['game'];
 					$res1 = M('number')->add($map);
 					if($res1){
-						F('pk10PeriodNumber',$data['current']['periodNumber']);
-						F('pk10data',$data);
+						F('幸运飞艇PeriodNumber',$data['current']['periodNumber']);
+						F('幸运飞艇data',$data);
 						F('is_send',0);
 						//采集到开奖数据，客服发布通知
 						// $content = "开奖采集数据,请等待系统开奖结算<br/>
@@ -728,8 +728,8 @@ class Workermanpk10Controller extends Server {
 				$userid = $connection->uid;
 				
 				/*是否竞猜时间*/
-				$pk10_state = F('pk10_state');
-				if($pk10_state == 0){
+				$幸运飞艇_state = F('幸运飞艇_state');
+				if($幸运飞艇_state == 0){
 					$time_error_message = array(
 						'uid'  => $connection->uid,
 						'type' => 'say',
@@ -772,7 +772,7 @@ class Workermanpk10Controller extends Server {
 					} 
 				
 					/*检测格式和金额*/
-					$res = check_format($message_data['content'],C('pk10qi_min_point'),C('pk10qi_max_point'),C('pk10_xz_open'),C('pk10_xz_max'));
+					$res = check_format($message_data['content'],C('幸运飞艇qi_min_point'),C('幸运飞艇qi_max_point'),C('幸运飞艇_xz_open'),C('幸运飞艇_xz_max'));
 					if($res['error']==0 || $res['error']==2){
 						$error_message = array(
 							'uid'=>$connection->uid,
@@ -787,7 +787,7 @@ class Workermanpk10Controller extends Server {
 						$this->add_message($error_message);/*添加信息*/
 						
 						if ($res['error'] == 0) {
-							$content_msg =  '「'.$message_data['content'].'」'.'单笔点数最低'.C('pk10qi_min_point').',竞猜失败';
+							$content_msg =  '「'.$message_data['content'].'」'.'单笔点数最低'.C('幸运飞艇qi_min_point').',竞猜失败';
 						} else {
 							$content_msg =  '「'.$message_data['content'].'」'.'单笔点数最高'.$res['xz_max'].',竞猜失败';
 						}
@@ -830,38 +830,38 @@ class Workermanpk10Controller extends Server {
 							$points_tips['type'] = 'error';
 							$this->add_message($points_tips);/*添加信息*/
 						}else{
-							$pk10data = F('pk10data');
+							$幸运飞艇data = F('幸运飞艇data');
 							$user = M('user')->where("id = $userid")->find();
 							//当前玩法是否超过设置金额
-							$wf_points = M('order')->field("sum(del_points) as sum_del")->where("userid = {$userid} and type={$res['type']} and state=1  and number = {$pk10data['next']['periodNumber']}")->find();
+							$wf_points = M('order')->field("sum(del_points) as sum_del")->where("userid = {$userid} and type={$res['type']} and state=1  and number = {$幸运飞艇data['next']['periodNumber']}")->find();
 							$wf_max_points = 1000000000000;
 							// switch ($res['type']) {
 								// case '1':
-									// $wf_max_points = C('pk10_xz_max')['dxds'];
+									// $wf_max_points = C('幸运飞艇_xz_max')['dxds'];
 									// break;
 								// case '2':
-									// $wf_max_points = C('pk10_xz_max')['chehao'];
+									// $wf_max_points = C('幸运飞艇_xz_max')['chehao'];
 									// break;
 								// case '3':
-									// $wf_max_points = C('pk10_xz_max')['zuhe'];
+									// $wf_max_points = C('幸运飞艇_xz_max')['zuhe'];
 									// break;
 								// case '4':
-									// $wf_max_points = C('pk10_xz_max')['lh'];
+									// $wf_max_points = C('幸运飞艇_xz_max')['lh'];
 									// break;
 								// case '5':
-									// $wf_max_points = C('pk10_xz_max')['zx'];
+									// $wf_max_points = C('幸运飞艇_xz_max')['zx'];
 									// break;
 								// case '6':
-									// $wf_max_points = C('pk10_xz_max')['gy'];
+									// $wf_max_points = C('幸运飞艇_xz_max')['gy'];
 									// break;
 								// case '7':
-									// $wf_max_points = C('pk10_xz_max')['tema'];
+									// $wf_max_points = C('幸运飞艇_xz_max')['tema'];
 									// break;
 								// case '8':
-									// $wf_max_points = C('pk10_xz_max')['tema_sz'];
+									// $wf_max_points = C('幸运飞艇_xz_max')['tema_sz'];
 									// break;
 								// case '9':
-									// $wf_max_points = C('pk10_xz_max')['tema_qd'];
+									// $wf_max_points = C('幸运飞艇_xz_max')['tema_qd'];
 									// break;
 								
 								// default:
@@ -870,7 +870,7 @@ class Workermanpk10Controller extends Server {
 							// }
 							//车号限制  123/23/100
 							if ($res['type'] == '2') {
-								$type_list = M('order')->where("userid = {$userid} and state=1  and number = {$pk10data['next']['periodNumber']} and type = 2")->select();
+								$type_list = M('order')->where("userid = {$userid} and state=1  and number = {$幸运飞艇data['next']['periodNumber']} and type = 2")->select();
 								$type_data = array();
 								$type_list[] = array('jincai'=>$message_data['content']);
 								foreach ($type_list as $key => $value) {
@@ -920,14 +920,14 @@ class Workermanpk10Controller extends Server {
 								}
 							}
 							//查看已投注金额
-							$user_points = M('order')->field("sum(del_points) as sum_del")->where("userid = {$userid} and state=1  and number = {$pk10data['next']['periodNumber']}")->find();
-							if ((intval($user_points['sum_del'])+$res['points']) > C('pk10qi_max_point')) {
+							$user_points = M('order')->field("sum(del_points) as sum_del")->where("userid = {$userid} and state=1  and number = {$幸运飞艇data['next']['periodNumber']}")->find();
+							if ((intval($user_points['sum_del'])+$res['points']) > C('幸运飞艇qi_max_point')) {
 								$points_tips = array(
 									'uid'  => $connection->uid,
 									'type' => 'admin',
 									'head_img_url'=>'/Public/main/img/kefu.jpg',
 									'from_client_name' => 'GM管理员',
-									'content' => '「'.$message_data['content'].'」'.'每期最高点数'.C('pk10qi_max_point').',您已超过，竞猜失败',
+									'content' => '「'.$message_data['content'].'」'.'每期最高点数'.C('幸运飞艇qi_max_point').',您已超过，竞猜失败',
 									'time' => date('H:i:s')
 								);
 								$connection -> send(json_encode($points_tips));
@@ -942,7 +942,7 @@ class Workermanpk10Controller extends Server {
 							$map['is_add'] = 0;
 							$map['is_under'] = $user['is_under'];
 							$map['time'] = time();
-							$map['number'] = $pk10data['next']['periodNumber'];
+							$map['number'] = $幸运飞艇data['next']['periodNumber'];
 							$map['jincai'] = $message_data['content'];
 							$map['del_points'] = $res['points'];
 							$map['balance'] = $user['points']-$map['del_points'];
@@ -1073,7 +1073,7 @@ class Workermanpk10Controller extends Server {
 				if(C('robot')==1){
 					$mess = $this->robot_message();
 					$robot = $this->robot();
-					$pk10_state = F('pk10_state');
+					$幸运飞艇_state = F('幸运飞艇_state');
 					$new_message = array(
 						'type' => 'say',
 						'head_img_url'=>'/Uploads'.$robot[0]['headimgurl'],
@@ -1081,7 +1081,7 @@ class Workermanpk10Controller extends Server {
 						'content'=>$mess[0]['content'],
 						'time'=>date('H:i:s')
 					);
-					if($pk10_state==1){
+					if($幸运飞艇_state==1){
 						foreach ($this->worker->uidConnections as $con) {
 							$con -> send(json_encode($new_message));
 						}
@@ -1143,7 +1143,7 @@ class Workermanpk10Controller extends Server {
 	}
 	protected function add_message($new_message){
 		if (!empty($new_message)) {
-			$new_message['game'] = 'pk10';
+			$new_message['game'] = '幸运飞艇';
 			$res = M('message')->add($new_message);
 			return $res;
 		}

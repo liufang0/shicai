@@ -33,17 +33,17 @@ class Get extends BaseController
     }
     
     /**
-     * 获取PK10数据
+     * 获取幸运飞艇数据
      */
-    public function getPk10()
+    public function get幸运飞艇()
     {
-        $caiji = Db::table('caiji')->where('game', 'pk10')->order('id', 'desc')->find();
+        $caiji = Db::table('caiji')->where('game', '幸运飞艇')->order('id', 'desc')->find();
         
         if (!$caiji) {
             return json(['code' => 0, 'msg' => '暂无数据']);
         }
         
-        $format = json_decode(pk10_format($caiji), true);
+        $format = json_decode(幸运飞艇_format($caiji), true);
         return json($format);
     }
     
@@ -142,7 +142,7 @@ class Get extends BaseController
      */
     public function getList()
     {
-        $game = request()->param('game', 'pk10');
+        $game = request()->param('game', '幸运飞艇');
         $limit = request()->param('limit', 20);
         
         $list = Db::table('caiji')
@@ -187,7 +187,7 @@ class Get extends BaseController
      */
     public function getGameStatus()
     {
-        $game = request()->param('game', 'pk10');
+        $game = request()->param('game', '幸运飞艇');
         
         $status = [
             'current_issue' => Cache::get($game . '_current_issue'),

@@ -541,7 +541,7 @@ class MemberController extends BaseController{
 
 		foreach ($list as $key => $value) {
 			$fs_date['water'] += $value['del_points'];
-			if ($value['game'] == 'pk10' || $value['game'] == 'xyft') {
+			if ($value['game'] == '幸运飞艇' || $value['game'] == 'xyft') {
 				$fs_water['pkft'] += $value['del_points'] * $t_userinfo['pkft_fs'] *0.01;
 			} else if($value['game'] == 'ssc') {
 				$fs_water['ssc'] += $value['del_points'] * $t_userinfo['ssc_fs'] *0.01;
@@ -567,7 +567,7 @@ class MemberController extends BaseController{
 			$list[$key]['date'] = $time;
 			$list[$key]['water'] = $value['del_points'];
 
-			if ($value['game'] == 'pk10' || $value['game'] == 'xyft') {
+			if ($value['game'] == '幸运飞艇' || $value['game'] == 'xyft') {
 				$list[$key]['money'] = $value['del_points']  * $t_userinfo['pkft_fs'] *0.01;
 			} else if($value['game'] == 'ssc') {
 				$list[$key]['money'] = $value['del_points']  * $t_userinfo['ssc_fs'] *0.01;

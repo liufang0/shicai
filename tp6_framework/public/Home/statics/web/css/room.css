@@ -500,7 +500,7 @@ em.num_r{
 .bettingKey div.flickerplate .arrow-navigation.left .arrow{width: 8px; height: 16px; background: url("../images/return1.png") no-repeat center; position: absolute; left: 15px; top:50%; margin-top: -8px; background-size: 100%;}
 .bettingKey div.flickerplate .arrow-navigation.right .arrow{ width:8px; height: 16px; background: url("../images/return1.png") no-repeat center; position: absolute; right: 15px; top:50%; margin-top: -8px; background-size: 100%;transform:rotate(180deg);}
 
-/*北京PK10和幸运飞艇*/
+/*北京幸运飞艇和幸运飞艇*/
 .bettingKey-pkft{ width: 100%; overflow: hidden; display: none; }
 .bettingKey-pkft .selecArea >ul{float: right; width: 75.5%; height: 392px; position: relative; overflow: auto;}
 .bettingKey-pkft ul li{ padding:0 22px; position: relative; float:left;}

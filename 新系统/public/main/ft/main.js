@@ -34,4 +34,4 @@ var cocos2dApp = cc.Application.extend({
         return true;
     }
 });
-var myApp = new cocos2dApp(pk10Scene);
+var myApp = new cocos2dApp(幸运飞艇Scene);

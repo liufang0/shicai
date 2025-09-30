@@ -476,7 +476,7 @@ function lhc_format2($caiji){
 }
 
 //北京赛车数据格式化
-function pk10_format($caiji){
+function 幸运飞艇_format($caiji){
 	$periodNumber = $caiji['periodnumber'];
 	$awardTime = $caiji['awardtime'];
 	$awardNumbers = $caiji['awardnumbers'];

@@ -16,10 +16,10 @@ class CaiController extends Controller{
 				'periodnumber' => $periodnumber,
 				'awardnumbers' => $awardnumbers,
 				'awardtime' => $awardtime,
-				'game' => 'pk10',
+				'game' => '幸运飞艇',
 				'addtime' => time()
 			);
-			$caijinum = M('caiji')->where("game = 'pk10'")->limit(0,1)->order("id desc")->find();
+			$caijinum = M('caiji')->where("game = '幸运飞艇'")->limit(0,1)->order("id desc")->find();
 			if (strval($caijinum['periodnumber']) != $periodnumber && $periodnumber > $caijinum['periodnumber']) {
 				M('caiji')->add($data);
 			}
@@ -42,10 +42,10 @@ class CaiController extends Controller{
 				'periodnumber' => $periodnumber,
 				'awardnumbers' => $awardnumbers,
 				'awardtime' => $awardtime,
-				'game' => 'pk10',
+				'game' => '幸运飞艇',
 				'addtime' => time()
 			);
-			$caijinum = M('caiji')->where("game = 'pk10'")->limit(0,1)->order("id desc")->find();
+			$caijinum = M('caiji')->where("game = '幸运飞艇'")->limit(0,1)->order("id desc")->find();
 			if (strval($caijinum['periodnumber']) != $periodnumber  && $periodnumber > $caijinum['periodnumber']) {
 				M('caiji')->add($data);
 			}
@@ -53,7 +53,7 @@ class CaiController extends Controller{
 	}
 	
 	public function ft1(){
-		$url = "https://www.pk10tv.com/index.php?c=content&a=list&catid=138";
+		$url = "https://www.幸运飞艇tv.com/index.php?c=content&a=list&catid=138";
 		$cpk = http_get($url);
 		preg_match('/<tbody.*?id=\"reslist\">\s*<tr >\s*<td>(.*?)<\/td>\s*<td> (.*?) <\/td>/',$cpk, $num); 
 		if (isset($num[1]) && $num[1]) {
@@ -90,10 +90,10 @@ class CaiController extends Controller{
 		}
 	}
 	public function dd(){
-				//pk10开奖采集,pk10tv
+				//幸运飞艇开奖采集,幸运飞艇tv
 				$time = time();
 				if ($time > strtotime("09:00::00") and $time < strtotime("23:59:59")) {
-					$url = "http://www.pk10tv.com/index.php?c=content&a=list&catid=2";
+					$url = "http://www.幸运飞艇tv.com/index.php?c=content&a=list&catid=2";
 					$cpk = file_get_contents($url);
 					
 					preg_match('/<tbody.*?id=\"reslist\">\s*<tr >\s*<td>(.*?)<\/td>\s*<td> (.*?) <\/td>/',$cpk, $num); 
@@ -122,10 +122,10 @@ class CaiController extends Controller{
 							'periodnumber' => $periodnumber,
 							'awardnumbers' => $awardnumbers,
 							'awardtime' => $awardtime,
-							'game' => 'pk10',
+							'game' => '幸运飞艇',
 							'addtime' => time()
 						);
-						$caijinum = M('caiji')->where("game = 'pk10'")->limit(0,1)->order("id desc")->find();
+						$caijinum = M('caiji')->where("game = '幸运飞艇'")->limit(0,1)->order("id desc")->find();
 						if (strval($caijinum['periodnumber']) != $periodnumber  && $periodnumber > $caijinum['periodnumber']) {
 							M('caiji')->add($data);
 						}
@@ -134,7 +134,7 @@ class CaiController extends Controller{
 	}
 	public function sc1(){
 		
-		$url = "http://www.pk10tv.com/index.php?c=content&a=list&catid=2";
+		$url = "http://www.幸运飞艇tv.com/index.php?c=content&a=list&catid=2";
 		$cpk = file_get_contents($url);
 		
 		preg_match('/<tbody.*?id=\"reslist\">\s*<tr >\s*<td>(.*?)<\/td>\s*<td> (.*?) <\/td>/',$cpk, $num); 
@@ -162,10 +162,10 @@ class CaiController extends Controller{
 				'periodnumber' => $periodnumber,
 				'awardnumbers' => $awardnumbers,
 				'awardtime' => $awardtime,
-				'game' => 'pk10',
+				'game' => '幸运飞艇',
 				'addtime' => time()
 			);
-			$caijinum = M('caiji')->where("game = 'pk10'")->limit(0,1)->order("id desc")->find();
+			$caijinum = M('caiji')->where("game = '幸运飞艇'")->limit(0,1)->order("id desc")->find();
 			if (strval($caijinum['periodnumber']) != $periodnumber  && $periodnumber > $caijinum['periodnumber']) {
 				M('caiji')->add($data);
 			}

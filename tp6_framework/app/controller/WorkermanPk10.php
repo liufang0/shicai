@@ -8,13 +8,13 @@ use think\facade\Cache;
 use think\facade\Config;
 
 /**
- * Workerman PK10 WebSocket 控制器
- * 负责PK10游戏的WebSocket服务和实时数据推送
+ * Workerman 幸运飞艇 WebSocket 控制器
+ * 负责幸运飞艇游戏的WebSocket服务和实时数据推送
  */
-class WorkermanPk10 extends WorkermanBase
+class Workerman幸运飞艇 extends WorkermanBase
 {
     protected $socket = 'websocket://0.0.0.0:15531';
-    protected $game = 'pk10';
+    protected $game = '幸运飞艇';
     
     /**
      * Worker启动时的初始化
@@ -28,27 +28,27 @@ class WorkermanPk10 extends WorkermanBase
         $endToday = strtotime("23:59:59");
         
         $caiji = Db::table('caiji')
-            ->where("game", 'pk10')
+            ->where("game", '幸运飞艇')
             ->order("id desc")
             ->limit(1)
             ->find();
             
-        $data = pk10_format($caiji);
+        $data = 幸运飞艇_format($caiji);
         $time_interval = 1;
         $pkdata = json_decode($data, true);
         $nexttime = 75 + strtotime($pkdata['next']['awardTime']);
         
-        // 设置PK10状态
-        if (true) { // 原逻辑条件：$nexttime-time()>config('pk10_stop_time') && $nexttime-time()<288 && time()>$beginToday && time()<$endToday
-            Cache::set('pk10_state', 1);
-            $this->setConfig('pk10_state', 1);
+        // 设置幸运飞艇状态
+        if (true) { // 原逻辑条件：$nexttime-time()>config('幸运飞艇_stop_time') && $nexttime-time()<288 && time()>$beginToday && time()<$endToday
+            Cache::set('幸运飞艇_state', 1);
+            $this->setConfig('幸运飞艇_state', 1);
         } else {
-            Cache::set('pk10_state', 0);
-            $this->setConfig('pk10_state', 0);
+            Cache::set('幸运飞艇_state', 0);
+            $this->setConfig('幸运飞艇_state', 0);
         }
         
-        if (!Cache::get('pk10data')) {
-            Cache::set('pk10data', $pkdata);
+        if (!Cache::get('幸运飞艇data')) {
+            Cache::set('幸运飞艇data', $pkdata);
         }
         
         if (!Cache::get('is_send')) {
@@ -72,21 +72,21 @@ class WorkermanPk10 extends WorkermanBase
             $beginToday = strtotime('00:00:00');
             $endToday = strtotime("23:59:59");
             
-            Cache::set('game', 'pk10');
-            $pk10data = Cache::get('pk10data');
-            $next_time = 75 + strtotime($pk10data['next']['awardTime']);
-            $awardtime = $pk10data['current']['awardTime'];
+            Cache::set('game', '幸运飞艇');
+            $幸运飞艇data = Cache::get('幸运飞艇data');
+            $next_time = 75 + strtotime($幸运飞艇data['next']['awardTime']);
+            $awardtime = $幸运飞艇data['current']['awardTime'];
             
             if (true) { // 游戏开放条件
-                Cache::set('pk10_state', 1);
-                $this->setConfig('pk10_state', 1);
+                Cache::set('幸运飞艇_state', 1);
+                $this->setConfig('幸运飞艇_state', 1);
             } else {
-                Cache::set('pk10_state', 0);
-                $this->setConfig('pk10_state', 0);
+                Cache::set('幸运飞艇_state', 0);
+                $this->setConfig('幸运飞艇_state', 0);
             }
             
             // 处理开奖逻辑
-            $this->processDrawing($pk10data, $next_time);
+            $this->processDrawing($幸运飞艇data, $next_time);
         });
         */
     }
@@ -94,21 +94,21 @@ class WorkermanPk10 extends WorkermanBase
     /**
      * 处理开奖逻辑
      */
-    private function processDrawing($pk10data, $next_time)
+    private function processDrawing($幸运飞艇data, $next_time)
     {
         // 获取最新数据
         $caiji = Db::table('caiji')
-            ->where("game", 'pk10')
+            ->where("game", '幸运飞艇')
             ->order("id desc")
             ->limit(1)
             ->find();
             
         if ($caiji) {
-            $newData = pk10_format($caiji);
+            $newData = 幸运飞艇_format($caiji);
             $newPkdata = json_decode($newData, true);
             
             // 更新缓存
-            Cache::set('pk10data', $newPkdata);
+            Cache::set('幸运飞艇data', $newPkdata);
             
             // 推送数据到所有连接的客户端
             $this->broadcastToAll($newData);
@@ -146,9 +146,9 @@ class WorkermanPk10 extends WorkermanBase
         $message = json_decode($data, true);
         
         switch ($message['type']) {
-            case 'getPk10Data':
-                $pk10data = Cache::get('pk10data');
-                $connection->send(json_encode($pk10data));
+            case 'get幸运飞艇Data':
+                $幸运飞艇data = Cache::get('幸运飞艇data');
+                $connection->send(json_encode($幸运飞艇data));
                 break;
             case 'bet':
                 // 处理投注逻辑

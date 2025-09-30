@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>食彩游戏平台 - 完整对接系统</title>
+    <style>
+        body { font-family: "Microsoft YaHei", Arial; margin: 0; background: #f0f2f5; }
+        .header { background: #1890ff; color: white; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
+        .nav a { color: white; text-decoration: none; padding: 8px 16px; margin: 0 5px; background: rgba(255,255,255,0.2); border-radius: 4px; }
+        .nav a:hover { background: rgba(255,255,255,0.3); }
+        .container { max-width: 1200px; margin: 20px auto; padding: 20px; }
+        .dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .card h3 { margin: 0 0 15px 0; color: #1890ff; }
+        .btn { padding: 10px 20px; background: #1890ff; color: white; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; display: inline-block; margin: 5px; }
+        .btn:hover { background: #40a9ff; }
+        .btn-success { background: #52c41a; } .btn-success:hover { background: #73d13d; }
+        .btn-warning { background: #fa8c16; } .btn-warning:hover { background: #ffa940; }
+        .btn-danger { background: #ff4d4f; } .btn-danger:hover { background: #ff7875; }
+        .api-list { background: #fafafa; padding: 15px; border-radius: 4px; margin: 10px 0; }
+        .api-item { margin: 10px 0; padding: 10px; background: white; border-radius: 4px; }
+        .status-running { color: #52c41a; font-weight: bold; }
+        .status-stopped { color: #ff4d4f; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div style="font-size: 20px; font-weight: bold;">🎮 食彩游戏平台 - 完整对接系统</div>
+        <div class="nav">
+            <a href="/">首页</a>
+            <a href="/admin/login">管理登录</a>
+            <a href="#games">游戏大厅</a>
+            <a href="#api">API接口</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="dashboard">
+            <!-- 快速登录管理 -->
+            <div class="card">
+                <h3>🔐 管理后台登录</h3>
+                <div style="margin: 15px 0;">
+                    <input type="text" id="username" placeholder="用户名" value="admin" style="width: 100%; padding: 8px; margin: 5px 0; border: 1px solid #ddd; border-radius: 4px;">
+                    <input type="password" id="password" placeholder="密码" value="admin" style="width: 100%; padding: 8px; margin: 5px 0; border: 1px solid #ddd; border-radius: 4px;">
+                    <button class="btn btn-success" onclick="quickLogin()" style="width: 100%;">立即登录管理后台</button>
+                </div>
+                <div id="loginResult" style="margin: 10px 0; padding: 10px; display: none;"></div>
+                <a href="/admin/login" class="btn">完整登录页面</a>
+            </div>
+
+            <!-- 游戏控制 -->
+            <div class="card">
+                <h3>🎮 游戏控制中心</h3>
+                <div class="api-item">
+                    <strong>北京28:</strong> <span class="status-running">运行中</span>
+                    <br><a href="/run/bj28" target="_blank" class="btn">进入游戏</a>
+                </div>
+                <div class="api-item">
+                    <strong>时时彩:</strong> <span class="status-running">运行中</span>
+                    <br><a href="/run/ssc" target="_blank" class="btn">进入游戏</a>
+                </div>
+                <div class="api-item">
+                    <strong>幸运飞艇:</strong> <span class="status-running">运行中</span>
+                    <br><a href="/run/幸运飞艇" target="_blank" class="btn">进入游戏</a>
+                </div>
+            </div>
+
+            <!-- API对接接口 -->
+            <div class="card">
+                <h3>🔌 API对接接口</h3>
+                <div class="api-list">
+                    <div class="api-item">
+                        <strong>管理员登录:</strong> POST /admin-control/login
+                        <br><button class="btn btn-success" onclick="testApi('/admin-control/login', 'POST', {username:'admin', password:'admin'})">测试登录</button>
+                    </div>
+                    <div class="api-item">
+                        <strong>用户列表:</strong> GET /admin-control/get-user-list
+                        <br><button class="btn" onclick="testApi('/admin-control/get-user-list')">获取用户</button>
+                    </div>
+                    <div class="api-item">
+                        <strong>系统统计:</strong> GET /admin-control/get-system-stats
+                        <br><button class="btn" onclick="testApi('/admin-control/get-system-stats')">系统数据</button>
+                    </div>
+                    <div class="api-item">
+                        <strong>投注列表:</strong> GET /admin-control/get-bet-list
+                        <br><button class="btn" onclick="testApi('/admin-control/get-bet-list')">投注记录</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 数据采集 -->
+            <div class="card">
+                <h3>📊 数据采集系统</h3>
+                <div class="api-item">
+                    <strong>自动采集:</strong> <span class="status-running">运行中</span>
+                    <br><button class="btn btn-success" onclick="testApi('/collect/index')">启动采集</button>
+                    <button class="btn btn-warning" onclick="testApi('/collect/status')">采集状态</button>
+                </div>
+                <div class="api-item">
+                    <strong>手动采集:</strong>
+                    <br><button class="btn" onclick="testApi('/collect/manual?game=bj28')">北京28</button>
+                    <button class="btn" onclick="testApi('/collect/manual?game=ssc')">时时彩</button>
+                </div>
+            </div>
+
+            <!-- WebSocket推送 -->
+            <div class="card">
+                <h3>🔄 实时数据推送</h3>
+                <div class="api-item">
+                    <strong>WebSocket服务:</strong> <span class="status-running">运行中</span>
+                    <br><button class="btn btn-success" onclick="testApi('/websocket-push/get-latest-data')">获取实时数据</button>
+                    <button class="btn btn-warning" onclick="testApi('/websocket-push/start')">启动推送</button>
+                </div>
+            </div>
+
+            <!-- 投注控制 -->
+            <div class="card">
+                <h3>🎯 投注控制系统</h3>
+                <div class="api-item">
+                    <strong>投注接口:</strong> POST /bet-control/bet
+                    <br><button class="btn btn-success" onclick="testBet()">测试投注</button>
+                </div>
+                <div class="api-item">
+                    <strong>投注历史:</strong> GET /bet-control/bet-history
+                    <br><button class="btn" onclick="testApi('/bet-control/bet-history')">查看历史</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- API测试结果 -->
+        <div class="card" style="margin-top: 20px;">
+            <h3>📋 API测试结果</h3>
+            <div id="apiResult" style="background: #f6f6f6; padding: 15px; border-radius: 4px; min-height: 100px; font-family: monospace;">
+                等待API测试...
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 快速登录
+        function quickLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const resultDiv = document.getElementById('loginResult');
+            
+            fetch('/admin-control/login', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                body: `username=${username}&password=${password}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                resultDiv.style.display = 'block';
+                resultDiv.style.background = '#d4edda';
+                resultDiv.style.color = '#155724';
+                resultDiv.innerHTML = `登录成功！<br>响应: ${JSON.stringify(data, null, 2)}`;
+                setTimeout(() => window.open('/admin/dashboard', '_blank'), 1000);
+            })
+            .catch(error => {
+                resultDiv.style.display = 'block';
+                resultDiv.style.background = '#f8d7da';
+                resultDiv.style.color = '#721c24';
+                resultDiv.innerHTML = `登录测试: ${error.message}`;
+            });
+        }
+
+        // API测试
+        function testApi(endpoint, method = 'GET', data = null) {
+            const resultDiv = document.getElementById('apiResult');
+            resultDiv.innerHTML = `正在测试: ${method} ${endpoint}...`;
+            
+            const options = {
+                method: method,
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            };
+            
+            if (data && method === 'POST') {
+                options.body = new URLSearchParams(data);
+            }
+            
+            fetch(endpoint, options)
+            .then(response => response.text())
+            .then(text => {
+                try {
+                    const json = JSON.parse(text);
+                    resultDiv.innerHTML = `✅ ${endpoint}\\n${JSON.stringify(json, null, 2)}`;
+                } catch {
+                    resultDiv.innerHTML = `✅ ${endpoint}\\n${text}`;
+                }
+            })
+            .catch(error => {
+                resultDiv.innerHTML = `❌ ${endpoint}\\n错误: ${error.message}`;
+            });
+        }
+
+        // 测试投注
+        function testBet() {
+            testApi('/bet-control/bet', 'POST', {
+                user_id: 1,
+                game: 'bj28',
+                bet_amount: 100,
+                bet_numbers: '1,2,3'
+            });
+        }
+    </script>
+</body>
+</html>

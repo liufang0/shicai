@@ -2,7 +2,7 @@
 
 return [
     // 默认使用的数据库连接配置
-    'default'         => 'mysql',
+    'default'         => 'sqlite',
 
     // 自定义时间查询规则
     'time_query_rule' => [],
@@ -18,6 +18,22 @@ return [
 
     // 数据库连接配置信息
     'connections'     => [
+        'sqlite' => [
+            // 数据库类型
+            'type'            => 'sqlite',
+            // 数据库文件路径
+            'database'        => dirname(__DIR__) . '/shicai.db',
+            // 数据库表前缀
+            'prefix'          => '',
+            // 数据库编码
+            'charset'         => 'utf8',
+            // 数据库调试模式
+            'debug'           => true,
+            // 数据库部署方式
+            'deploy'          => 0,
+            // 数据库读写是否分离
+            'rw_separate'     => false,
+        ],
         'mysql' => [
             // 数据库类型
             'type'            => 'mysql',

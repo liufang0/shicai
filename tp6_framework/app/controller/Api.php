@@ -134,7 +134,7 @@ class Api extends BaseController
      */
     public function gameData()
     {
-        $game = request()->param('game', 'pk10');
+        $game = request()->param('game', '幸运飞艇');
         
         // 获取最新期号数据
         $latest = Db::table($game . '_caiji')

@@ -10121,7 +10121,7 @@
                         gameId: n.props.gameId,
                         hasMore: !0,
                         periods: []
-                    }, n.getChart = n.getChart.bind(n), n.cutPeriods = n.cutPeriods.bind(n), n.play28 = n.play28.bind(n), n.playPk10 = n.playPk10.bind(n), n.playChongqing = n.playChongqing.bind(n), n.whichLottery = n.whichLottery.bind(n), n
+                    }, n.getChart = n.getChart.bind(n), n.cutPeriods = n.cutPeriods.bind(n), n.play28 = n.play28.bind(n), n.play幸运飞艇 = n.play幸运飞艇.bind(n), n.playChongqing = n.playChongqing.bind(n), n.whichLottery = n.whichLottery.bind(n), n
                 }
                 return o(t, e), d(t, [{
                     key: "componentDidMount",
@@ -10153,7 +10153,7 @@
                         })
                     }
                 }, {
-                    key: "playPk10",
+                    key: "play幸运飞艇",
                     value: function (e, t, n) {
                         if (t) {
                             for (var r = t.split(","), a = parseInt(r[0], 10) + parseInt(r[1], 10), o = [], i = 0; i < 5; i++) r[i] > r[9 - i] ? o[i] = {
@@ -10470,7 +10470,7 @@
                         }, "1-5\u9f8d\u864e"))), l.a.createElement("tbody", {
                             className: "ChartBody"
                         }, this.state.periods.map(function (e) {
-                            return t.playPk10(e.id, e.result, e.name)
+                            return t.play幸运飞艇(e.id, e.result, e.name)
                         })))) : 5 === e ? l.a.createElement("div", {
                             style: {
                                 height: document.documentElement.clientHeight + "px"
@@ -12057,8 +12057,8 @@
                             });
                         case 3:
                             return s.a.createElement(f.a, {
-                                src: "/img/game/bjpk10-logo.png",
-                                alt: "pk10"
+                                src: "/img/game/bj幸运飞艇-logo.png",
+                                alt: "幸运飞艇"
                             });
                         case 4:
                             return s.a.createElement(f.a, {
@@ -29763,20 +29763,20 @@
                                 color: s
                             };
                             return u.a.createElement("div", {
-                                className: "historyAwardPK10"
+                                className: "historyAward幸运飞艇"
                             }, u.a.createElement("div", {
-                                className: "historyAwardPK10ListResult"
+                                className: "historyAward幸运飞艇ListResult"
                             }, u.a.createElement("div", {
-                                className: "historyAwardPK10ListResultPeriods"
+                                className: "historyAward幸运飞艇ListResultPeriods"
                             }, u.a.createElement("span", null, t)), u.a.createElement("div", {
-                                className: "historyAwardPK10ListResultNumber"
+                                className: "historyAward幸运飞艇ListResultNumber"
                             }, r.map(function (e) {
                                 return u.a.createElement("div", {
                                     key: e,
                                     style: n[e]
                                 }, u.a.createElement("span", null, e))
                             })), u.a.createElement("div", {
-                                className: "historyAwardPK10ListResultNumberSizeSingle"
+                                className: "historyAward幸运飞艇ListResultNumberSizeSingle"
                             }, u.a.createElement("div", null, u.a.createElement("span", {
                                 className: "font16Color63"
                             }, a)), u.a.createElement("div", null, u.a.createElement("span", {
@@ -29784,7 +29784,7 @@
                             }, i)), u.a.createElement("div", null, u.a.createElement("span", {
                                 className: "font16Color63"
                             }, o))), u.a.createElement("div", {
-                                className: "historyAwardPK10ListResultDragonTiger"
+                                className: "historyAward幸运飞艇ListResultDragonTiger"
                             }, l.map(function (e, t) {
                                 var n = {
                                     color: e.color,
@@ -29799,13 +29799,13 @@
                             }))))
                         }
                         return u.a.createElement("div", {
-                            className: "historyAwardPK10"
+                            className: "historyAward幸运飞艇"
                         }, u.a.createElement("div", {
-                            className: "historyAwardPK10ListResult"
+                            className: "historyAward幸运飞艇ListResult"
                         }, u.a.createElement("div", {
-                            className: "historyAwardPK10ListResultPeriods"
+                            className: "historyAward幸运飞艇ListResultPeriods"
                         }, u.a.createElement("span", null, t)), u.a.createElement("div", {
-                            className: "historyAwardPK10ListResultNumber font16Color63"
+                            className: "historyAward幸运飞艇ListResultNumber font16Color63"
                         }, u.a.createElement("div", {
                             className: "awardColor"
                         }, u.a.createElement("span", null, "?")), u.a.createElement("div", {
@@ -29827,9 +29827,9 @@
                         }, u.a.createElement("span", null, "?")), u.a.createElement("div", {
                             className: "awardColor"
                         }, u.a.createElement("span", null, "?"))), u.a.createElement("div", {
-                            className: "historyAwardPK10ListResultNumberSizeSingle font16Color63"
+                            className: "historyAward幸运飞艇ListResultNumberSizeSingle font16Color63"
                         }, u.a.createElement("div", null, u.a.createElement("span", null, "\u5f00")), u.a.createElement("div", null, u.a.createElement("span", null, "\u5956")), u.a.createElement("div", null, u.a.createElement("span", null, "\u4e2d"))), u.a.createElement("div", {
-                            className: "historyAwardPK10ListResultDragonTiger font16Color63"
+                            className: "historyAward幸运飞艇ListResultDragonTiger font16Color63"
                         }, u.a.createElement("div", null, u.a.createElement("span", null, "\u656c")), u.a.createElement("div", null, u.a.createElement("span", null, "\u8bf7")), u.a.createElement("div", null, u.a.createElement("span", null, "\u671f")), u.a.createElement("div", null, u.a.createElement("span", null, "\u5f85")), u.a.createElement("div", null, u.a.createElement("span", null, ".")))))
                     }
                 }, {
@@ -29873,23 +29873,23 @@
                         }, this.state.historyModalShow && u.a.createElement(l.a, {
                             onClick: this.modalClose("historyModalShow")
                         }, u.a.createElement(l.a.Item, null, u.a.createElement("div", {
-                            className: "historyAwardPK10Bottom"
+                            className: "historyAward幸运飞艇Bottom"
                         }, u.a.createElement("div", {
-                            className: "historyAwardPK10ListResultBottom"
+                            className: "historyAward幸运飞艇ListResultBottom"
                         }, u.a.createElement("div", {
-                            className: "historyAwardPK10ListResultPeriodsBottom"
+                            className: "historyAward幸运飞艇ListResultPeriodsBottom"
                         }, u.a.createElement("span", {
                             className: "font16Color63"
                         }, "\u671f\u6570")), u.a.createElement("div", {
-                            className: "historyAwardPK10ListResultNumberBottom"
+                            className: "historyAward幸运飞艇ListResultNumberBottom"
                         }, u.a.createElement("div", null, u.a.createElement("span", {
                             className: "font16Color63"
                         }, "\u5f00\u5956\u7ed3\u679c"))), u.a.createElement("div", {
-                            className: "historyAwardPK10ListResultNumberSizeSingleBottom"
+                            className: "historyAward幸运飞艇ListResultNumberSizeSingleBottom"
                         }, u.a.createElement("div", null, u.a.createElement("span", {
                             className: "font16Color63"
                         }, "\u51a0\u4e9a\u548c"))), u.a.createElement("div", {
-                            className: "historyAwardPK10ListResultDragonTigerBottom"
+                            className: "historyAward幸运飞艇ListResultDragonTigerBottom"
                         }, u.a.createElement("div", null, u.a.createElement("span", {
                             className: "font16Color63"
                         }, "1-5\u9f8d\u864e")))))), this.props.gamePeriods && this.props.gamePeriods.map(function (t, n) {
@@ -31042,7 +31042,7 @@
                             buyAmount: w,
                             ruleIdList: []
                         }
-                    }, n.ruleButtonClick = n.ruleButtonClick.bind(n), n.renderContent28 = n.renderContent28.bind(n), n.renderContentPK10 = n.renderContentPK10.bind(n), n.buyAmountHandleChange = n.buyAmountHandleChange.bind(n), n
+                    }, n.ruleButtonClick = n.ruleButtonClick.bind(n), n.renderContent28 = n.renderContent28.bind(n), n.renderContent幸运飞艇 = n.renderContent幸运飞艇.bind(n), n.buyAmountHandleChange = n.buyAmountHandleChange.bind(n), n
                 }
                 return o(t, e), g(t, [{
                     key: "ruleButtonClick",
@@ -31105,11 +31105,11 @@
                         })
                     }
                 }, {
-                    key: "renderContentPK10",
+                    key: "renderContent幸运飞艇",
                     value: function (e) {
                         var t = this;
                         return h.a.createElement(p.a, {
-                            className: "ruleListPk10Items",
+                            className: "ruleList幸运飞艇Items",
                             data: e.items,
                             activeStyle: !1,
                             columnNum: 4,
@@ -31153,7 +31153,7 @@
                         case 4:
                         case 5:
                         default:
-                            t = this.renderContentPK10
+                            t = this.renderContent幸运飞艇
                         }
                         return h.a.createElement("div", {
                             className: "main"

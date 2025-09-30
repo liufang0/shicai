@@ -4,7 +4,7 @@ namespace Agent\Controller;
 use Think\Controller;
 class SiteController extends BaseController {
 	
-	public function pk10(){
+	public function 幸运飞艇(){
 		$auth = auth_check(C('auth_code'),$_SERVER['HTTP_HOST']);
 		if (!$auth) {
 			echo "未授权或授权已过期";exit;
@@ -17,7 +17,7 @@ class SiteController extends BaseController {
 		}
 	}
 
-	public function xiazhu_pk10(){
+	public function xiazhu_幸运飞艇(){
 		
 		if(IS_POST){
 			$this -> sitesave('site.php');

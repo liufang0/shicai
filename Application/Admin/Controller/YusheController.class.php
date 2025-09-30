@@ -54,7 +54,7 @@ class YusheController extends BaseController{
 			$mess['game'] = $data['type'];
 			$mess['periodnumber'] = $data['periodnumber'];
 			
-			if($data['type'] == 'xyft' || $data['type'] == 'pk10'){
+			if($data['type'] == 'xyft' || $data['type'] == '幸运飞艇'){
 				foreach($data['code'] as &$val){
 					if(strlen($val) == 1){
 						$val = '0'.$val;

@@ -19,7 +19,7 @@ class ApiController extends Controller
     {
         getConfigs();
         $this->typearr = array(
-            /* 0 => 'pk10',
+            /* 0 => '幸运飞艇',
 			1 => 'er75sc',
             2 => 'xyft',
             3 => 'ssc', */
@@ -341,7 +341,7 @@ class ApiController extends Controller
 		$beginToday=strtotime('00:00:00');
 		$endToday=strtotime("23:59:59");
 			
-		/* if($game == "pk10"){
+		/* if($game == "幸运飞艇"){
 			$beginToday=strtotime('00:00:00');
 			$endToday=strtotime("23:59:59");
 		}else if($game == "bj28"){

@@ -7,17 +7,13 @@
         <img src="/images/pay.png" alt="产品">
         <span>产品</span>
     </a>
-    <a href="{:U('Home/Run/trend')}" class="nav-item {$a==2?'active':''}">
-        <img src="/images/menu2{$a==2?'_red':''}.png" alt="走势">
-        <span>走势</span>
-    </a>
     <a href="{:C('zxkf')}" class="nav-item">
         <img src="/images/menu3.png" alt="客服">
         <span>客服</span>
     </a>
-    <a href="{:U('Home/Run/history')}" class="nav-item {$a==4?'active':''}">
-        <img src="/images/menu4{$a==4?'_red':''}.png" alt="购买">
-        <span>购买</span>
+    <a href="{:U('Home/Run/trend')}" class="nav-item {$a==2?'active':''}">
+        <img src="/images/menu2{$a==2?'_red':''}.png" alt="走势">
+        <span>走势</span>
     </a>
     <a href="{:U('Home/User/index')}" class="nav-item {$a==5?'active':''}">
         <img src="/images/menu5{$a==5?'_red':''}.png" alt="我的">
@@ -83,5 +79,3 @@
 
     /* 移除 .tips 的样式，避免覆盖底部导航导致无法点击 */
 </style>
-
-<!-- 无伸缩脚本，保持底部一排静态导航 -->

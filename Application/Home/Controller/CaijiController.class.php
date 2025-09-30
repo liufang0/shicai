@@ -15,7 +15,7 @@ class CaijiController extends Server
     public function onWorkerStart()
     {
         $typearr = array(
-            1 => 'pk10'
+            1 => '幸运飞艇'
         ); // 2 => 'xyft', 3 => 'cqssc'
         
         \Workerman\Lib\Timer::add(6, function () {
@@ -99,7 +99,7 @@ class CaijiController extends Server
                             
                             foreach ($list as $key => $value) {
                                 $fs_date['water'] += $value['del_points'];
-                                if ($value['game'] == 'pk10' || $value['game'] == 'xyft') {
+                                if ($value['game'] == '幸运飞艇' || $value['game'] == 'xyft') {
                                     $fs_water['pkft'] += $value['del_points'] * $t_userinfo['pkft_fs'] * 0.01;
                                 } else 
                                     if ($value['game'] == 'ssc') {
@@ -126,7 +126,7 @@ class CaijiController extends Server
                                 $list[$key]['date'] = $time;
                                 $list[$key]['water'] = $value['del_points'];
                                 
-                                if ($value['game'] == 'pk10' || $value['game'] == 'xyft') {
+                                if ($value['game'] == '幸运飞艇' || $value['game'] == 'xyft') {
                                     $list[$key]['money'] = $value['del_points'] * $t_userinfo['pkft_fs'] * 0.01;
                                 } else 
                                     if ($value['game'] == 'ssc') {
@@ -184,7 +184,7 @@ class CaijiController extends Server
                         
                         foreach ($list as $key => $value) {
                             $fs_date['water'] += $value['del_points'];
-                            if ($value['game'] == 'pk10' || $value['game'] == 'xyft') {
+                            if ($value['game'] == '幸运飞艇' || $value['game'] == 'xyft') {
                                 $fs_water['pkft'] += $value['del_points'] * C('pkft_fs_rate') * 0.01;
                             } else 
                                 if ($value['game'] == 'ssc') {
@@ -203,7 +203,7 @@ class CaijiController extends Server
                             $list[$key]['date'] = $time;
                             $list[$key]['water'] = $value['del_points'];
                             
-                            if ($value['game'] == 'pk10' || $value['game'] == 'xyft') {
+                            if ($value['game'] == '幸运飞艇' || $value['game'] == 'xyft') {
                                 $list[$key]['money'] = $value['del_points'] * C('pkft_fs_rate') * 0.01;
                             } else 
                                 if ($value['game'] == 'ssc') {

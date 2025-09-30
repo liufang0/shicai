@@ -49,55 +49,55 @@
 	text-align: center;
 }
 
-.pk10num {
+.幸运飞艇num {
 	width: 40px;
 	height: 40px;
 	position: relative;
 	display: inline;
 }
 
-.pk10num-empty {
+.幸运飞艇num-empty {
 	background-image: none !important;
 	padding:0 6px;
 }
 
-.pk10num-01 {
+.幸运飞艇num-01 {
 	background-position: 0 0;
 }
 
-.pk10num-02 {
+.幸运飞艇num-02 {
 	background-position: 0 -40px !important;
 }
 
-.pk10num-03 {
+.幸运飞艇num-03 {
 	background-position: 0 -80px !important;
 }
 
-.pk10num-04 {
+.幸运飞艇num-04 {
 	background-position: 0 -120px !important;
 }
 
-.pk10num-05 {
+.幸运飞艇num-05 {
 	background-position: 0 -160px !important;
 }
 
-.pk10num-06 {
+.幸运飞艇num-06 {
 	background-position: 0 -200px !important;
 }
 
-.pk10num-07 {
+.幸运飞艇num-07 {
 	background-position: 0 -240px !important;
 }
 
-.pk10num-08 {
+.幸运飞艇num-08 {
 	background-position: 0 -280px !important;
 }
 
-.pk10num-09 {
+.幸运飞艇num-09 {
 	background-position: 0 -320px !important;
 }
 
-.pk10num-10 {
+.幸运飞艇num-10 {
 	background-position: 0 -360px !important;
 }
 

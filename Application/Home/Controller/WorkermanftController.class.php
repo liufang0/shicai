@@ -740,7 +740,7 @@ class WorkermanftController extends Server {
 					$this->add_message($time_message);/*添加信息*/
 				}else{
 					$time = time();
-					// if (F('game') == 'pk10' && $time > strtotime("23:57:30")) {
+					// if (F('game') == '幸运飞艇' && $time > strtotime("23:57:30")) {
 					// 	$content_msg =  "北京赛车最后一期已关闭";
 					// 	$new_message = array(
 					// 		'uid'  => $connection->uid,
