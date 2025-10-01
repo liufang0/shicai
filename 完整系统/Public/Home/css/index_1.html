@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>{:C('sitename')}</title>
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/swiper.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Home/css/style.css">
+    <style type="text/css">
+        .qimo8{ overflow:hidden; width:100%;}
+        .qimo8 .qimo {/*width:99999999px;*/width:8000%; height:30px;}
+        .qimo8 .qimo div{ float:left;}
+        .qimo8 .qimo ul{float:left; height:30px; overflow:hidden; zoom:1; }
+        .qimo8 .qimo ul li{float:left; line-height:1rem; list-style:none;}
+        .qimo8 li a{margin-right:10px;color:#F1BB5C;font-size: .8rem}
+    </style>
+</head>
+<body>
+<header>
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="__PUBLIC__/Home/css/img/banner1_0.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="__PUBLIC__/Home/css/img/banner2_0.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="__PUBLIC__/Home/css/img/banner3_0.jpg" alt="">
+            </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+</header>
+<section>
+    <div class="top">
+        <img width="100%" src="__PUBLIC__/Home/css/img/kuang.png" alt="">
+        <div class="info">
+            <div id="demo" class="qimo8">
+                <div class="qimo">
+                    <div id="demo1">
+                        <ul>
+                            <li><a href='' >欢迎莅临神龙娱乐！本平台重金打造！玩法多样，超高赔率，等你来战！</a></li>
+                            <li><a href='' >欢迎莅临神龙娱乐！本平台重金打造！玩法多样，超高赔率，等你来战！</a></li>
+                            <li><a href='' >欢迎莅临神龙娱乐！本平台重金打造！玩法多样，超高赔率，等你来战！</a></li>
+                            <li><a href='' >欢迎莅临神龙娱乐！本平台重金打造！玩法多样，超高赔率，等你来战！</a></li>
+                            <li><a href='' >欢迎莅临神龙娱乐！本平台重金打造！玩法多样，超高赔率，等你来战！</a></li>
+                            <li><a href='' >欢迎莅临神龙娱乐！本平台重金打造！玩法多样，超高赔率，等你来战！</a></li>
+                        </ul>
+                    </div>
+                    <div id="demo2"></div>
+                </div>
+            </div>
+            <img src="{$userinfo.headimgurl}">
+            <div class="info_right">
+                <p>游戏昵称：<span>{$userinfo.nickname}</span></p>
+                <p>游戏帐号：<span>{$userinfo.username}</span></p>
+                <p>游戏积分：<span>{$userinfo.points}</span></p>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <ul>
+            <li>
+                <div>
+                    <a href="{:U('Home/Run/幸运飞艇')}"><img src="__PUBLIC__/Home/css/img/gameIcon1_1.jpg" alt=""></a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <a href="{:U('Home/Run/xyft')}"><img src="__PUBLIC__/Home/css/img/gameIcon1_2.jpg" alt=""></a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <a href="{:U('Home/Run/ssc')}"><img src="__PUBLIC__/Home/css/img/gameIcon2_1.jpg" alt=""></a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <a href="{:U('Home/Run/bj28')}"><img src="__PUBLIC__/Home/css/img/gameIcon3_1.jpg" alt=""></a>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <a href="{:U('Home/Run/jnd28')}"><img src="__PUBLIC__/Home/css/img/gameIcon3_2.jpg" alt=""></a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+<footer>
+    <ul>
+        <li>
+            <div>
+                <a href="/Home/User/index"><img src="__PUBLIC__/Home/css/img/A1.png" alt=""></a>
+            </div>
+        </li>
+        <li>
+            <div>
+                <a href="{:U('Home/Fen/addpage')}?type=幸运飞艇"><img src="__PUBLIC__/Home/css/img/B1.png" alt=""></a>
+            </div>
+        </li>
+        <li>
+            <div>
+                <a href="{:U('Home/Fen/xiapage')}?type=幸运飞艇"><img src="__PUBLIC__/Home/css/img/C1.png" alt=""></a>
+            </div>
+        </li>
+        <li>
+            <div>
+                <a href="{:U('Home/Run/kefu_wx')}"><img src="__PUBLIC__/Home/css/img/D1.png" alt=""></a>
+            </div>
+        </li>
+    </ul>
+</footer>
+<script src="__PUBLIC__/Home/js/jquery.js"></script>
+<script src="__PUBLIC__/Home/js/swiper.min.js"></script>
+<script src="__PUBLIC__/Home/js/common.js"></script>
+<script>
+  //底部导航切换
+$('footer ul li').click(function () {
+     var src=$(this).find('img').attr('src');
+     var src01=src.split('.png')[0];
+    src01 = src01.replace('1', '2');
+     $('footer ul li img').each(function (index,val) {
+         var src02=$(val).attr('src');
+         var src03=src02.split('.png')[0];
+         src03 = src03.replace('2', '1');
+         src03 = src03.replace('1', '1');
+         $(val).attr('src',src03+'.png')
+     })
+     $(this).find('img').attr('src',src01+'.png')
+ })
+    //轮播图插件
+    var swiper = new Swiper('.swiper-container', {
+        autoplay:true,
+        pagination: {
+            el: '.swiper-pagination',
+        },
+    });
+    //文字无缝滚动
+    var demo = document.getElementById("demo");
+    var demo1 = document.getElementById("demo1");
+    var demo2 = document.getElementById("demo2");
+    demo2.innerHTML=document.getElementById("demo1").innerHTML;
+    function Marquee(){
+        if(demo.scrollLeft-demo2.offsetWidth>=0){
+            demo.scrollLeft-=demo1.offsetWidth;
+        }
+        else{
+            demo.scrollLeft++;
+        }
+    }
+    var myvar=setInterval(Marquee,30);
+    demo.onmouseout=function (){myvar=setInterval(Marquee,30);}
+    demo.onmouseover=function(){clearInterval(myvar);}
+</script>
+</body>
+</html>

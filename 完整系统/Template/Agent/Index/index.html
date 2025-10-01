@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<title>代理后台管理</title>
+
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+
+		<!--[if lt IE 9]>
+	    <meta http-equiv="refresh" content="0;ie.html" />
+	    <![endif]-->
+
+		<link rel="shortcut icon" href="favicon.ico">
+		<link href="__PUBLIC__/Admin/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/animate.min.css" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+	</head>
+	<style type="text/css">
+		.navbar{margin-bottom:0;}
+
+	</style>
+	<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+		
+		<div id="wrapper">
+			<!--左侧导航开始-->
+			<nav class="navbar-default navbar-static-side" role="navigation">
+				<div class="nav-close"><i class="fa fa-times-circle"></i>
+				</div>
+				<div class="sidebar-collapse">
+					<ul class="nav" id="side-menu">
+						<li class="nav-header">
+							<div class="dropdown profile-element">
+								<!-- <span><img alt="image" class="img-circle" src="__PUBLIC__/Admin/img/profile_small.jpg" /></span> -->
+								<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+									<span class="clear">
+										<strong size="14" class="text-muted text-xs font-bold">{:C('sitename')}代理管理后台 v7.5</strong>
+                               			<span class="block m-t-xs"><strong class="font-bold">{$Think.session.agent.username}</strong></span>
+									<!-- <span class="text-muted text-xs block">超级GM管理员<b class="caret"></b></span> -->
+									</span>
+								</a>
+								<ul class="dropdown-menu animated fadeInRight m-t-xs">
+									<li class="divider"></li>
+									<li>
+										<a href="{:U('Agent/Login/logout')}">安全退出</a>
+									</li>
+								</ul>
+							</div>
+							<div class="logo-element">M</div>
+						
+						</li>
+						<li>
+							<a href="{:U('Agent/Index/index')}">
+								<i class="fa fa-home"></i>
+								<span class="nav-label">主页</span>
+							</a>
+						</li>
+						
+						<li>
+							<a class="J_menuItem" href="{:U('Agent/Member/index')}">
+								<i class="fa fa-user "></i>
+								<span class="nav-label">会员管理</span>
+							</a>
+						</li>
+						<li>
+							<a class="J_menuItem" href="{:U('Agent/Order/index')}">
+								<i class="fa fa-taxi "></i>
+								<span class="nav-label">竞猜记录</span>
+							</a>
+						</li>
+						<li>
+							<a class="J_menuItem" href="{:U('Agent/Member/pushxx')}">
+								<i class="fa fa-paper-plane"></i>
+								<span class="nav-label">我的下线</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<i class="fa fa-level-up"></i>
+								<span class="nav-label">上下分管理</span>
+								<span class="fa arrow"></span>
+							</a>
+							<ul class="nav nav-second-level">
+								<if condition="C('agent_pay') eq '1'">
+									<li>
+										<a class="J_menuItem" href="{:U('Agent/Fen/addlist')}">上分申请</a>
+									</li>
+									<li>
+										<a class="J_menuItem" href="{:U('Agent/Fen/xialist')}">下分申请</a>
+									</li>
+								</if>
+								
+								<li>
+									<a class="J_menuItem" href="{:U('Agent/Integral/lists')}">上下分记录</a>
+								</li>
+								<if condition="C('agent_pay') eq '1'">
+									<li>
+										<a class="J_menuItem" href="{:U('Agent/Fen/setwx')}">微信收款设置</a>
+									</li>
+									<li>
+										<a class="J_menuItem" href="{:U('Agent/Fen/setzfb')}">支付宝收款设置</a>
+									</li>
+								</if>
+							</ul>
+						</li>
+
+						<li>
+							<a href="#">
+								<i class="fa fa-random "></i>
+								<span class="nav-label">数据采集</span>
+								<span class="fa arrow"></span>
+							</a>
+							<ul class="nav nav-second-level">
+								<li>
+									<a class="J_menuItem" href="{:U('Agent/Caiji/幸运飞艇')}">北京赛车</a>
+								</li>
+								<li>
+									<a class="J_menuItem" href="{:U('Agent/Caiji/xyft')}">幸运飞艇</a>
+								</li>
+								<li>
+									<a class="J_menuItem" href="{:U('Agent/Caiji/ssc')}">重庆时时彩</a>
+								</li>
+								<li>
+									<a class="J_menuItem" href="{:U('Agent/Caiji/xyft')}">急速飞艇</a>
+								</li>
+								<li>
+									<a class="J_menuItem" href="{:U('Agent/Caiji/ssc')}">时时彩</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="#">
+								<i class="fa fa fa-bar-chart-o"></i>
+								<span class="nav-label">代理输赢统计</span>
+								<span class="fa arrow"></span>
+							</a>
+							<ul class="nav nav-second-level">
+								<li>
+									<a class="J_menuItem" href="{:U('Agent/Order/win_lose')}">代理平台输赢</a>
+								</li>
+								<li>
+									<a class="J_menuItem" href="{:U('Agent/Order/user_win_lose')}">代理客户输赢</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="#">
+								<i class="fa fa-paper-plane"></i>
+								<span class="nav-label">代理会员返水</span>
+								<span class="fa arrow"></span>
+							</a>
+							<ul class="nav nav-second-level">
+								<li>
+									<a class="J_menuItem" href="{:U('Agent/Member/fs_set')}">返水设置</a>
+								</li>
+								<li>
+									<a class="J_menuItem" href="{:U('Agent/Member/fs')}">返水操作</a>
+								</li>
+								
+							</ul>
+						</li>
+					
+					</ul>
+				</div>
+			</nav>
+			<!--左侧导航结束-->
+
+			<!--右侧部分开始-->
+			<div id="page-wrapper" class="gray-bg dashbard-1">
+				<div class="row border-bottom">
+					<nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0；overflow:hidden;">
+						<div class="navbar-header" style="width: 10%;">
+							<a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+						</div>
+					
+						<div class="notice" style="display:inline-block;float: right;height: 50px;line-height: 50px">
+							<a href="/Agent/Fen/addlist"  class="J_menuItem btn shang">上分请求:<font color="red">{$sf_count}</font> <span></span>个</a>
+							<a href="/Agent/Fen/xialist" class="J_menuItem btn xia">下分请求 <font color="red">{$xf_count}</font><span></span>个</a>
+						</div>
+					
+					</nav>
+
+				</div>
+
+				<div class="row J_mainContent" id="content-main" style="overflow-y: auto; -webkit-overflow-scrolling: touch; overflow-y: scroll;">
+					<iframe id="iframe_default" src="{:U('Agent/Member/pushxx')}" class="J_iframe" name="iframe0" width="100%" height="100%" frameborder="0" data-id="default" seamless></iframe>
+				</div>
+			<!-- 	<div class="footer">
+					<div class="pull-right">Copyright@ 2017 OOP
+					</div>
+				</div> -->
+			</div>
+			<!--右侧部分结束-->
+			
+		</div>
+
+		<script src="__PUBLIC__/Admin/js/jquery.min.js?v=2.1.4"></script>
+		<script src="__PUBLIC__/Admin/js/bootstrap.min.js?v=3.3.6"></script>
+		<script src="__PUBLIC__/Admin/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+		<script src="__PUBLIC__/Admin/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+		<script src="__PUBLIC__/Admin/js/plugins/layer/layer.min.js"></script>
+		<script src="__PUBLIC__/Admin/js/hplus.min.js?v=4.1.0"></script>
+		<script type="text/javascript" src="__PUBLIC__/Admin/js/contabs.min.js"></script>
+		<script src="__PUBLIC__/Admin/js/plugins/pace/pace.min.js"></script>
+
+		
+		<!--推送-->
+		<script src='/Public/Common/js/socket.io.js'></script>
+		<!-- <script>
+			var uid = '{$userinfo.id}';
+		</script> -->
+		<script>
+			function escape2Html(str) {
+			 	var arrEntities={'lt':'<','gt':'>','nbsp':' ','amp':'&','quot':'"'};
+			 	return str.replace(/&(lt|gt|nbsp|amp|quot);/ig,function(all,t){return arrEntities[t];});
+			}
+			$(document).ready(function() {
+				// 连接服务端
+				var socket = io('http://' + document.domain + ':12223');
+				// 连接后登录
+				// socket.on('connect', function() {
+				// 	socket.emit('login', uid);
+				// });
+				// 后端推送来消息时
+				socket.on('new_msg', function(msg) {
+					var data = eval("(" + escape2Html(msg) + ")");
+					var time = data['time'];
+					var type = data['type'];
+					var content = data['content'];
+					if (type == 1) {
+						$('.notice .shang').find('span').html('<audio src="__PUBLIC__/Admin/images/sf.mp3" controls="controls" style="display:none" autoplay="autoplay"></audio>');
+						$dom_font = $('.notice .shang').find('font');
+						$num = parseInt($dom_font.text()) + 1;
+						$dom_font.text($num);
+					} else if(type ==2) {
+						$('.notice .xia').find('span').html('<audio src="__PUBLIC__/Admin/images/xf.mp3" controls="controls" style="display:none" autoplay="autoplay"></audio>');
+						$dom_font = $('.notice .xia').find('font');
+						$num = parseInt($dom_font.text()) + 1;
+						$dom_font.text($num);
+					} else if(type ==3) {
+						$dom_font = $('.notice .shang').find('font');
+						$num = parseInt($dom_font.text()) - 1;
+						$dom_font.text($num);
+					} else if(type == 4) {
+						$dom_font = $('.notice .xia').find('font');
+						$num = parseInt($dom_font.text()) - 1;
+						$dom_font.text($num);
+					}
+
+					// $(".chatting").prepend('<div class="chatting-li qtr pink"><div class="portrait"><img src="/Public/main/img/system.jpg"/></div><div class="content"><small><span class="name">客服</span><time>'+time+'</time></small><p>' + content + '</p></div></div>');
+				});
+			});
+
+			if ({:C('is_repeat_voice')}) {
+				setInterval(function(){
+					var shang_font = $('.notice .shang').find('font').text();
+					var xia_font = $('.notice .xia').find('font').text();
+					if (parseInt(shang_font) > 0) {
+						$('.notice .shang').find('span').html('<audio src="__PUBLIC__/Admin/images/sf.mp3" controls="controls" style="display:none" autoplay="autoplay"></audio>');
+					}
+
+					if (parseInt(xia_font) > 0) {
+						$('.notice .xia').find('span').html('<audio src="__PUBLIC__/Admin/images/xf.mp3" controls="controls" style="display:none" autoplay="autoplay"></audio>');
+					}
+				},5000);
+			}
+
+		</script>
+		<!--推送-->
+	</body>
+
+</html>

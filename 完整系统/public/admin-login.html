@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>管理后台登录</title>
+    <style>
+        body { 
+            font-family: Arial; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .login-container { 
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            width: 100%;
+            max-width: 400px;
+        }
+        h1 { text-align: center; color: #333; margin-bottom: 30px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; color: #555; font-weight: 500; }
+        input { 
+            width: 100%; 
+            padding: 12px; 
+            border: 2px solid #e1e5e9; 
+            border-radius: 8px; 
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        input:focus { outline: none; border-color: #667eea; }
+        .btn { 
+            width: 100%; 
+            padding: 14px; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white; 
+            border: none; 
+            border-radius: 8px; 
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .btn:hover { opacity: 0.9; }
+        .tips { text-align: center; margin-top: 20px; color: #666; font-size: 14px; }
+        .message { margin-top: 15px; padding: 10px; border-radius: 5px; display: none; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>🔐 管理后台</h1>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">管理员账号</label>
+                <input type="text" id="username" name="username" value="admin" required>
+            </div>
+            <div class="form-group">
+                <label for="password">登录密码</label>
+                <input type="password" id="password" name="password" value="admin" required>
+            </div>
+            <button type="submit" class="btn">立即登录</button>
+        </form>
+        <div id="message" class="message"></div>
+        <div class="tips">
+            默认账号: admin / admin
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const messageDiv = document.getElementById("message");
+            
+            // 使用API接口登录
+            fetch("/admin-control/login", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                messageDiv.style.display = "block";
+                if (data.code === 200 || data.status === 'success') {
+                    messageDiv.className = "message success";
+                    messageDiv.textContent = "登录成功！正在跳转...";
+                    setTimeout(() => {
+                        window.location.href = "/admin-test";
+                    }, 1000);
+                } else {
+                    messageDiv.className = "message error";
+                    messageDiv.textContent = data.message || data.msg || "登录失败";
+                }
+            })
+            .catch(error => {
+                messageDiv.style.display = "block";
+                messageDiv.className = "message error";
+                messageDiv.textContent = "网络错误，请稍后再试";
+            });
+        });
+    </script>
+</body>
+</html>

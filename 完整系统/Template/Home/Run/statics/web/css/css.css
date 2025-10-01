@@ -1,0 +1,7236 @@
+@charset "utf-8";
+
+
+
+
+/* CSS Document */
+
+body,
+div,
+ol,
+dl,
+dt,
+dd,
+ul,
+li,
+table,
+tr,
+td,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+form,
+input,
+button,
+img,
+strong,
+em {
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    font-style: normal;
+    box-sizing: border-box;
+}
+
+li,
+dd,
+dt {
+    list-style-type: none;
+}
+
+ol,
+ul,
+dl {
+    list-style: none;
+}
+
+img {
+    vertical-align: top;
+}
+
+a {
+    color: #231f20;
+    text-decoration: none;
+    outline: 0;
+}
+
+::-webkit-input-placeholder {
+    color: #ccc;
+}
+
+input:-moz-placeholder {
+    color: #ccc;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0 none;
+    margin: 0;
+    padding: 0;
+}
+
+input,
+select,
+option,
+button,
+textarea {
+    font-size: 100%;
+    vertical-align: middle;
+    outline: 0 none;
+    border-radius: 0px;
+    border: none;
+}
+
+pre {
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+    margin: 0;
+}
+
+.pb-0 {
+    padding-bottom: 0;
+}
+
+.pl-0 {
+    padding-left: 0px!important;
+}
+
+.pl-25 {
+    padding-left: 25px!important;
+}
+
+
+
+/*清除浮动样式*/
+
+.clear {
+    clear: both;
+    height: 0;
+    width: 100%;
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+.clearfix {
+    zoom: 1;
+    clear: both;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    box-sizing: border-box;
+    color: #333;
+    background: #fff;
+    font-size: 24px;
+    min-width: 320px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    margin: 0 auto;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    max-width: 750px;
+}
+
+button {
+    display: inline-block;
+    width: 100%;
+    height: 84px;
+    border-radius: 8px;
+    background-color: #d22727;
+    font-size: 34px;
+    color: #fff;
+}
+
+
+/***********************header*****************************/
+
+header.head_wallet {
+    /*background: url("../images/header_bg@2x.png") no-repeat bottom left!important;*/
+    /*background-size:100%; */
+}
+
+header.head_my {
+    background: #d22727!important;
+}
+
+header {
+    height: 86px;
+    line-height: 86px;
+    color: #ffec83;
+    padding: 0 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 9999;
+    background: url("../images/header_bg@2x.png") no-repeat bottom left;
+    background-size:100%; 
+}
+
+header h1 {
+    text-align: center;
+    font-size: 36px;
+    font-weight: normal;
+}
+
+header em {
+    width: 90px;
+    height: 86px;
+    color: #fff;
+    font-size: 30px;
+    background: url("../images/return.png") no-repeat left 25px;
+    display: block;
+    text-indent: 30px;
+    position: absolute;
+    left: 30px;
+    top: 0;
+}
+
+header em.return {
+    color: #333;
+    background: url("../images/return1.png") no-repeat left 25px;
+}
+
+.loginHeader {
+    background: #fff;
+    color: #333;
+}
+
+.headerRight li {
+    position: absolute;
+    left: 0;
+    top: 0;
+    text-align: center;
+    color: #fff
+}
+
+.headerRight {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.headerRight li,
+.headerLeft li {
+    float: left;
+    width: 86px;
+    height: 86px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
+}
+
+.headerRight li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.icoNews {
+    background-image: url("../images/nav_message_icon@2x.png");
+}
+
+.oAfter:after {
+    content: "";
+    position: absolute;
+    min-width: 10px;
+    height: 10px;
+    background: #ffec83;
+    border-radius: 50%;
+    right: 16px;
+    top: 22px;
+    line-height: 14px;
+    font-size: 20px;
+    text-align: center;
+    padding: 2px;
+}
+
+.icoAdd {
+    background-image: url("../images/nav_add_icon@2x.png");
+}
+
+.redpacket {
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 62px;
+    height: 62px;
+    background: url(../images/redPacket/redpacket.png) no-repeat center center;
+    background-size: 62px 62px;
+}
+
+.menu {
+    padding: 0 20px;
+    width: 256px;
+    background: #fff;
+    box-shadow: 1px 1px 8px #ccc;
+    position: absolute;
+    right: 20px;
+    top: 108px;
+    border-radius: 4px;
+}
+
+.menu:after {
+    width: 0;
+    height: 0;
+    content: "";
+    position: absolute;
+    border: 20px solid transparent;
+    border-bottom: 20px solid #fff;
+    top: -39px;
+    right: 15px;
+}
+
+.menu:before {
+    width: 0;
+    height: 0;
+    content: "";
+    position: absolute;
+    border: 20px solid transparent;
+    border-bottom: 20px solid #e5e5e5;
+    top: -41px;
+    right: 15px;
+}
+
+.menu li {
+    height: 94px;
+    line-height: 94px;
+    border-bottom: 1px solid #d2d2d2;
+    color: #48484c;
+    font-size: 28px;
+    padding-left: 77px;
+    background-repeat: no-repeat;
+    background-position: 20px center;
+}
+
+.icoRecharge {
+    background-image: url("../images/index_chongzhi_icon@2x.png");
+}
+
+.icoWithdraw {
+    background-image: url("../images/index_tixian_icon@2x.png");
+}
+
+.icoRebate {
+    background-image: url("../images/index_act1_icon@2x.png");
+}
+
+.icoResult {
+    background-image: url("../images/ico-result.png");
+}
+
+.icoIntroduce {
+    background-image: url("../images/ico-introduce.png");
+}
+
+.icoTrend {
+    background-image: url("../images/ico-trend.png");
+}
+
+
+/***********************header end*****************************/
+
+
+/***********************redPacket start*****************************/
+
+.redPacket-ico {
+    background: url(../images/redPacket/qianbao@2x.png) no-repeat center;
+    background-size: 100%;
+}
+.redPacket-ico {
+    display: none;
+    width: 72px;
+    height: 90px;
+    position: absolute;
+    top: 375px;
+    right: 10px;
+    z-index: 9999;
+}
+.vibrate{
+    animation: twinkling 2s infinite ease-in-out;
+    -webkit-animation: twinkling 2s infinite ease-in-out;
+}
+@-webkit-keyframes twinkling{
+    0%{
+        -moz-transform:scale(1,1);
+        -webkit-transform:scale(1,1);
+        -o-transform:scale(1,1);
+        transform:scale(1,1);
+    }
+    20%{
+        -moz-transform:scale(1.15,1.15);
+        -webkit-transform:scale(1.15,1.15);
+        -o-transform:scale(1.15,1.15);
+        transform:scale(1.15,1.15);
+    }
+    30%{
+        -moz-transform:scale(1.2,1.2);
+        -webkit-transform:scale(1.2,1.2);
+        -o-transform:scale(1.2,1.2);
+        transform:scale(1.2,1.2);
+    }
+    40%{
+        -moz-transform:scale(1.25,1.25);
+        -webkit-transform:scale(1.25,1.25);
+        -o-transform:scale(1.25,1.25);
+        transform:scale(1.25,1.25);
+    }
+    50%{
+        -moz-transform:scale(1.3,1.3);
+        -webkit-transform:scale(1.3,1.3);
+        -o-transform:scale(1.3,1.3);
+        transform:scale(1.3,1.3);
+    }
+    60%{
+        -moz-transform:scale(1.25,1.25);
+        -webkit-transform:scale(1.25,1.25);
+        -o-transform:scale(1.25,1.25);
+        transform:scale(1.25,1.25);
+    }
+    70%{
+        -moz-transform:scale(1.2,1.2);
+        -webkit-transform:scale(1.2,1.2);
+        -o-transform:scale(1.2,1.2);
+        transform:scale(1.2,1.2);
+    }
+    80%{
+        -moz-transform:scale(1.15,1.15);
+        -webkit-transform:scale(1.15,1.15);
+        -o-transform:scale(1.15,1.15);
+        transform:scale(1.15,1.15);
+    }
+    100%{
+        -moz-transform:scale(1,1);
+        -webkit-transform:scale(1,1);
+        -o-transform:scale(1,1);
+        transform:scale(1,1);
+    }
+}
+@keyframes twinkling{
+    0%{
+        -moz-transform:scale(1,1);
+        -webkit-transform:scale(1,1);
+        -o-transform:scale(1,1);
+        transform:scale(1,1);
+    }
+    20%{
+        -moz-transform:scale(1.15,1.15);
+        -webkit-transform:scale(1.15,1.15);
+        -o-transform:scale(1.15,1.15);
+        transform:scale(1.15,1.15);
+    }
+    30%{
+        -moz-transform:scale(1.2,1.2);
+        -webkit-transform:scale(1.2,1.2);
+        -o-transform:scale(1.2,1.2);
+        transform:scale(1.2,1.2);
+    }
+    40%{
+        -moz-transform:scale(1.25,1.25);
+        -webkit-transform:scale(1.25,1.25);
+        -o-transform:scale(1.25,1.25);
+        transform:scale(1.25,1.25);
+    }
+    50%{
+        -moz-transform:scale(1.3,1.3);
+        -webkit-transform:scale(1.3,1.3);
+        -o-transform:scale(1.3,1.3);
+        transform:scale(1.3,1.3);
+    }
+    60%{
+        -moz-transform:scale(1.25,1.25);
+        -webkit-transform:scale(1.25,1.25);
+        -o-transform:scale(1.25,1.25);
+        transform:scale(1.25,1.25);
+    }
+    70%{
+        -moz-transform:scale(1.2,1.2);
+        -webkit-transform:scale(1.2,1.2);
+        -o-transform:scale(1.2,1.2);
+        transform:scale(1.2,1.2);
+    }
+    80%{
+        -moz-transform:scale(1.15,1.15);
+        -webkit-transform:scale(1.15,1.15);
+        -o-transform:scale(1.15,1.15);
+        transform:scale(1.15,1.15);
+    }
+    100%{
+        -moz-transform:scale(1,1);
+        -webkit-transform:scale(1,1);
+        -o-transform:scale(1,1);
+        transform:scale(1,1);
+    }
+}
+
+/*红包弹窗*/
+.redPacket-mask {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.redPacket-pop {
+    /*display: none;*/
+    position: absolute;
+    left: 0px;
+    top: 320px;
+    /*padding-top: 1.28rem;*/
+    width: 100%;
+    /*width: 425px;*/
+    height: 524px;
+    /*border-radius: 0.45rem;*/
+    background: url(../images/redPacket/hongbao@2x.png) no-repeat center center;
+    background-size: 425px 524px;
+    text-align: center;
+
+    transform: scale(0, 0);
+    -moz-transform: scale(0, 0);
+    -webkit-transform: scale(0, 0);
+    -o-transform: scale(0, 0);
+    transform-origin: 100% 100px;
+
+    -moz-transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    z-index: 999;
+}
+
+.scaleBlock {
+    -moz-transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+    transform: scale(1, 1);
+
+    -moz-transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+.redPacket-head-icon {
+    /*position: absolute;*/
+    /*bottom: 20px;*/
+    /*left: 50%;*/
+    /*margin-left: 20px;*/
+    padding: 40px 0;
+    width: 100%;
+    text-align: center;
+}
+
+.redPacket-head-icon .head-icon {
+    display: inline-block;
+    width: 132px;
+    height: 132px;
+    border-radius: 28px;
+    border: 4px solid #fdcd9b;
+    background: url(../images/redPacket/redpacket_icon_top@3x.png) no-repeat;
+    background-size: 132px 132px!important;
+}
+
+.redPacket-tit {
+    font-family: sans-serif;
+    font-size: 34px;
+    font-weight: 600;
+    color: #fffcc7;
+}
+
+
+
+
+
+/*.open{*/
+
+
+/*padding: 35px 0;*/
+
+
+/*width: 100%;*/
+
+
+/*text-align: center;*/
+
+
+/*}*/
+
+.open-icon {
+    position: absolute;
+    left: 50%;
+    bottom: 90px;
+    margin-left: -65px;
+    display: inline-block;
+    width: 129px;
+    height: 129px;
+    background: url(../images/redPacket/kai@2x.png) no-repeat;
+    background-size: cover;
+}
+
+.rotate {
+    background: url(../images/redPacket/qian@2x.png) no-repeat;
+    background-size: cover;
+    -webkit-transform: rotateY(360deg);
+    -moz-transform: rotateY(360deg);
+    transform: rotateY(360deg);
+    transition: -webkit-transform 1s ease-in-out;
+    transition: -moz-transform 1s ease-in-out;
+    transition: transform 1s ease-in-out;
+}
+
+.close-icon {
+    position: absolute;
+    cursor: pointer;
+    bottom: -105px;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    background: url(../images/redPacket/close@2x.png) no-repeat;
+    background-size: cover;
+    z-index: 2;
+}
+
+.redPacket-copyright {
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    transform: translate(-50%, 0%);
+    font-size: 18px;
+    color: #fffcc7;
+    letter-spacing: 2px;
+}
+
+.redPacket-copyright i.jingbi {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+    width: 17px;
+    height: 18px;
+    background: url(../images/redPacket/jinbi@2x.png) no-repeat;
+    background-size: cover;
+}
+
+
+/***********************redPacket end*****************************/
+
+
+/**************************nav*****************************/
+
+nav {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    height: 98px;
+    background: #fff;
+    padding: 10px 0;
+    box-sizing: border-box;
+    z-index: 999;
+}
+
+nav li {
+    width: 25%;
+    text-align: center;
+    padding-top: 50px;
+    font-size: 21px;
+    line-height: 42px;
+    color: #000;
+    background-repeat: no-repeat;
+    background-position: top center;
+    float: left;
+}
+
+nav li.active {
+    color: #dc5d55;
+}
+
+
+
+
+
+/**************************nav*****************************/
+
+
+/**************************section*****************************/
+
+section {
+    padding: 86px 0 20px;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+
+
+
+
+/**************************section end*****************************/
+
+
+/************************弹出层*****************************/
+
+
+/*提示信息*/
+
+.config-alert {
+    width: 495px;
+    padding-bottom: 30px;
+    position: absolute;
+    margin: auto;
+    left: 50%;
+    top: 50%;
+    background: #fff;
+    border-radius: 8px;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.config-alert .tit {
+    line-height: 75px;
+    font-size: 30px;
+    color: #000;
+    text-align: center;
+    border-bottom: solid 1px #ccc;
+}
+
+.config-alert p {
+    padding: 45px;
+    min-height: 133px;
+    max-height: 600px;
+    line-height: 40px;
+    overflow: auto;
+    /*display: flex;*/
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: #000;
+    text-align: left;
+}
+
+.config-alert .btn {
+    padding: 0 48px;
+}
+
+.config-alert .btn .confirm {
+    width: 100%;
+    height: 62px;
+    font-size: 28px;
+    color: #fff;
+    border-radius: 4px;
+    background-image: -moz-linear-gradient(to top, #f04a49, #f36d5c);
+    background-image: -webkit-linear-gradient(to top, #f04a49, #f36d5c);
+    background-image: linear-gradient(to top, #f04a49, #f36d5c);
+}
+
+.config-alert .btn .confirm:active {
+    opacity: 0.8;
+}
+
+.popup,
+.popupAlert {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 99999;
+}
+
+
+
+
+
+/*积分升级弹窗*/
+
+.upgrade-wrap {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -30px;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 999;
+}
+
+.upgrade-con {
+    /*width: 297px;*/
+    text-align: center;
+}
+
+.upgrade-shine_bg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -440px;
+    margin-left: -370px;
+    width: 740px;
+    height: 750px;
+    background: url(../images/win_shinebg_pic@2x.png) no-repeat center center;
+    background-size: cover;
+    animation: rotate 3s infinite linear;
+    -webkit-animation: rotate 3s infinite linear;
+}
+
+@keyframes rotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.upgrade-info {
+    width: 260px;
+    height: 46px;
+    background: url(../images/honor/congratulationtext_pic@2x.png) no-repeat center center;
+    background-size: cover;
+}
+
+.upgrade-badge {
+    width: 278px;
+    height: 278px;
+    /*background: url(../images/honor/badge05@2x.png) no-repeat center center;*/
+    background-size: cover!important;
+}
+
+.upgrade-name {
+    display: inline-block;
+    width: 206px;
+    height: 98px;
+    /*background: url(../images/honor/fame06@2x.png) no-repeat;*/
+    background-size: cover!important;
+}
+
+.upgrade-close {
+    position: absolute;
+    bottom: -160px;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 67px;
+    height: 67px;
+    background: url(../images/close_pop_icon@2x.png) no-repeat;
+    background-size: cover;
+    z-index: 2;
+}
+
+
+.popupAlert .config {
+    width: 560px;
+    min-height: 175px;
+    padding: 25px 15px;
+    position: absolute;
+    margin: auto;
+    left: 50%;
+    top: 50%;
+    background: url("../images/popup-bg.png") no-repeat bottom left #fff;
+    border-radius: 10px;
+    transform: translate(-50%, -50%);
+}
+
+.popupAlert .config p {
+    min-height: 130px;
+    line-height: 34px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.config {
+    width: 560px;
+    min-height: 256px;
+    padding: 40px;
+    position: absolute;
+    margin: auto;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    background: #fff;
+    border-radius: 10px;
+}
+
+.config p {
+    font-size: 36px;
+    line-height: 76px;
+    text-align: center;
+}
+
+.cigBtn {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.cigBtn button {
+    width: 230px;
+    margin-left: 20px;
+}
+
+.cigBtn button:first-child {
+    margin-left: 0;
+}
+
+.cancel {
+    background: #cdcdcd;
+}
+
+.configClose {
+    position: absolute;
+    bottom: -140px;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 67px;
+    height: 67px;
+    background: url(../images/close_pop_icon@2x.png) no-repeat;
+    background-size: cover;
+    z-index: 2;
+}
+
+.onlineConfig {
+    height: 702px;
+    padding-top: 128px;
+}
+.config h3 {
+    height: 74px;
+    line-height: 74px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    color: #2e2e30;
+    text-align: center;
+    font-size: 36px;
+    font-weight: 500;
+    border-bottom: solid 1px #dfdfdf;
+}
+.configInput {
+    padding: 78px 30px 30px;
+}
+.configInput input {
+    height: 62px;
+    width: 100%;
+    border: 1px solid #cacaca;
+    border-radius: 4px;
+    padding: 25px 48px;
+    font-size: 30px;
+}
+.secret_btn{
+    width: 100%;
+    height: 62px;
+    font-size: 28px;
+    color: #fff;
+    border-radius: 4px;
+    background-image: -moz-linear-gradient(to top, #f04a49, #f36d5c);
+    background-image: -webkit-linear-gradient(to top, #f04a49, #f36d5c);
+    background-image: linear-gradient(to top, #f04a49, #f36d5c);
+}
+.configAcer {
+    color: #ff4f4f;
+    font-size: 24px;
+    float: right;
+    padding-right: 40px;
+    background: url("../images/ico-acer.png") no-repeat right center;
+    background-size: 30px;
+}
+
+/*绑定银行卡弹窗*/
+
+.setFundPsd .bindBank_con .tit_img{
+    height: 280px;
+    background: url("../images/pic_safe@2x.png") no-repeat center top;
+}
+.bindBank_con .tit_img{
+    width: 100%;
+    height: 220px;
+    background: url("../images/pic_bankset@2x.png") no-repeat center;
+    background-size: 290px;
+}
+.bindBank_con .tit_bind{
+    font-size: 40px;
+    line-height: 118px;
+    text-align: center;
+    color: #61b7ff;
+}
+.bindBank_con .info_bind{
+    font-size: 24px;
+    /*line-height: 1.55;*/
+    text-align: center;
+    color: #909090;
+}
+.bindBank_con a p{
+    margin-top: 50px;
+    line-height: 80px;
+    font-size: 28px;
+    color: #fff;
+    border-radius: 4px;
+    background-image: linear-gradient(to top, #f04a49, #f36d5c);
+    text-align: center;
+}
+
+
+
+/************************弹出层 end*****************************/
+
+
+/************************login  register*****************************/
+
+body.login {
+    background: #F0F0F0;
+}
+
+.login-bg {
+    position: relative;
+    padding: 0;
+}
+
+.loginBanner {
+    width: 100%;
+    padding: 140px 0 230px;
+    background: url("../images/login_bg_pic@2x.png") no-repeat center top;
+}
+
+.headPortrait {
+    margin: 0 auto;
+    width: 201px;
+    height: 201px;
+    background: #fff;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.headPortrait img {
+    width: 100%;
+}
+
+.loginWarp {
+    width: 100%;
+    padding: 0 90px;
+}
+
+.loginWarp li {
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.loginWarp li label input {
+    padding: 23px 5px;
+    width: 420px;
+    float: left;
+    height: 100%;
+    background: none;
+}
+
+.loginWarp li label input::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: #888;
+}
+
+.loginWarp li label input:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #888;
+}
+
+.loginWarp li label input::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #888;
+}
+
+.loginWarp li label input:-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: #888;
+}
+
+.loginWarp li label i.must {
+    position: absolute;
+    display: inline-block;
+    left: 22px;
+    top: 35px;
+    width: 15px;
+    height: 15px;
+    background: url(../images/sign_need_icon@2x.png) no-repeat center center;
+}
+
+.loginWarp li p {
+    line-height: 48px;
+    color: #f06856;
+}
+
+.loginWarp li button {
+    width: 100%;
+    height: 84px;
+    display: block;
+    background: #e83828;
+    font-size: 32px;
+    color: #fff;
+    border-radius: 42px;
+}
+
+.loginWarp li label {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+    color: #888;
+    font-size: 28px;
+    padding-left: 105px;
+    background-repeat: no-repeat;
+    background-position: 50px center;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    height: 84px;
+    border-radius: 42px;
+    line-height: 84px;
+}
+
+.user {
+    background-image: url("../images/login_account_icon@2x.png");
+}
+
+.ico_pas {
+    background-image: url("../images/login_passport_icon@2x.png");
+}
+.ico_qq {
+    background-image: url("../images/login_qq_icon@2x.png");
+}
+.ico_mobile {
+    background-image: url("../images/login_mobile_icon@2x.png");
+}
+.ico_email {
+    background-image: url("../images/login_email_icon@2x.png");
+}
+.ico_weixin {
+    background-image: url("../images/login_weixin_icon@2x.png");
+}
+
+.recommend {
+    background-image: url("../images/sign_recommend_icon@2x.png");
+}
+
+.see {
+    width: 84px;
+    height: 84px;
+    background: url("../images/login_eyeoff_icon@2x.png") no-repeat center center;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.see1 {
+    background: url("../images/login_eyeon_icon@2x.png") no-repeat center center;
+}
+
+
+
+
+
+/*.regWarp,.loginWarp li p{padding:0 30px; }*/
+
+.regWarp a {
+    font-size: 26px;
+    color: #888;
+}
+
+.regWarp a:last-child {
+    float: right;
+}
+
+.otherwise {
+    padding-top: 55px;
+    height: 265px;
+    background: url("../images/login_bg2_pic@2x.png") no-repeat center bottom;
+}
+
+.otherwise h2 {
+    text-align: center;
+    position: relative;
+}
+
+.otherwise h2 span {
+    font-size: 26px;
+    color: #888;
+    line-height: 52px;
+    font-weight: normal;
+    padding: 0 25px;
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+}
+
+.otherwise h2:before {
+    width: 180px;
+    height: 1px;
+    content: "";
+    position: absolute;
+    left: 50%;
+    margin-left: 100px;
+    top: 50%;
+    background: #cbcbcb;
+    background-image: -moz-linear-gradient(to right, #fff, #cbcbcb, #fff);
+    background-image: -webkit-linear-gradient(to right, #fff, #cbcbcb, #fff);
+    background-image: linear-gradient(to right, #fff, #cbcbcb, #fff);
+    z-index: 1;
+}
+
+.otherwise h2:after {
+    width: 180px;
+    height: 1px;
+    content: "";
+    position: absolute;
+    right: 50%;
+    margin-right: 100px;
+    top: 50%;
+    background: #cbcbcb;
+    background-image: -moz-linear-gradient(to right, #fff, #cbcbcb, #fff);
+    background-image: -webkit-linear-gradient(to right, #fff, #cbcbcb, #fff);
+    background-image: linear-gradient(to right, #fff, #cbcbcb, #fff);
+    z-index: 1;
+}
+
+.otherwise li {
+    float: left;
+    padding-top: 45px;
+    width: 33.333%;
+    text-align: center;
+}
+
+.btn-login {
+    font-size: 34px;
+    background: #e83828 !important;
+}
+
+.btn-login:active {
+    opacity: 0.8;
+}
+
+.registerWarp {
+    padding-bottom: 105px;
+    background: url("../images/login_bg2_pic@2x.png") no-repeat center bottom;
+}
+
+.btn-reg {
+    font-size: 34px;
+    background: #e83828 !important;
+}
+
+.btn-reg:active {
+    opacity: 0.8;
+}
+
+
+
+
+
+/*layer自定义样式*/
+
+.layui-m-layercont {
+    line-height: 60px!important;
+}
+
+body .winning-class {
+    border-radius: 10px;
+}
+
+body .winning-class .layui-layer-title {
+    padding: 0;
+    height: 62px;
+    line-height: 62px;
+    font-size: 28px;
+    color: #fff;
+    text-align: center;
+    border: none;
+    background: #dc5d55;
+    border-radius: 10px 10px 0 0;
+}
+
+body .winning-class .layui-layer-content {
+    padding: 30px;
+    line-height: 30px;
+}
+
+body .winning-class .layui-layer-btn {
+    text-align: center;
+}
+
+body .winning-class .layui-layer-btn a {
+    padding-top: 0;
+    padding: 0 20px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 28px;
+    color: #fff;
+    border-radius: 20px;
+}
+
+body .winning-class .layui-layer-btn .layui-layer-btn0 {
+    margin-right: 30px;
+    background: #dc5d55;
+    border: 0px;
+}
+
+body .winning-class .layui-layer-btn .layui-layer-btn1 {
+    background: #cdcdcd;
+    border: 0px;
+}
+
+
+
+
+
+/************************login end*****************************/
+
+
+/************************开奖结果 kjjg.html*****************************/
+
+.prize {}
+
+.prize li {
+    border-bottom: 1px solid #dedede;
+    padding: 10px 30px 0;
+}
+
+.prizeNo {
+    overflow: hidden;
+    line-height: 68px;
+}
+
+.prizeNo h3 {
+    font-size: 30px;
+    color: #555;
+    font-weight: normal;
+    float: left;
+}
+.prizeNo h3 span{
+    color: #D22727;
+}
+.prizeNo>span {
+    color: #707070;
+    float: right;
+    font-size: 26px;
+}
+
+.prizeResult {
+    overflow: hidden;
+    padding: 30px 0;
+}
+
+.prizeResult h4 {
+    font-size: 38px;
+    font-weight: normal;
+    float: left;
+    padding-top: 6px;
+}
+
+.prizeResult em {
+    display: inline-block;
+    width: 58px;
+    height: 58px;
+    border-radius: 5px;
+    line-height: 58px;
+    text-align: center;
+    background: #F7F7F7;
+}
+
+.prizeResult span {
+    font-size: 30px;
+    display: block;
+    clear: both;
+    margin-top: 80px;
+}
+
+.prizeResult span em {
+    margin-right: 10px;
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+}
+
+.colorDan {
+    background: #5e97fe;
+}
+
+.colorDa {
+    background-color: #ff4f4f;
+}
+
+.colorH {
+    background-color: #f1c600;
+}
+
+
+
+
+
+/************************开奖结果 kjjg.html end*****************************/
+
+
+/************************天天返利 rebate.html*****************************/
+
+.rebate {
+    padding: 10px 30px 0;
+    background: #fff;
+    border-bottom: 1px solid #dedede;
+}
+
+.rebate h2 {
+    color: #404040;
+    font-size: 32px;
+    font-weight: normal;
+    line-height: 68px;
+    text-align: center;
+}
+
+.rebateTime {
+    color: #484848;
+    font-size: 24px;
+    line-height: 70px;
+    overflow: hidden;
+}
+
+.rebate p {
+    line-height: 48px;
+    color: #48484c;
+    font-size: 26px;
+}
+
+
+
+
+
+/************************天天返利 rebate.html end*****************************/
+
+
+/************************消息 news.html*****************************/
+
+.newsTitle {
+    position: absolute;
+    top: 85px;
+    width: 100%;
+    max-width: 750px;
+    background-color: #c52525!important;
+}
+
+.newsTitle li {
+    width: 50%;
+    float: left;
+    text-align: center;
+    height: 84px;
+    font-size: 30px;
+    line-height: 84px;
+    color: #fff;
+    position: relative;
+}
+
+.newsTitle li.active {}
+
+.newsTitle li.active:after {
+    width: 0;
+    height: 0;
+    content: "";
+    border: 15px solid transparent;
+    border-bottom: 15px solid #fff;
+    position: absolute;
+    left: 50%;
+    margin-left: -20px;
+    bottom: -1px;
+}
+
+.newsTitle+section {
+    padding-top: 158px;
+}
+
+.newsContent {}
+
+.yidu {}
+
+.newsContent li.yidu h3 {
+    color: #b3b2b2;
+}
+.newsContent li.yidu:after {
+    background: none;
+}
+
+.newsContent .record_list li {
+    /*line-height: 88px;*/
+    height: 148px;
+    border-bottom: 1px solid #dedede;
+    /*padding: 0 90px 0 60px;*/
+    padding: 0 30px 0 55px;
+    position: relative;
+    clear: both;
+    padding-top: 30px;
+    line-height: 1.5;
+}
+
+.newsContent li span {
+    float: right;
+    color: #b3b2b2;
+    /*line-height: 88px;*/
+    /*height: 88px;*/
+}
+
+.newsContent .title {
+    width: 300px;
+    color: #404040;
+    float: left;
+    font-size: 32px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.newsContent li span em {
+    font-size: 35px;
+}
+
+.newsContent li h3 {
+    color: #242424;
+    font-size: 30px;
+    font-weight: normal;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.newsContent li:before {
+    content: "";
+    width: 0px;
+    height: 89px;
+    background: #fbfbfb;
+    position: absolute;
+    left: 50px;
+    top: 0;
+}
+
+.newsContent li:after {
+    content: "";
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #ca2835;
+    position: absolute;
+    left: 22px;
+    top: 50%;
+    margin-top: -8px;
+}
+
+.newsContent li i {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #e93a3a;
+    display: block;
+    position: absolute;
+    top: 25px;
+    right: 60px;
+}
+
+
+/************************消息 news.html end*****************************/
+
+
+/************************个人中心 my.html*****************************/
+
+.headerRight span.set {
+    display: inline-block;
+    margin-right: 36px;
+    font-size: 30px;
+    color: #fff;
+}
+
+section.my_info {
+    background: #f5f5f5;
+}
+
+.my {
+    background: #f5f5f5;
+    height: 100%;
+    overflow: auto;
+    padding-bottom: 98px;
+}
+
+.my ul {
+    background: #fff;
+    margin-bottom: 20px;
+    border-top: 1px solid #d7d7d7;
+    border-bottom: 1px solid #d7d7d7;
+}
+.my ul:nth-of-type(1){
+    border-top: none;
+}
+.paymentSecurity ul {
+    margin-top: 20px;
+    border-top: 1px solid #d7d7d7;
+}
+
+.paymentSecurity ul li label {
+    padding-left: 0;
+    width: 100%;
+}
+
+.my li {
+    padding-left: 45px;
+    min-height: 90px;
+    line-height: 90px;
+    background: url("../images/common_enter_icon@2x.png") no-repeat 93% center;
+}
+.my li div{
+    padding-right: 75px;
+    height: 90px;
+    border-bottom: 1px solid #dedede;
+}
+.my li:active{
+    background-color: rgba(0,0,0,0.5);
+    opacity: 0.8;
+}
+.paymentSecurity li:active{
+    background: none;
+}
+.paymentSecurity input {
+    height: 90px;
+    float: right;
+    width: 70%;
+}
+
+.my li a {
+    display: block;
+    width: 100%;
+    min-height: 90px;
+}
+
+.my li.girl {
+    height: 150px;
+    line-height: 110px;
+    padding: 20px 0 20px 45px;
+    position: relative;
+}
+.my li.girl div{
+    padding-right: 75px;
+    height: 130px;
+    border-bottom: 1px solid #dedede;
+}
+.my li.girl input {
+    height: 100%;
+    position: absolute;
+    right: 0;
+    opacity: 0;
+    top: 0;
+}
+
+.my li:last-child div{
+    border-bottom: 0;
+}
+
+.my li label{
+    background-position: center left;
+    background-repeat: no-repeat;
+    display: block;
+    float: left;
+    padding-left: 60px;
+    color: #242424;
+    font-size: 30px;
+    line-height: 90px;
+    box-sizing: border-box;
+}
+.modify li label {
+    background-position: center left;
+    background-repeat: no-repeat;
+    display: block;
+    float: left;
+    color: #242424;
+    font-size: 30px;
+    line-height: 90px;
+    box-sizing: border-box;
+}
+.modify li label{ padding: 0;}
+.my_info .my li label{ padding: 0;}
+
+.modify li label em {
+    font-size: 24px;
+    color: #ccc;
+    font-style: normal;
+}
+
+.my li.log_out {
+    padding: 0;
+    background: none;
+}
+.my li.log_out:active{
+    background-color: rgba(0,0,0,0.5)!important;
+    opacity: 0.8;
+}
+
+.my li.log_out a {
+    text-align: center;
+}
+
+.my li.log_out a label {
+    float: none;
+    padding: 0;
+}
+
+.my .head {
+    width: 100%;
+    height: 205px;
+    background-color: #d22727;
+}
+
+.headerRight li.modify_complete{
+    margin-right: 15px;
+    font-size: 30px;
+    color: rgba(255, 255, 255, 0.6);
+}
+.head .head_left {
+    position: relative;
+    margin: 18px 30px 0 34px;
+}
+
+.head_left,
+.user_info {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.head_left .icon {
+    width: 145px;
+    height: 145px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid #CE634A;
+}
+
+.honor_icon {
+    position: absolute;
+    left: 15px;
+    bottom: -18px;
+}
+
+.head_left .icon img {
+    width: 100%;
+}
+
+.head .user_info {
+    max-width: 300px;
+}
+
+.user_info .user_name {
+    display: inline-block;
+    margin: 52px 0 12px 0;
+    width: 100%;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: left;
+    color: #ffffff;
+}
+
+.user_info .user_edit {
+    display: inline-block;
+    width: 100%;
+    font-family: PingFang-SC;
+    font-size: 26px;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.user_ico_edit {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background: url("../images/person_edit_icon@2x.png") no-repeat center;
+    background-size: 25px 25px;
+}
+
+.head .head_right {
+    float: right;
+    margin: 8px 15px 0 0;
+}
+
+.head .play {
+    width: 160px;
+    height: 150px;
+    background-size: 160px 150px;
+    animation: myalter01 0.5s ease-in infinite alternate;
+    -moz-animation: myalter01 0.5s ease-in infinite alternate;
+    /* Firefox */
+    -webkit-animation: myalter01 0.5s ease-in infinite alternate;
+    /* Safari 和 Chrome */
+    -o-animation: myalter01 0.5s ease-in infinite alternate;
+    /* Opera */
+}
+
+@keyframes myalter01 {
+    0% {
+        background: url(../../../up_files/honor/badge01_01.png);
+    }
+    100% {
+        background: url(../../../up_files/honor/badge01_02.png)
+    }
+}
+
+@-moz-keyframes myalter01
+/* Firefox */
+{
+    0% {
+        background: url(../../../up_files/honor/badge01_01.png);
+    }
+    100% {
+        background: url(../../../up_files/honor/badge01_02.png)
+    }
+}
+
+@-webkit-keyframes myalter01
+/* Safari 和 Chrome */
+{
+    0% {
+        background: url(../../../up_files/honor/badge01_01.png);
+    }
+    100% {
+        background: url(../../../up_files/honor/badge01_02.png)
+    }
+}
+
+@-o-keyframes myalter01
+/* Opera */
+{
+    0% {
+        background: url(../../../up_files/honor/badge01_01.png);
+    }
+    100% {
+        background: url(../../../up_files/honor/badge01_02.png)
+    }
+}
+
+@keyframes myalter02 {
+    0% {
+        background: url(../../../up_files/honor/badge02_01.png);
+    }
+    100% {
+        background: url(../../../up_files/honor/badge02_02.png)
+    }
+}
+
+@-moz-keyframes myalter02
+/* Firefox */
+{
+    0% {
+        background: url(../../../up_files/honor/badge02_01.png);
+    }
+    100% {
+        background: url(../../../up_files/honor/badge02_02.png)
+    }
+}
+
+@-webkit-keyframes myalter02
+/* Safari 和 Chrome */
+{
+    0% {
+        background: url(../../../up_files/honor/badge02_01.png);
+    }
+    100% {
+        background: url(../../../up_files/honor/badge02_02.png)
+    }
+}
+
+@-o-keyframes myalter02
+/* Opera */
+{
+    0% {
+        background: url(../../../up_files/honor/badge02_01.png);
+    }
+    100% {
+        background: url(../../../up_files/honor/badge02_02.png)
+    }
+}
+
+@keyframes myalter03 {
+    0% {
+        background: url(../../../up_files/honor/badge03_01.png);
+    }
+    100% {
+        background: url(../../../up_files/honor/badge03_02.png)
+    }
+}
+
+@-moz-keyframes myalter03
+/* Firefox */
+{
+    0% {
+        background: url(../../../up_files/honor/badge03_01.png);
+    }
+    100% {
+        background: url(../../../up_files/honor/badge03_02.png)
+    }
+}
+
+@-webkit-keyframes myalter03
+/* Safari 和 Chrome */
+{
+    0% {
+        background: url(../../../up_files/honor/badge03_01.png);
+    }
+    100% {
+        background: url(../../../up_files/honor/badge03_02.png)
+    }
+}
+
+@-o-keyframes myalter03
+/* Opera */
+{
+    0% {
+        background: url(../../../up_files/honor/badge03_01.png);
+    }
+    100% {
+        background: url(../../../up_files/honor/badge03_02.png)
+    }
+}
+
+@keyframes myalter04 {
+    0% {
+        background: url(../../../up_files/honor/badge04_01.png);
+    }
+    100% {
+        background: url(../../../up_files/honor/badge04_02.png)
+    }
+}
+
+@-moz-keyframes myalter04
+/* Firefox */
+{
+    0% {
+        background: url(../../../up_files/honor/badge04_01.png);
+    }
+    100% {
+        background: url(../../../up_files/honor/badge04_02.png)
+    }
+}
+
+@-webkit-keyframes myalter04
+/* Safari 和 Chrome */
+{
+    0% {
+        background: url(../../../up_files/honor/badge04_01.png);
+    }
+    100% {
+        background: url(../../../up_files/honor/badge04_02.png)
+    }
+}
+
+@-o-keyframes myalter04
+/* Opera */
+{
+    0% {
+        background: url(../../../up_files/honor/badge04_01.png);
+    }
+    100% {
+        background: url(../../../up_files/honor/badge04_02.png)
+    }
+}
+
+@keyframes myalter05 {
+    0% {
+        background: url(../../../up_files/honor/badge05_01.png);
+    }
+    100% {
+        background: url(../../../up_files/honor/badge05_02.png)
+    }
+}
+
+@-moz-keyframes myalter05
+/* Firefox */
+{
+    0% {
+        background: url(../../../up_files/honor/badge05_01.png);
+    }
+    100% {
+        background: url(../../../up_files/honor/badge05_02.png)
+    }
+}
+
+@-webkit-keyframes myalter05
+/* Safari 和 Chrome */
+{
+    0% {
+        background: url(../../../up_files/honor/badge05_01.png);
+    }
+    100% {
+        background: url(../../../up_files/honor/badge05_02.png)
+    }
+}
+
+@-o-keyframes myalter05
+/* Opera */
+{
+    0% {
+        background: url(../../../up_files/honor/badge05_01.png);
+    }
+    100% {
+        background: url(../../../up_files/honor/badge05_02.png)
+    }
+}
+
+@keyframes myalter06 {
+    0% {
+        background: url(../../../up_files/honor/badge06_01.png);
+    }
+    100% {
+        background: url(../../../up_files/honor/badge06_02.png)
+    }
+}
+
+@-moz-keyframes myalter06
+/* Firefox */
+{
+    0% {
+        background: url(../../../up_files/honor/badge06_01.png);
+    }
+    100% {
+        background: url(../../../up_files/honor/badge06_02.png)
+    }
+}
+
+@-webkit-keyframes myalter06
+/* Safari 和 Chrome */
+{
+    0% {
+        background: url(../../../up_files/honor/badge06_01.png);
+    }
+    100% {
+        background: url(../../../up_files/honor/badge06_02.png)
+    }
+}
+
+@-o-keyframes myalter06
+/* Opera */
+{
+    0% {
+        background: url(../../../up_files/honor/badge06_01.png);
+    }
+    100% {
+        background: url(../../../up_files/honor/badge06_02.png)
+    }
+}
+
+@keyframes myalter07 {
+    0% {
+        background: url(../../../up_files/honor/badge07_01.png);
+    }
+    100% {
+        background: url(../../../up_files/honor/badge07_02.png)
+    }
+}
+
+@-moz-keyframes myalter07
+/* Firefox */
+{
+    0% {
+        background: url(../../../up_files/honor/badge07_01.png);
+    }
+    100% {
+        background: url(../../../up_files/honor/badge07_02.png)
+    }
+}
+
+@-webkit-keyframes myalter07
+/* Safari 和 Chrome */
+{
+    0% {
+        background: url(../../../up_files/honor/badge07_01.png);
+    }
+    100% {
+        background: url(../../../up_files/honor/badge07_02.png)
+    }
+}
+
+@-o-keyframes myalter07
+/* Opera */
+{
+    0% {
+        background: url(../../../up_files/honor/badge07_01.png);
+    }
+    100% {
+        background: url(../../../up_files/honor/badge07_02.png)
+    }
+}
+
+@keyframes myalter08 {
+    0% {
+        background: url(../../../up_files/honor/badge08_01.png);
+    }
+    100% {
+        background: url(../../../up_files/honor/badge08_02.png)
+    }
+}
+
+@-moz-keyframes myalter08
+/* Firefox */
+{
+    0% {
+        background: url(../../../up_files/honor/badge08_01.png);
+    }
+    100% {
+        background: url(../../../up_files/honor/badge08_02.png)
+    }
+}
+
+@-webkit-keyframes myalter08
+/* Safari 和 Chrome */
+{
+    0% {
+        background: url(../../../up_files/honor/badge08_01.png);
+    }
+    100% {
+        background: url(../../../up_files/honor/badge08_02.png)
+    }
+}
+
+@-o-keyframes myalter08
+/* Opera */
+{
+    0% {
+        background: url(../../../up_files/honor/badge08_01.png);
+    }
+    100% {
+        background: url(../../../up_files/honor/badge08_02.png)
+    }
+}
+
+.my .integral {
+    width: 100%;
+    height: 120px;
+    background: #fff;
+    margin-bottom: 20px;
+}
+
+.line_bg {
+    height: 10px;
+    background-color: #dcdcdc;
+}
+
+.line {
+    width: 0px;
+    height: 10px;
+    background-color: #ffcc00;
+    ransition: -webkit-transform 1s ease-in-out;
+    transition: -moz-transform 1s ease-in-out;
+    transition: transform 1s ease-in-out;
+}
+
+.nowstate,
+.infostate,
+.nextstate {
+    display: inline-block;
+    height: 120px;
+    vertical-align: top;
+}
+
+.nowstate,
+.nextstate {
+   padding:0 10px;
+    width: 143px;
+    text-align: center
+}
+
+.infostate {
+    width: 444px;
+}
+
+.nowstate img,
+.nextstate img {
+    margin-top: 20px;
+}
+
+.nowstate span,
+.nextstate span {
+    display: block;
+}
+
+.infostate p {
+    line-height: 60px;
+    font-size: 24px;
+    text-align: center;
+}
+
+.infostate p .myIntegral {
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.infostate p .short {
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+/*.icoGirl { background-image: url("../images/ico-girl.png")}*/
+/*.icoNickname { background-image: url("../images/ico-nickname.png")}*/
+
+.icoWallet {
+    background-image: url("../images/person_wallet_icon@2x.png")
+}
+
+.icoAgent {
+    background-image: url("../images/person_agency_icon@2x.png")
+}
+
+.icoShare {
+    background-image: url("../images/person_share_icon@2x.png")
+}
+
+.icoRecord {
+    background-image: url("../images/person_tzrecord_icon@2x.png")
+}
+
+.icoTeam {
+    background-image: url("../images/person_teammanage_icon@2x.png")
+}
+.icoActivity{
+    background-image: url("../images/index_act1_icon@2x.png")    
+}
+.icoAutumn {
+    background-image: url("../images/person_autumn_icon@2x.png")
+}
+
+.icoluckyegg {
+    background-image: url("../images/person_luckyegg_icon@2x.png")
+}
+
+.icolucky {
+    background-image: url("../images/person_luckyturn_icon@2x.png")
+}
+
+.icoSetUp {
+    background-image: url("../images/person_redsetting_icon@2x.png")
+}
+
+.bt-d7 {
+    border-top: 1px solid #d7d7d7;
+}
+
+
+/******个人中心 设置 setUp.html***********/
+
+
+/*.icoModifyPas { background-image: url("../images/ico-modifyPas.png")}*/
+
+
+/*.icoSignOut { background-image: url("../images/ico-signOut.png")}*/
+
+
+/*.icoAboutUs {background-image: url(../images/imgRed/about@2x.png);}*/
+
+
+/******个人中心 设置 setUp.html end***********/
+
+.my li i {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    float: right;
+    overflow: hidden;
+}
+
+.my li i img {
+    width: 100%;
+}
+
+.my li span {
+    color: #9f9f9f;
+    float: right;
+    font-size: 28px;
+}
+
+.my li span img {
+    margin-top: 26px;
+    width: 38px;
+    height: 38px;
+}
+
+.aboutUs {
+    margin-top: 300px;
+    width: 100%;
+    text-align: center;
+}
+
+.aboutUs p {
+    line-height: 80px;
+    color: #999999;
+}
+
+/************************个人中心 my.html end*****************************/
+
+
+/************************个人中心-修改昵称 modifyNickname.html *****************************/
+
+.modify {
+    height: 100%;
+}
+.modify>img{
+    width: 100%
+}
+.modify ul {
+    background: #fff;
+}
+
+.modify li {
+    clear: both;
+    zoom: 1;
+    overflow: hidden;
+    border-bottom: 1px solid #d7d7d7;
+    padding: 20px 40px;
+    position: relative;
+}
+
+.modify li:first-child {
+    border-bottom: 1px solid #d7d7d7;
+}
+
+.modify li label {
+    /*写在my里面*/
+    line-height: 80px;
+    width: 100%;
+}
+
+.modify li input {
+    width: 470px;
+    height: 74px;
+    border: 1px solid #cacaca;
+    float: right;
+    border-radius: 6px;
+    padding: 0 25px;
+    position: absolute;
+    top: 23px;
+    right: 50px;
+}
+.nickname_explain{
+    padding: 20px 30px;
+}
+.button {
+    margin: 40px 25px 0;
+}
+
+.bgFF {
+    background: #fff;
+}
+
+.bgFF li {
+    border-bottom: none;
+}
+
+
+/************************个人中心-修改昵称 modifyNickname.html end*****************************/
+
+/************************个人中心-会员等级 honorDetails.html *****************************/
+.honor_rule{
+    margin-bottom: 20px;
+    background-color: #fff;
+    box-shadow: 0px 1px 0 0 #dedede;
+}
+.honor_rule_title, .honor_grade_title{
+    padding: 0 38px;
+    height: 94px;
+    line-height: 94px;
+    font-size: 32px;
+    color: #000;
+    box-shadow: 0px 1px 0 0 #dedede;
+}
+.my_honorInfo{
+    float: right;
+    font-size: 24px;
+    color: #65656b;
+}
+.my_honorInfo .honorInfo_score{
+    margin-right: 28px;
+}
+.my_honorInfo .honorInfo_score em{
+    font-weight: bold;
+    color: #f96761;
+}
+.my_honorInfo .honorInfo_gap em{
+    font-weight: bold;
+    color: #48484c;
+}
+.honor_rule_con{
+    padding: 35px;
+}
+.honor_rule_con table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.honor_rule_con table th{
+    width: 50%;
+    line-height: 43px;
+    color: #48484c;
+    text-align: center;
+    border:1px solid #d9e4ed;
+    background-color: #eaf5fc;
+}
+.honor_rule_con table td{
+    line-height: 43px;
+    color: rgba(72, 72, 76, 0.9);
+    text-align: center;
+    border:1px solid #d9e4ed;
+
+}
+
+
+.honor_grade{
+    background-color: #fff;
+    box-shadow: 0px 1px 0 0 #dedede;
+}
+.honor_grade_title span{
+    margin-left: 23px;
+    font-size: 24px;
+    color: #909090;
+}
+.honor_grade_con ul li {
+    padding: 40px 50px;
+    border-bottom: 1px solid #dedede;
+}
+.honor_grade_con ul li .grade_way_pic{
+    display: inline-block;
+    width: 86px;
+    height: 86px;
+    float: left;
+    margin-right: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.honor_grade_con ul li .grade_way_explain{
+    display: inline-block;
+}
+.honor_grade_con ul li .grade_way_pic img{
+    width: 100%;
+}
+.honor_grade_con ul li h2{
+    margin-top: 10px;
+    font-size: 28px;
+    font-weight: 500;
+    color: #000;
+}
+.honor_grade_con ul li p{
+    font-size: 24px;
+    color: #909090;
+}
+.honor_grade_con ul li p em{
+    color: #d22727;
+}
+.honor_grade_con ul li a{
+    display: inline-block;
+    float: right;
+    margin-top: 12px;
+    width: 140px;
+    height: 66px;
+    line-height: 66px;
+    border-radius: 33px;
+    background-color: #f8b551;
+    font-size: 24px;
+    color: #fff;
+    text-align: center;
+}
+
+/************************个人中心-代理制度 honorDetails.html end*****************************/
+
+/************************个人中心-代理制度 agencySystem.html *****************************/
+.modify p {
+    font-size: 28px;
+    line-height: 46px;
+}
+
+
+/************************个人中心-代理制度 agencySystem.html end*****************************/
+
+
+/************************个人中心-个人信息 personalInformation.html *****************************/
+.pop-select-setIcon{
+    margin: 0 auto;
+    width: 80%;
+    border-radius: 20px;
+    background: #fff;
+}
+.content-setIcon li{
+    width: 100%;
+    height: 106px;
+    background: #fff;
+    color: #000;
+    font-size: 32px;
+    text-align: center;
+    line-height: 106px;
+}
+.content-setIcon li:nth-of-type(1){
+    border-bottom: 1px solid #ccc;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.content-setIcon li:nth-of-type(2){
+    position: relative;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.content-setIcon li input {
+    position: absolute;
+    right: 0;
+    opacity: 0;
+    top: 0;
+    height: 100%;
+}
+
+.bottom-setIcon{
+    margin: 0 auto;
+    width: 80%;
+    border-radius: 20px;
+}
+.bottom-setIcon a{
+    color: #ccc;
+}
+
+/******个人中心 修改头像 层***********/
+
+.modifyAvatar {
+    width: 557px;
+    height: 512px;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: url("../images/popup-bg.png") no-repeat bottom left #fff;
+    border-radius: 20px;
+}
+
+.modifyAvatar h2 {
+    height: 84px;
+    text-align: center;
+    line-height: 84px;
+    color: #0143b8;
+    font-size: 30px;
+    background: #b4cfff;
+    border-radius: 20px 20px 0 0;
+}
+
+.modifyAvatar ul {
+    padding: 55px 75px 0;
+}
+
+.modifyAvatar li {
+    height: 88px;
+    line-height: 88px;
+    border-radius: 44px;
+    background: #5e97fe;
+    color: #fff;
+    font-size: 30px;
+    margin-bottom: 33px;
+    text-align: center;
+    position: relative;
+}
+
+.modifyAvatar li input {
+    opacity: 0;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.modifyAvatar li input {
+    opacity: 0;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+
+/******个人中心 选择默认头像 setIcon.html***********/
+.set_icon_defult{ padding: 0 25px;}
+.set_icon_defult ul{
+    display: inline-block;
+    padding: 32px 0 130px;
+}
+.set_icon_defult ul li{
+    float: left;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 17px;
+    margin-right: 20px;
+    width: 220px;
+    height: 220px;
+}
+.set_icon_defult ul li.active img{ opacity: 0.3;}
+.set_icon_defult ul li:nth-of-type(3){ margin-right: 0px;}
+.set_icon_defult ul li:nth-of-type(6){ margin-right: 0px;}
+.set_icon_defult ul li:nth-of-type(9){ margin-right: 0px;}
+.set_icon_defult ul li img{ width: 100%; height: 100%;}
+.set_icon_defult ul li .sel{ position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 77px; height: 77px; background: url("../images/ico-complete-1.png") no-repeat center; background-size: 77px 77px;}
+
+/******个人中心 性别 modifyGender.html***********/
+
+/*.icoGender { background-image: url("../images/ico-gender.png")}*/
+
+.icoMale {
+    background-image: url("../images/ico-male.png")
+}
+
+.icoFemale {
+    background-image: url("../images/ico-female.png")
+}
+
+.gender li {
+    padding: 0;
+}
+
+.gender li label {
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    line-height: 90px;
+}
+
+.gender li label:before {
+    width: 30px;
+    height: 30px;
+    content: "";
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid #ededed;
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    margin-top: -15px;
+}
+
+.gender li label:after {
+    width: 16px;
+    height: 16px;
+    content: "";
+    border-radius: 50%;
+    background: #ededed;
+    position: absolute;
+    right: 38px;
+    top: 50%;
+    margin-top: -7px;
+}
+
+.modify li input[type="radio"] {
+    width: auto;
+    height: auto;
+    display: none;
+}
+
+.modify li input[type="radio"]:checked+label:after {
+    background: #dc5d55;
+}
+
+/******个人中心 中文名 modifyChineseName.html***********/
+/*.icoChineseName { background-image: url("../images/ico-chineseName.png")}*/
+
+/******个人中心 出生日期 modifyBirth.html***********/
+/*.icoBirth { background-image: url("../images/ico-birth.png")}*/
+
+/******个人中心 微信 modifyWeixin.html***********/
+/*.icoWeixin { background-image: url("../images/ico-weixin.png")}*/
+
+/******个人中心 修改邮箱 modifyEmail.html***********/
+/*.icoEmail { background-image: url("../images/ico-email.png")}*/
+
+/******个人中心 修改手机 modifyPhone.html***********/
+/*.icoPhone { background-image: url("../images/ico-phone.png")}*/
+
+/************************钱包-提示信息 *****************************/
+
+.warmth-tips p {
+    font-size: 24px;
+    color: 666;
+    padding: 0 30px;
+    line-height: 40px;
+}
+
+.warmth-tips {
+    margin-top: 30px;
+}
+
+.Attached {
+    border-radius: 40px;
+    padding: 0 60px;
+    height: 80px;
+    color: #f00;
+    width: 230px;
+    text-align: center;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+
+/************************个人中心-个人信息 personalInformation.html end*****************************/
+.cancelX {
+    background: #dddddd;
+    color: #000000;
+}
+
+/************************团队管理  teamManage.html *****************************/
+.teamWarp {
+    /*background: #f5f5f5;*/
+    height: 100%;
+}
+/*.icoVipManage { background-image: url("../images/ico-vipManage.png")}*/
+/*.icoTeamManage { background-image: url("../images/ico-teamManage.png")}*/
+/*.icoStatistics { background-image: url("../images/ico-statistics.png")}*/
+/*.icoOpen { background-image: url("../images/ico-open.png")}*/
+
+/************************团队管理-会员报表 vipReport.html *****************************/
+.teamSearchW {
+    position: relative;
+    height: 84px;
+    line-height: 84px;
+    padding: 0 26px 0 34px;
+    box-shadow: 0px 1px 0 0 #dedede;
+}
+.teamSearchT {
+    background: #c52525;
+}
+.list-search{
+    float: right;
+    position: relative;
+    margin-top: 16px;
+    padding-left: 24px;
+    width: 310px;
+    height: 52px;
+    border-radius: 26px;
+    background-color: #ffffff;
+    border: solid 2px #dedede;
+}
+.list-search label {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 70px;
+    height: 48px;
+    background: url(../images/agency_search_icon@2x.png)no-repeat center;
+}
+.list-search input {
+    /*background-color: transparent;*/
+    vertical-align: top;
+    width: 220px;
+    line-height: 48px;
+    border: none;
+    font-size: 28px;
+    color: #909090;
+}
+.vipreport_user_type{
+    display: inline-block;
+    width: 150px;
+    margin-left: 20px;
+    font-size: 28px;
+    color: #48484c;
+    background: url(../images/cbbrecord_icon@2x.png)no-repeat center right;
+}
+.vipreport_user_type.active{
+    color: #d22727;
+    background: url(../images/record_uptri_icon@2x.png)no-repeat center right;
+}
+.vipreport_date_ico{
+    display: inline-block;
+    width: 160px;
+    font-size: 28px;
+    color: #48484c;
+    background: url(../images/agency_timeselect_icon@2x.png)no-repeat center right;
+}
+
+.teamSearch {
+    display: inline-block;
+    margin-top: 13px;
+    width: 49%;
+    overflow: hidden;
+    background: #fff;
+    height: 56px;
+    line-height: 55px;
+    font-size: 26px;
+    padding-right: 56px;
+    border-radius: 10px;
+    /*clear: both;*/
+    padding-left: 15px;
+    position: relative;
+}
+
+.teamSearch select {
+    width: 100%;
+    font-size: 13px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    height: 100%;
+    opacity: 0;
+}
+
+.teamSearch input[type="date"],
+.teamSearch select {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+}
+
+.teamSearch input {
+    width: 100%;
+    height: 100%;
+    font-size: 30px;
+}
+
+.teamSearch em {
+    width: 56px;
+    height: 56px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.teamSearch em:after {
+    width: 0;
+    height: 0;
+    content: "";
+    border: 15px solid transparent;
+    border-top: 15px solid #bfbfbf;
+    position: absolute;
+    left: 50%;
+    margin-left: -15px;
+    top: 50%;
+    margin-top: -6px;
+}
+
+.teamSearchCeng,
+.teamSearchCeng2 {
+    height: 270px;
+    background: #fff;
+    border-bottom: 1px solid #dedede;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: 89px;
+    padding: 30px;
+}
+
+.teamSearchCondition {
+    clear: both;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+/*.teamSearchCondition:before {*/
+    /*width: 100%;*/
+    /*height: 2px;*/
+    /*content: "";*/
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*top: 50%;*/
+    /*margin-top: -1px;*/
+    /*background: #dedede;*/
+    /*z-index: 1;*/
+/*}*/
+
+.teamSearchCondition div {
+    display: inline-block;
+    width: 45%;
+    color: #242424;
+    font-size: 30px;
+    background: #fff;
+    position: relative;
+    z-index: 2;
+    padding-right: 20px;
+}
+
+.teamSearchCondition div:nth-child(2) {
+    padding-left: 20px;
+    padding-right: 0;
+}
+
+.teamSearchCondition div span {
+    float: left;
+    width: 65px;
+    line-height: 54px;
+}
+
+.teamSearchCondition div label {
+    float: left;
+    width: calc(100% - 65px);
+    box-sizing: border-box;
+    position: relative;
+}
+
+.teamSearchCondition div input {
+    width: 100%;
+    border: 1px solid #dddddd;
+    height: 50px;
+    line-height: 50px;
+    padding: 10px;
+}
+
+.teamSearchButton {
+    padding-left: 40%;
+}
+
+.teamSearchButton button {
+    float: left;
+    width: calc(50% - 15px);
+}
+
+.teamSearchButton button:last-child {
+    float: right;
+}
+
+.vipReport ul { padding-left: 38px;}
+.vipReport li {
+    background: #fff;
+    padding: 15px 0;
+    clear: both;
+    border-bottom: 1px solid #dedede;
+}
+.vipReport li div {
+    clear: both;
+    overflow: hidden;
+}
+.vipReport li div label {
+    display: block;
+    float: left;
+    line-height: 50px;
+    font-size: 24px;
+    color: #909090;
+    box-sizing: border-box;
+}
+.vipReport li div label.report_acc em{
+    font-size: 32px;
+    color: #000;
+}
+.vipReport li div label.report_bet, .vipReport li div label.report_money{ float: right; width: 50%;}
+.vipReport li div label.report_bet em{
+    font-size: 28px;
+    font-weight: bold;
+    font-family: "Arial";
+    color: #d22727;}
+.vipReport li div label.report_money em{
+    font-size: 28px;
+    font-weight: bold;
+    font-family: "Arial";
+    color: #48484c;}
+
+/*.icoGirl2 { background: url("../images/ico-girl2.png") no-repeat left;}*/
+/*.icoBetting { background: url("../images/ico-betting.png") no-repeat left;}*/
+.icoMoney { background: url("../images/ico-money.png") no-repeat left;}
+
+
+.vipReport li div span {
+    font-size: 24px;
+    color: #adadad;
+    line-height: 60px;
+}
+
+.selectWarp {
+    position: relative;
+}
+
+.selectWarp p {
+    border: 1px solid #ccc;
+    border-radius: 0.4rem;
+    height: 4rem;
+    font-size: 24px;
+    text-align: center;
+    line-height: 4rem;
+    position: relative;
+}
+
+.selectWarp p:after {
+    position: absolute;
+    border: 10px solid transparent;
+    border-top: 10px solid #ccc;
+    content: "";
+    top: 50%;
+    right: 10px;
+    transform: translate(-50%, 0%);
+}
+
+.selectWarp select {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 4rem;
+    opacity: 0;
+    font-size: 16px;
+    width: 100%;
+}
+
+.inputWarp {
+    height: 4rem;
+    line-height: 4rem;
+}
+
+.inputWarp input {
+    width: 100%;
+    height: 4rem!important;
+    line-height: 4rem!important;
+    display: inline-block;
+    padding: 0.2rem;
+    font-size: 24px;
+}
+
+
+/************************团队管理-团队报表 teamReport.html *****************************/
+.teamreport_time{
+    padding-left: 34px;
+    text-align: left!important;
+}
+.teamreport_date_ico {
+    float: right;
+    display: inline-block;
+    width: 90px;
+    height: 61px;
+    font-size: 28px;
+    color: #48484c;
+    background: url(../images/agency_timeselect_icon@2x.png)no-repeat center;
+}
+.vipReport li div label.report_team_bet, .vipReport li div label.report_profit{ float: right; width: 50%;}
+.vipReport li div label.report_team_bet em{
+    color: #000;
+}
+.vipReport li div label.report_profit em{
+    color: green;
+}
+
+/*.icoState { background: url("../images/ico-state.png") no-repeat left;}*/
+/*.icoProfit { background: url("../images/ico-profit.png") no-repeat left;}*/
+
+.teamSearchCeng h4 {
+    font-size: 32px;
+    line-height: 64px;
+    font-weight: normal;
+}
+
+.teamSearchTime {
+    padding-top: 10px;
+}
+
+.teamSearchTime .teamSearchCondition {
+    margin-bottom: 30px;
+    margin-right: 60px;
+    position: relative;
+}
+
+
+.teamReport {}
+
+/*.teamReport li { background: url("../images/ico-arrow.png") no-repeat 98% center #fff;}*/
+
+.typeSearch {
+    width: 369px;
+    position: absolute;
+    background: #fff;
+    right: 0;
+    top: 95px;
+    box-shadow: 1px 1px 10px 2px #CECECE;
+}
+
+.typeSearch:after {
+    width: 0;
+    height: 0;
+    content: "";
+    border: 20px solid transparent;
+    border-bottom: 20px solid #fff;
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    margin-left: -30px;
+}
+
+.typeSearch li {
+    line-height: 100px;
+    text-align: center;
+    font-size: 30px;
+    border-bottom: 1px solid #dedede;
+}
+
+.typeSearch li em {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.typeSearch li em img {
+    display: inline-block;
+    vertical-align: middle
+}
+
+.typeSearch li:last-child {
+    border-bottom: 0;
+}
+
+
+/************************团队管理-会员报表 vipReport.html *****************************/
+
+
+/************************团队管理-团队报表 teamReportDetails.html *****************************/
+
+
+/************************团队管理-自身统计 statisticsDetails.html *****************************/
+.statist_date{
+    padding-left: 28px;
+    font-size: 28px;
+    color: #48484c;
+    text-align: left!important;
+}
+.statist_date_ico{
+    float: right;
+    margin-right: 30px;
+    width: 60px;
+    height: 61px;
+    text-align: center;
+    background: url(../images/agency_timeselect_icon@2x.png)no-repeat center right;
+}
+
+
+/************************团队管理-下线开户 open.html *****************************/
+.modify .see {
+    right: 50px;
+    top: 20px;
+}
+/*.icoGirl3 { background-image: url("../images/ico-girl3.png")}*/
+/*.icoPas2 { background-image: url("../images/ico-pas2.png")}*/
+.openComplete {
+    text-align: center;
+    padding: 50px 0 20px;
+    font-size: 40px;
+    line-height: 80px;
+    background: #fff;
+}
+
+
+/************************团队管理-详情 details.html *****************************/
+
+.details {
+    /* margin: 50px; */
+    background: #fff;
+    /* border-radius: 10px; */
+    padding: 20px 20px 20px 50px;
+    min-height: 300px;
+    text-align: center;
+    /* border: 1px solid #a1a1a1; */
+}
+
+.details p {
+    font-size: 30px;
+    color: #000;
+    line-height: 60px;
+    /* margin-bottom: 20px; */
+    text-align: left;
+    font-size: 49px;
+    font-weight: bold;
+    margin-top: 130px;
+    color: #fff;
+}
+
+.details .name {
+    color: #fff;
+    float: left;
+    margin-top: 33px;
+    font-size: 38px;
+    font-weight: bold;
+    margin-top: 23px;
+}
+
+
+/************************客服 customService/index.html *****************************/
+
+.customService {
+    padding: 30px 30px 200px;
+    height: 100%;
+    overflow: auto;
+    position: relative;
+    overflow-y: auto;
+}
+
+.customService li {
+    padding-bottom: 20px;
+    overflow: hidden;
+}
+
+.customService li .girl {
+    width: 134px;
+    text-align: center;
+}
+
+.customService li h3 {
+    width: 100%;
+    padding-left: 20px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 30px;
+    font-weight: normal;
+}
+
+.customService li h3.left {
+    text-align: left;
+}
+
+.customService li h3.right {
+    text-align: right;
+}
+
+.customService li .girl img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.customContent {
+    background: #f9f9f9;
+    padding: 17px;
+    border-radius: 10px;
+    border: 1px solid #f5f5f5;
+    min-width: 100px;
+    max-width: 500px;
+    min-height: 74px;
+    line-height: 40px;
+    margin-top: 10px;
+    position: relative;
+    font-size: 30px;
+}
+
+.customContent.left {
+    margin-left: 30px;
+}
+
+.customContent.right {
+    margin-right: 30px;
+}
+
+.customContent:before {
+    width: 0;
+    height: 0;
+    content: "";
+    position: absolute;
+    border: 10px solid transparent;
+    border-right: 10px solid #f9f9f9;
+    top: 20px;
+}
+
+.customContent:after {
+    width: 0;
+    height: 0;
+    content: "";
+    position: absolute;
+    border: 10px solid transparent;
+    border-right: 10px solid #f5f5f5;
+    top: 19px;
+}
+
+.right.customContent:before {
+    right: -19px;
+    transform: rotate(180deg);
+}
+
+.right.customContent:after {
+    right: -20px;
+    transform: rotate(180deg);
+}
+
+.left.customContent:before {
+    left: -19px;
+}
+
+.left.customContent:after {
+    left: -20px;
+}
+
+.customNews {
+    min-height: 100px;
+    width: 100%;
+    background: #f7f6f8;
+    padding: 15px 12px;
+    position: fixed;
+    left: 0;
+    bottom: 98px;
+    z-index: 98;
+}
+
+.customNews .textArea {
+    width: calc(100% - 150px);
+    min-height: 70px;
+    max-height: 210px;
+    overflow: hidden;
+    overflow-y: auto;
+    border: 1px solid #cfcfcf;
+    float: left;
+    border-radius: 4px;
+    line-height: 70px;
+    font-size: 30px;
+    padding: 0 10px;
+}
+
+.customNews button {
+    width: 131px;
+    height: 72px;
+    border-radius: 4px;
+    float: right;
+}
+
+.customNews .textArea div p {
+    text-align: left;
+    position: relative;
+}
+
+.customNews .textArea div p em {
+    display: inline-block;
+    height: 70px;
+    width: 40px;
+    background: url("../images/close1.png") no-repeat center;
+    text-align: center;
+    line-height: 1.5rem;
+    position: absolute;
+    right: .2rem;
+    top: 0;
+}
+
+
+/************************客服 customService/index.html  end*****************************/
+
+
+/************************钱包 wallet/index.html *****************************/
+
+.walletWarp {
+    position: relative;
+    height: 100%;
+    overflow: auto;
+    padding-bottom: 98px;
+}
+
+/*.walletWarp span.redpacket{ position: absolute; top: 20px; right: 20px; display: inline-block; width: 62px; height: 62px; background: url("../images/redPacket/redpacket.png") no-repeat center center; background-size: 62px 62px; }
+*/
+
+.wallet {
+    height: 340px;
+    background: url("../images/top_bg@2x.png") #d22727 no-repeat;
+    padding: 90px 55px 0;
+}
+
+.wallet2 {
+    height: 230px;
+    padding: 10px 55px 0;
+}
+
+.wallet p {
+    color: #e3edff;
+    font-size: 30px;
+}
+
+.icoRefresh {
+    background-image: url("../images/ico-refresh.png")
+}
+
+.wallet ul {
+    overflow: hidden;
+}
+
+.wallet li {
+    width: 33.333%;
+    text-align: center;
+    font-size: 36px;
+    color: #fff;
+    float: left;
+    background-repeat: no-repeat;
+    background-position: top center;
+    padding-top: 88px;
+    line-height: 80px;
+}
+
+.wallet1 {
+    padding: 60px 30px 10px;
+    background: #fff;
+}
+
+.wallet1 .wallet1Tel {
+    margin: 0 180px 0;
+    text-align: center;
+}
+
+.wallet1 .wallet1Tel p {
+    font-size: 32px;
+    line-height: 64px;
+    color: #121212;
+}
+
+.wallet1Tel1 {
+    padding: 0px 100px 0px;
+}
+
+.wallet1Tel1 p {
+    font-size: 26px;
+    line-height: 56px;
+    /*white-space: nowrap;*/
+    /*text-overflow: ellipsis;*/
+    /*overflow: hidden;*/
+}
+
+ul.lineRecharge-input {
+    padding-left: 0;
+}
+
+.lineRecharge-input li label {
+    padding-left: 50px!important
+}
+.lineRecharge-input.no-padding li label {
+    padding-left: 0px!important
+}
+.lineRecharge-input li{
+ padding-left: 30px;
+}
+.onLinePad.lineRecharge-input li{
+padding-left: 0;
+}
+.onLinePad label{
+padding-left: 0;
+}
+.icoBalance {
+    background-image: url("../images/ico-balance.png");
+    font-size: 48px!important;
+}
+
+.icoWithdrawals {
+    background-image: url("../images/ico-withdrawals.png");
+}
+
+.walletAcer {
+    width: 100%;
+    font-size: 62px;
+    color: #fff;
+    font-weight: bold;
+    padding: 50px 20px 20px;
+}
+
+.icoAcer {
+    background: url("../images/ico-acer.png") no-repeat right 65px;
+    padding-right: 85px;
+    font-size: 100px;
+    font-family: Arial;
+}
+
+.walletUl li label {
+    padding-left: 70px;
+}
+
+.icoCz1 {
+    background-image: url("../images/ico-cz1.png")
+}
+
+.icoCz2 {
+    background-image: url("../images/ico-cz2.png")
+}
+
+.icoCz3 {
+    background-image: url("../images/ico-cz3.png")
+}
+
+.icoCz4 {
+    background-image: url("../images/ico-cz4.png")
+}
+
+.icoCz5 {
+    background-image: url("../images/ico-cz5.png")
+}
+
+.yuE {
+    text-align: right;
+    line-height: 60px;
+    color: #666666;
+    font-size: 24px;
+    font-weight: normal;
+    padding: 30px 45px 0;
+}
+
+.yuE em {
+    font-size: 32px;
+    margin-left: 30px;
+    color: #dc5d55;
+}
+
+.walletContent {}
+
+.walletContent li {
+    float: left;
+    font-size: 30px;
+    color: #929292;
+    width: 33.333%;
+    text-align: center;
+    padding-top: 30px;
+}
+
+.walletContent li i {
+    width: 100%;
+    height: 110px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.icoBankCard {
+    background-image: url("../images/ico-bankCard.png")
+}
+
+.icoTransaction {
+    background-image: url("../images/ico-transaction.png")
+}
+
+.icoSecurity {
+    background-image: url("../images/ico-security.png")
+}
+
+
+/************************充值 wallet/recharge.html end*****************************/
+
+.wallet div.icoBalance {
+    background-repeat: no-repeat;
+    background-position: top center;
+    text-align: center;
+    color: #fff;
+    font-size: 44px;
+    padding-top: 88px;
+    line-height: 80px;
+}
+
+.rechargeContent button {
+    margin-bottom: 50px;
+}
+
+
+/************************线下充值 wallet/lineRecharge.html *****************************/
+
+.bgCol {
+    background: #d22727!important;
+}
+
+#rechargeEx {
+    color: #dc5d55!important;
+    border-bottom: 1px solid #dc5d55 !important;
+}
+
+.inputW {
+    width: 410px;
+    height: 80px;
+    border: 2px solid #f5f5f5;
+    float: right;
+    border-radius: 40px;
+    padding: 0 40px;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+}
+
+.inputW:after {
+    width: 0;
+    height: 0;
+    content: "";
+    position: absolute;
+    border: 10px solid transparent;
+    border-top: 10px solid #bfbfbf;
+    top: 50%;
+    right: 30px;
+    margin-top: -5px;
+}
+
+.modify select {
+    width: 410px;
+    height: 80px;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    opacity: 0;
+    z-index: 2;
+}
+
+.remarks {
+    float: right;
+    line-height: 34px !important;
+    padding-left: 264px;
+    width: 100%;
+}
+
+.red {
+    color: #ff4f4f;
+}
+
+.icoPaymentMethod {
+    background-image: url("../images/ico-paymentMethod.png")
+}
+
+.icoCode {
+    background-image: url("../images/ico-code.png")
+}
+
+.icoCopy {
+    background: url("../images/ico-copy.png") no-repeat center center;
+    width: 80px;
+    height: 56px;
+    display: inline-block;
+    float: right;
+    /*margin-right: 30px;*/
+}
+.icoCode em.code{
+    height: 80px;
+}
+
+.icoCopy1 {
+    background: url("../images/ico-copy1.png") no-repeat center 5px;
+    width: 80px;
+    height: 80px;
+    display: inline-block;
+    float: left;
+}
+
+
+/************************线上充值 wallet/onLineRecharge.html *****************************/
+
+.onLineGirl4 {
+    width: 100%;
+    font-size: 30px;
+    color: #fff;
+    text-align: center;
+    line-height: 60px;
+    position: relative;
+}
+
+.icoGirl4 {
+    background: url("../images/ico-girl4.png") no-repeat left center;
+    padding-left: 40px;
+}
+
+.onLineGirl {
+    text-align: center;
+}
+
+.onLineGirl i {
+    width: 145px;
+    height: 145px;
+    border-radius: 50%;
+    background: #fff;
+    /*padding: 2px;*/
+    overflow: hidden;
+    display: inline-block;
+    border:2px solid #fff;
+}
+
+.onLineGirl i img {
+    width: 100%;
+}
+
+.icoBank {
+    background-image: url("../images/ico-bank.png");
+}
+
+.onLinePad {
+    padding-top: 20px;
+    /*padding-bottom: 17px;
+    border-bottom: 1px solid #d7d7d7;*/
+}
+
+.red-btn {
+    height: 84px;
+    border-radius: 8px;
+    background-color: #d22727;
+    border: solid 3px #d22727;
+    line-height: 84px;
+    color: #fff;
+    background-image: none;
+    font-size: 35px;
+}
+
+.online {
+    width: 156px;
+    height: 156px;
+    border: 1px solid #bfbfbf;
+    display: inline-block;
+    margin-right: 70px;
+}
+
+.online i {
+    width: 100%;
+    height: 107px;
+    display: block;
+}
+
+.online:first-child i {
+    background: url("../images/weixin.png") no-repeat center;
+}
+
+.online:last-child i {
+    background: url("../images/zhifubao.png") no-repeat center;
+}
+
+.online p {
+    font-size: 21px;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    background: #f5f5f5;
+}
+
+.line-recharge p {
+    text-align: left
+}
+
+
+/************************线下充值成功 wallet/success.html *****************************/
+
+.m-btm40 button {
+    margin-bottom: 40px;
+}
+
+.information {
+    min-height: 145px;
+
+    margin: 20px 0px 0;
+    font-size: 30px;
+    background: #fff;
+}
+
+.information div {
+    padding: 0 50px;
+    border-bottom: 1px solid #dcdcdc;
+    min-height: 80px;
+    line-height: 80px;
+}
+
+.information div:last-child {
+    border-bottom: none;
+}
+
+.information label {
+    width: 50%;
+    display: block;
+    float: left;
+    /*line-height: 60px;*/
+}
+
+.information label:nth-child(even) {
+    text-align: right;
+}
+
+.successPrompt {
+    padding: 50px 30px;
+    line-height: 40px;
+    color: #707070;
+    text-align: center;
+}
+
+.logoTitle {
+    text-align: center;
+    height: 170px;
+    line-height: 170px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.logoTitle img {
+    margin-right: 20px;
+    max-height: 170px;
+}
+
+
+/************************钱包 wallet/index.html end*****************************/
+
+
+/***********************首次设置资金密码 wallet/firstSetPas.html**********************************/
+
+.firstSetPas {
+    padding: 50px;
+    margin-top: 150px;
+}
+
+.firstSetPas dl {
+    margin-bottom: 80px;
+}
+
+.firstSetPas dt {
+    text-align: center;
+    font-size: 30px;
+    line-height: 60px;
+}
+
+.firstSetPas dt em {
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: center left;
+}
+
+.firstSetPas dd {
+    margin-top: 30px;
+}
+
+.pasFrame {
+    text-align: center;
+    position: relative;
+}
+
+.pasFrame input {
+    height: 88px;
+    width: calc(88px * 9);
+    position: absolute;
+    top: 1px;
+    background: transparent;
+    border: 0;
+    left: -196px;
+    z-index: 3;
+    font-size: 1px;
+    opacity: 0;
+}
+
+.dang {
+    height: 88px;
+    width: calc(88px * 2);
+    position: absolute;
+    top: 1px;
+    background: #fff;
+    left: -117px;
+    z-index: 4;
+}
+
+.pasFrame ul {
+    overflow: hidden;
+    display: inline-block;
+}
+
+.pasFrame li {
+    width: 88px;
+    height: 88px;
+    border: 1px solid #e4e4e4;
+    float: left;
+    font-size: 40px;
+    text-align: center;
+    line-height: 88px;
+    position: relative
+}
+
+.guangbiao {}
+
+.guangbiao:after {
+    width: 1px;
+    height: 50px;
+    content: "";
+    background: #000;
+    position: absolute;
+    left: 10px;
+    top: 19px;
+    animation: myfirst 1s infinite linear;
+}
+
+.guangbiao1:after {
+    width: 1px;
+    height: 50px;
+    content: "";
+    background: #000;
+    position: absolute;
+    right: 10px;
+    top: 19px;
+    animation: myfirst 1s infinite linear;
+}
+
+@keyframes myfirst {
+    to {
+        opacity: 0;
+    }
+}
+
+
+/***********************首次设置资金密码 wallet/bettingRecord.html**********************************/
+
+.bettingRecordSearch {
+    height: 61px;
+    width: 100%;
+    text-align: center;
+    line-height: 61px;
+    background-color: #f8f8f8;
+    box-shadow: 0px 1px 0 0 rgba(35, 24, 21, 0.17);
+}
+
+.bettingRecordSearch .teamSearchCondition div {
+    background: #f9f9f8;
+}
+
+.BRSearchCondition {}
+
+.BRSearchCondition div {
+    width: 50%;
+    float: left;
+    font-size: 30px;
+    color: #242424;
+}
+
+.BRSearchCondition div span {
+    float: left;
+    line-height: 80px;
+}
+
+.BRSearchCondition div label {
+    height: 78px;
+    border: 1px solid #dddddd;
+    display: inline-block;
+    position: relative;
+    width: calc(100% - 160px);
+    float: left;
+    line-height: 80px;
+    box-sizing: border-box;
+}
+
+.BRSearchCondition div label em.inputW {
+    width: 100%;
+    display: block;
+    position: relative;
+    left: 0;
+    top: 0;
+    padding: 0 10px;
+    background: #fff;
+    border-radius: 0;
+    height: 76px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.BRSearchCondition div label em.inputW:after {
+    right: 10px;
+}
+
+.BRSearchCondition div label select {
+    height: 78px;
+    opacity: 0;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.bettingRecordList {
+    position: fixed;
+    top: 226px;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+    overflow: scroll;
+}
+
+/*.bettingRecord_marginB ul{ margin-bottom: 129px;}*/
+
+.bettingRecordList li {
+    padding: 20px;
+    border-bottom: 1px solid #dedede;
+    overflow: hidden;
+}
+
+.bettingRecordList li>div:last-child {
+    float: right;
+    text-align: right;
+}
+
+.bettingRecordList li>div:first-child {
+    float: left;
+    width: 70%;
+}
+
+.bettingRecordList li>div>.bet_money {
+    text-align: right;
+}
+
+.bettingRecordList li>div>div label {
+    color: #000;
+    font-size: 32px;
+}
+
+.bettingRecordList li>div>div em {
+    color: #555;
+    font-size: 24px;
+}
+
+/*.bettingRecordList li>div>div b {*/
+    /*font-size: 28px;*/
+    /*color: #555;*/
+    /*font-weight: normal;*/
+/*}*/
+
+.bettingRecordList li>div>div span {
+    font-size: 36px;
+    font-weight: 600;
+    font-family: "Arial";
+    color: #ff4f4f;
+}
+
+.bettingRecordList li>div>p {
+    color: #909090;
+    font-size: 24px;
+    text-align: right;
+    margin-top: 10px;
+}
+.bettingRecordList li>div>p.bet_con em:nth-of-type(1){
+    margin-right: 30px;
+}
+
+.bettingRecordList li>div>p.bet_status{
+    margin-top: 46px;
+}
+
+.bettingRecordList li>div:first-child>p {
+    text-align: left;
+}
+
+
+.bettingRecordStatis{
+    position: fixed;
+    bottom: 0;
+    left: 0px;
+    right: 0;
+    padding: 19px 0;
+    height: 129px;
+    background-color: #ffffff;
+    border-top: 1px solid #dedede;
+    overflow-x: auto;
+}
+.bettingRecordStatis div{
+    float: left;
+    width: 33.33333333%;
+    text-align: center;
+}
+.bettingRecordStatis div em {
+    display: block;
+    line-height: 45px;
+    font-size: 32px;
+}
+
+.bettingRecordStatis div p {
+    line-height: 50px;
+    font-size: 32px;
+    font-weight: 600;
+    font-family: "Arial";
+}
+
+
+.bettingRecordList li.title div {
+    float: left;
+    width: 33.33333333%;
+    text-align: center;
+}
+
+.bettingRecordList li.title div em {
+    font-size: 32px;
+}
+
+.bettingRecordList li.title div p {
+    font-size: 28px;
+}
+
+.colorFfc {
+    color: #ffc100 !important;
+}
+
+.color24 {
+    color: #242424 !important;
+}
+
+.withdrawals {}
+
+.withdrawals dl {
+    background: #fff;
+    color: #48484c;
+    font-size: 28px;
+}
+
+.withdrawals dl .tx-status {
+    color: #d22727;
+}
+
+.withdrawals dt {
+    height: 90px;
+    line-height: 90px;
+    padding: 0 30px;
+    background-color: #f0f0f0;
+    font-size: 34px;
+    font-weight: bold;
+}
+
+.withdrawals dt i {
+    width: 50px;
+    height: 90px;
+    background-repeat: no-repeat;
+    background-position: left center;
+    display: inline-block;
+    float: left;
+}
+
+.withdrawals dt em {
+    float: right;
+    color: #009619;
+    font-size: 28px;
+}
+
+.first-step p {
+    line-height: 45px;
+}
+
+.withdrawals .first-step,
+.withdrawals .tow-step,
+.withdrawals .three-step {
+    padding-left: 75px;
+    background: url(../images/ico-apply.png)no-repeat left center;
+    background-size: 50px;
+    color: #5f98fe;
+        padding-bottom: 22px;
+}
+
+.withdrawals .tow-step,
+.withdrawals .three-step {
+    padding-top: 55px;
+    padding-bottom:55px;
+    background: url(../images/ico-handle.png)no-repeat left center;
+    background-size: 50px;
+    position: relative;
+}
+.first-step p:first-child{
+    padding-top: 22px;
+}
+
+.withdrawals .tow-step:before,
+.withdrawals .three-step:before {
+    content: "";
+    position: absolute;
+    width: 3px;
+    height: 60px;
+    background-color: #669cfe;
+    left: 24px;
+    top: -29px;
+}
+.fix-bottom{
+    position: fixed;
+    bottom: 30px;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+.fix-bottom p{
+    color: rgba(72, 72, 76, 0.7);
+    font-size: 26px;
+}
+.fix-bottom a{
+ font-size: 26px;
+  font-weight: bold;
+  margin-top:36px;
+  color: rgba(210, 39, 39, 0.7);
+  text-decoration: underline;
+}
+.icoDrawing {
+    background-image: url("../images/ico-drawing.png");
+}
+
+.icoSpeed {
+    background-image: url("../images/ico-speed.png");
+}
+
+.withdrawals dd {
+    padding: 30px;
+    text-align: center;
+}
+
+.withdrawals dd p {
+    line-height: 56px;
+    font-size: 30px;
+    color: #242424;
+}
+
+.withdrawals dd label {
+    margin: 45px 110px;
+    height: 65px;
+    line-height: 65px;
+    color: #ff4f4f;
+    border: 2px solid #f5f5f5;
+    border-radius: 32px;
+    text-align: center;
+    display: block;
+}
+
+.withdrawals dd ul li {
+    float: left;
+    width: 33.333%;
+    text-align: center;
+    position: relative
+}
+
+.withdrawals dd ul li i {
+    width: 68px;
+    height: 68px;
+    display: inline-block;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 30px;
+}
+
+.withdrawals dd ul li:after {
+    content: "";
+    width: 50%;
+    height: 5px;
+    background: #dbdbdb;
+    position: absolute;
+    top: 30px;
+    left: 170px
+}
+
+.withdrawals dd ul li:last-child:after {
+    width: 0;
+}
+
+.withdrawals .money-box {
+    margin: 20px 0;
+}
+
+.withdrawals .money-box em {
+    font-size: 60px;
+    font-weight: bold;
+    color: #48484c;
+}
+
+.icoApply {
+    background-image: url("../images/ico-apply.png");
+}
+
+.icoComplete1 {
+    background-image: url("../images/ico-complete1.png");
+}
+
+.icoHandle {
+    background-image: url("../images/ico-handle.png");
+}
+
+.withdrawals dd ul li p {
+    color: #797979;
+    line-height: 38px;
+}
+
+.withdrawals dd ul li p:nth-child(2) {
+    font-size: 30px;
+}
+
+.withdrawals dd ul li p:nth-child(3) {
+    font-size: 24px;
+}
+
+.withdrawalsWarp {
+    margin-top: 30px;
+    padding-bottom: 105px;
+}
+
+.withdrawalsWarp h4 {
+    font-size: 34px;
+    color: #242424;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.withdrawalsPas {
+    padding: 0 70px;
+    overflow: hidden;
+}
+
+.withdrawalsPas input {
+    height: 88px;
+    width: calc(88px * 6);
+    position: absolute;
+    width: 680px;
+    z-index: 1;
+    opacity: 0;
+}
+
+.withdrawals {}
+
+.tx-info {
+    margin-top: 20px;
+    padding-left: 46px;
+    font-size: 28px;
+    color: #48484c;
+}
+
+.tx-info li {
+    border-bottom: 1px solid #dedede;
+    padding: 20px 46px 20px 0;
+}
+
+.tx-info li:last-child {
+    border-bottom: none;
+}
+
+.tx-info .name {
+    float: left;
+}
+
+.tx-info .info {
+    float: right;
+}
+
+
+
+/*新增*/
+
+.withdrawalsPas ul {
+    padding: 0
+}
+
+.withdrawalsPas li {
+    width: 80px;
+    height: 80px;
+    background: #f5f5f5;
+    border-radius: 8px;
+    float: left;
+    text-align: center;
+    line-height: 80px;
+    margin-right: 24px;
+    padding: 0;
+    clear: none;
+}
+
+.withdrawalsPas li:last-child {
+    margin-right: 0;
+}
+
+.binding {
+    padding-top: 160px;
+    text-align: center;
+    font-size: 38px;
+    color: #242424;
+    line-height: 68px;
+}
+
+.binding i {
+    width: 41px;
+    height: 41px;
+    display: inline-block;
+    margin-right: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.icoAdd1 {
+    background-image: url("../images/ico-add1.png");
+}
+
+.bankCard2 {}
+
+.bankCard2 dl dt {
+    position: relative;
+    height: 90px;
+    background: #fff;
+    margin-bottom: 24px;
+    line-height: 90px;
+    font-size: 34px;
+    padding: 0 30px;
+    border-bottom: 1px solid #dedede;
+}
+
+.bankCard2 dl dt i {
+    width: 41px;
+    height: 90px;
+    display: inline-block;
+    margin-right: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    float: left;
+}
+
+.bankCard2 dl dt:after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 26px;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #dedede;
+}
+
+.bankCard2 ul {
+    padding-top: 0;
+}
+
+.bankCard2 ul li label {
+    padding-left: 0;
+}
+
+.bankCard2 ul li:after {
+    content: "";
+    position: absolute;
+    right: 47px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: url(../images/common_enter_icon@2x.png)no-repeat center;
+    width: 12px;
+    height: 22px;
+}
+
+.bankCard2.no-icon ul li:after {
+    background: none;
+    width: 0;
+}
+
+.icoChika {
+    background-image: url("../images/ico-chika.png");
+}
+
+.bankCard2 dl dd h3 {
+    font-size: 30px;
+    font-weight: inherit;
+    text-indent: 40px;
+}
+
+.provinceCity {
+    min-width: 240px;
+    max-width: 300px;
+    position: relative;
+    display: inline-block;
+    height: 80px;
+    margin-left: 20px;
+}
+
+.provinceCity .inputW {
+    width: auto;
+    min-width: 240px;
+    max-width: 300px;
+}
+
+.provinceCity select {
+    width: 200px;
+}
+
+.BanText {
+    height: 90px;
+    padding: 17px 0;
+    text-align: center;
+    color: #b1b0b0;
+    border-top: 1px solid #f7f7f7;
+}
+
+.fuxuankuan {
+    font-size: 26px;
+    color: #727272;
+    padding: 17px 20px;
+}
+
+.icoBank1 {
+    background-image: url("../images/ico-bank1.png");
+}
+
+.icoPhone1 {
+    background-image: url("../images/ico-phone1.png");
+}
+
+
+.bankCard6 {
+    padding: 0 50px 100px;
+    font-size: 30px;
+    color: #242424;
+    border-bottom: 1px solid #f7f7f7;
+    overflow: hidden;
+}
+
+.bankCard6 i {
+    width: 41px;
+    height: 41px;
+    display: inline-block;
+    margin-right: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    float: left;
+}
+
+.icoXiugai {
+    background-image: url("../images/ico-xiugai.png");
+}
+
+
+/************************银行卡管理********************/
+.bankCard_manage{
+    /*background-color: #cbcbcd;*/
+}
+.bankCard_manage_con{
+    padding: 0 20px;
+}
+.tit_img_card{
+    margin: 290px 0 40px;
+    width: 100%;
+    height: 179px;
+    background: url("../images/pic_graybank@2x.png") no-repeat center;
+    background-size: 237px 179px;
+}
+.info_card{
+    line-height: 35px;
+    font-size: 28px;
+    color: rgba(72, 72, 76, 0.7);
+    text-align: center;
+}
+.bankCard_manage_con a{
+    display: inline-block;
+    margin-top: 60px;
+    width: 100%;
+    height: 88px;
+    line-height: 88px;
+    font-size: 32px;
+    color: rgba(72, 72, 76, 0.7);
+    text-align: center;
+    border-radius: 12px;
+    border: dashed 2px #cbcbcd;
+}
+
+
+/************************首页********************/
+
+.swiper {
+    position: relative;
+    margin: 20px 0 53px;
+}
+
+.swiper-container {
+    width: 750px;
+    height: 320px;
+    overflow: hidden;
+}
+
+.swiper-container .swiper-wrapper .swiper-slide {
+    width: 620px;
+    border-radius: 20px;
+}
+
+.swiper-container .swiper-wrapper .swiper-slide img {
+    width: 100%;
+    height: 320px;
+    border-radius: 20px;
+}
+
+.swiper-container .swiper-wrapper .swiper-slide-prev {
+    margin-top: 18px;
+    height: 284px!important;
+}
+
+.swiper-container .swiper-wrapper .swiper-slide-prev img {
+    height: 284px!important;
+}
+
+.swiper-container .swiper-wrapper .swiper-slide-next {
+    margin-top: 18px;
+    height: 284px!important;
+}
+
+.swiper-container .swiper-wrapper .swiper-slide-next img {
+    height: 284px!important;
+}
+
+.swiper-container .swiper-wrapper .swiper-slide-active {
+    width: 620px;
+    mix-blend-mode: hard-light;
+    webkit-box-shadow: 0 15px 20px -10px rgba(0, 0, 0, 0.5), 3px 1px 4px rgba(0, 0, 0, 0.3), 10px 0 60px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 15px 20px -10px rgba(0, 0, 0, 0.5), 3px 1px 4px rgba(0, 0, 0, 0.3), 10px 0 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 20px -10px rgba(0, 0, 0, 0.5), 3px 1px 4px rgba(0, 0, 0, 0.3), 10px 0 40px rgba(0, 0, 0, 0.1);
+}
+
+.swiper-pagination {
+    bottom: -40px!important;
+    left: 0;
+    width: 100%;
+}
+
+.swiper-pagination .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background: #ff1e1e;
+}
+
+.swiper-pagination .swiper-pagination-bullet-active {
+    width: 21px;
+    height: 12px;
+    background: #e75230;
+    border-radius: 6px;
+}
+
+.swiper-pagination-bullets .swiper-pagination-bullet {
+    margin: 0 5px;
+}
+
+.indexWarp {
+    padding-bottom: 98px;
+    height: 100%;
+    overflow: auto;
+    background-color: #f9f9f9;
+}
+
+.horn {
+    margin-left: 35px;
+    padding-left: 70px;
+    height: 57px;
+    line-height: 57px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.statistics {
+    width: 710px;
+    margin: 0px 20px 20px 20px;
+    height: 158px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    border: solid 2px #efefef;
+}
+
+.statistics ul {
+    display: inline-block;
+    width: 485px;
+    margin-left: 20px;
+}
+
+.statistics ul li {
+    line-height: 78px;
+    font-size: 28px;
+    color: #333;
+}
+
+.statistics ul li:nth-of-type(1) {
+    border-bottom: 1px solid #eee;
+}
+
+.statistics ul li span {
+    color: #bbb;
+}
+
+.statistics ul li i {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 15px;
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.statistics ul li i.totalmoney {
+    background-image: url("../images/home_money_icon@2x.png");
+}
+
+.statistics ul li i.person {
+    background-image: url("../images/home_register_icon@2x.png");
+}
+
+.percent {
+    float: right;
+    width: 175px;
+    margin-right: 20px;
+}
+
+.percent .per_number {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+.percent span.per_info {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+.per_number {
+    font-size: 35px;
+    font-family: SimHei;
+    color: #b1b1b1;
+    /*background-image: linear-gradient(330deg, #d6596c, #f77f79 77%), linear-gradient(#eb301b, #eb301b);*/
+    /*-webkit-background-clip: text;*/
+    /*background-clip: text;*/
+    /*-webkit-text-fill-color: transparent;*/
+}
+
+.per_number em {
+    font-size: 94px;
+}
+
+.per_info {
+    font-size: 24px;
+    color: #b1b1b1;
+}
+
+.index_lottery ul li {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 14px;
+    width: 350px;
+    height: 198px;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.index_lottery ul li:nth-child(odd){
+    margin-left: 18px;
+}
+.index_lottery ul li a.explain {
+    display: inline-block;
+    padding: 0px 20px;
+    height: 33px;
+    border-radius: 16.5px;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.index_lottery ul li a.explain {
+    position: absolute;
+    left: 31px;
+    bottom: 50px;
+    font-size: 24px;
+    text-align: center;
+    color: #f0f0f0;
+}
+
+.index_lottery ul li img {
+    border-radius: 15px;
+}
+
+li.xy28_s img {
+    width: 350px;
+    height: 198px;
+}
+
+li.jnd28_s img {
+    width: 350px;
+    height: 198px;
+}
+
+li.xyft_s img {
+    width: 350px;
+    height: 198px;
+}
+
+li.bj幸运飞艇_s img {
+    width: 350px;
+    height: 198px;
+}
+
+li.cqssc_s img {
+    width: 350px;
+    height: 198px;
+}
+
+li.brnn_s img {
+    width: 350px;
+    height: 198px;
+}
+
+li.lhc_hongkong_s img {
+    width: 350px;
+    height: 198px;
+}
+
+li.lhc_express_s img {
+    width: 350px;
+    height: 198px;
+}
+
+li.xy28,
+li.jnd28,
+li.xyft,
+li.bj幸运飞艇,
+li.cqssc,
+li.brnn,
+li.lhc_hongkong,
+li.lhc_express {
+    margin-left: 18px;
+    width: 708px!important;
+    height: 198px;
+}
+
+li.xy28 img,
+li.jnd28 img,
+li.xyft img,
+li.bj幸运飞艇 img,
+li.cqssc img,
+li.brnn img,
+li.lhc_hongkong img,
+li.lhc_express img {
+    width: 708px;
+    height: 198px;
+}
+
+.index_lottery ul li a.explain_l {
+    left: 77px;
+}
+
+.indexContent {
+    margin-top: 15px;
+    padding-top: 24px;
+}
+
+.indexTab {
+    padding: 0 38px;
+    overflow: hidden;
+}
+
+.indexTab ul {
+    width: 100%;
+    display: flex;
+    text-align: center;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.indexTab li {
+    float: left;
+    width: 24%;
+    height: 73px;
+    line-height: 73px;
+    text-align: center;
+    font-size: 28px;
+    color: #fff;
+    border-radius: 10px 10px 0 0;
+}
+
+.indexTab li:last-child {
+    margin-right: 0;
+}
+
+.indexTab li.active {
+    color: #222;
+}
+
+.tabContent {
+    padding: 0 20px;
+    height: 696px;
+}
+
+.tabC {
+    background: #eff0eb;
+    padding: 17px 0 0 17px;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.tabC li {
+    float: left;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 17px;
+    height: 294px;
+    width: 50%;
+    padding-right: 17px;
+}
+
+.tabC li img {
+    width: 100%;
+    height: 100%
+}
+
+.tabC li p {
+    position: absolute;
+    height: 60px;
+    line-height: 60px;
+    z-index: 3;
+    bottom: 0;
+    left: 0;
+    font-size: 28px;
+    color: #fff;
+    background: url("../images/ico-user1.png") no-repeat 25px center rgba(0, 0, 0, 0.3);
+    padding-left: 60px;
+    right: 17px;
+}
+
+.banner,
+.flicker-example {
+    height: 371px;
+    overflow: hidden;
+    position: relative;
+}
+
+.banner ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.banner li {
+    float: left;
+}
+
+.banner .arrow {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+}
+
+.banner .arrow em {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #ccc;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.banner .arrow em.active {
+    background: #5e97fe;
+}
+
+
+.focus span {
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background: #666;
+    font-size: 0;
+}
+
+.focus span.current {
+    background: #fff;
+}
+
+.xinxi {
+    height: 155px;
+    background: #f0f0f0;
+    overflow: hidden;
+}
+
+.xinxi dd {
+    float: left;
+    padding: 30px;
+}
+
+.xinxi dd p {
+    font-size: 24px;
+    color: #929292;
+    line-height: 48px;
+    padding-left: 50px;
+    background-position: left center;
+    background-repeat: no-repeat;
+}
+
+.xinxi dd p label {
+    font-size: 34px;
+    color: #ffc100;
+    padding-right: 55px;
+    background: url("../images/ico-acer.png") no-repeat right center;
+}
+
+.xinxi dd p span {
+    font-size: 34px;
+    color: #48b63a;
+}
+
+.icoUsername {
+    background-image: url("../images/ico-username.png");
+}
+
+.icoUsername1 {
+    background-image: url("../images/ico-username1.png");
+}
+
+.xinxi dt {
+    float: right;
+    padding: 0 75px;
+}
+
+.xinxi dt p {
+    font-size: 36px;
+    color: #666666;
+}
+
+.xinxi dt p b {
+    color: #ff827d;
+    font-size: 70px;
+    font-weight: normal;
+}
+
+.xinxi dt p em {
+    font-size: 34px;
+}
+
+.fj {
+    padding: 25px 30px 0;
+    overflow: hidden;
+}
+
+.fj h2 {
+    font-size: 34px;
+    color: #444546;
+    background-position: left center;
+    background-repeat: no-repeat;
+    padding-left: 50px;
+    margin-bottom: 20px;
+}
+
+.icowfjs1 {
+    background-image: url("../images/ico-wjx.png");
+}
+
+.icowfjs3 {
+    background-image: url("../images/ico-fy.png");
+}
+
+.icowfjs2 {
+    background-image: url("../images/ico-bj幸运飞艇.png");
+}
+
+.icowfjs4 {
+    background-image: url("../images/ico-xyft.png");
+}
+
+.fj li {
+    padding-top: 120px;
+    float: left;
+    width: 25%;
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+
+.fj li p {
+    height: 34px;
+    margin: 10px;
+    font-size: 18px;
+    line-height: 24px;
+    padding: 5px 10px;
+}
+
+.fj li p:nth-child(2) {
+    background-color: #e5e5e5;
+    border-radius: 4px;
+}
+
+.fj li p i {
+    height: 24px;
+    width: 30px;
+    display: block;
+    float: left;
+    margin-right: 10px;
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    padding-left: 0;
+}
+
+.fj li p:nth-child(1) {
+    padding: 5px 7px;
+}
+
+.xinyu28 li:nth-child(1) {
+    background-image: url("../images/fj1.png")
+}
+
+.xinyu28 li:nth-child(2) {
+    background-image: url("../images/fj2.png")
+}
+
+.xinyu28 li:nth-child(3) {
+    background-image: url("../images/fj3.png")
+}
+
+.xinyu28 li:nth-child(4) {
+    background-image: url("../images/fj4.png")
+}
+
+.jianada28 li:nth-child(1) {
+    background-image: url("../images/fj5.png")
+}
+
+.jianada28 li:nth-child(2) {
+    background-image: url("../images/fj6.png")
+}
+
+.jianada28 li:nth-child(3) {
+    background-image: url("../images/fj7.png")
+}
+
+.jianada28 li:nth-child(4) {
+    background-image: url("../images/fj8.png")
+}
+
+
+.kjzs {
+    background: #fff;
+    width: 100%;
+    border: 0;
+    margin: 0;
+}
+
+.kjzs tr {
+    text-align: center;
+}
+
+.kjzs th {
+    height: 95px;
+    border: 1px solid #fafafa;
+    background: #fafafa;
+}
+
+.kjzs td {
+    height: 90px;
+    vertical-align: middle;
+}
+
+.kjzs td label {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #ffd410;
+    color: #242424;
+    display: inline-block;
+    line-height: 50px;
+    border-radius: 50%;
+    background-color: #ffba00;
+}
+
+.kjzs td em {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    line-height: 50px;
+    border-radius: 50%;
+    color: #fff;
+}
+
+.bgLan {
+    background: #175aae;
+}
+
+
+/****************************彩种二级页面**********************************/
+
+.subWarp {
+    height: 100%;
+    overflow: auto;
+    background-color: #f9f9f9;
+}
+
+.sub_lottery {
+    margin-top: 17px;
+}
+
+.sub_lottery ul li {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 16px;
+    width: 711px;
+    height: 281px;
+    border-radius: 8px;
+    box-shadow: -1.3px 1.5px 8px 0 rgba(0, 0, 0, 0.21);
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.sub_lottery ul li img {
+    border-radius: 8px;
+    display: inline-block;
+    width: 711px;
+    height: 281px;
+}
+
+.sub_lottery ul li.primary {
+    margin-left: 18px;
+    /*background-image: url(../images/roomBg/lucky28_room1_pic@2x.png);*/
+}
+
+.sub_lottery ul li.Intermediate {
+    margin-left: 18px;
+    /*background-image: url(../images/roomBg/lucky28_room2_pic@2x.png);*/
+}
+
+.sub_lottery ul li.advanced {
+    margin-left: 18px;
+    /*background-image: url(../images/roomBg/lucky28_room3_pic@2x.png);*/
+}
+
+.sub_lottery ul li.privacy {
+    margin-left: 18px;
+    /*background-image: url(../images/roomBg/lucky28_room4_pic@2x.png);*/
+}
+
+.sub_lottery ul li.primary_bj幸运飞艇 {
+    margin-left: 18px;
+    /*background-image: url(../images/roomBg/幸运飞艇_room1_pic@2x.png);*/
+}
+
+.sub_lottery ul li.Intermediate_bj幸运飞艇 {
+    margin-left: 18px;
+    /*background-image: url(../images/roomBg/幸运飞艇_room2_pic@2x.png);*/
+}
+
+.sub_lottery ul li.advanced_bj幸运飞艇 {
+    margin-left: 18px;
+    /*background-image: url(../images/roomBg/幸运飞艇_room3_pic@2x.png);*/
+}
+
+.sub_lottery ul li.privacy_bj幸运飞艇 {
+    margin-left: 18px;
+    /*background-image: url(../images/roomBg/幸运飞艇_room4_pic@2x.png);*/
+}
+
+.sub_lottery ul li.primary_xyft {
+    margin-left: 18px;
+    /*background-image: url(../images/roomBg/luckyship_room1_pic@2x.png);*/
+}
+
+.sub_lottery ul li.Intermediate_xyft {
+    margin-left: 18px;
+    /*background-image: url(../images/roomBg/luckyship_room2_pic@2x.png);*/
+}
+
+.sub_lottery ul li.advanced_xyft {
+    margin-left: 18px;
+    /*background-image: url(../images/roomBg/luckyship_room3_pic@2x.png);*/
+}
+
+.sub_lottery ul li.privacy_xyft {
+    margin-left: 18px;
+    /*background-image: url(../images/roomBg/luckyship_room4_pic@2x.png);*/
+}
+
+.sub_lottery ul li span.explain_odds {
+    position: absolute;
+    left: 24px;
+    top: 16px;
+    font-size: 24px;
+    text-align: center;
+    color: #f0f0f0;
+}
+
+.sub_lottery ul li span.explain_odds {
+    display: inline-block;
+    width: 122px;
+    height: 33px;
+    border-radius: 16.5px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.sub_lottery ul li span.bj幸运飞艇_odds {
+    position: absolute;
+    right: 40px;
+    top: 20px;
+    display: inline-block;
+    width: 122px;
+    height: 33px;
+    border-radius: 16.5px;
+    background-color: #242424;
+    font-size: 24px;
+    text-align: center;
+    color: #f0f0f0;
+}
+
+.sub_lottery ul li span.population {
+    position: absolute;
+    right: 23px;
+    bottom: 23px;
+    display: inline-block;
+    /*width: 122px;*/
+    line-height: 36px;
+    font-size: 28px;
+    text-align: center;
+    color: #f0f0f0;
+    ;
+}
+
+.sub_lottery ul li .population i,
+.sub_lottery ul li .population em {
+    vertical-align: middle;
+}
+
+.sub_lottery ul li .population i {
+    display: inline-block;
+    margin-right: 14px;
+    width: 32px;
+    height: 30px;
+    background: url(../images/common_onlinenum_icon@2x.png) no-repeat center center;
+    background-size: 32px auto;
+}
+
+
+/****************************房间**********************************/
+
+.roomHead {
+    background: #f0f0f0;
+    height: 230px;
+    position: fixed;
+    top: 86px;
+    left: 0;
+    z-index: 3;
+    width: 100%;
+}
+
+.roomHead1 {
+    overflow: hidden;
+    border-bottom: 1px solid #cfcfcf;
+}
+
+.roomHead1 li {
+    width: 50%;
+    text-align: center;
+    float: left;
+    height: 135px;
+    padding: 20px;
+}
+
+.roomHead1 li:first-child {
+    border-right: 1px solid #cfcfcf;
+}
+
+.roomHead1 li p:nth-child(1) {
+    font-size: 30px;
+    color: #242424;
+    line-height: 45px;
+}
+
+.roomHead1 li p:nth-child(2) {
+    font-size: 36px;
+    color: #ff4f4f;
+}
+
+.roomHead1 li p span {
+    padding-left: 40px;
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+}
+
+.roomHead2 {
+    height: 95px;
+    font-size: 28px;
+    color: #242424;
+    padding: 30px;
+    text-align: center;
+    position: relative;
+}
+
+.roomHead2 em {
+    width: 40px;
+    height: 20px;
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    margin-top: -10px;
+}
+
+.roomHead2 em:after,
+.betTixing:after {
+    border: 20px solid transparent;
+    border-top: 20px solid #bfbfbf;
+    width: 0;
+    height: 0;
+    content: "";
+    position: absolute;
+    left: 0;
+}
+
+.betTixing:after {
+    border-top: 20px solid #fff;
+    right: 50px;
+    left: auto;
+    top: 50%;
+    margin-top: -10px;
+}
+
+.topAes:after {
+    transform: rotate(180deg);
+    margin-top: -30px;
+}
+
+.roomHead1 .icoAcer {
+    font-size: 36px;
+    color: #ff4f4f;
+    padding-right: 0px;
+}
+
+.roomNews {
+    bottom: 0;
+}
+
+.roomNews em {
+    width: 131px;
+    height: 72px;
+    border-radius: 4px;
+    float: left;
+    text-align: center;
+    line-height: 72px;
+    display: block;
+    font-size: 30px;
+    color: #fff;
+    margin-right: 19px;
+}
+
+.customNews.roomNews .textArea {
+    width: calc(100% - 300px)
+}
+
+
+.room {
+    overflow: auto;
+    position: fixed;
+    top: 316px;
+    bottom: 100px;
+    left: 0;
+    right: 0;
+    padding: 30px;
+    z-index: 1;
+}
+
+.roomGroup {
+    line-height: 44px;
+    background: #f9f9f9;
+    font-size: 24px;
+    color: #242424;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.userBetting {
+    margin-bottom: 90px;
+    overflow: hidden;
+}
+
+.userBetting dt,
+.userBetting li:first-child {
+    width: 134px;
+    float: left;
+    overflow: hidden;
+}
+
+.userBetting dt img,
+.userBetting li:first-child img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.userBetting dd {
+    width: 480px;
+    min-height: 100px;
+    padding-bottom: 45px;
+    background: #dedede;
+    float: left;
+    margin-left: 30px;
+    border-radius: 15px;
+    overflow: hidden;
+    text-align: center;
+    padding-top: 15px;
+    line-height: 45px;
+    position: relative;
+}
+
+.userBetting dd p {
+    font-size: 28px;
+    color: #242424;
+    border-top: 1px solid #afafaf;
+}
+
+
+
+
+
+/**/
+
+.userBetting dd p:first-child {
+    border-top: 0;
+}
+
+.userBetting dd label {
+    padding-left: 30px;
+}
+
+.userBetting dd p em {
+    color: #ff4f4f;
+}
+
+.userBetting dd p u {
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+    padding-right: 0px;
+    font-size: 28px;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+}
+
+
+
+
+
+/*.userBetting dd p:nth-child(2){ font-size: 24px; color: #ff4f4f;}*/
+
+.userBetting dd div {
+    background: #afafaf;
+    color: #fff;
+    line-height: 40px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.userBetting dl.right dt {
+    float: right;
+}
+
+.userBetting dl.right dd {
+    margin-left: 0;
+    margin-right: 30px;
+}
+
+.userBetting i {
+    width: 100%;
+    height: 100%;
+    display: none;
+    background: url("../images/close.png") no-repeat center rgba(0, 0, 0, 0.7);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.userBetting h3 {
+    text-align: center;
+    line-height: 50px;
+    font-size: 30px;
+    font-weight: normal;
+}
+
+.userBetting ul {}
+
+.userBetting ul.left li:first-child {
+    float: left;
+}
+
+.userBetting ul.left li:last-child {
+    margin-left: 30px;
+    text-align: left;
+}
+
+.userBetting ul.right li:first-child {
+    float: right;
+}
+
+.userBetting ul.right li:last-child {
+    margin-right: 30px;
+    text-align: right;
+}
+
+.userBetting li:last-child {
+    float: left;
+    min-width: 100px;
+    min-height: 70px;
+    padding: 15px;
+    line-height: 50px;
+    font-size: 30px;
+    color: #707070;
+    border-radius: 8px;
+    background: #f9f9f9;
+    margin-top: 30px;
+    border: 1px solid #ebebeb;
+    position: relative;
+    max-width: 500px;
+}
+
+.userBetting li:last-child:after {
+    position: absolute;
+    width: 0;
+    height: 0;
+    content: "";
+    border: 10px solid transparent;
+    top: 50%;
+    margin-top: -10px;
+}
+
+.userBetting li:last-child:before {
+    position: absolute;
+    width: 0;
+    height: 0;
+    content: "";
+    border: 10px solid transparent;
+    top: 50%;
+    margin-top: -10px;
+}
+
+.userBetting ul.right li:last-child:after {
+    right: -20px;
+    border-left: 10px solid #f9f9f9;
+}
+
+.userBetting ul.right li:last-child:before {
+    right: -21px;
+    border-left: 10px solid #ebebeb;
+}
+
+.userBetting ul.left li:last-child:after {
+    left: -20px;
+    border-right: 10px solid #f9f9f9;
+}
+
+.userBetting ul.left li:last-child:before {
+    left: -21px;
+    border-right: 10px solid #ebebeb;
+}
+
+.customer {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    border: 2px solid #4a8afe;
+    position: absolute;
+    top: 400px;
+    left: 30px;
+    z-index: 999;
+}
+
+
+
+/*开奖结果*/
+
+.lottery {
+    background: #fff;
+    position: absolute;
+    left: 0;
+    top: 313px;
+    right: 0;
+    z-index: 3;
+}
+
+.lottery dl {
+    overflow: hidden;
+}
+
+.lottery dt {
+    font-size: 30px;
+    color: #242424;
+    line-height: 76px;
+}
+
+.lottery li {
+    width: 35%;
+    float: left;
+    text-align: center;
+}
+
+.lottery li:first-child {
+    width: 20%;
+}
+
+.lottery li:last-child {
+    width: 45%;
+}
+
+.lottery dd {
+    color: #b3b2b2;
+    font-size: 26px;
+    line-height: 52px;
+}
+
+.lotteryBut {
+    width: 386px;
+    margin: 20px auto;
+}
+
+.lotteryBut button {
+    height: 65px;
+}
+
+
+
+/*投注键盘*/
+
+.bettingKey {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 4;
+    background: #fff;
+    padding-top: 30px;
+    overflow: hidden;
+    display: none
+}
+
+.bettingKey>ul {
+    width: 1000%;
+    position: relative;
+}
+
+.bettingKey ul li {
+    padding: 0 20px;
+    position: relative;
+    float: left;
+}
+
+.play1 {
+    overflow: hidden;
+    margin-bottom: 0 !important;
+}
+
+.play1 li {
+    margin: 0 15px 37px 0;
+    color: #242424;
+    background: #f7f6f8;
+    float: left;
+    width: 121px;
+    height: 140px;
+    font-size: 40px;
+    line-height: 82px;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+}
+
+.play1 li p {
+    height: 48px;
+    background: #9ec1ff;
+    font-size: 32px;
+    line-height: 48px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+}
+
+.bettingKey div {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.bettingKey div em {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: inline-block;
+    background: #f7f6f8;
+    margin-right: 10px;
+}
+
+.bettingKey div em:last-child {
+    margin-right: 0;
+}
+
+.bettingKey div em.active {
+    background: #5e97fe;
+}
+
+.play2 {
+    overflow: hidden;
+    margin-bottom: 10px!important;
+    padding-left: 20px;
+}
+
+.play2 li {
+    width: 85px;
+    height: 81px;
+    color: #242424;
+    font-size: 30px;
+    border-radius: 8px;
+    background: #f7f6f8;
+    float: left;
+    padding: 0;
+    text-align: center;
+    margin: 0 0 10px 10px;
+    line-height: 48px;
+}
+
+.play2 li p {
+    line-height: 24px;
+    font-size: 24px;
+    color: #666;
+}
+
+.leftArrow {
+    width: 17px;
+    height: 31px;
+    background: url("../images/return1.png") no-repeat center;
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    margin-top: -15px;
+    background-size: 100%;
+}
+
+.rightArrow {
+    width: 17px;
+    height: 31px;
+    background: url("../images/return1.png") no-repeat center;
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    margin-top: -15px;
+    background-size: 100%;
+    transform: rotate(180deg);
+}
+
+.bettingKey div.flickerplate .dot-navigation {
+    bottom: -20px;
+}
+
+.bettingKey div.flickerplate .dot-navigation li {
+    padding: 0;
+}
+
+.bettingKey div.flickerplate .dot-navigation .dot {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: inline-block;
+    background: #f7f6f8;
+    margin-right: 10px;
+}
+
+.bettingKey div.flickerplate .dot-navigation .dot.active {
+    background: #5e97fe;
+}
+
+.bettingKey div.flickerplate .arrow-navigation {
+    width: 50px;
+}
+
+.bettingKey div.flickerplate .arrow-navigation.left .arrow {
+    width: 17px;
+    height: 31px;
+    background: url("../images/return1.png") no-repeat center;
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    margin-top: -15px;
+    background-size: 100%;
+}
+
+.bettingKey div.flickerplate .arrow-navigation.right .arrow {
+    width: 17px;
+    height: 31px;
+    background: url("../images/return1.png") no-repeat center;
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    margin-top: -15px;
+    background-size: 100%;
+    transform: rotate(180deg);
+}
+
+
+
+/*投注金额*/
+
+.betMoney {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 4;
+    background: #fff;
+    padding: 30px 60px 0;
+}
+
+.betMoney ul {
+    clear: both;
+    position: relative;
+}
+
+.betMoney li {
+    float: left;
+    font-size: 42px;
+    width: 120px;
+    height: 90px;
+    line-height: 90px;
+    text-align: center;
+    background-color: #f7f6f8;
+    border-radius: 12px;
+    margin-right: 50px;
+    margin-bottom: 20px;
+}
+
+.betMoney li.return2 {
+    background: url("../images/return2.png") no-repeat center #626262;
+}
+
+.betMoney ul li:last-child {
+    margin-right: 0;
+}
+
+.betMoney li.betting {
+    height: 201px;
+    position: absolute;
+    right: 0;
+    padding: 30px;
+    background-color: #626262;
+    color: #fff;
+    line-height: 70px;
+}
+
+.betMoney li.delete {
+    background-color: #626262;
+    color: #fff;
+}
+
+.betTixing {
+    background: #afafaf;
+    height: 80px;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 316px;
+    color: #fff;
+    font-size: 30px;
+    z-index: 3;
+}
+
+.betTixing span {
+    display: block;
+    text-align: center;
+    width: 50%;
+    float: left;
+    border-right: 1px solid #cdcdcd;
+    box-sizing: border-box;
+    margin: 10px 0;
+    line-height: 60px;
+}
+
+
+/**************分享 share.html************/
+
+.shareWarp {
+    height: 100%;
+    background: url("../images/fenxiangBG.png") center top no-repeat;
+    text-align: center;
+}
+
+.shareWarp h3 {
+    color: #3b74d9;
+    text-align: center;
+    padding-top: 20px;
+    font-size: 40px;
+}
+
+.share {
+    background: url("../images/fengxBG.png") center bottom no-repeat;
+    height: 950px;
+    position: relative;
+    margin-top: 50px;
+}
+
+.shareErweima {
+    width: 258px;
+    height: 258px;
+    padding: 9px;
+    background: #caefff;
+    left: 0;
+    right: 0;
+    top: 200px;
+    margin: 0 auto;
+}
+
+.shareErweima img {
+    width: 240px;
+    height: 240px;
+}
+
+.share p {
+    position: absolute;
+    bottom: 0;
+    width: 80%;
+    line-height: 40px;
+    word-break: break-all;
+    height: 80px;
+    left: 50%;
+    margin-left: -280px;
+    text-decoration: underline;
+}
+
+.dl-share p {
+    margin: 25px 50px;
+    font-size: 30px;
+}
+
+.imgFile {
+    position: fixed;
+    top: 86px;
+    background: rgba(0, 0, 0, 1);
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#clipArea {
+    width: 100%;
+    height: 100%;
+    z-index: 88;
+}
+
+.imgBut {
+    position: absolute;
+    top: 50px;
+    width: 80%;
+    left: 10%;
+    z-index: 99;
+}
+
+.cenMoneyWarp {
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: fixed;
+    background: rgba(0, 0, 0, .3);
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    box-sizing: border-box;
+    padding: 20px 20px 40px;
+}
+
+.cenMoney {
+    min-height: 550px;
+    width: calc(100% - 80px);
+    background: #fff;
+    border-radius: 8px;
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    margin-top: -225px;
+    z-index: 100;
+    padding: 10px;
+    left: 40px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 3px #ccc;
+}
+
+.cenMoney h1 {
+    padding: 0 20px;
+    color: #fb4300;
+    border-bottom: 1px solid #ccc;
+    font-size: 34px;
+    line-height: 76px;
+    margin: 0 0 30px;
+}
+
+.moneyInput {
+    font-size: 30px;
+}
+
+.moneyInput input {
+    width: calc( 100% - 250px);
+    height: 70px;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+.text-ul {
+    padding: 0 20px;
+}
+
+.text-ul li {
+    display: inline-block;
+    font-size: 30px;
+    background: #e55600;
+    padding: 20px;
+    border-radius: 12px;
+    color: #fff;
+    margin: 0 10px 30px;
+}
+
+.keyboard {
+    width: 131px;
+    height: 72px;
+    border-radius: 4px;
+    float: right;
+}
+
+.keyboard path {}
+
+.configContent {
+    max-height: 310px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.config1 {
+    width: 557px;
+    padding: 30px;
+    position: absolute;
+    left: 50%;
+    margin-left: -278px;
+    top: 50%;
+    margin-top: -50%;
+    background: url("../images/popup-bg.png") no-repeat bottom left #fff;
+    border-radius: 20px;
+}
+
+.config1 p {
+    font-size: 38px;
+    line-height: 62px;
+    text-align: center;
+    word-break: break-all;
+    /*支持IE，chrome，FF不支持*/
+    word-wrap: break-word;
+    /*支持IE，chrome，FF*/
+}
+
+
+
+/*资金密码修改***by-chenerlin***/
+
+.icoModifyPas input {
+    margin-left: 40px;
+}
+
+.iocKf {
+    display: inline-block;
+    height: 51px;
+    padding-left: 60px;
+    line-height: 51px;
+    font-size: 28px;
+    text-decoration: underline;
+}
+
+.kf {
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 1.31;
+    text-align: justify;
+    color: rgba(210, 39, 39, 0.7);
+    text-decoration: underline;
+}
+
+.bettingKey>ul {
+    width: 1000%;
+    position: relative;
+    clear: both;
+    overflow: hidden;
+}
+
+.peilvshuom {
+    padding-right: 20px;
+}
+
+.peilvshuom button {
+    height: 80px;
+    border: 3px solid #538dff;
+    border-radius: 4px;
+    background: transparent;
+    color: #242424;
+}
+
+.bettingKey ul li {
+    padding: 0 20px 0 40px;
+    position: relative;
+    float: left;
+}
+
+play1 li {
+    margin: 0 17px 37px 0;
+}
+
+.bettingKey ul li .play2 li {
+    padding: 0;
+    font-weight: bold;
+}
+
+.bettingKey ul li .play1 li {
+    padding: 0;
+    height: 120px;
+    margin-bottom: 25px;
+}
+
+.play2 li p {
+    font-weight: normal;
+}
+
+.play2 {
+    overflow: hidden;
+    margin-bottom: 10px!important;
+    padding-left: 0;
+}
+
+.jianpanTitle {
+    height: 68px;
+    line-height: 68px;
+    color: #fff;
+    background: #545454;
+    font-size: 30px;
+    position: relative;
+}
+
+.jianpanTitle .rightAr {
+    width: 68px;
+    height: 68px;
+    position: absolute;
+    right: 30px;
+    top: 0;
+}
+
+.jianpanTitle .rightAr:after {
+    width: 0;
+    height: 0;
+    content: "";
+    border: 20px solid transparent;
+    border-left: 20px solid #fff;
+    position: absolute;
+    top: 50%;
+    margin-top: -20px;
+}
+
+.jianpanTitle .leftAr {
+    width: 68px;
+    height: 68px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.jianpanTitle .leftAr:after {
+    width: 0;
+    height: 0;
+    content: "";
+    border: 20px solid transparent;
+    border-right: 20px solid #fff;
+    position: absolute;
+    top: 50%;
+    margin-top: -20px;
+}
+
+.jianpanInfo {
+    height: 20px;
+    line-height: 20px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.gou2x {
+    width: 32px;
+    height: 26px;
+    background: url("../images/gou2x.png") no-repeat center;
+    display: inline-block;
+    position: absolute;
+    right: -40px;
+    top: 30px;
+}
+
+.cuowu3x {
+    width: 32px;
+    height: 26px;
+    background: url("../images/cuowu3x.png") no-repeat center;
+    display: inline-block;
+    position: absolute;
+    right: -40px;
+    top: 30px;
+}
+
+.loginWarp li.butC {}
+
+.loginWarp li.butC button {
+    width: 45%;
+    float: left;
+    color: #e83828;
+    background: none;
+    border: 1px solid #e83828;
+}
+
+.loginWarp li.butC button:active {
+    background: #e83828;
+    color: #fff;
+}
+
+.loginWarp li.butC button:active i.tour {
+    background: url("../images/visitorplay_icon_pressed@2x.png") no-repeat center;
+}
+
+.loginWarp li.butC button:active i.reg {
+    background: url("../images/registergo_icon_pressed@2x.png") no-repeat center;
+}
+
+.loginWarp li.butC button.goReg {
+    float: right;
+}
+
+.butC i.tour {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background: url("../images/visitorplay_icon@2x.png") no-repeat center;
+    vertical-align: top;
+    margin-right: 10px;
+}
+
+.butC i.reg {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background: url("../images/registergo_icon@2x.png") no-repeat center;
+    vertical-align: top;
+    margin-right: 10px;
+}
+
+.regWarp label {
+    margin-left: 60px;
+}
+
+.regWarp label input[type=checkbox]+.gou3x:after {
+    width: 28px;
+    height: 28px;
+    border: 1px solid #cbcbcb;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 3px;
+    background: url("../images/checked_no@2x.png") no-repeat;
+}
+
+.regWarp label input[type=checkbox]:checked+.gou3x:after {
+    width: 28px;
+    height: 28px;
+    border: 1px solid #cbcbcb;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 3px;
+    background: url("../images/checked@2x.png") no-repeat;
+}
+
+.gou3x {
+    position: relative;
+    padding-left: 36px;
+}
+
+.quxiao {
+    position: absolute;
+    background: #fff;
+    left: 0;
+    top: 80px;
+    width: 100%;
+    color: #242424;
+    padding: 30px;
+    z-index: 99;
+}
+
+.quxiao li {
+    line-height: 80px;
+}
+
+.quxiao li label {
+    margin-right: 20px;
+}
+
+.quxiao li label:nth-child(2) {
+    color: #ff4f4f;
+}
+
+.quxiao li label i.icoAcer {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    padding-right: 0;
+    background: url("../images/ico-acer.png") no-repeat 0 0;
+    background-size: 100%;
+    margin: 0 20px;
+}
+
+.quxiao li em.close {
+    width: 40px;
+    height: 40px;
+    float: right;
+    margin-top: 20px;
+    background: url("../images/close1.png") no-repeat
+}
+
+.chongzhi.bankCard2 ul li label {
+    padding-left: 80px;
+}
+
+.bankCard2 .tab-item {
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+
+.bankCard2 .tab-item span {
+    position: relative;
+    display: inline-block;
+}
+
+.bankCard2 .tab-item.active span:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 2px;
+    right: 0;
+    height: 4px;
+    border-radius: 2px;
+    background-color: #d22727;
+}
+
+.icoTop {
+    background: url("../images/ico-top.png")no-repeat center
+}
+
+.active .icoTop {
+    background: url("../images/ico-top1.png")no-repeat center
+}
+
+.icoBot {
+    background: url("../images/ico-bot.png")no-repeat center
+}
+
+.active .icoBot {
+    background: url("../images/ico-bot1.png")no-repeat center
+}
+
+.icoZfb2 {
+    background: url("../images/zhifubao2.png")no-repeat
+}
+
+.icoWeix2 {
+    background: url("../images/weixin2.png")
+}
+
+.icoYinl2 {
+    background: url("../images/yinlian2.png")
+}
+
+.icoQQ {
+    background: url("../images/qqWallet2.png")
+}
+
+.icoYsf {
+    background: url("../images/yunshanfu1.png")
+}
+
+.icobl {
+    background: url("../images/banklink1.png")
+}
+
+.icojd {
+    background: url("../images/jindong1.png")
+}
+
+.radioClass {}
+
+.radioClass li label {
+    position: relative;
+}
+
+.radioClass li label:after {
+    width: 32px;
+    height: 32px;
+    border: 2px solid #ccc;
+    content: "";
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    margin-top: -16px;
+    right: 32px;
+}
+
+.radioClass li label:before {
+    width: 20px;
+    height: 20px;
+    background: #ccc;
+    content: "";
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    margin-top: -8px;
+    right: 40px;
+}
+
+.radioClass li input[type=radio]:checked+label:after {
+    border: 2px solid #ccc;
+    background: transparent;
+}
+
+.radioClass li input[type=radio]:checked+label:before {
+    background: #dc5d55;
+}
+
+.play3 {
+    padding-top: 40px;
+}
+
+.play3 ul {
+    margin-top: 30px;
+}
+
+.play3 li {
+    margin: 0 20px 37px;
+    color: #242424;
+    background: #f7f6f8;
+    float: left;
+    width: 131px;
+    height: 150px;
+    font-size: 40px;
+    line-height: 82px;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+}
+
+.bettingKey ul li .play3 li {
+    padding: 0;
+    height: 150px;
+    margin-bottom: 25px;
+}
+
+.play3 li p {
+    height: 48px;
+    font-size: 32px;
+    line-height: 48px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+}
+
+.bettingKey ul li .play3 li:nth-child(1) {
+    color: #df4d69;
+}
+
+.bettingKey ul li .play3 li:nth-child(2) {
+    color: #4dcd70;
+}
+
+.bettingKey ul li .play3 li:nth-child(3) {
+    color: #5e97fe;
+}
+
+.bettingKey ul li .play3 li:nth-child(4) {
+    color: #feb55e;
+}
+
+.red1 {
+    background: #df4d69;
+}
+
+.lv {
+    background: #4dcd70;
+}
+
+.lan {
+    background: #5e97fe;
+}
+
+.huang {
+    background: #feb55e;
+}
+
+.zhanwei {
+    width: 100%;
+    height: 100%;
+    background: url("../images/zhanwei.png") no-repeat center;
+    background-size: 35%;
+}
+
+.widthGonggao p {
+    display: inline-block;
+    padding-right: 50px;
+}
+
+.weixintishi {
+    color: #949494;
+    font-size: 28px;
+    padding: 40px;
+    line-height: 40px;
+    border: 1px solid #d7d7d7;
+    margin: 20px 10px;
+}
+
+.weixintishi h4 {
+    font-size: 30px;
+    font-weight: inherit;
+}
+
+.shaoerWeiMa {
+    text-align: center;
+    padding: 90px 30px 30px;
+    background: #fff;
+}
+
+.shaoerWeiMa p {
+    padding: 5px 0;
+}
+
+.shaoerWeiMa .button button {
+    width: 27%;
+    margin: 0 15px;
+}
+
+input[type=date],
+select {
+    opacity: 0;
+}
+
+.shareWarp .copyBtn {
+    border-radius: 16px;
+    width: 260px;
+    margin-top: 30px;
+    height: 60px;
+}
+
+.return-login {
+    width: 120px;
+    height: 60px;
+    line-height: 60px;
+    position: absolute;
+    right: 30px;
+    left: 30px;
+    top: 38px;
+    font-size: 30px;
+    color: #333;
+    text-indent: 40px;
+    background: url(../images/sign_back_icon@2x.png) no-repeat left center;
+}
+
+.guanbing {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    right: 30px;
+    left: auto;
+    top: 50px;
+}
+
+.wordText {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 80px;
+}
+
+.wordText div {
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.wordText div img {
+    display: inline-block;
+    border-radius: 14px;
+    box-shadow: 0px 5px 9px 0 rgba(0, 0, 0, 0.19), inset 0px 1px 2px 0 rgba(255, 255, 255, 0.35);
+}
+
+.w45 {
+    width: 45%;
+}
+
+
+.honor {
+    in-width: 38px;
+    background: #ffa7a7;
+    display: inline-flex;
+    text-align: center;
+    font-size: 24px;
+    border-radius: 4px;
+    padding: 10px;
+    line-height: 18px;
+    margin: 0 5px;
+    overflow: hidden;
+    color: #fff;
+}
+
+.my li i.honor_icon {
+    width: 66px;
+    height: 41px;
+    display: inline-block;
+    overflow: hidden;
+    margin-right: 5px;
+    vertical-align: middle;
+    border-radius: 0;
+    margin-top: 27px;
+}
+
+.my li span i.honor_icon img {
+    margin-top: 2px;
+    width: 100%;
+}
+
+.confirmWap {}
+
+.confirmWap .confirm {
+    width: 49%;
+}
+
+.headTop {
+    width: 100%;
+    height: 108px;
+    background-color: #5e5e5e;
+    padding: 12px 10px;
+}
+
+.headTop i.head-close {
+    width: 66px;
+    height: 66px;
+    margin-right: 10px;
+    display: block;
+    float: left;
+    background: url("../images/closed2.png") no-repeat;
+    margin-top: 7px;
+}
+
+.headCon {
+    float: left;
+    padding-top: 3px;
+}
+
+.headCon .head-logo {
+    width: 74px;
+    height: 74px;
+    float: left;
+}
+
+.headCon .head-logo img {
+    max-width: 100%;
+    height: 100%;
+}
+
+.headCon h1 {
+    font-size: 28px;
+    color: #fff;
+    font-weight: normal;
+    line-height: 1.5;
+    padding-left: 94px;
+}
+
+.headCon p {
+    font-size: 24px;
+    color: #fff;
+    line-height: 1.5;
+    padding-left: 94px;
+}
+
+.headTop button {
+    width: 190px;
+    border-radius: 8px;
+    float: right;
+    height: 60px;
+    font-size: 28px;
+    margin-top: 10px;
+}
+
+.headTop button:hover {
+    background-color: #bf423b
+}
+
+.header_wrap {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+}
+
+.layui-m-layercont {
+    font-size: 30px;
+}
+
+
+.bank-title {
+    height: 60px;
+    line-height: 60px;
+    font-size: 26px;
+    color: rgba(72, 72, 76, 0.9);
+    position: relative;
+    padding-left: 26px;
+    text-align: left;
+    background: #f5f5f5;
+}
+
+.card-box .bank-title {
+    margin-top: 35px;
+    width: 100%;
+}
+
+.card-box dt {
+    background: #fff;
+}
+
+.bank-title:after {
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 30px;
+    background: #d22727;
+    left: 0;
+    top: 15px;
+}
+
+.bank-title span {
+    color: rgba(210, 39, 39, 0.9)
+}
+
+.lineRecharge-input .name {
+    float: left;
+    /* width: 109%; */
+    display: inline-block;
+    width: 23%;
+    text-align-last: justify;
+}
+.lineRecharge-input .remarks{
+    padding-left: 204px;
+}
+.lineRecharge-input li input {
+    width: 65%;
+}
+
+.lineRecharge-input select {
+    width: 65%;
+    height: 68px;
+    position: absolute;
+    top: 27px;
+    right: 52px;
+    opacity: 1;
+    z-index: 2;
+    border: 1px solid #ccc;
+    padding: 0 20px;
+    -webkit-appearance: none;
+    border-radius: 6px;
+}
+
+.lineRecharge-input select option {
+    font-size: 50%;
+}
+
+.fkyh li {
+    height: 208px;
+}
+
+.fkyh select.short {
+    width: 100%;
+    position: static;
+    margin-right: 4%;
+}
+
+.lineRecharge-input.fkyh input {
+    top: 113px;
+}
+
+.jm-tips {
+    color: rgba(202, 202, 202, 0.9);
+    text-align: center;
+    padding: 20px;
+}
+
+.select-wrap {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    width: 34%;
+    float: left;
+    margin-left: 4.5%;
+}
+
+.lineRecharge-input .provinceCity select {
+    width: 100%;
+    top: 10px;
+    right: 0;
+}
+
+.select-wrap:after {
+    content: "";
+    position: absolute;
+    right: 20px;
+    top: 36px;
+    width: 27px;
+    height: 17px;
+    background: url(../images/cbbrecord_icon@2x.png)no-repeat;
+    z-index: 2;
+}
+
+.provinceCity {
+    min-width: auto
+}
+
+span.Validform_checktip {
+    font-size: 24px;
+    line-height: 24px;
+    height: 24px;
+}
+
+.card-box {
+    text-align: center;
+    margin-top: 28px;
+    margin-bottom: 28px;
+}
+
+.card-box img {
+    border-radius: 14px;
+    box-shadow: 0px 5px 9px 0 rgba(0, 0, 0, 0.19), inset -0.7px 0.8px 2px 0 rgba(255, 255, 255, 0.35);
+}
+
+div.dropload-up,
+div.dropload-down {
+    font-size: 24px;
+}
+
+.mask {
+    position: fixed;
+    top: 86px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, .5);
+    z-index: 10;
+}
+
+.pop-wrap {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 11;
+}
+
+.pop-select {
+    background: #fafafa;
+}
+
+.pop-select .title {
+    height: 105px;
+    width: 100%;
+    font-size: 32px;
+    line-height: 105px;
+    text-align: center;
+    color: #000;
+    border-bottom: 1px solid #dedede;
+}
+
+.content-inner {
+    padding: 29px;
+}
+
+.content-inner li {
+    width: 32%;
+    height: 106px;
+    border-radius: 4px;
+    background-color: #d22727;
+    margin-right: 1.5%;
+    margin-bottom: 1.5%;
+    float: left;
+    background: #fff;
+    color: #000;
+    font-size: 32px;
+    text-align: center;
+    line-height: 106px;
+}
+
+.content-inner li.active {
+    background: #d22727;
+    color: #fff;
+}
+
+.content-inner li:nth-child(3n) {
+    margin-right: 0%;
+}
+
+.bottom-con {
+    height: 100px;
+    background-color: #ffffff;
+    line-height: 100px;
+    margin-top: 10px;
+}
+
+.bottom-con a {
+    display: inline-block;
+    color: #000;
+    font-size: 32px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.pop-wrap {
+    transform: translateY(0%);
+    transition: transform .3s;
+    /*display: block;*/
+    opacity: 1;
+}
+
+.pop-wrap.down {
+    opacity: 0;
+    transform: translateY(100%);
+}
+
+.select-betting {
+    height: 84px;
+    background-color: #ffffff;
+    box-shadow: 0px 1px 0 0 #dedede;
+    width: 100%;
+    line-height: 84px;
+    padding-right: 30px;
+}
+
+.select-betting .select-item,
+.select-betting .time-item {
+    float: left;
+    width: 33%;
+    text-align: center;
+    color: #000;
+    font-size: 28px;
+    background: url(../images/cbbrecord_icon@2x.png)no-repeat center right;
+}
+
+.select-betting .select-item.active {
+    color: #d22727;
+    background: url(../images/record_uptri_icon@2x.png)no-repeat center right;
+}
+
+.select-betting .time-item {
+    float: right;
+    background: url(../images/agency_timeselect_icon@2x.png)no-repeat center right;
+}
+
+.time-betting {
+    height: 61px;
+    width: 100%;
+    text-align: center;
+    line-height: 61px;
+    background-color: #f8f8f8;
+    box-shadow: 0px 1px 0 0 rgba(35, 24, 21, 0.17);
+}
+
+.time-betting span {
+    padding: 0 10px;
+    color: #48484c;
+    font-size: 28px;
+    position: relative;
+}
+
+.time-betting input {
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.bettingRecordList label {
+    margin-right: 10px
+}
+
+.bettingRecordList li.fixed-li {
+    position: fixed;
+    bottom: 0;
+    left: 0px;
+    right: 0;
+    height: 98px;
+    background-color: #ffffff;
+    box-shadow: 0px -1px 0 0 rgba(35, 24, 21, 0.17);
+    line-height: 98px;
+    padding: 0 0 20px;
+    overflow-x: auto;
+}
+
+.fixed-li em {
+    padding-left: 20px;
+    display: block;
+    float: left;
+}
+
+.fixed-li span {
+    display: block;
+    float: left;
+}
+
+.dropload-down {
+    /*display: none;*/
+}
+
+.WeChat,
+.Alipay,
+.UnionPay {
+    height: 360px;
+    background: url(../images/wechatbg_pic@2x.png)no-repeat;
+    background-size: cover;
+    border-radius: 14px;
+    margin: 25px;
+    box-shadow: 0px 5px 9px 0 rgba(0, 0, 0, 0.19), inset 0px 1px 2px 0 rgba(255, 255, 255, 0.35);
+    position: relative;
+    /*width: 100%;*/
+}
+
+.Alipay {
+    background: url(../images/alipaybg_pic@2x.png)no-repeat;
+    background-size: cover;
+}
+
+.UnionPay {
+    background: url(../images/bankbg_pic@2x.png)no-repeat;
+    background-size: cover;
+}
+
+.details {
+    position: relative;
+}
+
+.details .bankCard6 {
+    padding: 0;
+    font-size: 26px;
+    overflow: hidden;
+    width: 176px;
+    height: 52px;
+    line-height: 52px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 225, .2);
+    border: solid 1px #b98aff;
+    position: absolute;
+    right: 40px;
+    top: 40px;
+    color: #fff;
+}
+
+.details p.xe {
+    font-size: 24px;
+    margin-top: 35px;
+    text-align: center;
+    font-weight: 500;
+    color: rgba(255, 242, 242, 0.9);
+}
+
+.details .space {
+    padding-left: 20px;
+}
+
+
+.warm-tips {
+    padding: 25px 40px;
+}
+
+.warm-tips p {
+    font-size: 28px;
+    color: rgba(72, 72, 76, 0.7);
+    padding-left: 10px;
+}
+
+.warm-tips p:first-child {
+    margin-bottom: 15px;
+    padding-left: 0;
+}
+
+.bottom-tips {
+    display: inline-block;
+    position: fixed;
+    bottom: 30px;
+    width: 100%;
+    font-size: 28px;
+    color: rgba(72, 72, 76, 0.7);
+    text-align: center;
+}
+
+.pop-input {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    z-index: 100
+}
+
+.close {
+    display: inline-block;
+    position: absolute;
+    margin-left: 20px;
+    width: 35px;
+    height: 35px;
+    left: 0;
+    background: url(../images/login_close_icon@2x.png)no-repeat;
+}
+
+.layui-m-layerbtn span {
+    font-size: 24px!important;
+}
+
+.record_list {
+    background: #fff;
+    padding-left: 0!important;
+}
+
+.information.bg-gray {
+    background: #f5f5f5;
+    padding: 45px 50px;
+}
+.details.details_bet p{
+    margin-top: 0px;
+    font-weight: normal;
+    color: #000;
+    font-size: 30px;
+}
+.details.jy-des p{
+    margin-top: 0px;
+    font-weight: normal;
+    color: #000;
+    font-size: 30px;
+}
+.betting-search-wrap{
+    position: fixed;
+    top: 86px;
+    right: 0;
+    left: 0;
+    z-index: 8;
+}
+
+
+
+.amount-tab { box-sizing:border-box; padding:0 10px; width:100%; height:auto; overflow:hidden; }
+.amount-tab div { float:left; padding:10px; text-align:center; width:33.33%; font-size:28px; }
+.amount-tab div span { position:relative; float:left; width:100%; height:60px; line-height:58px; background:#fff; border:1px solid #F1F1F1; border-radius:4px; overflow:hidden; }
+.amount-tab .active span { color:#D32727; background:#FFECEC; border-color:#E89693; }
+.amount-tab .active span:after { content:""; position:absolute; right:0; bottom:0; }

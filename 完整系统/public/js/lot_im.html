@@ -1,0 +1,449 @@
+<script type="text/javascript">
+	var ws, name;
+
+	// 连接服务端
+	function connect(port){
+
+		// 创建websocket
+		ws = new WebSocket("ws://" + document.domain + ":"+port);
+		//console.log(ws);
+		// 当socket连接打开时，发送登录信息
+		ws.onopen = function(){
+			var name = "{$userinfo.nickname}";
+			// 登录
+			var userid = "{$userinfo.id}";
+			var login_data = '{"type":"login","client_name":"' + name.replace(/"/g, '\\"') + '","client_id":"'+userid+'"}';
+			console.log("websocket握手成功，发送登录数据:" + login_data);
+			ws.send(login_data);
+		};
+		// 当有消息时根据消息类型显示不同信息
+		ws.onmessage = onmessage;
+		ws.onclose = function(){
+			console.log("连接关闭，定时重连");
+			location.reload();
+			connect();
+		};
+		ws.onerror = function() {
+			console.log("出现错误");
+		};
+	}
+
+	var inte = parseInt(Math.random()*12+1);
+	function onmessage(e) {
+		var rate = 0;
+		var robot_rate = {:C('robot_rate')} ? {:C('robot_rate')} : 3;
+		
+	
+		switch({:C('robot_rate')}){
+			case 5:
+				rate = 5;
+				break;
+			case 4:
+				rate = 10;
+				break;
+			case 3:
+				rate = 25;
+				break;
+			case 2:
+				rate = 35;
+				break;
+			case 1:
+				rate = 45;
+				break;
+			default:
+				rate = 25;
+				break;
+		}
+		
+		var data = eval("(" + e.data + ")");
+		//console.log(data);
+		switch(data['type']) {
+			
+			// 服务端ping客户端
+			case 'ping':
+				$('#xs').html(data.content+{:C('online')});
+				ws.send('{"type":"pong"}');
+				inte--;
+				if(inte==0){
+					ws.send('{"type":"robot"}');
+					inte = parseInt(Math.random()*rate+1)+2;
+				}
+				break;
+				// 登录 更新用户列表
+			case 'login':
+				console.log(data['client_name'] + "登录成功");
+				break;
+				// 发言
+			case 'say':
+				say(data['uid'],data['from_client_name'], data['head_img_url'], data['content'], data['time']);
+				break;
+				// 用户退出 更新用户列表
+			case 'logout':
+				break;
+			case 'broadcast':
+				//alert('client');
+			
+				//房管
+			case 'admin':
+				$("#03").append('<li class="notice"><center>' + data["content"] + '</center></li>');
+				//$("#03").append('<p class="bettime">'+data["time"]+'</p>');
+				document.getElementById("alert1").innerHTML=data["content"];
+				$(".alert1").show();
+				setTimeout( "$('.alert1').fadeOut()" , 1000);
+				$('html,body').scrollTop($('body')[0].scrollHeight);
+				break;
+				//系统
+			case 'system':
+				
+				if(data["content"].indexOf("结算已完毕") != -1){
+
+					
+				}
+				$("#03").append('<li><div><div class="uhead" style="margin-right: 5px;"><img src="' + data["head_img_url"] + '" style="pointer-events: none;"></div><div class="betinfo"><p class="ubet" style=""><span><span class="type"> ' + data["content"] + '</span></span></p></div></div></li>');
+				//$("#03").append('<p class="bettime">'+data["time"]+'</p>');
+				break;
+				//积分减
+			case 'points':
+				$('#sy').html((parseFloat($('#sy').html())-data['content']).toFixed(1));
+				break;
+				//积分加
+			case 'pointsadd':
+				$('#sy').html((parseFloat($('#sy').html())+data['points']).toFixed(1));
+				parent.layer.msg('恭喜竞猜成功');
+				break;
+				//重载
+			case 'reload':
+				if('{$userinfo.id}'==9){
+					
+					window.location.href=window.location.href;
+				}
+				break;
+				//切换
+			case 'switch':
+				parent.location.reload();
+				break;
+						
+						
+			case 'getNumber':
+				getMoneyData(data);
+				break;
+		}
+	}
+
+	// 提交对话
+	function onSubmit(input) {
+		var headimgurl = '{$userinfo.headimgurl}';
+		var from_client_name = '{$userinfo.nickname}';
+		if(input==''){
+			//$('#textarea').focus();
+			return false;
+		}
+		var fangjian=$("#fangjian").val();
+		if(fangjian=='')fangjian="a";
+		console.log(fangjian);
+		ws.send('{"type":"say","client_name":"'+from_client_name+'","headimgurl":"'+headimgurl+'","content":"' + input.replace(/"/g, '\\"').replace(/\n/g, '\\n').replace(/\r/g, '\\r') + '","fangjian":"'+fangjian+'"}');
+		//$('#textarea').val('');
+		//$('#dialog').scrollTop(0);
+		$('html,body').scrollTop($('body')[0].scrollHeight);
+	}
+
+	// 发言
+	function say(uid, from_client_name, head_img_url, content, time, number) {
+	
+		let reg = new RegExp("\\[([^\\[\\]]*?)\\]", 'igm');
+        let html = $('#say').html();
+		
+		var num = content.replace(/[^0-9]/ig,"-");
+		var arr=num.split('-');
+		
+		var len = arr.length - 1;
+			num = arr[len];
+		var back = '';
+		if('{$userinfo.id}'==uid){
+			back = 'background:#5e8bed; color:#fff;'
+		}
+		
+		var con = content.replace(num,'');
+		let source = html.replace(reg, function (node, key) { return {
+            time:  time,
+            images: head_img_url ,
+            username: from_client_name ,
+            number: $('.gmfix .line1 b').html() ,
+            count: con ,
+            nums: num ,
+			back: back
+        }[key]; });
+	
+		if('{$userinfo.id}'==uid){
+			$("#03").append($(source));
+		}else{
+			$("#03").append($(source));
+		}
+
+		$('html,body').scrollTop($('body')[0].scrollHeight);
+		/*if('{$userinfo.id}'==uid){
+			$("#03").append('<li><div><div class="uhead"><img src="'+head_img_url+'" style= "pointer-events: none;"></div><div class="betinfo"><p class="uname">' + from_client_name +'　　'+time +'</p><p class="ubet"><i class="ico02 timeico"></i>投注内容：' + content + '</p></div></div></li>');
+		}else{
+			$("#03").append('<li><div><div class="uhead"><img src="'+head_img_url+'" style= "pointer-events: none;"></div><div class"><p class="uname">' + from_client_name +'　　'+time +'</p><p class="ubet"><i class="ico02 timeico"></i>投注内容：' + content + '</p></div></div></li>');
+		}*/
+	}
+
+	
+</script>
+<style>
+	foot{display:none;}
+</style>
+<script type='text/html' id="say">
+<li>
+					<div class="time"><p>[time]</p></div>
+						<div>
+							<div class="uhead">
+								<img src="[images]" style= "pointer-events: none;">
+							</div>
+							<div class="betinfo">
+								<p class="uname">[username]</p>
+								<div class="ubet">
+									<p class="rase"><img src="/tu/gu.png" alt="">第 <span class="qihao">[number]</span>期</p>
+									<p class="title"><span>购买类型</span><span style="float:right">购买金额</span></p>
+									<p class="tz_detail"><span class="leixing">[count]</span><span class="jie">[nums]</span></p>
+								</div>
+							</div>
+						</div>
+					</li>
+ 
+</script>
+<script type='text/html' id="numberss">
+	第<i>[numbers]</i>期
+	<span class='a[b1]'></span>
+	<span class='a[b2]'></span>
+	<span class='a[b3]'></span>
+	<span class='a[b4]'></span>
+	<span class='a[b5]'></span>
+	<span class='a[b6]'></span>
+	<span class='a[b7]'></span>
+	<span class='a[b8]'></span>
+	<span class='a[b9]'></span>
+	<span class='a[b10]'></span>
+	<span class='d'></span>
+</script>
+<script type='text/html' id="numbersss">
+<p><span >[numbers]</span>期开奖结果</p>
+				<div class="result">
+					<span class="pink">[b1]</span> +
+					<span class="purple">[b2]</span> +
+					<span class="yellow">[b3]</span>=
+					<span class="green">[b4]</span>[tema_ds],[tema_dx]</div>
+</script>
+<script>
+	function get_money(){
+
+		$.ajax({
+			url:'/home/user/get_number',
+			data:{
+				number:'{$list[0]["periodnumber"]}',
+				type:'{$list[0]["game"]}'
+				
+			},
+			success:function(data){
+				$('#myMoney').html(data.info.points);
+				var now = parseInt(data.info.periodnumber)+1;
+				var bef = $('.line1 b').html();
+				
+				var shos = $('#hqkj').html();
+				shos = parseInt(shos)+1;
+				if(data.info.over < 0){
+					return false;
+				}
+				
+				if(now != bef){
+					
+					clearInterval(settime);
+					 $('.line1 b').html();
+					 $('#J_touzhu').attr("disabled",false);
+					//$("#J_touzhu").css("background-color","#de6f7e");
+					
+					if(data.info.game == '幸运飞艇'){
+						
+						
+						let reg = new RegExp("\\[([^\\[\\]]*?)\\]", 'igm');
+						let html = $('#numberss').html();
+						
+						strs=data.info.awardnumbers.split(",");
+						
+						let source = html.replace(reg, function (node, key) { return {
+							numbers:  data.info.periodnumber,
+							b1:  strs[0],
+							b2:  strs[1],
+							b3:  strs[2],
+							b4:  strs[3],
+							b5:  strs[4],
+							b6:  strs[5],
+							b7:  strs[6],
+							b8:  strs[7],
+							b9:  strs[8],
+							b10: strs[9] ,
+						}[key]; });
+						
+						let lis = '<li>第 <i>'+data.info.periodnumber+'</i> 期<i> &nbsp;<span class="a'+strs[0]+'"></span><span class="a'+strs[1]+'"></span><span class="a'+strs[2]+'"></span> <span class="a'+strs[3]+'"></span> <span class="a'+strs[4]+'"></span> <span class="a'+strs[5]+'"></span> <span class="a'+strs[6]+'"></span> <span class="a'+strs[7]+'"></span> <span class="a'+strs[8]+'"></span> <span class="a'+strs[9]+'"></span></i></li>'
+						
+						$('.openmo').append($(lis));
+						$('#hqkj').html(source);
+					}else{
+						
+						let reg = new RegExp("\\[([^\\[\\]]*?)\\]", 'igm');
+						let html = $('#numbersss').html();
+						
+						strs=data.info.awardnumbers.split(",");
+						
+						
+						
+						let source = html.replace(reg, function (node, key) { return {
+							numbers:  data.info.periodnumber,
+							b1:  strs[0],
+							b2:  strs[1],
+							b3:  strs[2],
+							b4:  parseInt(strs[0]) + parseInt(strs[1]) + parseInt(strs[2]),
+							tema_ds:  data.info.tema_ds,
+							tema_dx:  data.info.tema_dx,
+						}[key]; });
+						var aa=parseInt(strs[0]) + parseInt(strs[1]) + parseInt(strs[2]);
+						let lis = '<li>第 <i>'+data.info.periodnumber+'</i> 期<i> <span class="num">'+strs[0]+'</span> + <span class="num">'+strs[1]+'</span> + <span class="num">'+strs[2]+'</span> = <span class="hong">'+aa+'</span><font style="display:inline-block;width:15px"></font>('+data.info.tema_ds+','+data.info.tema_dx+')</i></li>'
+						
+						$('.openmo').append($(lis));
+						
+						$('#hqkj').html(source);
+						//$('#hqkj').html(source);
+						
+					}
+					
+					
+					
+					countDown();
+					
+					//console.log(data);
+					
+				}else{
+					
+				}
+		
+			}
+		});
+	}
+	
+	function getMoneyData(data){
+		//$('#myMoney').html(data.info.points);
+		var now = parseInt(data.info.periodnumber)+1;
+		var bef = $('.line1 b').html();
+		
+		var shos = $('#hqkj').html();
+		shos = parseInt(shos)+1;
+		if(data.info.over < 0){
+			return false;
+		}
+		
+		if(now != bef){
+			
+			clearInterval(settime);
+			 $('.line1 b').html();
+			 $('#J_touzhu').attr("disabled",false);
+			//$("#J_touzhu").css("background-color","#de6f7e");
+			
+			if(data.info.game == '幸运飞艇'){
+				
+				
+				let reg = new RegExp("\\[([^\\[\\]]*?)\\]", 'igm');
+				let html = $('#numberss').html();
+				
+				strs=data.info.awardnumbers.split(",");
+				
+				let source = html.replace(reg, function (node, key) { return {
+					numbers:  data.info.periodnumber,
+					b1:  strs[0],
+					b2:  strs[1],
+					b3:  strs[2],
+					b4:  strs[3],
+					b5:  strs[4],
+					b6:  strs[5],
+					b7:  strs[6],
+					b8:  strs[7],
+					b9:  strs[8],
+					b10: strs[9] ,
+				}[key]; });
+				
+				let lis = '<li>第 <i>'+data.info.periodnumber+'</i> 期<i> &nbsp;<span class="a'+strs[0]+'"></span><span class="a'+strs[1]+'"></span><span class="a'+strs[2]+'"></span> <span class="a'+strs[3]+'"></span> <span class="a'+strs[4]+'"></span> <span class="a'+strs[5]+'"></span> <span class="a'+strs[6]+'"></span> <span class="a'+strs[7]+'"></span> <span class="a'+strs[8]+'"></span> <span class="a'+strs[9]+'"></span></i></li>'
+				
+				$('.openmo').append($(lis));
+				$('#hqkj').html(source);
+			}else{
+				
+				let reg = new RegExp("\\[([^\\[\\]]*?)\\]", 'igm');
+				let html = $('#numbersss').html();
+				
+				strs=data.info.awardnumbers.split(",");
+				
+				
+				
+				let source = html.replace(reg, function (node, key) { return {
+					numbers:  data.info.periodnumber,
+					b1:  strs[0],
+					b2:  strs[1],
+					b3:  strs[2],
+					b4:  parseInt(strs[0]) + parseInt(strs[1]) + parseInt(strs[2]),
+					tema_ds:  data.info.tema_ds,
+					tema_dx:  data.info.tema_dx,
+				}[key]; });
+				var aa=parseInt(strs[0]) + parseInt(strs[1]) + parseInt(strs[2]);
+				let lis = '<li>第 <i>'+data.info.periodnumber+'</i> 期<i> <span class="num">'+strs[0]+'</span> + <span class="num">'+strs[1]+'</span> + <span class="num">'+strs[2]+'</span> = <span class="hong">'+aa+'</span><font style="display:inline-block;width:15px"></font>('+data.info.tema_ds+','+data.info.tema_dx+')</i></li>'
+				
+				$('.openmo').append($(lis));
+				
+				$('#hqkj').html(source);
+				//$('#hqkj').html(source);
+				
+			}
+			
+			
+			
+			countDown();
+			
+			//console.log(data);
+			
+		}else{
+			
+		}
+		
+	}
+	
+	
+	var t2 = window.setInterval("get_money()",3000);
+	function s_to_hs(s){
+		//计算分钟
+		//算法：将秒数除以60，然后下舍入，既得到分钟数
+		var h;
+		h  =   Math.floor(s/60);
+		//计算秒
+		//算法：取得秒%60的余数，既得到秒数
+		s  =   s%60;
+		//将变量转换为字符串
+		h    +=    '';
+		s    +=    '';
+		//如果只有一位数，前面增加一个0
+		h  =   (h.length==1)?h:h;
+		s  =   (s.length==1)?'0'+s:s;
+		return h+'分'+s+'秒';
+	}
+	if(("standalone" in window.navigator) && window.navigator.standalone){
+		var noddy, remotes = false;
+		document.addEventListener('click', function(event) {
+			noddy = event.target;
+			while(noddy.nodeName !== "A" && noddy.nodeName !== "HTML") {
+				noddy = noddy.parentNode;
+			}
+			if('href' in noddy && noddy.href.indexOf('http') !== -1 && (noddy.href.indexOf(document.location.host) !== -1 || remotes)){
+				event.preventDefault();
+				document.location.href = noddy.href;
+			}
+		},false);
+	}
+</script>
+ 

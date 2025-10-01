@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>后台 - 代理结算</title>
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+
+		
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+		<link href="__PUBLIC__/Admin/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/plugins/iCheck/custom.css" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+
+	</head>
+	<style>
+		/*分页样式*/
+		.pages a,.pages span {
+		    display:inline-block;
+		    padding:4px 7px;
+		    margin:0 2px;
+		    border:1px solid #D5D4D4;
+		    -webkit-border-radius:1px;
+		    -moz-border-radius:1px;
+		    border-radius:1px;
+		}
+		.pages a,.pages li {
+		    display:inline-block;
+		    list-style: none;
+		    text-decoration:none; color:#3399ff;
+		}
+		
+		.pages a:hover{
+		    border-color:#3399ff;
+		}
+		.pages span.current{
+		    background:#3399ff;
+		    color:#FFF;
+		    font-weight:700;
+		    border-color:#3399ff;
+		}
+		.pages{
+			text-align: center;
+		}
+		/*分页样式*/
+		
+		.layui-layer{
+			top:48px !important;
+		}
+	</style>
+	<body class="gray-bg">
+		<div class="wrapper wrapper-content animated fadeInRight">	
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">
+							<h5>代理结算</h5>
+						</div>
+						<div class="ibox-content">
+							<div class="row">
+							<form method="get" action="{:U('Admin/Member/pushjs')}">
+								<div class="col-sm-2">
+									<input type="text" placeholder="开始时间" id="starttime" name="starttime" value='{$start|default=""}' class="form-control">
+									<input type="hidden" name="id" value="{$id}">
+								</div>
+								<div class="col-sm-2">
+									<input type="text"  placeholder="结束时间" id="endtime" name="endtime" value="{$end|default=''}" class="input-sm form-control"> 
+								</div>
+								<div class="col-sm-2">
+									<input type="text"  placeholder="用户号" id="username" name="username" value="{$username}" class="input-sm form-control"> 
+								</div>
+								<button type="submit" class="btn btn-sm btn-primary"> 搜索</button> 
+			                	
+							</form>
+						</div>
+							<div class="" >
+								<table class="table table-striped table-hover table-bordered" style="width:auto;overflow:auto;display:inline-block;">
+									<thead>
+										<tr>
+											<th>头像</th>
+											<th>代理名</th>
+											<th>代理ID</th>
+											<th>总出项流水(三级)</th>
+											<th>总输赢(三级)</th>
+											<th>占比%</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+									<tbody>
+										<volist name="list" id="vo">
+											<tr>
+												<td width="60"><img src="{$vo.headimgurl}"/></td>
+												<td width="100">{$vo.nickname}</td>
+												<td width="100">{$vo.username}</td>
+												
+												<td width="100">{$vo.sum_del|default="0"}</td>
+												<td width="100">{$vo.ying}</td>
+												<td width="100"><input type="" name="" value="{$vo.dl_rate}" class="form-control dlrate" uid="{$vo.id}"></td>
+												<td width="200">
+												<a href="__APP__/Admin/Member/pushjs/id/{$vo.id}" class="btn btn-primary">查看下线</a>
+												</td>
+											</tr>
+										</volist>
+									</tbody>
+								</table>
+							</div>
+							<div class="pages">
+								{$show}
+							</div>
+							
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		
+	</body>
+	<script src="__PUBLIC__/Admin/js/jquery.min.js?v=2.1.4"></script>
+	<script src="__PUBLIC__/Admin/js/bootstrap.min.js?v=3.3.6"></script>
+	<script src="__PUBLIC__/Admin/js/plugins/iCheck/icheck.min.js"></script>
+	<script src="__PUBLIC__/Admin/js/plugins/layer/laydate/laydate.js"></script>
+	<script src="__PUBLIC__/Common/layer/layer.js"></script>
+	<script type="text/javascript">
+			laydate({
+			  elem: '#starttime',
+			  max: laydate.now(), //+1代表明天，+2代表后天，以此类推
+			  istime: true,
+			  format: 'YYYY-MM-DD hh:mm:ss', //日期格式
+			});
+			laydate({
+			  elem: '#endtime',
+			  max: laydate.now(), //+1代表明天，+2代表后天，以此类推
+			  istime: true,
+			  format: 'YYYY-MM-DD hh:mm:ss', //日期格式
+			});
+			$('.timesearch').click(function(e){
+				e.stopPropagation();
+				var time_value = $(this).attr('time');
+				location.href = "{:U('Admin/Member/pushxx')}?id={$id}&time="+time_value;
+				return false;
+			})
+
+			$('.dlrate').change(function(){
+				var rate = $(this).val();
+				var uid = $(this).attr('uid');
+				$.post('/Admin/Member/pushjs_dlrate',{"uid":uid,"rate":rate},function(){
+
+				})
+			})
+	</script>
+	
+</html>

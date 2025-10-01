@@ -1,0 +1,54 @@
+.portrait{ display: block; height: 33px; width: 33px;}
+.portrait img{
+	display: block;
+	height: 100%;
+	width: 33px;
+	max-width: none;
+	margin:0 auto;
+	border-radius: 5px;
+}
+
+.main-box .top,
+.leftRight,
+.chatting-li{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-align: flex-start;
+	-webkit-align-items: flex-start;
+	align-items: flex-start;
+}
+.main-box .top{
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+@media only screen and (max-width: 360px){
+	/*.main-box .portrait{ height: 30px; }*/
+}
+
+
+/*-----  选项卡 -----*/
+.tab-nav > *,
+.tab-nav-hover > *{cursor: pointer;}
+.tab-nav > *.no,
+.tab-nav-hover > *.no{cursor: default;}
+.tab-content{}
+.tab-box{display: none;}
+.tab-content .tab-box.active{display: block;}
+.tab-content .tab-box:first-child {display: block;}
+
+/*-----   -----*/
+table{
+	border-collapse: collapse;/* 边框合并属性  */
+}
+table,
+tr{width: 100%;max-width: 100%;}
+
+
+.txt-al-c{text-align: center;}
+.cl-red{color: #ff0000;}
+.cl-orange{color: orange;}
+.cl-blue{color: dodgerblue;}
+.cl-blue2{color: #10c2f2;}
+.ft-sz-0{font-size: 0;}

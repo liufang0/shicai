@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/new/css/index.css" />
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+    <style type="text/css">
+    a { -webkit-tap-highlight-color:rgba(0,0,0,0);}
+ </style>
+<style>
+.main{margin-top:25px;}
+.offaccount {background: #ffefef;padding:2em 1em 0.6em;border-radius: 5px;/*overflow:auto;zoom:1;*/margin-bottom:1em; border: #faa solid 1px;height: 97em;}
+.offaccount p{color: #333;line-height:2.3em;}
+.offaccount p i{color: #FD947E;border-radius: 3px;border:#FD947E solid 1px;padding:1px 8px;float:right;line-height: 1.5em;font-size: .9em;height: 1.5em;}
+.offaccount p input{border:none;background:none;}
+.offpay h3{font-size:1.2em;line-height:1em;height:1em;margin:1.5em 0 .3em;border-left:#FD645E solid 4px;padding-left:.5em;font-weight: normal;}
+.offform{line-height:1.8em}
+.offform li span{color: #ff0000;margin-top: .4em;display: inline-block;font-size: 1.1em;}
+.offform input{display:block;height:2.7em;line-height:2.7em;width: 98%; border:solid #c0c0c0 0.3px;color:#330000;border-radius: 3px;padding-left: 2%;font-size: 1.1em;}
+.wxts p{margin: .5em 0;color: #aaa;line-height:1.2em;font-size: .9em;}
+
+.title1{width: 12em;height: 2em;color: white;text-align: center;line-height: 2em;background: #FD645E;margin:0 auto;display: block;margin-top: -2em;border:none;outline: none;border-radius: 3px;}
+@media screen and (min-width: 401px)  {/*苹果PLUS*/
+	div.title1{margin-top: -2em;}
+	
+}
+.offaccount{height: 167em;}
+
+</style>
+ </HEAD>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js"> </script>
+<script>
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+    WeixinJSBridge.call('hideOptionMenu');
+});
+</script>
+
+ <BODY>
+  <header>
+ 	 <i class="ico02 back fl" onclick="history.go(-1)"></i>
+	 <h1>游戏规则</h1>	
+	 <i class="ico null"></i>	 
+  </header>
+  <div class="headblank"></div>
+  <div class="main1 offpay">
+	  <div class="offaccount">
+		<div class="title1">【{:C('sitename')}】</div>
+		  <p><b>【游戏介绍】</b><br><br>
+六合彩（英文：Mark Six）是香港合法彩票，一周开奖3次，每周二、四、六晚上9:35开奖，遇特殊情况会偶尔会有变动开奖时间。<br>
+
+		<b>【相关资料】</b><br>
+		【开奖时间】周二四六晚9:35,一周3期。<br>
+		【开始投注】开奖前48小时。<br>
+		【封盘时间】开奖前{:C('lhc_stop_time')}分钟。<br>
+		【正 特 码】开奖结果前6个号码为正码，分别为正1到正6，第7个号码为特码。<br>
+		【生肖说明】生肖顺序为: 鼠↦牛↦虎↦兔↦龙↦蛇↦马↦羊↦猴↦鸡↦狗↦猪；如今年是狗年，就是以狗为开始，依顺序奖49个号码分别与12个生肖对应，如下：<br>
+			&nbsp;&nbsp;☉狗：1,13,25,37,49<br>
+			&nbsp;&nbsp;☉猪：12,24,36,48<br>
+			&nbsp;&nbsp;☉鼠：11,23,35,47<br>
+			&nbsp;&nbsp;☉牛：10,22,34,46<br>
+			&nbsp;&nbsp;☉虎：9,21,33,45<br>
+			&nbsp;&nbsp;☉兔：8,20,32,44<br>
+			&nbsp;&nbsp;☉龙：7,19,31,43<br>
+			&nbsp;&nbsp;☉蛇：5,18,30,42<br>
+			&nbsp;&nbsp;☉马：5,17,29,41<br>
+			&nbsp;&nbsp;☉羊：4,16,28,40<br>
+			&nbsp;&nbsp;☉猴：3,15,27,39<br>
+			&nbsp;&nbsp;☉鸡：2,14,26,38<br>
+
+<b>【赔率介绍】</b><br>
+生肖：{:C('lhc_tsx')}倍(含本)<br>
+色波：{:C('lhc_thll')}倍(含本)<br>
+正码赔率：{:C('lhc_zhm')}倍(含本)<br>
+特码赔率：{:C('lhc_thm')}倍(含本)<br>
+特码大小单双：{:C('lhc_dxds')}倍(含本)<br>
+正码大小单双：{:C('lhc_tdxds')}倍(含本)<br>
+
+<b>【竞猜大小单双】</b><br>
+竞猜对象为正特码(1~7球)。开奖结果与所竞猜相同则为中奖，其余为不中，如果竞猜结果是49为和则竞猜还本。<br>
+☉小: 01~24为小(含24)；<br>
+☉大: 25~48为大(含48)；<br>
+☉单: 01,03...45,47，不能整除2的奇数。<br>
+☉双: 02,04...46,48；能整除2的偶数。<br>
+☉和: 49(开和竞猜大小单双还本)<br> 
+■竞猜格式：球号/大小单双/金额<br>
+■竞猜例子：</span><br />
+<small>例：7/大/100 为 竞猜特码大100</small><br />
+<small>例：12/大/100 为 1,2号球大各100 总200</small><br />
+
+<b>【猜正特码】</b><br>
+竞猜对象为正特码(1~7球)。一个数字1注(竞猜01~49)，竞猜球号数字与开奖数字相同则为中奖，否则为不中！若不输入第几球，系统默认为第7颗球<br>
+■竞猜格式：球号/数字/金额<br />
+<small>例：7/45/100 为 特码45号100</small><br />
+<small>例：7/33.48/100 为 特码43,48号各100 总200</small><br />
+<small>例：12/20.12/100 为1,2号球20,12号各100 总400</small><br />
+
+<b>【猜特肖】</b><br>
+竞猜对象特码。一个生肖为竞猜单位，开奖结果含竞猜的生肖则为中奖，否则为不中！
+如:竞猜狗，开奖结果中含有生肖狗，则中奖，否则为不中。<br>
+■格式：生肖/金额<br />
+<small>例：狗/100 为 买生肖狗100</small><br>
+<small>例：牛/100 为 买生肖牛100</small><br>
+
+<b>【猜波色】</b><br>
+<p>竞猜对象为特码(7球)。竞猜位置波色与开奖相同则为中奖，否则为不中！</p>
+<p style="color:red">☉红波:01,02,07,08,12,13,18,19,23,<br />24,29,30,34,35,40,45,46；</p>
+<p style="color:rgb(39, 118, 255)">☉蓝波:03,04,09,10,14,15,20,25,<br />26,31,36,37,41,42,47,48；</p>
+<p style="color:rgb(0, 128, 0)">☉绿波:05,06,11,16,17,21,22,27,<br />28,32,33,38,39,43,44,49；
+</p>
+■格式：波色/金额<br />
+<small>例：蓝波/100</small><br />
+<small>例：红波/100</small><br />
+<small>例：绿波/100</small><br />
+          <br />
+
+</p>
+
+	  </div>
+	  
+
+<script charset="utf-8" type="text/javascript" src="__PUBLIC__/Home/new/css/js/weixin.js"></script>
+	
+
+ </BODY>
+</HTML>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+ 
+    <title>{:C('sitename')}</title>
+
+    <link rel="stylesheet" type="text/css" href="/images/css/style_m.css">
+    <link rel="stylesheet" type="text/css" href="/images/css/weui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/images/css/_幸运飞艇.css">
+    <link rel="stylesheet" type="text/css" href="/images/css/nav.css">
+
+</head>
+
+<body>
+
+  <table class="HistUser" sytle="margin:10px 0 30px 0">
+   <tbody>
+    <tr><th>
+     </th><td class="algC">会员: {$userinfo.nickname} &nbsp; 点数: {$userinfo.points}</td>
+    
+   </tr></tbody>
+  </table>
+
+
+    <table class="ShowNumList TableColor1">
+     <tbody>
+      <tr>
+        <th>期号</th>
+        <th>开奖时间</th>
+        <th>开奖号码</th>
+        <th>特码</th>
+      </tr>  
+	  <volist name="list" id="vo">
+      <tr>
+          <td width="10%">{$vo.periodnumber}</td>
+          <td width="30%" class="algC">{$vo.awardtime}</td>
+          <td width="20%">
+            <table class="ShowNumList2" border="0">
+              <tbody><tr>
+                <td class="幸运飞艇num"><img src="/images/{$vo.code.0}.png"></td>
+                <td class="幸运飞艇num">+</td>
+                <td class="幸运飞艇num"><img src="/images/{$vo.code.1}.png"></td>
+                <td class="幸运飞艇num">+</td>
+                <td class="幸运飞艇num"><img src="/images/{$vo.code.2}.png"></td>
+              </tr>
+            </tbody></table>
+           </td>
+            <td width="40%" class="algR">
+            <table class="ShowNumList2" border="0">
+              <tbody><tr>
+                <td>{$vo.he}</td>
+                <td>&nbsp;</td>
+                <td>{$vo.dx}</td>
+                <td>&nbsp;</td>
+                <td>{$vo.ds}</td>
+                <td></td>
+                <td>&nbsp;</td>
+                <td></td>
+                <td>&nbsp;</td>
+                <td></td>
+                <td>&nbsp;</td>
+                <td></td>
+              </tr>
+            </tbody></table>
+            </td>
+        </tr>
+		</volist>
+        </tbody>
+    </table>
+  
+    
+</body>
+
+</html>

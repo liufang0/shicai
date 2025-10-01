@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>{:C('sitename')}-推广</title>
+		<meta name="format-detection" content="telephone=no,email=no"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+		<link href="__PUBLIC__/Admin/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/animate.min.css" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+		<link href="__PUBLIC__/Home/css/page.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta content="target-densitydpi=320,width=750,user-scalable=no" name="viewport" />
+    <meta content="no" name="apple-touch-fullscreen" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <title>个人中心</title>
+    <!--<link href="/statics/web/css/css.css?v=1" rel="stylesheet" type="text/css">-->
+    <!--<script src="/statics/web/js/jquery.1.8.2.min.js"></script>-->
+    <!--<script src="/statics/web/js/style.js"></script>-->
+    <link href="/statics/web/css/css.css" rel="stylesheet" type="text/css">
+<link href="/statics/web/css/red.css" rel="stylesheet" type="text/css"><script src="/statics/web/js/jquery.1.8.2.min.js"></script><script src="/statics/web/js/style.js"></script>    <script src="/statics/web/extend/zclip/jquery.zclip.js"></script>
+    <style type="text/css">
+    /* 复制提示 */
+    .copy-tips{position:fixed;z-index:999;bottom:50%;left:50%;margin:0 0 -20px -80px;background-color:rgba(0, 0, 0, 0.2);filter:progid:DXImageTransform.Microsoft.Gradient(startColorstr=#30000000, endColorstr=#30000000);padding:6px;}
+    .copy-tips-wrap{padding:10px 20px;text-align:center;border:1px solid #F4D9A6;background-color:#FFFDEE;font-size:24px;}
+    </style>
+</head>
+<body>
+<header>
+    <em onclick="javascript :history.go(-1);">返回</em>
+    <h1>代理分享</h1>
+
+</header>
+<section>
+    <div class="shareWarp">
+        <h3>推荐朋友<br/>
+            扫码下面的二维码</h3>
+        <div class="dl-share">
+                            <p>注册成为下线</p>
+              		<div class="text-center loginscreen  animated fadeInDown">
+			<div>
+				<div class="top">
+					<strong>推广二维码(长按二维码进入游戏)</strong>
+				</div>
+				<div>
+					<img class="sk" src="<if condition="$tui neq ''">{$tui}<else/>__PUBLIC__/Admin/img/no_img.jpg</if>" >
+					<br>
+					<if condition="C('is_baidu') eq 1">
+						进入搜索页面，搜索{:C('baidu_value')}  进入游戏
+					</if>
+				</div>
+				<!-- <div class="top">
+					<strong>推广链接</strong>
+				</div>
+				<div>
+					{$url}
+				</div> -->
+					<div class="top">
+					<strong>说明</strong>
+				</div>
+				<div>
+					推广说明:<br>
+					1.长按图片,保存到手机分享给朋友!<br>
+					2.从该 图中的二维码 进的都是你的下线!<br>
+					3.推广佣金为流水的5‰(随时提现)!<br>
+				</div>
+			</div>
+		</div>
+               <!--  <p> 链接地址：<a href="http://hmyl28.com/?m=web&c=user&a=register&pid=56290&type=2" >http://hmyl28.com/?m=web&c=user&a=register&pid=56290&type=2</a></p> -->
+                        <!--<p id="icoCopy1"><em class="icoCopy1"></em>链接地址：<a id="go_url" href="http://hmyl28.com/?m=web&c=user&a=register&pid=56290&type=2">http://hmyl28.com/?m=web&c=user&a=register&pid=56290&type=2</a></p>-->
+            <!--<button class="copyBtn" address="http://hmyl28.com/?m=web&c=user&a=register&pid=56290&type=2">复制链接</button>-->
+                        <!--<button class="copyBtn" address="http://hmyl28.com/?m=web&c=user&a=register&pid=56290&type=3" style="margin-bottom: 100px;">复制链接</button>-->
+        </div>
+    </div>
+</section><script type="text/javascript">
+    $(document).ready(function(){
+        $(".copyBtn").click(function() {
+            $(".copyBtn").zclip({
+                        path: "/statics/web/extend/zclip/ZeroClipboard.swf",
+                        copy: function(){
+                            return $(this).attr('address');
+                        },
+                        beforeCopy:function(){/* 按住鼠标时的操作 */
+                                $(this).css("color","orange");
+                        },
+                        afterCopy:function(){/* 复制成功后的操作 */
+                                var $copysuc = $("<div class='copy-tips'><div class='copy-tips-wrap'>☺ 复制成功</div></div>");
+                                $("body").find(".copy-tips").remove().end().append($copysuc);
+                                $(".copy-tips").fadeOut(3000);
+                }
+            });
+        });
+    });
+</script>
+		<script src="__PUBLIC__/Admin/js/jquery.min.js?v=2.1.4"></script>
+		<script src="__PUBLIC__/Admin/js/bootstrap.min.js?v=3.3.6"></script>
+		
+		<script src="__PUBLIC__/Common/js/ajaxForm.js"></script>
+		<script src="__PUBLIC__/layer/layer.js"></script>
+		<script type="text/javascript">
+			
+
+			$(function(){
+				$('#LoginForm').ajaxForm({
+					beforeSubmit: checkForm,
+					success: complete, 
+					dataType: 'json'
+				});
+				function checkForm(){
+					
+				}
+				function complete(data){
+					if(data.status==1){
+						$('.btn').attr('disabled','disabled');
+						layer.msg(data.info, function(index){
+			 				layer.close(index);
+							window.location.href=data.url;
+						});
+					}else{
+						layer.msg(data.info);
+						$('#password').val('').focus();
+						return false;	
+					}
+				}
+			});
+		</script>
+		</script>
+</body>
+</html>

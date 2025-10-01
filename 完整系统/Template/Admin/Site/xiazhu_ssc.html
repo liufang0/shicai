@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>后台 - 重庆时时彩下注配置</title>
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+
+		
+		<link href="__PUBLIC__/Admin/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/plugins/iCheck/custom.css" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/animate.min.css" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+
+	</head>
+
+	<body class="gray-bg">
+		<div class="wrapper wrapper-content animated fadeInRight">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">
+							<h5>重庆时时彩下注配置 </h5><span>（修改后需要重启服务生效）</span>
+							<div class="ibox-tools">
+								<a class="collapse-link">
+									<i class="fa fa-chevron-up"></i>
+								</a>
+							</div>
+						</div>
+						<div class="ibox-content">
+							<form id="signform" action="{:U('Admin/Site/xiazhu_ssc')}" method="post" class="form-horizontal">
+								<div class="form-group">
+									<label class="col-sm-2 control-label">单笔最低点数</label>
+									<div class="col-sm-6">
+										<input type="text" name="sscqi_min_point" value="{:C('sscqi_min_point')}" placeholder="单笔最低点数" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">用户每期最高点数</label>
+									<div class="col-sm-6">
+										<input type="text" name="sscqi_max_point" value="{:C('sscqi_max_point')}" placeholder="用户每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="hr-line-dashed"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">定位球</label>
+								    <div class="col-sm-4">
+										<input type="text" name="ssc_dwq" value="{:C('ssc_dwq')}" placeholder="输入赔率" class="form-control">
+									</div>
+									 <div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('ssc_xz_open')['dwq'] eq 1">checked</if> class="i-checks" name="ssc_xz_open[dwq]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('ssc_xz_open')['dwq'] eq 0">checked</if> class="i-checks" name="ssc_xz_open[dwq]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="ssc_xz_max[dwq]" value="{:C('ssc_xz_max')['dwq']}" placeholder="每个号码最高" class="form-control">
+									</div>
+								</div>
+								<div class="hr-line-dashed"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">龙虎合(龙虎)</label>
+								    <div class="col-sm-4">
+										<input type="text" name="ssc_lhh_1" value="{:C('ssc_lhh_1')}" placeholder="输入赔率" class="form-control">
+									</div>
+									<div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('ssc_xz_open')['lhh'] eq 1">checked</if> class="i-checks" name="ssc_xz_open[lhh]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('ssc_xz_open')['lhh'] eq 0">checked</if> class="i-checks" name="ssc_xz_open[lhh]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="ssc_xz_max[lhh]" value="{:C('ssc_xz_max')['lhh']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">龙虎合(合)</label>
+								    <div class="col-sm-4">
+										<input type="text" name="ssc_lhh_2" value="{:C('ssc_lhh_2')}" placeholder="输入赔率" class="form-control">
+									</div>
+									<div class="col-sm-2"></div>
+									<div class="col-sm-2">
+										<input type="text" name="ssc_xz_max[lhh_he]" value="{:C('ssc_xz_max')['lhh_he']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="hr-line-dashed"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">定位大小单双</label>
+								    <div class="col-sm-4">
+										<input type="text" name="ssc_dxds" value="{:C('ssc_dxds')}" placeholder="输入赔率" class="form-control">
+									</div>
+									<div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('ssc_xz_open')['dxds'] eq 1">checked</if> class="i-checks" name="ssc_xz_open[dxds]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('ssc_xz_open')['dxds'] eq 0">checked</if> class="i-checks" name="ssc_xz_open[dxds]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="ssc_xz_max[dxds]" value="{:C('ssc_xz_max')['dxds']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="hr-line-dashed"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">总数大小单双</label>
+								    <div class="col-sm-4">
+										<input type="text" name="ssc_zdxds" value="{:C('ssc_zdxds')}" placeholder="输入赔率" class="form-control">
+									</div>
+									<div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('ssc_xz_open')['zdxds'] eq 1">checked</if> class="i-checks" name="ssc_xz_open[zdxds]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('ssc_xz_open')['dxds'] eq 0">checked</if> class="i-checks" name="ssc_xz_open[zdxds]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="ssc_xz_max[zdxds]" value="{:C('ssc_xz_max')['zdxds']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="hr-line-dashed"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">前中后(豹子)</label>
+								    <div class="col-sm-4">
+										<input type="text" name="ssc_qzh_1" value="{:C('ssc_qzh_1')}" placeholder="输入赔率" class="form-control">
+									</div>
+									<div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('ssc_xz_open')['qzh'] eq 1">checked</if> class="i-checks" name="ssc_xz_open[qzh]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('ssc_xz_open')['qzh'] eq 0">checked</if> class="i-checks" name="ssc_xz_open[qzh]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="ssc_xz_max[qzh]" value="{:C('ssc_xz_max')['qzh']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">前中后(顺子)</label>
+								    <div class="col-sm-4">
+										<input type="text" name="ssc_qzh_2" value="{:C('ssc_qzh_2')}" placeholder="输入赔率" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">前中后(对子)</label>
+								    <div class="col-sm-4">
+										<input type="text" name="ssc_qzh_3" value="{:C('ssc_qzh_3')}" placeholder="输入赔率" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">前中后(半顺)</label>
+								    <div class="col-sm-4">
+										<input type="text" name="ssc_qzh_4" value="{:C('ssc_qzh_4')}" placeholder="输入赔率" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">前中后(杂六)</label>
+								    <div class="col-sm-4">
+										<input type="text" name="ssc_qzh_5" value="{:C('ssc_qzh_5')}" placeholder="输入赔率" class="form-control">
+									</div>
+								</div>
+								<div class="hr-line-dashed"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">二字定位玩法</label>
+								    <div class="col-sm-4">
+										<input type="text" name="ssc_he" value="{:C('ssc_he')}" placeholder="输入赔率" class="form-control">
+									</div>
+									<div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('ssc_xz_open')['he'] eq 1">checked</if> class="i-checks" name="ssc_xz_open[he]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('ssc_xz_open')['he'] eq 0">checked</if> class="i-checks" name="ssc_xz_open[he]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="ssc_xz_max[he]" value="{:C('ssc_xz_max')['he']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+								
+								<div class="hr-line-dashed"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">和值(特码)猜区段(AC)</label>
+								    <div class="col-sm-4">
+										<input type="text" name="ssc_tema_qd_1" value="{:C('ssc_tema_qd_1')}" placeholder="输入赔率" class="form-control">
+									</div>
+									<div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('ssc_xz_open')['tema_qd'] eq 1">checked</if> class="i-checks" name="ssc_xz_open[tema_qd]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('ssc_xz_open')['tema_qd'] eq 0">checked</if> class="i-checks" name="ssc_xz_open[tema_qd]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="ssc_xz_max[tema_qd]" value="{:C('ssc_xz_max')['tema_qd']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">和值(特码)猜区段(B)</label>
+								    <div class="col-sm-4">
+										<input type="text" name="ssc_tema_qd_2" value="{:C('ssc_tema_qd_2')}" placeholder="输入赔率" class="form-control">
+									</div>
+								</div>
+								
+								
+								<span style="color: red;">*赔率为含本赔率</span>
+								<div class="hr-line-dashed"></div>
+								<div class="form-group">
+									<div class="col-sm-4 col-sm-offset-2">
+										<button class="btn btn-primary" type="submit">保存信息</button>&nbsp;&nbsp;&nbsp;
+										<a class="btn btn-danger" href="{:U('Index/index')}">取消</a>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script src="__PUBLIC__/Admin/js/jquery.min.js?v=2.1.4"></script>
+		<script src="__PUBLIC__/Admin/js/bootstrap.min.js?v=3.3.6"></script>
+		<script src="__PUBLIC__/Admin/js/content.min.js?v=1.0.0"></script>
+		<script src="__PUBLIC__/Common/js/ajaxForm.js"></script>
+		<script src="__PUBLIC__/Common/layer/layer.js"></script>
+		<script src="__PUBLIC__/Admin/js/plugins/iCheck/icheck.min.js"></script>
+		<script>
+			$(document).ready(function() {
+				$(".i-checks").iCheck({
+					checkboxClass: "icheckbox_square-green",
+					radioClass: "iradio_square-green",
+				})
+			});
+		</script>
+		<script>
+			$(function(){
+				$('#signform').ajaxForm({
+					success: complete, 
+					dataType: 'json'
+				});
+				function complete(data){
+					if(data.status==1){
+						$('.btn-primary').attr('disabled','disabled');
+						layer.msg(data.info, function(index){
+			 				layer.close(index);
+							window.location.href=data.url;
+						});
+					}else{
+						layer.msg(data.info);
+						return false;	
+					}
+				}
+			});
+		</script>
+	</body>
+
+</html>

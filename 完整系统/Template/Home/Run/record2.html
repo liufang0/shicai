@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html id="iframe">
+	<head>
+		<meta charset="UTF-8">
+		
+		<title>{:C('sitename')}</title>
+		
+		<meta name="renderer" content="webkit">
+		<meta name="format-detection" content="telephone=no,email=no"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+		<meta name="telephone=no"  content="format-detection">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no" />
+		
+		<META HTTP-EQUIV="Pragma" CONTENT="no-cache"> 
+		<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache"> 
+		<META HTTP-EQUIV="Expires" CONTENT="0">
+		
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/lib.css"/>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/css/page.css"/>
+	</head>
+	<style>
+		/*分页样式*/
+		.pages a,.pages span {
+		    display:inline-block;
+		    padding:4px 7px;
+		    margin:0 2px;
+		    border:1px solid #D5D4D4;
+		    -webkit-border-radius:1px;
+		    -moz-border-radius:1px;
+		    border-radius:1px;
+		}
+		.pages a,.pages li {
+		    display:inline-block;
+		    list-style: none;
+		    text-decoration:none; color:#15AF11;
+		}
+		
+		.pages a:hover{
+		    border-color:#15AF11;
+		}
+		.pages span.current{
+		    background:#15AF11;
+		    color:#FFF;
+		    font-weight:700;
+		    border-color:#15AF11;
+		}
+		.pages{
+			margin-top: 8px;
+			text-align: center;
+		}
+		.ptitle{
+			height: 45px;
+			line-height: 45px;
+		}
+		/* .tj{color:#c7baba;} */
+		/*分页样式*/
+	</style>
+	<body>
+		<div class="header">
+		  <div class="all_w ">
+		    <div class="gofh"> <a href="javascript:history.back()"><img src="http://www.shanweiapp.com/Public/Home/new/css/ico/left.png"></a> </div>
+		     <div class="ptitle">
+		      记录
+		    </div>
+		  </div>
+		</div>
+		<div class="record">
+			<div class="record-top">
+				<!-- <p class="intro">
+					<span>会员:<i>{$userinfo.nickname}</i></span>
+					<span>点数:<i>{$userinfo.points}</i></span>
+					<span>代理:<i>DS1688</i></span>
+					<span>编号:<i>PKW{$userinfo.id}</i></span>
+				</p> -->
+				<p class="lable">
+					<a href="{:U('Home/Run/record')}?t=1"><span>{$today|date="m-d",###}</span></a>
+					<a href="{:U('Home/Run/record')}?t=2"><span>{$today-86400|date="m-d",###}</span></a>
+					<a href="{:U('Home/Run/record')}?t=3"><span>{$today-86400*2|date="m-d",###}</span></a>
+					<a href="{:U('Home/Run/record')}?t=4"><span>账务</span></a>
+				</p>
+			</div>
+			<div class="record-content">
+				<empty name="list">
+					<p class="record-no"><span>
+						<if condition="$t eq 1">{$today|date="m-d",###}</if>
+						<if condition="$t eq 2">{$today-86400|date="m-d",###}</if>
+						<if condition="$t eq 3">{$today-86400*2|date="m-d",###}</if>
+						 无资料
+					</span></p>
+					<else/>
+					<if condition="$t eq 4">
+						<table>
+							<thead>
+								<tr>
+									<th>时间</th>
+									<!--<th>单号</th>-->
+									<th>期号</th>
+									<th>内容</th>
+									<th>点数</th>
+									<th>输赢</th>
+									<!-- <th>余额</th> -->
+								</tr>	
+							</thead>
+							<tbody>
+								<volist name="list" id="vo">
+									<tr>
+										<td>{$vo.time|date="Y-m-d H:i:s",###}</td>
+										<td>{$vo.number}</td>
+										<!--<td>{$vo.time|mb_substr=3,8,utf8}</td>-->
+										<td>{$vo.jincai}</td>
+										<td>{$vo.add_points}</td>
+										<td>{$vo['add_points']-$vo['del_points']}</td>
+										
+										<!-- <td>{$vo.balance}</td> -->
+									</tr>
+								</volist>
+							</tbody>
+						</table>
+						<else/>
+						<table>
+							<volist name="list1" id="vo" key="i">
+								<thead>
+									<tr>
+										<th colspan="6">
+											<?php
+												$game = $vo['game'];
+												$periodnumber = $vo['number'];
+												$awardnumbers = M('number')->where("periodnumber = '$periodnumber' and game = '$game'")->order('id desc')->find();
+												$data = explode(',',$awardnumbers['awardnumbers']);
+												?>
+											<span>
+												<if condition="$vo['game'] eq 'xyft'">幸运飞艇
+												<elseif condition="$vo['game'] eq '幸运飞艇'" />北京赛车
+												<elseif condition="$vo['game'] eq 'er75sc'" />极速赛车
+												<elseif condition="$vo['game'] eq 'bj28'" />螞蟻收益
+												<elseif condition="$vo['game'] eq 'jnd28'" />螞蟻收益
+												<elseif condition="$vo['game'] eq 'xjp28'" />新加坡28
+												<elseif condition="$vo['game'] eq 'lhc'" />六合彩
+												<else/>重庆时时彩</if>  
+												期号：{$vo.number}
+												<if condition="$awardnumbers['awardnumbers'] eq ''">
+													(未开奖)
+												<else/>
+													({$awardnumbers['awardnumbers']})
+												</if>
+												  
+												
+											</span>
+											<!-- <if condition="$number eq $vo['number']"> -->
+												<!-- <a class="bt bt-red" onclick="del_all('{$vo.number}')">全部取消</a> -->
+											<!-- </if> -->
+										</th>
+									</tr>
+								</thead>
+								<thead>
+									<tr>
+										<th>竞猜时间</th>
+										<th>竞猜单号</th>
+										<th>内容</th>
+										<th>点数</th>
+										<th>输赢</th>
+									</tr>	
+								</thead>
+								<tbody>
+									<volist name="vo.order" id="r">
+										<tr>
+											<td>{$r.time|date="H:i:s",###}</td>
+											<td>{$r.id}</td>
+											<td>{$r.jincai}</td>
+											<td>{$r.del_points}</td>
+											<td>
+												<if condition="$awardnumbers['awardnumbers'] eq ''">
+													<if condition="C('is_cancel_order') eq '1'">
+														<a class="bt bt-red" onclick="del('{$r.id}')">撤销</a>
+													</if>
+													
+												<else/>
+												{$r['add_points']-$r['del_points']}
+												</if>
+												
+											</td>
+										</tr>
+									</volist>
+								</tbody>
+							</volist>
+						</table>
+					</if>
+				</empty>
+			</div>
+			<div class="tj">
+				<span>进项流水：<font color="red">{$points_tj['sum_add']|default='0'}</font></span>&nbsp;
+				<span>出项流水：<font color="red">{$points_tj['sum_del']|default='0'}</font></span>&nbsp;
+				<span>输赢：<font color="red">{$points_tj['ying']}</font></span>&nbsp;
+			</div>
+			<div class="pages">
+				{$show}
+			</div>
+		</div>
+		
+		
+		<script src='//cdn.bootcss.com/jquery/1.11.3/jquery.js'></script>
+		<script src="__PUBLIC__/layer/layer.js"></script>
+		<script>
+			function del(id){
+				layer.open({
+				    content: '您确定要取消吗？'
+				    ,btn: ['确认', '取消']
+				    ,yes: function(index){
+				      	layer.close(index);
+				      	$.ajax({
+	                       	url: "{:U('Home/Run/del')}",
+	                       	type: "post",
+	                       	data:{'id':id},
+	                       	dataType:'json',
+	                       	error:function(){
+	                       		parent.layer.open({content: '服务器开小差了~',skin: 'msg',time: 2});
+		                    },
+	                       	success:function(res){
+	                       		location.href=location.href;
+	                       	}
+	                   	});
+				    }
+				});
+			}
+			// function del_all(number){
+			// 	layer.open({
+			// 	    content: '您确定要取消吗？'
+			// 	    ,btn: ['确认', '取消']
+			// 	    ,yes: function(index){
+			// 	      	layer.close(index);
+			// 	      	$.ajax({
+	  //                      	url: "{:U('Home/Run/del_all')}",
+	  //                      	type: "post",
+	  //                      	data:{'number':number},
+	  //                      	dataType:'json',
+	  //                      	error:function(){
+	  //                      		parent.layer.open({content: '服务器开小差了~',skin: 'msg',time: 2});
+		 //                    },
+	  //                      	success:function(res){
+	  //                      		location.href=location.href;
+	  //                      	}
+	  //                  	});
+			// 	    }
+			// 	});
+			// }
+		</script>
+	</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>后台 - 会员返水</title>
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+		<link href="__PUBLIC__/Admin/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/plugins/iCheck/custom.css" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+
+	</head>
+	<style>
+		/*分页样式*/
+		.pages a,.pages span {
+		    display:inline-block;
+		    padding:4px 7px;
+		    margin:0 2px;
+		    border:1px solid #D5D4D4;
+		    -webkit-border-radius:1px;
+		    -moz-border-radius:1px;
+		    border-radius:1px;
+		}
+		.pages a,.pages li {
+		    display:inline-block;
+		    list-style: none;
+		    text-decoration:none; color:#3399ff;
+		}
+		
+		.pages a:hover{
+		    border-color:#3399ff;
+		}
+		.pages span.current{
+		    background:#3399ff;
+		    color:#FFF;
+		    font-weight:700;
+		    border-color:#3399ff;
+		}
+		.pages{
+			text-align: center;
+		}
+		/*分页样式*/
+		
+		.layui-layer{
+			top:48px !important;
+		}
+	</style>
+	<body class="gray-bg">
+		<div class="wrapper wrapper-content animated fadeInRight">	
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">
+							<h5>会员返水</h5>
+						</div>
+						<div class="ibox-content">
+							<div class="row">
+								<div class="col-sm-6">
+									<form method="post" action="{:U('Agent/Member/fs_action')}">
+										<div class="input-group">
+											<span class="input-group-btn"><h5>请选择反水日期：</h5></span>
+
+											<input type="text" placeholder="时间" id="time" name="time" value='{$time}' class="form-control">
+
+											<span class="input-group-btn">
+	                                    		<button type="submit" class="btn btn-sm btn-primary"> 确定</button> 
+	                                    	</span>
+										</div>
+									</form>
+								</div>
+							</div>
+							<div class="" >
+								<table class="table table-striped table-hover table-bordered" style="width:auto;overflow:auto;display:inline-block;">
+									<thead>
+										<tr>
+											<th>返水时间</th>
+											<th>当天总流水</th>
+											<th>当天返水金额</th>
+											<th>操作时间</th>
+											<td>操作</td>
+										</tr>
+									</thead>
+									<tbody>
+										<volist name="list" id="vo">
+											<tr>
+												<td width="200">{$vo.fs_date}</td>
+												<td width="100">{$vo.water}</td>
+												<td width="100">{$vo.fs_money}</td>
+												<td width="200">{$vo.add_time|date="Y-m-d H:i:s",###}</td>
+
+												<td width="200">
+													<a href="/Admin/Member/fs_detail?fs_id={$vo.id}" class="btn btn-success">查看明细</a>
+												</td>
+											
+											</tr>
+										</volist>
+									</tbody>
+								</table>
+							</div>
+							<div class="pages">
+								{$show}
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+			<script src="__PUBLIC__/Admin/js/jquery.min.js?v=2.1.4"></script>
+		<script src="__PUBLIC__/Admin/js/bootstrap.min.js?v=3.3.6"></script>
+		<script src="__PUBLIC__/Admin/js/plugins/iCheck/icheck.min.js"></script>
+		<script src="__PUBLIC__/Admin/js/plugins/layer/laydate/laydate.js"></script>
+		<script src="__PUBLIC__/Common/layer/layer.js"></script>
+		<script>
+			laydate({
+			  elem: '#time',
+			  max: laydate.now(), //+1代表明天，+2代表后天，以此类推
+			});
+		</script>
+		<script>
+			$(document).ready(function() {
+				$(".i-checks").iCheck({
+					checkboxClass: "icheckbox_square-green",
+					radioClass: "iradio_square-green",
+				})
+			});
+		</script>
+		<script>
+			function integral(id){
+				layer.open({
+			      	type: 2,
+			      	title: '会员上分',
+			      	shadeClose: true,
+			      	shade: false,
+			     	maxmin: true, //开启最大化最小化按钮
+			      	area: ['300px', '500px'],
+			      	content: "__APP__/Admin/Integral/index/id/" + id + ""
+			    });
+			}
+			function under(id){
+				layer.open({
+			      	type: 2,
+			      	title: '会员下分',
+			      	shadeClose: true,
+			      	shade: false,
+			     	maxmin: true, //开启最大化最小化按钮
+			      	area: ['300px', '500px'],
+			      	content: "__APP__/Admin/Integral/under/id/" + id + ""
+			    });
+			}
+				function edit(id){
+				layer.open({
+			      	type: 2,
+			      	title: '编辑',
+			      	shadeClose: true,
+			      	shade: false,
+			     	maxmin: true, //开启最大化最小化按钮
+			      	area: ['600px', '500px'],
+			      	content: "__APP__/Admin/Member/edit/id/" + id + ""
+			    });
+			}
+			function disable(id){
+				layer.confirm('确定要禁用吗？禁用后将不能登录。', {
+				  	btn: ['确定','取消'] //按钮
+				}, function(){
+				  	window.location.href="__APP__/Admin/Member/disable/id/" + id + ""
+				});
+			}
+			function endisable(id){
+				layer.confirm('确定要启用吗？', {
+				  	btn: ['确定','取消'] //按钮
+				}, function(){
+				  	window.location.href="__APP__/Admin/Member/endisable/id/" + id + ""
+				});
+			}
+		</script>
+	</body>
+
+	
+</html>

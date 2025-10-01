@@ -1,0 +1,253 @@
+/* ----- chat ----- */
+.MenuBut {
+	width: 100px;
+	vertical-align: top;
+	text-align: center;
+}
+
+.MenuBut a {
+	color: black;
+	font-weight: bold;
+}
+
+.MenuBut1 img {
+	width: 100px;
+}
+
+.MenuBut2 {
+	font-size: 26px;
+	padding-top: 15px;
+	display: block;
+}
+
+.MenuBut2 img {
+	width: 100px;
+}
+
+.f_more_table {
+	margin: 0 auto;
+}
+
+.f_more_table td {
+	text-align: center;
+	padding: 10px;
+}
+/* ----- show num ----- */
+.ShowNumList {
+	margin: 0 auto;
+	border-collapse: collapse;
+	border: 1px solid #888;
+}
+
+.ShowNumList th, .ShowNumList td {
+	border: 1px solid #888;
+}
+
+.ShowNumList2 td {
+	font-size: 28px;
+	border: 0px solid #888;
+	text-align: center;
+}
+
+.幸运飞艇num {
+	width: 40px;
+	height: 40px;
+	position: relative;
+	display: inline;
+}
+
+.幸运飞艇num-empty {
+	background-image: none !important;
+	padding:0 6px;
+}
+
+.幸运飞艇num-01 {
+	background-position: 0 0;
+}
+
+.幸运飞艇num-02 {
+	background-position: 0 -40px !important;
+}
+
+.幸运飞艇num-03 {
+	background-position: 0 -80px !important;
+}
+
+.幸运飞艇num-04 {
+	background-position: 0 -120px !important;
+}
+
+.幸运飞艇num-05 {
+	background-position: 0 -160px !important;
+}
+
+.幸运飞艇num-06 {
+	background-position: 0 -200px !important;
+}
+
+.幸运飞艇num-07 {
+	background-position: 0 -240px !important;
+}
+
+.幸运飞艇num-08 {
+	background-position: 0 -280px !important;
+}
+
+.幸运飞艇num-09 {
+	background-position: 0 -320px !important;
+}
+
+.幸运飞艇num-10 {
+	background-position: 0 -360px !important;
+}
+
+.NumCA1 {
+	color: #f00;
+}
+
+.NumCA2 {
+	color: #00f;
+}
+/*
+.NumC01 { color: #ff0; }
+.NumC02 { color: #08f; }
+.NumC03 { color: #555; }
+.NumC04 { color: #fb0; }
+.NumC05 { color: #5ee; }
+.NumC06 { color: #20f; }
+.NumC07 { color: #ccc; }
+.NumC08 { color: #f00; }
+.NumC09 { color: #b00; }
+.NumC10 { color: #0a0; }
+.NumC01, .NumC02, .NumC03, .NumC04, .NumC05, .NumC06, .NumC07, .NumC08,	.NumC09, .NumC10 {
+	text-shadow: 1px 1px 2px black;
+}
+
+.ShowNumNew1 { font-size: 24px; text-align: center; }
+.ShowNumNew2 { margin: 0 auto; border-width: 0px; }
+.ShowNumNew2 td { padding: 5px; border-width: 0px; }
+.ShowNumNew21, .ShowNumNew22, .ShowNumNew23 {
+	width: 100px; height: 90px; font-size: 64px;
+	text-align: center; color: #fff; text-shadow: 3px 3px 4px black;
+}
+.ShowNumNew21 { background: transparent url(../images/award100-1.png) center center no-repeat; }
+.ShowNumNew22 { background: transparent url(../images/award100-2.png) center center no-repeat; }
+.ShowNumNew23 { background: transparent url(../images/award100-3.png) center center no-repeat; }
+.ShowNumNew24 { font-size: 36px; text-shadow: 2px 2px 3px black; }
+.ShowNumList { margin: 0 auto; border-collapse: collapse; border: 1px solid #888; }
+.ShowNumList th, .ShowNumList td { font-size: 28px; border: 1px solid #888; padding: 3px; }
+.ShowNumList2 td {
+	font-size: 28px; border: 0px solid #888; padding: 3px;
+	background-image: none !important; text-align:center;
+}
+*/
+/* ----- color table ----- */
+.TableColor1 th {
+	background: transparent url(../img/bg10-r.png) center center;
+}
+
+.TableColor1 tr:nth-child(2n) td {
+	background: transparent url(../img/bg10-b.png) center center;
+}
+
+.TableColor1 tr:nth-child(2n+1) td {
+	background: transparent url(../img/bg10-g.png) center center;
+}
+
+/* ----- hist ----- */
+.HistUser, .HistUser td {
+	margin: 0 auto;
+	border-collapse: collapse;
+	border: 0px solid #888;
+}
+
+.HistUser td {
+	font-size: 24px;
+	color: #000;
+}
+
+.HistUser td img {
+	width: 96px;
+	height: 96px;
+	padding: 10px 10px 0 10px;
+}
+
+.HistList {
+	margin: 0 auto;
+}
+
+.HistList, .HistList td, .HistList th {
+	border-collapse: collapse;
+	font-size: 18px;
+	border: 1px solid #888;
+	padding: 3px;
+}
+
+.HistList th {
+	background: transparent url(../images/bg25-g.png) center center;
+}
+
+/* ----- acc - Pasv ----- */
+.AccPvTab {
+	margin: auto;
+}
+
+.AccPvTab td, .AccPvTab th, .AccPvTab input {
+	font-size: 24px;
+}
+
+.AccPvTab img {
+	vertical-align: middle;
+}
+
+.AccPvTab th {
+	text-align: right;
+	padding: 10px;
+}
+/*----- acc BILL -----*/
+.AccTrans {
+	margin: 0 auto;
+	border-collapse: collapse;
+}
+
+.AccTrans td, .AccTrans th, .AccTrans input {
+	font-size: 28px;
+	padding: 5px;
+	border: 1px solid gray;
+}
+/*----- acc HIST -----*/
+.AccHist {
+	margin: 0 auto;
+	border-collapse: collapse;
+}
+
+.AccHist td, .AccHist th, .AccHist input {
+	font-size: 18px;
+	padding: 3px;
+	border: 1px solid gray;
+}
+
+/*----- rule -----*/
+.RuleT0 {
+	font-size: 28px;
+	line-height:1.5em;
+	padding:15px;
+}
+.RuleT1 {
+	color: red;
+	font-size: 32px;
+	text-align: center;
+	font-weight: bold;
+}
+.RuleT2 {
+	color: #f73;
+	font-size: 32px;
+	text-align: left;
+	font-weight: bold;
+}
+.RuleT3 {
+	color: #55F;
+	font-size: 28px;
+	text-align: left;
+	font-weight: bold;
+}

@@ -1,0 +1,81 @@
+<nav class="bottom-nav">
+    <a href="/index.php/Home/Shou/index" class="nav-item {$a==1?'active':''}">
+        <img src="/images/menu1{$a==1?'':'_hui'}.png" alt="首页">
+        <span>首页</span>
+    </a>
+    <a href="/index.php/Home/Run/index" class="nav-item {$a==6?'active':''}">
+        <img src="/images/pay.png" alt="产品">
+        <span>产品</span>
+    </a>
+    <a href="{:C('zxkf')}" class="nav-item">
+        <img src="/images/menu3.png" alt="客服">
+        <span>客服</span>
+    </a>
+    <a href="{:U('Home/Run/trend')}" class="nav-item {$a==2?'active':''}">
+        <img src="/images/menu2{$a==2?'_red':''}.png" alt="走势">
+        <span>走势</span>
+    </a>
+    <a href="{:U('Home/User/index')}" class="nav-item {$a==5?'active':''}">
+        <img src="/images/menu5{$a==5?'_red':''}.png" alt="我的">
+        <span>我的</span>
+    </a>
+    <div class="safe-area"></div>
+    <!-- iOS 安全区占位 -->
+</nav>
+
+<style>
+    /* 预留底部导航空间，包含安全区 */
+    body { padding-bottom: calc(60px + env(safe-area-inset-bottom)); }
+
+    .bottom-nav {
+        position: fixed;
+        left: 0; right: 0; bottom: 0;
+        height: 60px;
+        background: rgba(0,0,0,0.85);
+        border-top: 1px solid rgba(255,255,255,0.12);
+        backdrop-filter: blur(8px);
+        display: flex;
+        align-items: stretch;
+        justify-content: space-around;
+        z-index: 2147483647; /* 提升层级，确保在一切覆盖层之上 */
+        pointer-events: auto;
+    }
+
+    .bottom-nav .nav-item {
+        flex: 1;
+        text-align: center;
+        text-decoration: none;
+        color: rgba(255,255,255,0.85);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    /* 防止其他覆盖层抢占事件，保障导航可点 */
+    .bottom-nav, .bottom-nav * { pointer-events: auto; }
+
+    .bottom-nav .nav-item img {
+        width: 22px; height: 22px; display: block; margin-bottom: 2px;
+        filter: grayscale(100%) opacity(0.75);
+        pointer-events: none; /* 不拦截点击，事件交给 a */
+    }
+
+    .bottom-nav .nav-item:hover { color: #fff; }
+    .bottom-nav .nav-item.active { color: #fff; }
+    .bottom-nav .nav-item.active img { filter: none; }
+
+    /* iOS 安全区 */
+    .bottom-nav .safe-area {
+        position: absolute;
+        left: 0; right: 0; bottom: 0;
+        height: env(safe-area-inset-bottom);
+        height: constant(safe-area-inset-bottom);
+        background: rgba(0,0,0,0.85);
+        pointer-events: none; /* 安全区不拦截点击 */
+    }
+
+    /* 移除 .tips 的样式，避免覆盖底部导航导致无法点击 */
+</style>
