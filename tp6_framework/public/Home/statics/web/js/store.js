@@ -180,7 +180,7 @@ var store = {
             roomGroup += '<pre style="font-size: 10px;">'+msg.statistics+'</pre></li></ul></div>';
 			$(".room .roomContent").append(roomGroup);
 
-			if(userinfo.lottery_type ==2 ||userinfo.lottery_type == 9 || userinfo.lottery_type ==4 || userinfo.lottery_type ==5 || userinfo.lottery_type == 6 || userinfo.lottery_type == 11 || userinfo.lottery_type == 13){  //北京PK10和幸运飞艇
+			if(userinfo.lottery_type ==2 ||userinfo.lottery_type == 9 || userinfo.lottery_type ==4 || userinfo.lottery_type ==5 || userinfo.lottery_type == 6 || userinfo.lottery_type == 11 || userinfo.lottery_type == 13){  //北京幸运飞艇和幸运飞艇
 			    var result =msg.result.split(",");
 			    // if(userinfo.lottery_type ==4 || userinfo.lottery_type ==5 || userinfo.lottery_type == 6){
 			        var html = '第<label id="issue2">'+dataIssue+'</label>期 '

@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <meta content="no" name="apple-touch-fullscreen" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <title>登录</title>
+  
+   
+	<link rel="stylesheet" href="/images/css/common.css" />
+    <link href="/images/css/style.css" rel="stylesheet" />
+    <link href="/images/css/weui.min.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="/images/js/zepto.min.js"></script>
+    <script type="text/javascript" src="/images/js/weui.min.js"></script>
+    <script type="text/javascript" src="/images/js/ajaxutil.js"></script>
+    <script type="text/javascript" src="/images/js/loadmore.js"></script>
+	<script src="/images/js/sizeChange.js"></script>
+	<style>
+		.formDiv{padding:.2rem .39rem .84rem .39rem;background:#f7f4f2;border-radius:.12rem;box-shadow:0 .1rem .2rem rgba(0,0,0,.1);margin:0 .2rem}
+		.weui-cells{background:0 0}
+		.weui-cells::before{border:0}
+		.weui-cell{background:#e8e0dd;border:1px #dbd3ce solid;margin-top:.3rem;border-radius:.06rem}
+		.weui-input{background:0;border:0;text-align:left}
+		::placeholder{color:#ad978e}
+		.login .apply .btn{background:#d53434;background-image:-webkit-gradient(linear,0 0,0 100%,from(#e54d4d),to(#cf2c2c));width:100%;line-height:.74rem;height:.74rem;box-shadow:0 .05rem .1rem rgba(0,0,0,.16);font-weight:700}
+		.login .apply .btn1{font-weight:400!important;background:#e8e0dd;color:#4c4743;background-image:-webkit-gradient(linear,0 0,0 100%,from(#eee2dd),to(#e2d3cd));width:100%;line-height:.74rem;height:.74rem;box-shadow:0 .05rem .1rem rgba(0,0,0,.16);font-weight:700}
+		.login .apply .btn1:hover{border:1px #d53434 solid;background:#d53434;background-image:none;background-image:-webkit-gradient(linear,0 0,0 100%,from(#e54d4d),to(#cf2c2c));color:#fff}
+		.weui-cell{padding:0}
+		.weui-cell .weui-input{height:.75rem;padding:0;text-indent:.9rem}
+		.weui-cell .weui-cell__bd{position:relative}
+		.weui-cell:nth-child(1) .weui-cell__bd::after{position:absolute;content:"";display:block;left:0;top:0;width:.82rem;height:.75rem;background:url(/images/username.png) left top no-repeat;background-size:auto;background-size:.85rem .75rem}
+		.weui-cell:nth-child(2) .weui-cell__bd::after{position:absolute;content:"";display:block;left:0;top:0;width:.82rem;height:.75rem;background:url(/images/password.png) left top no-repeat;background-size:auto;background-size:.85rem .75rem}
+
+	</style>
+</head>
+<body style="background: #efeae8;">
+<div class="nav" style="background: #d02e2e;">
+	<h3>用户登录</h3>
+</div>
+<div class=" login" id="main" style="padding-top: 0.8rem;">
+    <input type="hidden" id="isHasLogin" value="" />
+    <div class="page">
+        <div class="banner" style="height: 2.5rem"><img style="width: auto;height: 2rem;margin: 0 auto; display: block;" src="/images/login.png" /></div>
+        <div class="formDiv">
+            <form class="login" method="post"action="{:U('Home/Index/login')}" id="LoginForm">
+                <div class="weui-cells weui-cells_form">
+                    <div class="weui-cell">
+                        <div class="weui-cell__bd">
+                            <input class="weui-input weui-input1" type="text" id="username" name="username" placeholder="请输入用户名" />
+                        </div>
+                    </div>
+                    <div class="weui-cell">
+                        <div class="weui-cell__bd">
+                            <input class="weui-input weui-input2" type="password" id="password" name="password" placeholder="请输入密码" />
+                        </div>
+                    </div>
+                   <!-- <div class="weui-cell weui-cell_vcode">
+                        <div class="weui-cell__hd"><label class="weui-label">图片验证码</label></div>
+                        <div class="weui-cell__bd">
+                            <input class="weui-input" name="pic_code" id="pic_code" type="text" maxlength="4" placeholder="请输入图片验证码" />
+                        </div>
+                        <div class="weui-cell__ft">
+                            <img class="weui-vcode-img" src="/images/756a308094864fcfab244e8e8c9412c4.gif" id="img-code" />
+                        </div>
+                    </div>-->
+                </div>
+                <div class="apply">
+                    <button type="submit" class="btn" id="apply">登 录</button>
+                </div>
+				<div class="apply">
+					<button type="button" onclick="window.location.href='/Home/Index/register'" class="btn btn1">立即注册</button>
+				</div>
+                <!--<div class="apply">-->
+                    <!--<input type="hidden" id="wxLogin" value="wxdengru" />-->
+                    <!--<button type="button" onclick="window.location.href='/Home/Index/wxlogin'" style="background: #37c46f" class="btn" id="wxsq">微信登录</button>-->
+                <!--</div>-->
+            </form>
+        </div>
+    </div>
+</div>
+
+ 
+		<script src="__PUBLIC__/Admin/js/jquery.min.js?v=2.1.4"></script>
+		<script src="__PUBLIC__/Admin/js/bootstrap.min.js?v=3.3.6"></script>
+		
+		<script src="__PUBLIC__/Common/js/ajaxForm.js"></script>
+		<script src="__PUBLIC__/layer/layer.js"></script>
+		<script type="text/javascript">
+		
+		if(localStorage.getItem('num')){
+			var chos = $('.am-list-body').find('.am-list-item').eq(localStorage.getItem('num'));
+			
+			chos.find('.fa').css('color','rgb(229, 49, 52)');
+			chos.find('.fa').addClass('fa-check-square-o');
+			chos.find('.fa').removeClass('fa-square-o');
+			
+			chos.siblings().find('.fa').css('color','rgb(108, 108, 108)');
+			chos.siblings().find('.fa').addClass('fa-square-o');
+			chos.siblings().find('.fa').removeClass('fa-check-square-o');
+		}
+		
+			$(document).on('click','.change_load',function(){
+				$('.qhlx').show();
+			}).on('click','.mask',function(){
+				$('.qhlx').hide()
+			}).on('click','.am-list-item',function(){
+				localStorage.setItem('num',$(this).index());
+				$(this).find('.fa').css('color','rgb(229, 49, 52)');
+				$(this).find('.fa').addClass('fa-check-square-o');
+				$(this).find('.fa').removeClass('fa-square-o');
+				
+				$(this).siblings().find('.fa').css('color','rgb(108, 108, 108)');
+				$(this).siblings().find('.fa').addClass('fa-square-o');
+				$(this).siblings().find('.fa').removeClass('fa-check-square-o');
+			});
+
+			$(function(){
+				$('#LoginForm').ajaxForm({
+					beforeSubmit: checkForm,
+					success: complete, 
+					dataType: 'json'
+				});
+				function checkForm(){
+					if( '' == $.trim($('#username').val())){
+						layer.alert('用户名不能为空', {icon: 5}, function(index){
+			 			layer.close(index);
+						$('#username').focus(); 
+						});
+						return false;
+					}
+
+
+					if( '' == $.trim($('#password').val())){
+						layer.alert('密码不能为空', {icon: 5}, function(index){
+			 			layer.close(index);
+						$('#password').focus(); 
+						});
+						return false;
+					}
+				}
+				function complete(data){
+					if(data.status==1){
+						$('.btn').attr('disabled','disabled');
+						alert('登陆成功');
+						setTimeout(function(){
+							window.location.href=data.url;
+						},1000);
+						
+					}else{
+						alert('账号密码错误');
+						$('#password').val('').focus();
+						return false;	
+					}
+				}
+			});
+		</script>
+</body>
+</html>

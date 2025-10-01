@@ -20,7 +20,7 @@ class Caiji extends BaseController
     public function onWorkerStart()
     {
         $typearr = [
-            1 => 'pk10'
+            1 => '幸运飞艇'
         ];
         
         // 添加定时器，每6秒执行一次数据采集
@@ -40,8 +40,8 @@ class Caiji extends BaseController
      */
     private function collectData()
     {
-        // 采集PK10数据
-        $this->collectPk10Data();
+        // 采集幸运飞艇数据
+        $this->collect幸运飞艇Data();
         
         // 采集时时彩数据
         $this->collectSscData();
@@ -51,9 +51,9 @@ class Caiji extends BaseController
     }
     
     /**
-     * 采集PK10数据
+     * 采集幸运飞艇数据
      */
-    private function collectPk10Data()
+    private function collect幸运飞艇Data()
     {
         // 这里可以调用多个数据源
         $apis = [
@@ -67,19 +67,19 @@ class Caiji extends BaseController
                 $result = json_decode($data, true);
                 
                 if ($result && isset($result['result'])) {
-                    $this->processPk10Data($result['result']);
+                    $this->process幸运飞艇Data($result['result']);
                 }
             } catch (\Exception $e) {
                 // 记录错误日志
-                error_log("PK10数据采集失败: " . $e->getMessage());
+                error_log("幸运飞艇数据采集失败: " . $e->getMessage());
             }
         }
     }
     
     /**
-     * 处理PK10数据
+     * 处理幸运飞艇数据
      */
-    private function processPk10Data($data)
+    private function process幸运飞艇Data($data)
     {
         foreach ($data as $item) {
             $periodnumber = $item['preDrawIssue'] ?? '';
@@ -91,7 +91,7 @@ class Caiji extends BaseController
                 $exists = Db::table('caiji')
                     ->where([
                         'periodnumber' => $periodnumber,
-                        'game' => 'pk10'
+                        'game' => '幸运飞艇'
                     ])
                     ->find();
                     
@@ -100,7 +100,7 @@ class Caiji extends BaseController
                         'periodnumber' => $periodnumber,
                         'awardnumbers' => $awardNumbers,
                         'awardtime' => $awardTime,
-                        'game' => 'pk10',
+                        'game' => '幸运飞艇',
                         'addtime' => time()
                     ];
                     

@@ -1,0 +1,146 @@
+
+    
+body,
+html {
+    height: 100%;
+    color: #333;
+    font-size: 0.24rem;
+    font-family: "微软雅黑", Verdana, Arial, Helvetica, sans-serif;
+    background: url(../bg6.png);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+}
+
+.container{
+    width: 6.1rem;
+    margin: 0 auto;
+    padding: 0 0 1.2rem;
+}
+.recordType{
+    background: #5a96f0;
+    color: #fff;
+    padding: 0.1rem;
+}
+.recordType ul{
+	border: 1px solid #fff;
+    border-radius: 0.1rem;
+}
+.recordType ul li{
+	-webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    height: 0.7rem;
+    line-height: 0.7rem;
+    font-size: 0.26rem;
+    font-weight: bold;
+    text-align: center;
+    
+}
+
+.recordType ul li:nth-child(2){
+	border-left: 1px solid #fff;
+	border-right: 1px solid #fff;
+}
+.recordType ul li.active{
+	color: #5a96f0;
+	background: #fff;
+}
+.content{
+	margin-top: 0.15rem;
+}
+.title p{
+	-webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    text-align: center;
+    color: #fff;
+    background: #6da1ef;
+}
+
+.conBox li p,
+.conBox li div{
+	display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+	-webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    height: 0.9rem;
+    text-align: center;
+    color: #888;
+    font-size: 0.22rem;
+    border-bottom: 1px dashed #e4e4e4;
+}
+.conBox li p.success{
+	color: #00CC00;
+}
+.conBox li p.fail{
+	color: #c92100;
+}
+.conBox li p.going{
+	color: #009DD9;
+}
+.conBox li div{
+	display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+.conBox li div span{
+	font-size: 0.2rem;
+}
+
+.condition{
+	-webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    background: transparent;
+    padding-bottom: 0.15rem;
+}
+.condition input{
+	width: 2rem;
+	line-height: 0.5rem;
+	padding-left: 0.1rem;
+	border: 1px solid #ccc;
+    background: #f8f8f8;
+}
+.condition a{
+	padding: 0 0.15rem;
+	line-height: 0.5rem;
+	text-align: center;
+	color: #fff;
+	margin-left: 0.15rem;
+}
+.condition a img{
+    width: 70%;
+}
+.content2,
+.content3{
+	display: none;
+}

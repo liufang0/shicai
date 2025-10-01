@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>后台 - 删除订单数据</title>
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+
+		
+		<link href="__PUBLIC__/Admin/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/plugins/iCheck/custom.css" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/animate.min.css" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+
+	</head>
+
+	<body class="gray-bg">
+		<div class="wrapper wrapper-content animated fadeInRight">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">
+							删除订单数据 (删除后，将彻底删除订单数据，还有统计数据，谨慎操作)
+						</div>
+						<div class="ibox-content">
+							<form class="form-horizontal" method="post" action="{:U('Admin/Order/del_order')}" name="basic_validate" enctype="multipart/form-data" id="signupForm">
+								<div class="form-group">
+									<label class="col-sm-2 control-label">开始时间</label>
+									<div class="col-sm-6">
+										<input type="text" placeholder="开始时间" id="starttime" name="starttime" value='{$starttime}' class="form-control">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label">结束时间</label>
+									<div class="col-sm-6">
+										<input type="text" placeholder="结束时间" id="endtime" name="endtime" value='{$endtime}' class="form-control">
+									</div>
+								</div>
+							
+								<div class="hr-line-dashed"></div>
+								<div class="form-group">
+									<div class="col-sm-4 col-sm-offset-2">
+										<button class="btn btn-primary" type="submit">确定删除</button>
+										<a class="btn btn-danger" href="{:U('Admin/Order/index')}">取消</a>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script src="__PUBLIC__/Admin/js/jquery.min.js?v=2.1.4"></script>
+		<script src="__PUBLIC__/Admin/js/bootstrap.min.js?v=3.3.6"></script>
+		<script src="__PUBLIC__/Admin/js/content.min.js?v=1.0.0"></script>
+		<script src="__PUBLIC__/Common/js/ajaxForm.js"></script>
+		<script src="__PUBLIC__/Admin/js/plugins/layer/laydate/laydate.js"></script>
+		<script src="__PUBLIC__/Common/layer/layer.js"></script>
+		<script>
+			laydate({
+			  elem: '#starttime',
+			  istime: true,
+			  format: 'YYYY-MM-DD hh:mm:ss', //日期格式
+			  max: laydate.now(), //+1代表明天，+2代表后天，以此类推
+			});
+			laydate({
+			  elem: '#endtime',
+			  istime: true,
+			  format: 'YYYY-MM-DD hh:mm:ss', //日期格式
+			  max: laydate.now(), //+1代表明天，+2代表后天，以此类推
+			});
+		</script>
+		<script>
+			$(function(){
+				$('#signupForm').ajaxForm({
+					beforeSubmit: checkForm,
+					success: complete, 
+					dataType: 'json'
+				});
+				function checkForm(){
+					if( '' == $.trim($('#starttime').val())){
+						layer.alert('选择开始时间', {icon: 5}, function(index){
+			 			layer.close(index);
+						$('#starttime').focus(); 
+						});
+						return false;
+					}
+
+					if( '' == $.trim($('#endtime').val())){
+						layer.alert('选择结束时间', {icon: 5}, function(index){
+			 			layer.close(index);
+						$('#endtime').focus(); 
+						});
+						return false;
+					}
+				}
+				function complete(data){
+					if(data.status==1){
+						$('.btn-primary').attr('disabled','disabled');
+						layer.msg(data.info, function(index){
+			 				layer.close(index);
+							window.location.href=data.url;
+						});
+					}else{
+						layer.msg(data.info);
+						return false;	
+					}
+				}
+			});
+		</script>
+		
+	</body>
+
+</html>

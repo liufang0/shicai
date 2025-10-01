@@ -1,0 +1,166 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>{:C('sitename')}-充值申请</title>
+		<meta name="format-detection" content="telephone=no,email=no"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+		<link href="__PUBLIC__/Admin/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/animate.min.css" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+		<link href="__PUBLIC__/Home/css/page.css" rel="stylesheet">
+	</head>
+	<style type="text/css">
+		body{
+			overflow-y: scroll;
+		}
+		.facesj{
+			display: inline-block;
+			background-color: #1fa1dc;
+			width: 60px;
+		    height: 32px;
+		    line-height: 32px;
+		    border-radius: 3px;
+		    text-align: center;
+		    font-size: 14px;
+		    margin-top:6px;
+		    border: 1px solid #1fa1dc;
+		    color: #FFF;
+		    margin-left:10px;
+		}
+		img{max-width: 100%}
+		.sk{width:70%;}
+		.middle-box{padding-top:6px;}
+		.zfbimg{display: none;}
+		.ptitle{
+			height: 45px;
+			line-height: 45px;
+		}
+	</style>
+	<body>
+		<div class="header" style="background-color: #000;">
+		  <div class="all_w ">
+		    <div class="gofh"> <a href="javascript:history.back()"><img src="/Public/Home/img/jt_03.jpg"></a> </div>
+		   <!--  <div class="ttwenz">
+		      <h4>在线充值</h4>
+		      <h5>微信安全充值</h5>
+
+		    </div> -->
+		     <!--div class="ptitle">
+		      在线充值
+		        <a href="{:U('Home/Fen/xiapage')}" class="backgame">下分</a>
+		    </div-->
+		  </div>
+		</div>
+		<div class="middle-box text-center loginscreen  animated fadeInDown">
+			<div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label" style="width:30%;text-align: right;">充值类型</label>
+					<div class="col-sm-6" style="width:60%;display: inline-block;">
+						{$wayname}
+					</div>
+				</div>
+				<div class="wximg">
+					<img class="sk" src="<if condition="$pay[wx_paycode] neq ''">__ROOT__/Uploads/{$pay.wx_paycode}<else/>__PUBLIC__/Admin/img/no_img.jpg</if>" >
+				</div>
+				<div class="zfbimg">
+					<img class="sk" src="<if condition="$pay[zfb_paycode] neq ''">__ROOT__/Uploads/{$pay.zfb_paycode}<else/>__PUBLIC__/Admin/img/no_img.jpg</if>" >
+				</div>
+				<div class="bankinfo" style="display:none">
+					<p style="text-align:left">银行名称 : {$pay.bank_info.bankname}</p>
+					<p style="text-align:left">帐户名称 : {$pay.bank_info.bankuser}</p>
+					<p style="text-align:left">银行账号 : {$pay.bank_info.banknum}</p>
+					<p style="text-align:left">开户行 : {$pay.bank_info.bankaddress}</p>
+				</div>
+				<form class="m-t form-horizontal " role="form" method="post" action="{:U('Home/Fen/add')}" id="LoginForm">
+				<div class="form-group">
+					<label class="col-sm-2 control-label" style="width:30%;text-align: right;">昵称：</label>
+					<div class="col-sm-6" style="width:60%;display: inline-block;text-align: left">
+						{$userinfo.nickname}
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label" style="width:30%;text-align: right;">账户余额：</label>
+					<div class="col-sm-6" style="width:60%;display: inline-block;text-align: left">
+						{$userinfo.points}
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label" style="width:30%;text-align: right;">充值金额：</label>
+					<div class="col-sm-6" style="width:60%;display: inline-block;">
+						<input type="text" id="money" name="money" class="form-control" required  onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}">
+					</div>
+				</div>
+				<input type="hidden" name="id" value="{$userinfo.id}">
+				<button type="submit" class="btn btn-success block full-width m-b">充值申请</button>
+			</form>
+			</div>
+		</div>
+
+		<script src="__PUBLIC__/Admin/js/jquery.min.js?v=2.1.4"></script>
+		<script src="__PUBLIC__/Admin/js/bootstrap.min.js?v=3.3.6"></script>
+		
+		<script src="__PUBLIC__/Common/js/ajaxForm.js"></script>
+		<script src="__PUBLIC__/layer/layer.js"></script>
+		<script type="text/javascript">
+			if ({$way} == 1) {
+					$('.wximg').show();
+					$('.zfbimg').hide();
+					$('.bankinfo').hide();
+				} else if({$way} ==2){
+					$('.wximg').hide();
+					$('.zfbimg').show();
+					$('.bankinfo').hide();
+				} else if({$way} ==3){
+					$('.wximg').hide();
+					$('.zfbimg').hide();
+					$('.bankinfo').show();
+				}
+			
+			$('.type_choose').change(function(){
+				var index = $(this).val();
+				if (index == 1) {
+					$('.wximg').show();
+					$('.zfbimg').hide();
+					$('.bankinfo').hide();
+				} else if(index ==2){
+					$('.wximg').hide();
+					$('.zfbimg').show();
+					$('.bankinfo').hide();
+				} else if(index ==3){
+					$('.wximg').hide();
+					$('.zfbimg').hide();
+					$('.bankinfo').show();
+				}
+			})
+
+			$(function(){
+				$('#LoginForm').ajaxForm({
+					beforeSubmit: checkForm,
+					success: complete, 
+					dataType: 'json'
+				});
+				function checkForm(){
+					
+				}
+				function complete(data){
+					if(data.status==1){
+						$('.btn').attr('disabled','disabled');
+						layer.msg(data.info, function(index){
+			 				layer.close(index);
+							window.location.href=data.url;
+						});
+					}else{
+						layer.msg(data.info);
+						$('#password').val('').focus();
+						return false;	
+					}
+				}
+			});
+		</script>
+		</script>
+	</body>
+
+</html>

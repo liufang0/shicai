@@ -1,12 +1,11 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
-require_once __DIR__ . '/tp6_framework/vendor/autoload.php';
 
 use Workerman\Worker;
 use Workerman\Timer;
 use think\facade\Db;
 use think\facade\Config;
-use app\controller\WorkermanPk10;
+use app\controller\Workerman幸运飞艇;
 use app\controller\WorkermanSsc;
 use app\controller\WorkermanXyft;
 use app\controller\WorkermanLhc;
@@ -19,8 +18,8 @@ use app\controller\WorkermanJnd28;
 
 // 游戏服务器配置
 $game_servers = [
-    'pk10' => [
-        'class' => WorkermanPk10::class,
+    '幸运飞艇' => [
+        'class' => Workerman幸运飞艇::class,
         'socket' => 'websocket://0.0.0.0:15531',
         'count' => 2
     ],

@@ -176,7 +176,7 @@ start_services() {
     log_info "WebSocket Games: ws://localhost:15531-15538"
     log_info ""
     log_info "Available games:"
-    log_info "  - PK10:  ws://localhost:15531"
+    log_info "  - 幸运飞艇:  ws://localhost:15531"
     log_info "  - SSC:   ws://localhost:15532"  
     log_info "  - LHC:   ws://localhost:15533"
     log_info "  - BJ28:  ws://localhost:15534"

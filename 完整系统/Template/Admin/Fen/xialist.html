@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>后台 - 下分申请</title>
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+
+		
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+		<link href="__PUBLIC__/Admin/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/plugins/iCheck/custom.css" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+
+	</head>
+	<style>
+		/*分页样式*/
+		.pages a,.pages span {
+		    display:inline-block;
+		    padding:4px 7px;
+		    margin:0 2px;
+		    border:1px solid #D5D4D4;
+		    -webkit-border-radius:1px;
+		    -moz-border-radius:1px;
+		    border-radius:1px;
+		}
+		.pages a,.pages li {
+		    display:inline-block;
+		    list-style: none;
+		    text-decoration:none; color:#3399ff;
+		}
+		
+		.pages a:hover{
+		    border-color:#3399ff;
+		}
+		.pages span.current{
+		    background:#3399ff;
+		    color:#FFF;
+		    font-weight:700;
+		    border-color:#3399ff;
+		}
+		.pages{
+			text-align: center;
+		}
+		/*分页样式*/
+		
+		.layui-layer{
+			top:48px !important;
+		}
+	</style>
+	<body class="gray-bg">
+		<div class="wrapper wrapper-content animated fadeInRight">	
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">
+							<h5>下分申请</h5>
+						</div>
+						<div class="ibox-content">
+							<div class="row">
+								<div class="col-sm-3">
+									<form method="post" action="{:U('Admin/Fen/xialist')}">
+										<div class="input-group">
+											<input type="text" placeholder="请输入UID" name="uid" value="{$uid}" class="input-sm form-control"> <span class="input-group-btn">
+	                                    	<button type="submit" class="btn btn-sm btn-primary"> 搜索</button> </span>
+										</div>
+									</form>
+								</div>
+							</div>
+							<div class="" >
+								<table class="table table-striped table-hover table-bordered" style="width:auto;overflow:auto;display:inline-block;">
+									<thead>
+										<tr>
+											<!-- <th></th> -->
+											<th>UID</th>
+											<th>头像</th>
+											<th>昵称</th>
+											<th>下分金额</th>
+											<th>余额</th>
+											<th>提现方式</th>
+											<th>帐号</th>
+											<th>银行</th>
+											<th>姓名</th>
+											<th>申请时间</th>
+											<th>下分时间</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+									<tbody>
+										<volist name="list" id="vo">
+											<tr>
+												<!-- <td width="20"><input type="checkbox" class="i-checks" name="ids[]"></td> -->
+												<td width="60">{$vo.uid}</td>
+												<td width="60"><img src="{$vo.headimgurl}"/></td>
+												<td width="100">{$vo.nickname}</td>
+												<td width="100">{$vo.money}</td>
+												<td width="100">{$vo.balance}</td>
+												<td width="100" style="text-align: center;">
+													<if condition="$vo['type'] eq 1">微信</if>
+													<if condition="$vo['type'] eq 2">支付宝</if>
+													<if condition="$vo['type'] eq 3">银行卡</if>
+												</td>
+												<td width="50" style="text-align: center;">
+													<if condition="$vo['type'] eq 1">{$vo.wx_account}</if>
+													<if condition="$vo['type'] eq 2">{$vo.alipay_account}</if>
+													<if condition="$vo['type'] eq 3">{$vo.bank_account}<br>{$vo.bank_address}<br>{$vo.name}</if>
+												</td>
+												<td width="100">{$vo.back_address}</td>
+												<td width="100">{$vo.back_name}</td>
+												
+												<td width="150">{$vo.addtime|date="Y-m-d H:i:s",###}</td>
+												<td width="150"><if condition="$vo.xftime neq 0">{$vo.xftime|date="Y-m-d H:i:s",###}<else/>--</if></td>
+												<td>
+													<if condition="$vo.status eq 0">
+														<a onclick="under('{$vo.uid}','{$vo.id}')" class="btn btn-warning">下分</a>
+														<a onclick="ignore('{$vo.id}')" class="btn btn-primary">忽略</a>
+													<elseif condition="$vo.status eq 1"/>
+														<font color="red">已下分</font>
+													<elseif condition="$vo.status eq 2"/>
+														<font color="red">已忽略</font>
+													</if>
+												</td>
+											</tr>
+										</volist>
+									</tbody>
+								</table>
+							</div>
+							<div class="pages">
+								{$show}
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<script src="__PUBLIC__/Admin/js/jquery.min.js?v=2.1.4"></script>
+		<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+		<script src="__PUBLIC__/Admin/js/plugins/iCheck/icheck.min.js"></script>
+		<script src="__PUBLIC__/Common/layer/layer.js"></script>
+		<script>
+			$(document).ready(function() {
+				$(".i-checks").iCheck({
+					checkboxClass: "icheckbox_square-green",
+					radioClass: "iradio_square-green",
+				})
+			});
+		</script>
+		<script>
+			function under(id,fid){
+				layer.open({
+			      	type: 2,
+			      	title: '会员下分',
+			      	shadeClose: true,
+			      	shade: false,
+			     	maxmin: true, //开启最大化最小化按钮
+			      	area: ['300px', '500px'],
+			      	content: "__APP__/Admin/Fen/under?id=" + id + "&type=2&fid="+fid
+			    });
+			}
+		 
+			function ignore(id){
+				layer.confirm('确定忽略吗？', {
+				  	btn: ['确定','取消'] //按钮
+				}, function(){
+				  	window.location.href="__APP__/Admin/Fen/ignorexia/id/" + id + ""
+				});
+			}
+		</script>
+	</body>
+
+	
+</html>

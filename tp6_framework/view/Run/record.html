@@ -263,7 +263,7 @@
 								<div data-order='<?=json_encode($awardnumbers,1)?>' data-json='<?=json_encode($vo,1);?>' class="game-order-box">
 									<div class="game-order-list">
 										<div><if condition="$vo['game'] eq 'xyft'">幸运飞艇
-												<elseif condition="$vo['game'] eq 'pk10'" />极速赛车
+												<elseif condition="$vo['game'] eq '幸运飞艇'" />极速赛车
 												<elseif condition="$vo['game'] eq 'er75sc'" />极速赛车
 												<elseif condition="$vo['game'] eq 'bj28'" />螞蟻收益
 												<elseif condition="$vo['game'] eq 'jnd28'" />螞蟻收益
@@ -445,7 +445,7 @@
 				game = '北京幸运28';
 			}else if(json.game == 'jnd28'){
 				game = '螞蟻收益';
-			}else if(json.game == 'pk10'){
+			}else if(json.game == '幸运飞艇'){
 				game = '极速赛车';
 				json.game = 'jssc';
 			}

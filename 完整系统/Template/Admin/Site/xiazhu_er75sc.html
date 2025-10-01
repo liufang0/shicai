@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>后台 - 极速赛车下注配置</title>
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+
+		
+		<link href="__PUBLIC__/Admin/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/plugins/iCheck/custom.css" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/animate.min.css" rel="stylesheet">
+		<link href="__PUBLIC__/Admin/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+
+	</head>
+
+	<body class="gray-bg">
+		<div class="wrapper wrapper-content animated fadeInRight">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">
+							<h5>极速赛车下注配置 </h5><span>（修改后需要重启服务生效）</span>
+							<div class="ibox-tools">
+								<a class="collapse-link">
+									<i class="fa fa-chevron-up"></i>
+								</a>
+							</div>
+						</div>
+						<div class="ibox-content">
+							<form id="signform" action="{:U('Admin/Site/xiazhu_er75sc')}" method="post" class="form-horizontal">
+								<div class="form-group">
+									<label class="col-sm-2 control-label">单笔最低点数</label>
+									<div class="col-sm-6">
+										<input type="text" name="er75scqi_min_point" value="{:C('er75scqi_min_point')}" placeholder="用户每期最低点数" class="form-control">
+									</div>
+								</div>
+									<div class="form-group">
+									<label class="col-sm-2 control-label">用户每期最高点数</label>
+									<div class="col-sm-6">
+										<input type="text" name="er75scqi_max_point" value="{:C('er75scqi_max_point')}" placeholder="用户每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="hr-line-dashed"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">1~10名猜大小单双</label>
+								    <div class="col-sm-4">
+										<input type="text" name="er75sc_dxds" value="{:C('er75sc_dxds')}" placeholder="输入赔率" class="form-control">
+									</div>
+									 <div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('er75sc_xz_open')['dxds'] eq 1">checked</if> class="i-checks" name="er75sc_xz_open[dxds]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('er75sc_xz_open')['dxds'] eq 0">checked</if> class="i-checks" name="er75sc_xz_open[dxds]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="er75sc_xz_max[dxds]" value="{:C('er75sc_xz_max')['dxds']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">1~10名猜车号</label>
+								    <div class="col-sm-4">
+										<input type="text" name="er75sc_chehao" value="{:C('er75sc_chehao')}" placeholder="输入赔率" class="form-control">
+									</div>
+									<div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('er75sc_xz_open')['chehao'] eq 1">checked</if> class="i-checks" name="er75sc_xz_open[chehao]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('er75sc_xz_open')['chehao'] eq 0">checked</if> class="i-checks" name="er75sc_xz_open[chehao]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="er75sc_xz_max[chehao]" value="{:C('er75sc_xz_max')['chehao']}" placeholder="每个车号最高" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">1~10名猜组合(大单,小双)</label>
+								    <div class="col-sm-4">
+										<input type="text" name="er75sc_zuhe_1" value="{:C('er75sc_zuhe_1')}" placeholder="输入赔率" class="form-control">
+									</div>
+									<div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('er75sc_xz_open')['zuhe_1'] eq 1">checked</if> class="i-checks" name="er75sc_xz_open[zuhe_1]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('er75sc_xz_open')['zuhe_1'] eq 0">checked</if> class="i-checks" name="er75sc_xz_open[zuhe_1]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="er75sc_xz_max[zuhe]" value="{:C('er75sc_xz_max')['zuhe']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">1~10名猜组合(小单,大双)</label>
+								    <div class="col-sm-4">
+										<input type="text" name="er75sc_zuhe_2" value="{:C('er75sc_zuhe_2')}" placeholder="输入赔率" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">1~5名猜龙虎</label>
+								    <div class="col-sm-4">
+										<input type="text" name="er75sc_lh" value="{:C('er75sc_lh')}" placeholder="输入赔率" class="form-control">
+									</div>
+									<div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('er75sc_xz_open')['lh'] eq 1">checked</if> class="i-checks" name="er75sc_xz_open[lh]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('er75sc_xz_open')['lh'] eq 0">checked</if> class="i-checks" name="er75sc_xz_open[lh]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="er75sc_xz_max[lh]" value="{:C('er75sc_xz_max')['lh']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">冠亚猜庄闲</label>
+								    <div class="col-sm-4">
+										<input type="text" name="er75sc_zx" value="{:C('er75sc_zx')}" placeholder="输入赔率" class="form-control">
+									</div>
+									<div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('er75sc_xz_open')['zx'] eq 1">checked</if> class="i-checks" name="er75sc_xz_open[zx]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('er75sc_xz_open')['zx'] eq 0">checked</if> class="i-checks" name="er75sc_xz_open[zx]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="er75sc_xz_max[zx]" value="{:C('er75sc_xz_max')['zx']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">猜冠亚号码</label>
+								    <div class="col-sm-4">
+										<input type="text" name="er75sc_gy" value="{:C('er75sc_gy')}" placeholder="输入赔率" class="form-control">
+									</div>
+									<div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('er75sc_xz_open')['gy'] eq 1">checked</if> class="i-checks" name="er75sc_xz_open[gy]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('er75sc_xz_open')['gy'] eq 0">checked</if> class="i-checks" name="er75sc_xz_open[gy]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="er75sc_xz_max[gy]" value="{:C('er75sc_xz_max')['gy']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+
+							
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label">冠亚和值赔率选择</label>
+									<div class="col-sm-4">
+										<select class="form-control gy_select" name="er75sc_gy_set">
+											<option <if condition="C('er75sc_gy_set') eq 1">selected</if>  value="1" >冠亚和为11属于小(2个倍率设置)</option>
+											<option <if condition="C('er75sc_gy_set') eq 2">selected</if>  value="2">冠亚和为11属于和局（1个倍率设置）</option>
+										</select>
+										<span>（修改后需要重启run3.bat服务生效）</span>
+									</div>
+									<div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('er75sc_xz_open')['tema'] eq 1">checked</if> class="i-checks" name="er75sc_xz_open[tema]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('er75sc_xz_open')['tema'] eq 0">checked</if> class="i-checks" name="er75sc_xz_open[tema]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="er75sc_xz_max[tema]" value="{:C('er75sc_xz_max')['tema']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+
+
+								<div class="form-group gy_he" <if condition="C('er75sc_gy_set') eq 1">style="display:none"</if> >
+									<label class="col-sm-2 control-label">冠亚和值(特码)(大，小，单，双，11为和)</label>
+								    <div class="col-sm-4">
+										<input type="text" name="er75sc_tema" value="{:C('er75sc_tema')}" placeholder="输入赔率" class="form-control">
+									</div>
+								</div>
+
+
+								<div class="form-group gy_xiao" <if condition="C('er75sc_gy_set') eq 2">style="display:none"</if> >
+									<label class="col-sm-2 control-label">冠亚和值(特码)(大，双)</label>
+								    <div class="col-sm-4">
+										<input type="text" name="er75sc_tema_1" value="{:C('er75sc_tema_1')}" placeholder="输入赔率" class="form-control">
+									</div>
+									
+								</div>
+								<div class="form-group gy_xiao" <if condition="C('er75sc_gy_set') eq 2">style="display:none"</if> >
+									<label class="col-sm-2 control-label">冠亚和值(特码)(小，单)</label>
+								    <div class="col-sm-4">
+										<input type="text" name="er75sc_tema_2" value="{:C('er75sc_tema_2')}" placeholder="输入赔率" class="form-control">
+									</div>
+								</div>
+
+
+							
+								<div class="form-group">
+									<label class="col-sm-2 control-label">冠亚和值(特码)猜数字(3.4.18.19)</label>
+								    <div class="col-sm-4">
+										<input type="text" name="er75sc_tema_sz_1" value="{:C('er75sc_tema_sz_1')}" placeholder="输入赔率" class="form-control">
+									</div>
+									<div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('er75sc_xz_open')['tema_sz_1'] eq 1">checked</if> class="i-checks" name="er75sc_xz_open[tema_sz_1]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('er75sc_xz_open')['tema_sz_1'] eq 0">checked</if> class="i-checks" name="er75sc_xz_open[tema_sz_1]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="er75sc_xz_max[tema_sz]" value="{:C('er75sc_xz_max')['tema_sz']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">冠亚和值(特码)猜数字(5.6.16.17)</label>
+								    <div class="col-sm-4">
+										<input type="text" name="er75sc_tema_sz_2" value="{:C('er75sc_tema_sz_2')}" placeholder="输入赔率" class="form-control">
+									</div>
+								
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">冠亚和值(特码)猜数字(7.8.14.15)</label>
+								    <div class="col-sm-4">
+										<input type="text" name="er75sc_tema_sz_3" value="{:C('er75sc_tema_sz_3')}" placeholder="输入赔率" class="form-control">
+									</div>
+									
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">冠亚和值(特码)猜数字(9.10.12.13)</label>
+								    <div class="col-sm-4">
+										<input type="text" name="er75sc_tema_sz_4" value="{:C('er75sc_tema_sz_4')}" placeholder="输入赔率" class="form-control">
+									</div>
+									
+								</div>
+								<div class="hr-line-dashed"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">冠亚和值(特码)猜数字(11)</label>
+								    <div class="col-sm-4">
+										<input type="text" name="er75sc_tema_sz_5" value="{:C('er75sc_tema_sz_5')}" placeholder="输入赔率" class="form-control">
+									</div>
+								
+								</div>
+								<div class="hr-line-dashed"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">冠亚和值(特码)猜区段(A,C)</label>
+								    <div class="col-sm-4">
+										<input type="text" name="er75sc_tema_qd_1" value="{:C('er75sc_tema_qd_1')}" placeholder="输入赔率" class="form-control">
+									</div>
+									<div class="col-sm-2">
+										<input type="radio" value="1" <if condition="C('er75sc_xz_open')['tema_qd_1'] eq 1">checked</if> class="i-checks" name="er75sc_xz_open[tema_qd_1]">开启&nbsp;&nbsp;
+										<input type="radio" value="0" <if condition="C('er75sc_xz_open')['tema_qd_1'] eq 0">checked</if> class="i-checks" name="er75sc_xz_open[tema_qd_1]">关闭
+									</div>
+									<div class="col-sm-2">
+										<input type="text" name="er75sc_xz_max[tema_qd]" value="{:C('er75sc_xz_max')['tema_qd']}" placeholder="当前玩法每期最高点数" class="form-control">
+									</div>
+								</div>
+								<div class="hr-line-dashed"></div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">冠亚和值(特码)猜区段(B)</label>
+								    <div class="col-sm-4">
+										<input type="text" name="er75sc_tema_qd_2" value="{:C('er75sc_tema_qd_2')}" placeholder="输入赔率" class="form-control">
+									</div>
+									
+								</div>
+								<span style="color: red;">*赔率为含本赔率</span>
+								<div class="hr-line-dashed"></div>
+								<div class="form-group">
+									<div class="col-sm-4 col-sm-offset-2">
+										<button class="btn btn-primary" type="submit">保存信息</button>&nbsp;&nbsp;&nbsp;
+										<a class="btn btn-danger" href="{:U('Index/index')}">取消</a>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script src="__PUBLIC__/Admin/js/jquery.min.js?v=2.1.4"></script>
+		<script src="__PUBLIC__/Admin/js/bootstrap.min.js?v=3.3.6"></script>
+		<script src="__PUBLIC__/Admin/js/content.min.js?v=1.0.0"></script>
+		<script src="__PUBLIC__/Common/js/ajaxForm.js"></script>
+		<script src="__PUBLIC__/Common/layer/layer.js"></script>
+		<script src="__PUBLIC__/Admin/js/plugins/iCheck/icheck.min.js"></script>
+		<script>
+			$('.gy_select').change(function(){
+				if ($(this).val() == 1) {
+					$('.gy_he').hide();
+					$('.gy_xiao').show();
+				}else {
+					$('.gy_xiao').hide();
+					$('.gy_he').show();
+				}
+			})
+
+			$(document).ready(function() {
+				$(".i-checks").iCheck({
+					checkboxClass: "icheckbox_square-green",
+					radioClass: "iradio_square-green",
+				})
+			});
+		</script>
+		<script>
+			$(function(){
+				$('#signform').ajaxForm({
+					success: complete, 
+					dataType: 'json'
+				});
+				function complete(data){
+					if(data.status==1){
+						$('.btn-primary').attr('disabled','disabled');
+						layer.msg(data.info, function(index){
+			 				layer.close(index);
+							window.location.href=data.url;
+						});
+					}else{
+						layer.msg(data.info);
+						return false;	
+					}
+				}
+			});
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,1 @@
+a:6:{i:0;s:2:"id";i:1;s:4:"game";i:2;s:8:"actionNo";i:3;s:10:"actionTime";s:3:"_pk";s:2:"id";s:5:"_type";a:4:{s:2:"id";s:7:"int(10)";s:4:"game";s:11:"varchar(10)";s:8:"actionNo";s:7:"int(10)";s:10:"actionTime";s:4:"time";}}

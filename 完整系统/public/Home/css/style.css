@@ -1,0 +1,134 @@
+*{
+    padding:0;
+    margin:0;
+    font-family: "Microsoft YaHei", sans-serif;
+}
+html, body {
+    position: relative;
+    height: 100%;
+    background: #000000;
+    font-size: 16px;
+}
+body {
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color:#000;
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+header img{
+    width:100%;
+}
+.swiper-pagination-bullet-active{
+    background: #fff;
+}
+footer{
+	position:fixed;
+    width:100%;
+    bottom:0;
+    left: 0;
+}
+footer ul {
+    overflow: hidden;
+}
+footer ul li{
+    float: left;
+    width: 25%;
+}
+footer ul li div{
+    display: inline-block;
+}
+footer ul li div img{
+    width:85%;
+}
+section{
+    padding: 10px 15px;
+}
+section .top{
+    position: relative;
+}
+section .info{
+    position: absolute;
+    width:100%;
+    height: 100%;
+    top:0;
+    left: 0;
+}
+.info img{
+    width: 3.5rem;
+    height: 3.5rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    margin-top: .4rem;
+    left: 0.4rem;
+}
+.info_right{
+    color: #F3F3F3;
+    position: absolute;
+    left: 5rem;
+    bottom: 0.5rem;
+    font-size: .8rem;
+}
+.info_right p {
+    line-height: 1.25rem;
+}
+.info_right p span{
+    margin-left: .3rem;
+}
+.info>p{
+    color: #E6C94B;
+    position: absolute;
+    top:0;
+    font-size: .8rem;
+}
+.content ul{
+    overflow: hidden;
+}
+.content ul li{
+    float: left;
+    width:33.3%;
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: .5rem;
+}
+.content ul li div{
+    display: inline-block;
+}
+.content ul li div img{
+    width:95%;
+    border-radius: 5px;
+}
+
+
+
+
+
+

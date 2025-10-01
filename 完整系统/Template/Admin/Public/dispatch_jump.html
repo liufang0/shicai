@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="Content-Language" content="zh-CN">
+		<title>跳转提示</title>
+		<style type="text/css">
+			body {text-align:center;font-family:宋体,serif;background:#ffffff;font-size:12px;}
+			body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,blockquote{padding:0; margin:0;}   
+			table,td,tr,th{font-size:12px;}
+			li{list-style-type:none;}
+			table{ margin:0 auto;}
+			img{vertical-align:top;border:0;}
+			ol,ul {list-style:none;}   
+			caption,th {text-align:left;}   
+			h1,h2,h3,h4,h5,h6 {font-size:12px; font-weight:normal;}   
+			q:before,q:after {content:'';}   
+			abbr,acronym {border:0;}
+			address,caption,cite,code,dfn,em,th,var {font-weight:normal; font-style:normal;}   
+			strong {font-weight:normal;}
+			a {color:#000000;text-decoration:none;}
+			a:visited {color:#83006f;text-decoration:none;}
+			a:hover {color:#ba2636;text-decoration:underline;}
+			a:active {color:#ba2636;}
+			.fB{font-weight:bold;}
+			.fI{font-style: italic;}
+			.f12px{font-size:12px;}
+			.f14px{font-size:14px;}
+			.left{float:left;}
+			.right{float:right;}
+			.hidden{display:none;}
+			.unLine,.unLine a{text-decoration:none;}
+			.noBorder{border:none;}
+			.foot{margin:0 auto; width:960px; line-height:21px; clear:both; color:#4d4d4d;}
+			.foot .text{padding:4px 0 5px; border-bottom:1px solid #4d4d4d; margin:0 0 5px;}
+			.foot a,.foot a:visited{color:#4d4d4d;}
+			.foot a:hover {color:#ba2636;}
+			.clear {clear:both; height:0; overflow:hidden; display:block;}
+			.clearfix:after {clear:both; height:0; overflow:hidden; display:block; visibility:hidden; content:"."; }
+			.blank12 {clear:both; height:12px; overflow:hidden; display:block;}
+			.areaT{width:640px; text-align:left; color:#DCDDDD; font-family:Verdana, Arial, Helvetica, sans-serif; margin:60px auto 0;}
+			.areaB{width:640px; text-align:right; color:#DCDDDD; font-family:Verdana, Arial, Helvetica, sans-serif; margin:0 auto 100px;}
+			.area{width:640px; border:1px solid #DCDDDD; margin:0 auto; padding:20px 0;}
+			.area .tips{float:left; margin-left:25px;}
+			.area h2{text-align:left; font-size:20px; font-family:"黑体"; border-bottom:1px solid #DCDDDD; padding:20px 0 10px; margin:40px 35px 10px 190px;}
+			.area h3{text-align:left; font-size:18px; font-family:"黑体"; margin:0 35px 0 190px;}
+		</style>
+	</head>
+
+	<body>
+		<div class="areaT">提示信息</div>
+		<div class="area clearfix">
+
+			<?php if(isset($message)) {?>
+				<img src="__ROOT__/Statics/Message/success.png" width="160" height="160" class="tips">
+				<h2><?php echo($message); ?></h2>
+				<?php }else{?>
+					<img src="__ROOT__/Statics/Message/error.png" width="160" height="160" class="tips">
+					<h2><?php echo($error); ?></h2>
+					<?php }?>
+
+						<h3>页面自动 <a id="href" href="<?php echo($jumpUrl); ?>">跳转</a> 等待时间： <b id="wait"><?php echo($waitSecond); ?></b></h3>
+		</div>
+		<div class="areaB">北京赛车</div>
+		<script type="text/javascript">
+			(function(){
+			var wait = document.getElementById('wait'),href = document.getElementById('href').href;
+			var interval = setInterval(function(){
+				var time = --wait.innerHTML;
+				if(time <= 0) {
+					location.href = href;
+					clearInterval(interval);
+				};
+			}, 1000);
+			})();
+		</script>
+	</body>
+
+</html>

@@ -83,13 +83,13 @@ document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
 		<img src="http://wx1.sinaimg.cn/large/005FCplygy1fi7jth94n8j3040019t8j.jpg" style="position:absolute;z-indent:99999999;width:18%;height:20px;top:40%;left:16.5%;transform:translate(-50%,-50%);">
 		</if>
 		
-		<!-- PK10 -->
-		<if condition="C('is_open_pk10') == '1' && time() gt strtotime(C('is_open_pk10_begin_time')) && time() lt strtotime(C('is_open_pk10_end_time'))">
-		<a href="{:U('Home/Run/pk10')}">
+		<!-- 幸运飞艇 -->
+		<if condition="C('is_open_幸运飞艇') == '1' && time() gt strtotime(C('is_open_幸运飞艇_begin_time')) && time() lt strtotime(C('is_open_幸运飞艇_end_time'))">
+		<a href="{:U('Home/Run/幸运飞艇')}">
 		<img src="http://wx4.sinaimg.cn/large/005FCplygy1fi727kkkzyj306e08m0rs.jpg" style="position:absolute;z-indent:99999999;width:30%;height:140px;top:25.6%;left:49.8%;transform:translate(-50%,-50%);">
 		<img src="http://wx4.sinaimg.cn/large/005FCplygy1fi727ht5snj306e08mq4r.jpg" style="width:30%;height:140px;" class="z1">
 		</a>
-		<a href='/Home/Run/rulepk10.html'>
+		<a href='/Home/Run/rule幸运飞艇.html'>
 		<img src="http://wx4.sinaimg.cn/large/005FCplygy1fi727l7zmzj3040019743.jpg" style="position:absolute;z-indent:99999999;width:18%;height:20px;top:40%;left:50%;transform:translate(-50%,-50%);">
 		</a>
 		<else/>

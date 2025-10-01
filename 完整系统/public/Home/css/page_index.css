@@ -1,0 +1,202 @@
+@media screen and (max-width: 1920px) and (min-width: 750px){
+	body {
+	    max-width: 750px;
+	    margin: 0px auto;
+	    position: relative;
+	}
+}
+	
+*{
+	padding: 0;
+	margin: 0;
+}
+.head{
+	width: 100%;
+	height: 40px;
+	background-color: #e4393c;
+}
+.head font{
+	float: left;
+	height: 40px;
+	line-height: 40px;
+	color: #FFF;
+	font-weight: bold;
+	font-size:17px;
+	margin-left:20px;
+}
+.head .login{
+	float: right;
+	margin-top:10px;
+	color:#FFF;
+	margin-right:10px;
+}
+.head .login a{color:#fff;font-size:16px;text-decoration: none;}
+.banner{
+	width:100%;
+
+}
+.lunbo img{width:100%;}
+.banner li{
+	list-style: none;
+}
+.banner li a{
+	margin:10px 0;
+	display: block;
+	float: left;
+	width:25%;
+	text-align: center;
+	text-decoration: none;
+	color:#000;
+	font-size:14px;
+}
+.banner li img{
+	display: block;
+	margin: 0 auto;
+	width:50%;
+}
+.clear{clear:both;;}
+.cp{
+	width: 100%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+	font-weight: bold;
+	background: #e4393c;
+	color:#FFF;
+	margin-top:5px;
+	padding-left: 20px;
+}
+.play{
+	padding: 0 13px;
+}
+.play a{text-decoration: none;color:#e4393c;}
+.play .game{
+	width: 48%;
+	margin-top:15px;
+	display: inline-block;
+}
+.play .game img{
+	width: 70px;
+	float: left;
+}
+.play .game img p{
+	margin-top:10px;
+}
+.play .p1{
+	font-weight: bold;
+	margin-top:15px;
+}
+.play .p2{
+	color:#a29898;
+	margin-top:5px;
+	font-size: 12px;
+}
+.footer{
+	width: 100%;
+	background-color: #e4393c;
+	position: absolute;
+	bottom:0;
+	left:0;
+}
+.footer li{
+	list-style: none;
+}
+.footer li a{
+	display: block;
+	float: left;
+	width:25%;
+	height: 58px;
+	text-align: center;
+	text-decoration: none;
+	color:#fff;
+}
+.footer li img{
+	width:35%;
+	display: block;
+	margin:0 auto;
+	margin-top:3px;
+}
+.user{
+	width：100px;
+	height: 40px;
+	float: right;
+	margin-left:20px;
+}
+.user p{
+    float: left;
+    margin-top: 13px;
+    color: #fff;
+}
+.user img{
+	float: left;
+	width:40px;
+	height: 40px;
+	 border-radius: 20px;
+}
+.user span{
+	display: inline-block;
+	height: 40px;
+	line-height: 40px;
+	color: #FFF;
+	margin-top:0;
+}
+.yh{
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	background: #e4393c;
+	color:#FFF;
+	padding-left: 20px;
+}
+.hd{
+	padding:20px;
+}
+.hd li{
+	/*list-style: none;*/
+	margin-bottom: 10px;
+
+}
+.hd li a{
+	text-decoration: none;
+	color:#535353;
+	font-size:14px;
+}
+/*分页样式*/
+.pages a,.pages span {
+display:inline-block;
+padding:4px 7px;
+margin:0 2px;
+border:1px solid #D5D4D4;
+-webkit-border-radius:1px;
+-moz-border-radius:1px;
+border-radius:1px;
+}
+.pages a,.pages li {
+display:inline-block;
+list-style: none;
+text-decoration:none; color:#3399ff;
+}
+
+.pages a:hover{
+border-color:#3399ff;
+}
+.pages span.current{
+background:#3399ff;
+color:#FFF;
+font-weight:700;
+border-color:#3399ff;
+}
+.pages{
+text-align: center;
+}
+/*分页样式*/
+
+.info{
+	width: 100%;
+	height:120px;
+	background: #fff;
+
+}
+.info .mid_info{
+	margin:30px 0 0 50px;
+}

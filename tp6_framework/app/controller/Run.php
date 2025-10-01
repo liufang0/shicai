@@ -12,11 +12,11 @@ use think\facade\Cache;
 class Run extends BaseController
 {
     /**
-     * 启动PK10游戏
+     * 启动幸运飞艇游戏
      */
-    public function pk10()
+    public function 幸运飞艇()
     {
-        return $this->runGame('pk10', 'WorkermanPk10');
+        return $this->runGame('幸运飞艇', 'Workerman幸运飞艇');
     }
     
     /**
@@ -131,7 +131,7 @@ class Run extends BaseController
      */
     public function status()
     {
-        $games = ['pk10', 'ssc', 'bj28', 'jnd28', 'xjp28', 'lhc', 'xyft'];
+        $games = ['幸运飞艇', 'ssc', 'bj28', 'jnd28', 'xjp28', 'lhc', 'xyft'];
         $status = [];
         
         foreach ($games as $game) {

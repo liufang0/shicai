@@ -1,0 +1,41 @@
+# Apache重写规则
+RewriteEngine On
+
+# 隐藏admin.php后缀，可以通过 /admin 直接访问
+RewriteRule ^admin$ admin.php [L]
+
+# 防止直接访问数据库文件
+<Files "*.db">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# 防止访问配置文件
+<Files "*.md">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# 设置缓存
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/jpg "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+</IfModule>
+
+# Gzip压缩
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+</IfModule>

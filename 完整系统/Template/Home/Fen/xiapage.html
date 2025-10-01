@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+	<title>{:C('sitename')}</title>
+
+	<!-- 引入样式 -->
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/new/css/index.css"/>
+	<link rel="stylesheet" href="/images/css/common.css"/>
+	<script src="/images/js/jquery-1.11.2.min.js"></script>
+	<script src="/images/js/sizeChange.js"></script>
+
+	<style>
+		.mainer_main {
+			padding: .2rem;
+		}
+		.card_list {
+			padding-bottom: .1rem;
+		}
+		.card_list .item {
+			margin-bottom: .1rem;
+			border: 1px #e5e1df solid;
+			line-height: .60rem;
+			font-size: .22rem;
+			background: #fdfbfa;
+			border-radius: .08rem;
+			position: relative;
+			padding: .08rem 0;
+		}
+		.card_list .item::after {
+			content: "";
+			display: block;
+			background: url(/images/r.png) right center no-repeat;
+			background-size: auto;
+			background-size: .15rem .28rem;
+			width: .15rem;
+			height: .28rem;
+			position: absolute;
+			right: .28rem;
+			top: 50%;
+			margin-top: -0.14rem;
+		}
+		.card_list .item .del {
+			display: block;
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 1.04rem;
+			height: 1.04rem;
+			background: url(/images/clo.png) center center no-repeat;
+			background-size: auto;
+			background-size: .44rem .44rem;
+			cursor: pointer;
+		}
+		.card_list .item ul li {
+			padding: 0 .3rem 0 1.6rem;
+			position: relative;
+		}
+		.card_list .item ul li span {
+			position: absolute;
+			left: .3rem;
+			top: 0;
+			color: #918580;
+		}
+		.card_add_btn {
+			text-align: center;
+			display: block;
+			font-size: .28rem;
+			color: #917f77 !important;
+			background: #f7f4f2;
+			line-height: .9rem;
+			border-radius: .08rem;
+			border: 1px #dedad8 dashed;
+		}
+		.card_add_btn::before {
+			content: "";
+			display: inline-block;
+			vertical-align: middle;
+			background: url(/images/add.png) no-repeat;
+			background-size: auto;
+			background-size: .28rem .26rem;
+			width: .28rem;
+			height: .26rem;
+			margin-right: .1rem;
+		}
+
+
+	</style>
+
+
+</head>
+
+<body style="background: #efeae8;">
+<div class="nav">
+	<h3>银行卡</h3>
+	<i class="iconfont icon-40" onclick="back()"></i>
+</div>
+
+<div class="mainer_main" style="margin-top: 0.8rem;">
+
+	<div class="card_list">
+		<foreach name="banklist" item="vo" >
+		<div class="item"><a href="/Home/Fen/yhkxg.html">
+			<ul>
+				<li><span>开户姓名</span>{$vo.bankrealname}</li>
+				<li><span>开户账号</span>{$vo.bankid}</li>
+				<li><span>开户网点</span>{$vo.bankname}</li>
+			</ul></a>
+			<!--<a href="#" class="del"></a>-->
+		</div>
+		</foreach>
+	</div>
+	<?php if(!$banklist){?>
+	<a href="/Home/Fen/xiapage1.html" class="card_add_btn ng-binding" style="">
+		添加银行卡
+	</a>
+	<?php }?>
+</div>
+<?php $a=5;?>
+<include  file="./Template/Home/Run/footer.html" />
+</body>
+
+</html>

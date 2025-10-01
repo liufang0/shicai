@@ -2,7 +2,7 @@
 
 return [
     // 游戏状态配置
-    'pk10_state' => '1',
+    '幸运飞艇_state' => '1',
     'er75sc_state' => '0', 
     'xyft_state' => '0',
     'bj28_state' => '1',

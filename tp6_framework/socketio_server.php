@@ -106,7 +106,7 @@ $push_worker->onWorkerStart = function() use ($sender_io) {
     // 定时推送游戏数据
     Timer::add(3, function() use ($sender_io) {
         // 获取各游戏最新数据并推送
-        $games = ['pk10', 'ssc', 'bj28', 'jnd28', 'xjp28', 'lhc', 'xyft'];
+        $games = ['幸运飞艇', 'ssc', 'bj28', 'jnd28', 'xjp28', 'lhc', 'xyft'];
         
         foreach ($games as $game) {
             try {
